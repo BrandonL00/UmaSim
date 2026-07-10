@@ -1,5 +1,6 @@
 import {
   Activity,
+  BarChart3,
   ChevronRight,
   Clock,
   Database,
@@ -37,6 +38,7 @@ import {
   type SkillChoice,
 } from "../../data/umaImport";
 import { simulateRace } from "../../domain/race/simulateRace";
+import { simulateRaceBatch, type RaceBatchResult } from "../../domain/race/simulateRaceBatch";
 import { accuracyLedger, accuracyStatusLabels, countAccuracyStatuses } from "../../domain/race/accuracyLedger";
 import { canModelGlobalSkill } from "../../domain/race/globalSkillModel";
 import {
@@ -74,6 +76,7 @@ const moods: Mood[] = ["awful", "bad", "normal", "good", "great"];
 const statKeys: StatKey[] = ["speed", "stamina", "power", "guts", "wit"];
 const strategies: Strategy[] = ["front", "pace", "late", "end"];
 const surfaces: Surface[] = ["turf", "dirt"];
+const batchRunCounts = [25, 100, 500] as const;
 
 const defaultCharacterTemplate = characterTemplates[0];
 const defaultBuilderSkillIds = [
@@ -141,6 +144,9 @@ export function RaceSimulator() {
   const [groundCondition, setGroundCondition] = useState<GroundCondition>("firm");
   const [weather, setWeather] = useState<Weather>("sunny");
   const [seed, setSeed] = useState(createRandomSeed);
+  const [runMode, setRunMode] = useState<"replay" | "analysis">("replay");
+  const [batchRunCount, setBatchRunCount] = useState<(typeof batchRunCounts)[number]>(100);
+  const [batchResult, setBatchResult] = useState<RaceBatchResult | null>(null);
   const [savedUmas, setSavedUmas] = useState<StoredUma[]>(loadUmaLibrary);
   const [selectedCharacterId, setSelectedCharacterId] = useState(defaultCharacterTemplate.id);
   const [customDraft, setCustomDraft] = useState<RunnerBuild>(defaultCustomRunner);
@@ -247,6 +253,7 @@ export function RaceSimulator() {
       }
     : null;
   const inspectedRaceSummary = inspectedRaceRunner ? resultByRunnerId.get(inspectedRaceRunner.id) ?? null : null;
+  const inspectedBatchRunner = batchResult?.runners.find((runner) => runner.runnerId === inspectedRaceRunnerId) ?? batchResult?.runners[0] ?? null;
   const inspectedSkillDebug = useMemo(() => {
     if (!inspectedRaceRunner) {
       return [];
@@ -317,8 +324,17 @@ export function RaceSimulator() {
   }, [runHistory]);
 
   function runRace() {
+    if (runMode === "analysis") {
+      const nextBatch = simulateRaceBatch(setup, catalog, batchRunCount);
+      setBatchResult(nextBatch);
+      setResult(nextBatch.representativeRace);
+      setInspectedRaceRunnerId(null);
+      return;
+    }
+
     const nextResult = simulateRace(setup, catalog, { debugSkills: true });
 
+    setBatchResult(null);
     setResult(nextResult);
     setRunHistory((current) => appendRaceRunLog(current, createRaceRunLog(setup, track, nextResult)));
   }
@@ -339,6 +355,7 @@ export function RaceSimulator() {
     setGroundCondition("firm");
     setWeather("sunny");
     setSeed(nextSeed);
+    setBatchResult(null);
     setSelectedCharacterId(defaultCharacterTemplate.id);
     setCustomDraft(defaultCustomRunner);
     setSkillSearch("");
@@ -380,6 +397,7 @@ export function RaceSimulator() {
       Object.fromEntries(log.setup.runners.map((runner) => [runner.id, { strategy: runner.strategy, mood: runner.mood }])),
     );
     setResult(log.result);
+    setBatchResult(null);
     setInspectedRaceRunnerId(null);
   }
 
@@ -576,8 +594,8 @@ export function RaceSimulator() {
             Reset
           </button>
           <button className="primary-button" onClick={runRace} type="button">
-            <Play size={16} />
-            Run race
+            {runMode === "analysis" ? <BarChart3 size={16} /> : <Play size={16} />}
+            {runMode === "analysis" ? `Run ${batchRunCount}-race analysis` : "Run race"}
           </button>
         </div>
       </section>
@@ -625,6 +643,26 @@ export function RaceSimulator() {
               ))}
             </select>
           </label>
+
+          <div className="analysis-controls">
+            <span>Simulation mode</span>
+            <div className="segmented-control" role="group" aria-label="Simulation mode">
+              <button className={runMode === "replay" ? "is-selected" : ""} onClick={() => setRunMode("replay")} type="button">
+                Replay
+              </button>
+              <button className={runMode === "analysis" ? "is-selected" : ""} onClick={() => setRunMode("analysis")} type="button">
+                Analysis
+              </button>
+            </div>
+            {runMode === "analysis" ? (
+              <label className="field compact-field">
+                <span>Deterministic runs</span>
+                <select value={batchRunCount} onChange={(event) => setBatchRunCount(Number(event.target.value) as typeof batchRunCount)}>
+                  {batchRunCounts.map((count) => <option key={count} value={count}>{count}</option>)}
+                </select>
+              </label>
+            ) : null}
+          </div>
 
           <div className="track-facts">
             <span>{globalTrackDataMeta.count} Global courses</span>
@@ -686,7 +724,7 @@ export function RaceSimulator() {
             {allRunners.map((runner) => {
               const isSelected = selectedRunnerIds.includes(runner.id);
               const override = runnerOverrides[runner.id] ?? { strategy: runner.strategy, mood: runner.mood };
-              const placement = result.placements.find((candidate) => candidate.runnerId === runner.id);
+              const placement = batchResult ? null : result.placements.find((candidate) => candidate.runnerId === runner.id);
               const isSaved = savedUmas.some((savedUma) => savedUma.id === runner.id);
 
               return (
@@ -774,7 +812,7 @@ export function RaceSimulator() {
         <div className="panel result-panel">
           <div className="panel-heading">
             <Medal size={18} />
-            <h2>Result</h2>
+            <h2>{runMode === "analysis" && batchResult ? "Analysis" : "Result"}</h2>
             <span className="simulation-badge">Approximate model</span>
           </div>
 
@@ -803,6 +841,9 @@ export function RaceSimulator() {
             </div>
           </details>
 
+          {runMode === "analysis" && batchResult ? (
+            <BatchAnalysis result={batchResult} inspectedRunner={inspectedBatchRunner} onInspect={setInspectedRaceRunnerId} />
+          ) : (
           <div className="placements">
             {result.placements.map((placement) => {
               const summary = resultByRunnerId.get(placement.runnerId);
@@ -826,6 +867,7 @@ export function RaceSimulator() {
               );
             })}
           </div>
+          )}
 
           <div className="run-history">
             <div className="run-history-heading">
@@ -1805,6 +1847,63 @@ export function RaceSimulator() {
         </div>
       </section>
     </main>
+  );
+}
+
+function BatchAnalysis({
+  result,
+  inspectedRunner,
+  onInspect,
+}: {
+  result: RaceBatchResult;
+  inspectedRunner: RaceBatchResult["runners"][number] | null;
+  onInspect: (runnerId: string) => void;
+}) {
+  return (
+    <div className="batch-analysis">
+      <p className="batch-analysis-intro">
+        {result.runCount} deterministic runs from seed <code>{result.baseSeed}</code>. Select a runner to inspect aggregate skill usage; the detail panels show the first representative replay.
+      </p>
+      <div className="batch-analysis-table" role="table" aria-label="Batch race analysis">
+        <div className="batch-analysis-header" role="row">
+          <span>Runner</span><span>Win</span><span>Top 3</span><span>Avg place</span><span>Avg time</span><span>P90 time</span>
+        </div>
+        {result.runners.map((runner) => (
+          <button
+            className={runner.runnerId === inspectedRunner?.runnerId ? "batch-analysis-row is-selected" : "batch-analysis-row"}
+            key={runner.runnerId}
+            onClick={() => onInspect(runner.runnerId)}
+            type="button"
+          >
+            <strong>{runner.runnerName}</strong>
+            <span>{runner.winRate.toFixed(0)}%</span>
+            <span>{runner.topThreeRate.toFixed(0)}%</span>
+            <span>{runner.averagePlace.toFixed(2)}</span>
+            <span>{runner.averageFinishTime.toFixed(2)}s</span>
+            <span>{runner.finishTimeP90.toFixed(2)}s</span>
+          </button>
+        ))}
+      </div>
+      {inspectedRunner ? (
+        <section className="batch-skill-summary">
+          <div>
+            <span>Aggregate skills</span>
+            <strong>{inspectedRunner.runnerName}</strong>
+          </div>
+          <small>Average remaining stamina: {inspectedRunner.averageRemainingStamina.toFixed(0)}</small>
+          {inspectedRunner.skills.length ? (
+            <div className="batch-skill-list">
+              {inspectedRunner.skills.map((skill) => (
+                <div className={skill.modeled ? "batch-skill-row" : "batch-skill-row is-unmodeled"} key={skill.skillId}>
+                  <strong>{skill.skillName}</strong>
+                  <span>{skill.modeled ? `${skill.activationRate.toFixed(0)}% activated` : "Unmodeled"}</span>
+                </div>
+              ))}
+            </div>
+          ) : <p>No equipped skills were available for this runner.</p>}
+        </section>
+      ) : null}
+    </div>
   );
 }
 
