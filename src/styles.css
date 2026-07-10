@@ -290,6 +290,65 @@ h2 {
   margin: 7px 0 0;
 }
 
+.accuracy-ledger {
+  background: rgb(104 139 164 / 8%);
+  border: 1px solid rgb(126 216 255 / 20%);
+  border-radius: 7px;
+  color: #c8dce5;
+  font-size: 12px;
+  margin-bottom: 10px;
+  padding: 8px 10px;
+}
+
+.accuracy-ledger summary {
+  cursor: pointer;
+  font-weight: 850;
+}
+
+.accuracy-ledger > p {
+  color: #9eaaa2;
+  line-height: 1.45;
+  margin: 8px 0;
+}
+
+.accuracy-ledger-list {
+  display: grid;
+  gap: 6px;
+}
+
+.accuracy-ledger-row {
+  align-items: start;
+  background: rgb(0 0 0 / 14%);
+  border-radius: 5px;
+  display: grid;
+  gap: 8px;
+  grid-template-columns: 82px minmax(0, 1fr);
+  padding: 7px;
+}
+
+.accuracy-ledger-row > span {
+  color: #9fb3ab;
+  font-size: 10px;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.accuracy-ledger-row.is-verified > span { color: #9ae0c3; }
+.accuracy-ledger-row.is-approximation > span { color: #e2c67e; }
+.accuracy-ledger-row.is-unsupported > span { color: #d69b7d; }
+.accuracy-ledger-row.is-unknown > span { color: #c9b3e8; }
+
+.accuracy-ledger-row strong {
+  color: #f3f7f2;
+  font-size: 12px;
+}
+
+.accuracy-ledger-row p {
+  color: #9eaaa2;
+  line-height: 1.35;
+  margin: 3px 0 0;
+}
+
 .course-card {
   background:
     linear-gradient(135deg, rgb(214 169 68 / 18%), transparent 55%),

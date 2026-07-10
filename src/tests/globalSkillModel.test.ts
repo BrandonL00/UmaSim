@@ -1,6 +1,11 @@
 import { describe, expect, it } from "vitest";
 import { createGlobalSkillEngineMap, type GlobalSkill } from "../data/skills";
-import { resolveGlobalSkillActivation, type GlobalSkillContext } from "../domain/race/globalSkillModel";
+import {
+  canModelGlobalSkill,
+  getGlobalSkillModelingReport,
+  resolveGlobalSkillActivation,
+  type GlobalSkillContext,
+} from "../domain/race/globalSkillModel";
 
 const baseContext: GlobalSkillContext = {
   second: 12,
@@ -118,6 +123,24 @@ describe("globalSkillModel lane tokens", () => {
 
     expect(activation).not.toBeNull();
     expect(miss).toBeNull();
+  });
+
+  it("global-skill-unsupported-expression-is-rejected", () => {
+    const unsupported = makeSkill("unresearched_hidden_flag==1");
+
+    expect(canModelGlobalSkill(unsupported)).toBe(false);
+    expect(resolveGlobalSkillActivation(unsupported, baseContext)).toBeNull();
+    expect(getGlobalSkillModelingReport(unsupported).unsupportedConditionTokens).toEqual(["unresearched_hidden_flag==1"]);
+  });
+
+  it("reports unsupported effect types without modeling the skill", () => {
+    const unsupported = {
+      ...makeSkill("always==1"),
+      conditionGroups: [{ ...makeSkill("always==1").conditionGroups[0]!, effects: [{ type: 99, value: 100 }] }],
+    };
+
+    expect(getGlobalSkillModelingReport(unsupported).unsupportedEffectTypes).toEqual([99]);
+    expect(canModelGlobalSkill(unsupported)).toBe(false);
   });
 
   it("supports near-lane timer conditions and navigation effects", () => {

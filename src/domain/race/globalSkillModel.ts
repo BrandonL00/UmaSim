@@ -77,6 +77,12 @@ export type ResolvedGlobalSkill = {
   conditionSummary: string;
 };
 
+export type GlobalSkillModelingReport = {
+  modeled: boolean;
+  unsupportedConditionTokens: string[];
+  unsupportedEffectTypes: number[];
+};
+
 const supportedEffectTypes = new Set([1, 2, 3, 4, 5, 9, 21, 27, 28, 31]);
 const supportedTokens = new Set([
   "always",
@@ -94,6 +100,7 @@ const supportedTokens = new Set([
   "distance_rate",
   "distance_rate_after_random",
   "distance_type",
+  "down_slope_random",
   "ground_condition",
   "ground_type",
   "hp_per",
@@ -358,19 +365,26 @@ function isSegmentTargetActive(target: RandomSegmentTarget | undefined, context:
   return target.targetMeters >= low && target.targetMeters <= high;
 }
 
-function supportsConditionExpression(expression: string | null) {
+function getConditionExpressionTokens(expression: string | null) {
   if (!expression) {
-    return true;
+    return [];
   }
 
   return expression
     .split(/[&@]/)
     .map((token) => token.trim())
-    .filter(Boolean)
-    .every((token) => {
-      const parsed = parseToken(token);
-      return parsed !== null && supportedTokens.has(parsed.field);
-    });
+    .filter(Boolean);
+}
+
+function getUnsupportedConditionTokens(expression: string | null) {
+  return getConditionExpressionTokens(expression).filter((token) => {
+    const parsed = parseToken(token);
+    return parsed === null || !supportedTokens.has(parsed.field);
+  });
+}
+
+function supportsConditionExpression(expression: string | null) {
+  return getUnsupportedConditionTokens(expression).length === 0;
 }
 
 function evaluateExpression(expression: string | null, context: GlobalSkillContext) {
@@ -392,6 +406,10 @@ function evaluateExpression(expression: string | null, context: GlobalSkillConte
           return parsed ? evaluateField(parsed.field, parsed.operator, parsed.value, context) : false;
         }),
     );
+}
+
+function getUnsupportedEffectTypes(group: GlobalSkillConditionGroup) {
+  return [...new Set(group.effects.filter((effect) => !supportedEffectTypes.has(effect.type)).map((effect) => effect.type))];
 }
 
 function resolveEffects(group: GlobalSkillConditionGroup): ResolvedSkillEffects | null {
@@ -451,10 +469,35 @@ function resolveEffects(group: GlobalSkillConditionGroup): ResolvedSkillEffects 
 }
 
 export function canModelGlobalSkill(skill: GlobalSkill) {
-  return skill.conditionGroups.some((group) => {
-    const effects = resolveEffects(group);
-    return effects !== null && supportsConditionExpression(group.condition) && supportsConditionExpression(group.precondition);
-  });
+  return getGlobalSkillModelingReport(skill).modeled;
+}
+
+/** Returns the explicit reasons a Global skill cannot be interpreted by this engine. */
+export function getGlobalSkillModelingReport(skill: GlobalSkill): GlobalSkillModelingReport {
+  const unsupportedConditionTokens = new Set<string>();
+  const unsupportedEffectTypes = new Set<number>();
+  let modeled = false;
+
+  for (const group of skill.conditionGroups) {
+    const conditionTokens = [
+      ...getUnsupportedConditionTokens(group.condition),
+      ...getUnsupportedConditionTokens(group.precondition),
+    ];
+    const effectTypes = getUnsupportedEffectTypes(group);
+
+    if (conditionTokens.length === 0 && effectTypes.length === 0) {
+      modeled = true;
+    }
+
+    conditionTokens.forEach((token) => unsupportedConditionTokens.add(token));
+    effectTypes.forEach((type) => unsupportedEffectTypes.add(type));
+  }
+
+  return {
+    modeled,
+    unsupportedConditionTokens: [...unsupportedConditionTokens].sort(),
+    unsupportedEffectTypes: [...unsupportedEffectTypes].sort((left, right) => left - right),
+  };
 }
 
 export function resolveGlobalSkillActivation(

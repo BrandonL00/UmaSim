@@ -37,6 +37,7 @@ import {
   type SkillChoice,
 } from "../../data/umaImport";
 import { simulateRace } from "../../domain/race/simulateRace";
+import { accuracyLedger, accuracyStatusLabels, countAccuracyStatuses } from "../../domain/race/accuracyLedger";
 import { canModelGlobalSkill } from "../../domain/race/globalSkillModel";
 import {
   appendRaceRunLog,
@@ -88,6 +89,7 @@ const modelableGlobalSkillIds = new Set(
 const globalUniqueSkillIds = new Set(
   globalSkills.filter((skill) => skill.rarity === "unique").map((skill) => `gt-${skill.id}`),
 );
+const accuracyStatusCounts = countAccuracyStatuses();
 const builderSkillOptions = globalSkillOptions
   .filter((skill) => skill.rarity !== "unique")
   .map((skill) => ({
@@ -780,6 +782,26 @@ export function RaceSimulator() {
             <strong>{simulationCoverage.modeledCount}/{simulationCoverage.equippedCount}</strong>
             <span>equipped skills simulated</span>
           </div>
+
+          <details className="accuracy-ledger">
+            <summary>
+              Model accuracy: {accuracyStatusCounts.verified} verified, {accuracyStatusCounts.approximation} approximate
+            </summary>
+            <p>
+              This simulator reports approximations explicitly. See each area below before using a result for theorycrafting.
+            </p>
+            <div className="accuracy-ledger-list">
+              {accuracyLedger.map((entry) => (
+                <div className={`accuracy-ledger-row is-${entry.status}`} key={entry.id}>
+                  <span>{accuracyStatusLabels[entry.status]}</span>
+                  <div>
+                    <strong>{entry.label}</strong>
+                    <p>{entry.summary}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </details>
 
           <div className="placements">
             {result.placements.map((placement) => {

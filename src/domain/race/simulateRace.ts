@@ -20,6 +20,7 @@ import {
 } from "./engineState";
 import {
   canModelGlobalSkill,
+  getGlobalSkillModelingReport,
   resolveGlobalSkillActivation,
   type GlobalSkillContext,
   type RandomSegmentTarget,
@@ -265,7 +266,8 @@ function buildSkillDebugEntries(
         ownedUniqueSkillId: runner.build.uniqueSkillId,
         uniqueSkillLevel: runner.build.uniqueSkillLevel,
       });
-      const modeled = canModelGlobalSkill(globalSkill);
+      const modelingReport = getGlobalSkillModelingReport(globalSkill);
+      const modeled = modelingReport.modeled;
       const sampledTargets = describeSkillRandomState(runner.triggers.randomProfiles[skillId], track);
 
       return {
@@ -285,10 +287,23 @@ function buildSkillDebugEntries(
             ? sampledTargets.length
               ? "Sampled trigger window or condition gates did not line up in this run."
               : "Condition gates did not resolve before finish."
-            : "Unsupported condition token or effect type in the current engine.",
+            : describeUnsupportedGlobalSkill(modelingReport),
       };
     }).filter((entry): entry is SkillDebugEntry => Boolean(entry)),
   );
+}
+
+function describeUnsupportedGlobalSkill(report: ReturnType<typeof getGlobalSkillModelingReport>) {
+  const reasons = [
+    report.unsupportedConditionTokens.length
+      ? `Unsupported condition: ${report.unsupportedConditionTokens.join(", ")}.`
+      : null,
+    report.unsupportedEffectTypes.length
+      ? `Unsupported effect type: ${report.unsupportedEffectTypes.join(", ")}.`
+      : null,
+  ].filter(Boolean);
+
+  return reasons.join(" ") || "No supported condition-and-effect alternative is available in the current engine.";
 }
 
 function getSkillActivationDebug(event: SkillEvent, track: Track, timeline: RaceTick[]) {
