@@ -2,7 +2,7 @@ import type { Skill } from "../skills/types";
 import { simulateRace } from "./simulateRace";
 import type { RaceCatalog, RaceResult, RaceSetup } from "./types";
 
-type BatchCatalog = RaceCatalog & { skills: Skill[] };
+export type BatchCatalog = RaceCatalog & { skills: Skill[] };
 
 export type BatchSkillSummary = {
   skillId: string;
@@ -27,12 +27,20 @@ export type BatchRunnerSummary = {
 
 export type RaceBatchResult = {
   baseSeed: string;
+  setup: RaceSetup;
   runCount: number;
-  representativeRace: RaceResult;
+  runs: BatchRunSummary[];
   runners: BatchRunnerSummary[];
 };
 
-/** Runs a deterministic seed family and retains one replay for inspection. */
+export type BatchRunSummary = {
+  index: number;
+  seed: string;
+  placements: RaceResult["placements"];
+  skillEvents: RaceResult["skillEvents"];
+};
+
+/** Runs a deterministic seed family and retains only compact per-run summaries. */
 export function simulateRaceBatch(setup: RaceSetup, catalog: BatchCatalog, runCount: number): RaceBatchResult {
   if (!Number.isInteger(runCount) || runCount < 1) {
     throw new Error("Batch run count must be a positive integer.");
@@ -41,21 +49,38 @@ export function simulateRaceBatch(setup: RaceSetup, catalog: BatchCatalog, runCo
   const races = Array.from({ length: runCount }, (_, index) =>
     simulateRace({ ...setup, seed: createBatchSeed(setup.seed, index) }, catalog, { debugSkills: index === 0 }),
   );
-  const representativeRace = races[0]!;
+  const firstRace = races[0]!;
   const debugByRunner = new Map<string, NonNullable<RaceResult["skillDebug"]>>();
 
-  for (const entry of representativeRace.skillDebug ?? []) {
+  for (const entry of firstRace.skillDebug ?? []) {
     debugByRunner.set(entry.runnerId, [...(debugByRunner.get(entry.runnerId) ?? []), entry]);
   }
 
   return {
     baseSeed: setup.seed,
+    setup,
     runCount,
-    representativeRace,
+    runs: races.map((race, index) => ({
+      index: index + 1,
+      seed: race.seed,
+      placements: race.placements,
+      skillEvents: race.skillEvents,
+    })),
     runners: setup.runners
       .map((runner) => summarizeRunner(runner.id, runner.name, races, debugByRunner.get(runner.id) ?? []))
       .sort((left, right) => left.averagePlace - right.averagePlace || left.runnerName.localeCompare(right.runnerName)),
   };
+}
+
+/** Regenerates a detailed, inspectable replay from a compact batch run record. */
+export function replayBatchRun(batch: RaceBatchResult, catalog: BatchCatalog, runIndex: number) {
+  const run = batch.runs.find((candidate) => candidate.index === runIndex);
+
+  if (!run) {
+    throw new Error(`Unknown batch run ${runIndex}.`);
+  }
+
+  return simulateRace({ ...batch.setup, seed: run.seed }, catalog, { debugSkills: true });
 }
 
 function summarizeRunner(
