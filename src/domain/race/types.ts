@@ -1,0 +1,126 @@
+import type { DistanceCategory, RunnerBuild, StatBlock, Strategy, Surface } from "../uma/types";
+
+export type GroundCondition = "firm" | "good" | "soft" | "heavy";
+export type Weather = "sunny" | "cloudy" | "rainy" | "snowy";
+export type RacePhase = "early" | "middle" | "late" | "lastSpurt";
+
+export type TrackSegment = {
+  startMeters: number;
+  endMeters: number;
+  kind: "straight" | "corner";
+  slope?: "flat" | "uphill" | "downhill";
+  tags?: Array<"finalCorner" | "finalStraight">;
+};
+
+export type Track = {
+  id: string;
+  name: string;
+  sourceCourseId?: number;
+  venueId?: number;
+  venue?: string;
+  courseVariant?: string | null;
+  laneCount?: number;
+  surface: Surface;
+  distanceMeters: number;
+  distanceCategory: DistanceCategory;
+  direction?: "clockwise" | "counterclockwise" | "straight";
+  segments: TrackSegment[];
+  representativeRaces?: Array<{
+    id: number;
+    name: string;
+  }>;
+};
+
+export type RaceSetup = {
+  seed: string;
+  trackId: string;
+  groundCondition: GroundCondition;
+  weather: Weather;
+  runners: RunnerBuild[];
+};
+
+export type RaceCatalog = {
+  tracks: Track[];
+};
+
+export type RunnerTick = {
+  runnerId: string;
+  distanceMeters: number;
+  speed: number;
+  targetSpeed: number;
+  stamina: number;
+  phase: RacePhase;
+};
+
+export type RaceTick = {
+  second: number;
+  runners: RunnerTick[];
+};
+
+export type SkillEvent = {
+  second: number;
+  runnerId: string;
+  skillId: string;
+  skillName: string;
+  message: string;
+  source: "fixture" | "global";
+};
+
+export type SkillDebugTarget = {
+  label: string;
+  distanceMeters: number;
+  distanceRate: number;
+};
+
+export type SkillDebugEntry = {
+  runnerId: string;
+  skillId: string;
+  skillName: string;
+  source: "fixture" | "global";
+  status: "activated" | "missed" | "unmodeled";
+  conditionSummary: string;
+  sampledTargets: SkillDebugTarget[];
+  activation?: {
+    second: number;
+    distanceMeters: number;
+    distanceRate: number;
+  };
+  reason: string;
+};
+
+export type Placement = {
+  place: number;
+  runnerId: string;
+  runnerName: string;
+  finishTime: number;
+};
+
+export type RunnerSummary = {
+  runnerId: string;
+  runnerName: string;
+  adjustedStats: StatBlock;
+  topSpeed: number;
+  averageSpeed: number;
+  remainingStamina: number;
+  staminaSpent: number;
+  triggeredSkillCount: number;
+  finishTime: number;
+  gapToWinner: number;
+};
+
+export type SimulationWarning = {
+  code: string;
+  message: string;
+};
+
+export type RaceResult = {
+  seed: string;
+  placements: Placement[];
+  runners: RunnerSummary[];
+  timeline: RaceTick[];
+  skillEvents: SkillEvent[];
+  skillDebug?: SkillDebugEntry[];
+  warnings: SimulationWarning[];
+};
+
+export type StrategyCoefficients = Record<RacePhase, Record<Strategy, number>>;

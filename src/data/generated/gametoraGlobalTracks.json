@@ -1,0 +1,7554 @@
+{
+  "generatedAt": "2026-06-18T21:51:01.966Z",
+  "server": "global",
+  "ruleset": "history/pre_2nd_anni/racetracks",
+  "source": {
+    "provider": "gametora.com",
+    "manifestUrl": "https://gametora.com/data/manifests/umamusume.json",
+    "tracksUrl": "https://gametora.com/data/umamusume/history/pre_2nd_anni/racetracks.b0425e67.json",
+    "racesUrl": "https://gametora.com/data/umamusume/races.5139e0e3.json",
+    "trackHash": "b0425e67",
+    "raceHash": "5139e0e3"
+  },
+  "count": 78,
+  "tracks": [
+    {
+      "id": "gt-10701",
+      "sourceCourseId": 10701,
+      "venueId": 10007,
+      "venue": "Chukyo",
+      "name": "Chukyo 1200m Turf",
+      "surface": "turf",
+      "distanceMeters": 1200,
+      "distanceCategory": "sprint",
+      "direction": "counterclockwise",
+      "courseVariant": null,
+      "segments": [
+        {
+          "startMeters": 0,
+          "endMeters": 100,
+          "kind": "straight",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 100,
+          "endMeters": 300,
+          "kind": "straight",
+          "slope": "downhill"
+        },
+        {
+          "startMeters": 300,
+          "endMeters": 550,
+          "kind": "corner",
+          "slope": "downhill"
+        },
+        {
+          "startMeters": 550,
+          "endMeters": 800,
+          "kind": "corner",
+          "slope": "downhill",
+          "tags": [
+            "finalCorner"
+          ]
+        },
+        {
+          "startMeters": 800,
+          "endMeters": 875,
+          "kind": "straight",
+          "slope": "downhill",
+          "tags": [
+            "finalStraight"
+          ]
+        },
+        {
+          "startMeters": 875,
+          "endMeters": 975,
+          "kind": "straight",
+          "slope": "uphill",
+          "tags": [
+            "finalStraight"
+          ]
+        },
+        {
+          "startMeters": 975,
+          "endMeters": 1200,
+          "kind": "straight",
+          "slope": "flat",
+          "tags": [
+            "finalStraight"
+          ]
+        }
+      ],
+      "representativeRaces": [
+        {
+          "id": 100201,
+          "name": "Takamatsunomiya Kinen"
+        },
+        {
+          "id": 303501,
+          "name": "CBC Sho"
+        }
+      ]
+    },
+    {
+      "id": "gt-10707",
+      "sourceCourseId": 10707,
+      "venueId": 10007,
+      "venue": "Chukyo",
+      "name": "Chukyo 1400m Dirt",
+      "surface": "dirt",
+      "distanceMeters": 1400,
+      "distanceCategory": "sprint",
+      "direction": "counterclockwise",
+      "courseVariant": null,
+      "segments": [
+        {
+          "startMeters": 0,
+          "endMeters": 425,
+          "kind": "straight",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 425,
+          "endMeters": 600,
+          "kind": "straight",
+          "slope": "downhill"
+        },
+        {
+          "startMeters": 600,
+          "endMeters": 800,
+          "kind": "corner",
+          "slope": "downhill"
+        },
+        {
+          "startMeters": 800,
+          "endMeters": 1000,
+          "kind": "corner",
+          "slope": "downhill",
+          "tags": [
+            "finalCorner"
+          ]
+        },
+        {
+          "startMeters": 1000,
+          "endMeters": 1025,
+          "kind": "straight",
+          "slope": "downhill",
+          "tags": [
+            "finalStraight"
+          ]
+        },
+        {
+          "startMeters": 1025,
+          "endMeters": 1175,
+          "kind": "straight",
+          "slope": "uphill",
+          "tags": [
+            "finalStraight"
+          ]
+        },
+        {
+          "startMeters": 1175,
+          "endMeters": 1400,
+          "kind": "straight",
+          "slope": "flat",
+          "tags": [
+            "finalStraight"
+          ]
+        }
+      ],
+      "representativeRaces": [
+        {
+          "id": 303701,
+          "name": "Procyon Stakes"
+        },
+        {
+          "id": 402501,
+          "name": "Shoryu Stakes"
+        },
+        {
+          "id": 452501,
+          "name": "Kantsubaki Sho"
+        }
+      ]
+    },
+    {
+      "id": "gt-10702",
+      "sourceCourseId": 10702,
+      "venueId": 10007,
+      "venue": "Chukyo",
+      "name": "Chukyo 1400m Turf",
+      "surface": "turf",
+      "distanceMeters": 1400,
+      "distanceCategory": "sprint",
+      "direction": "counterclockwise",
+      "courseVariant": null,
+      "segments": [
+        {
+          "startMeters": 0,
+          "endMeters": 300,
+          "kind": "straight",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 300,
+          "endMeters": 500,
+          "kind": "straight",
+          "slope": "downhill"
+        },
+        {
+          "startMeters": 500,
+          "endMeters": 750,
+          "kind": "corner",
+          "slope": "downhill"
+        },
+        {
+          "startMeters": 750,
+          "endMeters": 1000,
+          "kind": "corner",
+          "slope": "downhill",
+          "tags": [
+            "finalCorner"
+          ]
+        },
+        {
+          "startMeters": 1000,
+          "endMeters": 1075,
+          "kind": "straight",
+          "slope": "downhill",
+          "tags": [
+            "finalStraight"
+          ]
+        },
+        {
+          "startMeters": 1075,
+          "endMeters": 1175,
+          "kind": "straight",
+          "slope": "uphill",
+          "tags": [
+            "finalStraight"
+          ]
+        },
+        {
+          "startMeters": 1175,
+          "endMeters": 1400,
+          "kind": "straight",
+          "slope": "flat",
+          "tags": [
+            "finalStraight"
+          ]
+        }
+      ],
+      "representativeRaces": [
+        {
+          "id": 302101,
+          "name": "Falcon Stakes"
+        },
+        {
+          "id": 452201,
+          "name": "Tsuwabuki Sho"
+        }
+      ]
+    },
+    {
+      "id": "gt-10703",
+      "sourceCourseId": 10703,
+      "venueId": 10007,
+      "venue": "Chukyo",
+      "name": "Chukyo 1600m Turf",
+      "surface": "turf",
+      "distanceMeters": 1600,
+      "distanceCategory": "mile",
+      "direction": "counterclockwise",
+      "courseVariant": null,
+      "segments": [
+        {
+          "startMeters": 0,
+          "endMeters": 150,
+          "kind": "straight",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 150,
+          "endMeters": 300,
+          "kind": "corner",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 300,
+          "endMeters": 500,
+          "kind": "straight",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 500,
+          "endMeters": 700,
+          "kind": "straight",
+          "slope": "downhill"
+        },
+        {
+          "startMeters": 700,
+          "endMeters": 950,
+          "kind": "corner",
+          "slope": "downhill"
+        },
+        {
+          "startMeters": 950,
+          "endMeters": 1200,
+          "kind": "corner",
+          "slope": "downhill",
+          "tags": [
+            "finalCorner"
+          ]
+        },
+        {
+          "startMeters": 1200,
+          "endMeters": 1275,
+          "kind": "straight",
+          "slope": "downhill",
+          "tags": [
+            "finalStraight"
+          ]
+        },
+        {
+          "startMeters": 1275,
+          "endMeters": 1375,
+          "kind": "straight",
+          "slope": "uphill",
+          "tags": [
+            "finalStraight"
+          ]
+        },
+        {
+          "startMeters": 1375,
+          "endMeters": 1600,
+          "kind": "straight",
+          "slope": "flat",
+          "tags": [
+            "finalStraight"
+          ]
+        }
+      ],
+      "representativeRaces": [
+        {
+          "id": 304001,
+          "name": "Chukyo Kinen"
+        },
+        {
+          "id": 406801,
+          "name": "Chukyo Junior Stakes"
+        },
+        {
+          "id": 451801,
+          "name": "Koyamaki Sho"
+        }
+      ]
+    },
+    {
+      "id": "gt-10708",
+      "sourceCourseId": 10708,
+      "venueId": 10007,
+      "venue": "Chukyo",
+      "name": "Chukyo 1800m Dirt",
+      "surface": "dirt",
+      "distanceMeters": 1800,
+      "distanceCategory": "mile",
+      "direction": "counterclockwise",
+      "courseVariant": null,
+      "segments": [
+        {
+          "startMeters": 0,
+          "endMeters": 50,
+          "kind": "straight",
+          "slope": "uphill"
+        },
+        {
+          "startMeters": 50,
+          "endMeters": 270,
+          "kind": "straight",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 270,
+          "endMeters": 435,
+          "kind": "corner",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 435,
+          "endMeters": 600,
+          "kind": "corner",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 600,
+          "endMeters": 825,
+          "kind": "straight",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 825,
+          "endMeters": 1000,
+          "kind": "straight",
+          "slope": "downhill"
+        },
+        {
+          "startMeters": 1000,
+          "endMeters": 1200,
+          "kind": "corner",
+          "slope": "downhill"
+        },
+        {
+          "startMeters": 1200,
+          "endMeters": 1400,
+          "kind": "corner",
+          "slope": "downhill",
+          "tags": [
+            "finalCorner"
+          ]
+        },
+        {
+          "startMeters": 1400,
+          "endMeters": 1425,
+          "kind": "straight",
+          "slope": "downhill",
+          "tags": [
+            "finalStraight"
+          ]
+        },
+        {
+          "startMeters": 1425,
+          "endMeters": 1575,
+          "kind": "straight",
+          "slope": "uphill",
+          "tags": [
+            "finalStraight"
+          ]
+        },
+        {
+          "startMeters": 1575,
+          "endMeters": 1800,
+          "kind": "straight",
+          "slope": "flat",
+          "tags": [
+            "finalStraight"
+          ]
+        }
+      ],
+      "representativeRaces": [
+        {
+          "id": 102001,
+          "name": "Champions Cup"
+        },
+        {
+          "id": 200201,
+          "name": "Tokai Stakes"
+        },
+        {
+          "id": 406601,
+          "name": "Meitetsu Hai"
+        }
+      ]
+    },
+    {
+      "id": "gt-10704",
+      "sourceCourseId": 10704,
+      "venueId": 10007,
+      "venue": "Chukyo",
+      "name": "Chukyo 2000m Turf",
+      "surface": "turf",
+      "distanceMeters": 2000,
+      "distanceCategory": "medium",
+      "direction": "counterclockwise",
+      "courseVariant": null,
+      "segments": [
+        {
+          "startMeters": 0,
+          "endMeters": 50,
+          "kind": "straight",
+          "slope": "uphill"
+        },
+        {
+          "startMeters": 50,
+          "endMeters": 300,
+          "kind": "straight",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 300,
+          "endMeters": 500,
+          "kind": "corner",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 500,
+          "endMeters": 700,
+          "kind": "corner",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 700,
+          "endMeters": 900,
+          "kind": "straight",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 900,
+          "endMeters": 1100,
+          "kind": "straight",
+          "slope": "downhill"
+        },
+        {
+          "startMeters": 1100,
+          "endMeters": 1350,
+          "kind": "corner",
+          "slope": "downhill"
+        },
+        {
+          "startMeters": 1350,
+          "endMeters": 1600,
+          "kind": "corner",
+          "slope": "downhill",
+          "tags": [
+            "finalCorner"
+          ]
+        },
+        {
+          "startMeters": 1600,
+          "endMeters": 1675,
+          "kind": "straight",
+          "slope": "downhill",
+          "tags": [
+            "finalStraight"
+          ]
+        },
+        {
+          "startMeters": 1675,
+          "endMeters": 1775,
+          "kind": "straight",
+          "slope": "uphill",
+          "tags": [
+            "finalStraight"
+          ]
+        },
+        {
+          "startMeters": 1775,
+          "endMeters": 2000,
+          "kind": "straight",
+          "slope": "flat",
+          "tags": [
+            "finalStraight"
+          ]
+        }
+      ],
+      "representativeRaces": [
+        {
+          "id": 200701,
+          "name": "Kinko Sho"
+        },
+        {
+          "id": 300501,
+          "name": "Aichi Hai"
+        },
+        {
+          "id": 306801,
+          "name": "Chunichi Shimbun Hai"
+        }
+      ]
+    },
+    {
+      "id": "gt-10401",
+      "sourceCourseId": 10401,
+      "venueId": 10004,
+      "venue": "Fukushima",
+      "name": "Fukushima 1200m Turf",
+      "surface": "turf",
+      "distanceMeters": 1200,
+      "distanceCategory": "sprint",
+      "direction": "clockwise",
+      "courseVariant": null,
+      "segments": [
+        {
+          "startMeters": 0,
+          "endMeters": 180,
+          "kind": "straight",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 180,
+          "endMeters": 280,
+          "kind": "straight",
+          "slope": "uphill"
+        },
+        {
+          "startMeters": 280,
+          "endMeters": 420,
+          "kind": "straight",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 420,
+          "endMeters": 720,
+          "kind": "corner",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 720,
+          "endMeters": 920,
+          "kind": "corner",
+          "slope": "flat",
+          "tags": [
+            "finalCorner"
+          ]
+        },
+        {
+          "startMeters": 920,
+          "endMeters": 1200,
+          "kind": "straight",
+          "slope": "flat",
+          "tags": [
+            "finalStraight"
+          ]
+        }
+      ],
+      "representativeRaces": [
+        {
+          "id": 406901,
+          "name": "Fukushima TV Open"
+        },
+        {
+          "id": 410301,
+          "name": "Fukushima Junior Stakes"
+        }
+      ]
+    },
+    {
+      "id": "gt-10406",
+      "sourceCourseId": 10406,
+      "venueId": 10004,
+      "venue": "Fukushima",
+      "name": "Fukushima 1700m Dirt",
+      "surface": "dirt",
+      "distanceMeters": 1700,
+      "distanceCategory": "mile",
+      "direction": "clockwise",
+      "courseVariant": null,
+      "segments": [
+        {
+          "startMeters": 0,
+          "endMeters": 285,
+          "kind": "straight",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 285,
+          "endMeters": 360,
+          "kind": "straight",
+          "slope": "downhill"
+        },
+        {
+          "startMeters": 360,
+          "endMeters": 530,
+          "kind": "corner",
+          "slope": "downhill"
+        },
+        {
+          "startMeters": 530,
+          "endMeters": 605,
+          "kind": "corner",
+          "slope": "downhill"
+        },
+        {
+          "startMeters": 605,
+          "endMeters": 700,
+          "kind": "corner",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 700,
+          "endMeters": 1050,
+          "kind": "straight",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 1050,
+          "endMeters": 1260,
+          "kind": "corner",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 1260,
+          "endMeters": 1420,
+          "kind": "corner",
+          "slope": "flat",
+          "tags": [
+            "finalCorner"
+          ]
+        },
+        {
+          "startMeters": 1420,
+          "endMeters": 1700,
+          "kind": "straight",
+          "slope": "flat",
+          "tags": [
+            "finalStraight"
+          ]
+        }
+      ],
+      "representativeRaces": [
+        {
+          "id": 410601,
+          "name": "Fukushima Minyu Cup"
+        },
+        {
+          "id": 411901,
+          "name": "Azumakofuji Stakes"
+        }
+      ]
+    },
+    {
+      "id": "gt-10402",
+      "sourceCourseId": 10402,
+      "venueId": 10004,
+      "venue": "Fukushima",
+      "name": "Fukushima 1800m Turf",
+      "surface": "turf",
+      "distanceMeters": 1800,
+      "distanceCategory": "mile",
+      "direction": "clockwise",
+      "courseVariant": null,
+      "segments": [
+        {
+          "startMeters": 0,
+          "endMeters": 330,
+          "kind": "straight",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 330,
+          "endMeters": 530,
+          "kind": "corner",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 530,
+          "endMeters": 730,
+          "kind": "corner",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 730,
+          "endMeters": 780,
+          "kind": "straight",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 780,
+          "endMeters": 880,
+          "kind": "straight",
+          "slope": "uphill"
+        },
+        {
+          "startMeters": 880,
+          "endMeters": 1020,
+          "kind": "straight",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 1020,
+          "endMeters": 1320,
+          "kind": "corner",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 1320,
+          "endMeters": 1520,
+          "kind": "corner",
+          "slope": "flat",
+          "tags": [
+            "finalCorner"
+          ]
+        },
+        {
+          "startMeters": 1520,
+          "endMeters": 1800,
+          "kind": "straight",
+          "slope": "flat",
+          "tags": [
+            "finalStraight"
+          ]
+        }
+      ],
+      "representativeRaces": [
+        {
+          "id": 302701,
+          "name": "Fukushima Umamusume Stakes"
+        },
+        {
+          "id": 303601,
+          "name": "Radio Nikkei Sho"
+        },
+        {
+          "id": 450801,
+          "name": "Kimmokusei Tokubetsu"
+        }
+      ]
+    },
+    {
+      "id": "gt-10403",
+      "sourceCourseId": 10403,
+      "venueId": 10004,
+      "venue": "Fukushima",
+      "name": "Fukushima 2000m Turf",
+      "surface": "turf",
+      "distanceMeters": 2000,
+      "distanceCategory": "medium",
+      "direction": "clockwise",
+      "courseVariant": null,
+      "segments": [
+        {
+          "startMeters": 0,
+          "endMeters": 530,
+          "kind": "straight",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 530,
+          "endMeters": 730,
+          "kind": "corner",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 730,
+          "endMeters": 930,
+          "kind": "corner",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 930,
+          "endMeters": 980,
+          "kind": "straight",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 980,
+          "endMeters": 1080,
+          "kind": "straight",
+          "slope": "uphill"
+        },
+        {
+          "startMeters": 1080,
+          "endMeters": 1220,
+          "kind": "straight",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 1220,
+          "endMeters": 1520,
+          "kind": "corner",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 1520,
+          "endMeters": 1720,
+          "kind": "corner",
+          "slope": "flat",
+          "tags": [
+            "finalCorner"
+          ]
+        },
+        {
+          "startMeters": 1720,
+          "endMeters": 2000,
+          "kind": "straight",
+          "slope": "flat",
+          "tags": [
+            "finalStraight"
+          ]
+        }
+      ],
+      "representativeRaces": [
+        {
+          "id": 303801,
+          "name": "Tanabata Sho"
+        },
+        {
+          "id": 306301,
+          "name": "Fukushima Kinen"
+        },
+        {
+          "id": 403801,
+          "name": "Fukushima Mimpo Hai"
+        }
+      ]
+    },
+    {
+      "id": "gt-10202",
+      "sourceCourseId": 10202,
+      "venueId": 10002,
+      "venue": "Hakodate",
+      "name": "Hakodate 1200m Turf",
+      "surface": "turf",
+      "distanceMeters": 1200,
+      "distanceCategory": "sprint",
+      "direction": "clockwise",
+      "courseVariant": null,
+      "segments": [
+        {
+          "startMeters": 0,
+          "endMeters": 510,
+          "kind": "straight",
+          "slope": "uphill"
+        },
+        {
+          "startMeters": 510,
+          "endMeters": 730,
+          "kind": "corner",
+          "slope": "uphill"
+        },
+        {
+          "startMeters": 730,
+          "endMeters": 755,
+          "kind": "corner",
+          "slope": "uphill",
+          "tags": [
+            "finalCorner"
+          ]
+        },
+        {
+          "startMeters": 755,
+          "endMeters": 950,
+          "kind": "corner",
+          "slope": "flat",
+          "tags": [
+            "finalCorner"
+          ]
+        },
+        {
+          "startMeters": 950,
+          "endMeters": 1200,
+          "kind": "straight",
+          "slope": "flat",
+          "tags": [
+            "finalStraight"
+          ]
+        }
+      ],
+      "representativeRaces": [
+        {
+          "id": 303401,
+          "name": "Hakodate Sprint Stakes"
+        },
+        {
+          "id": 304101,
+          "name": "Hakodate Junior Stakes"
+        }
+      ]
+    },
+    {
+      "id": "gt-10207",
+      "sourceCourseId": 10207,
+      "venueId": 10002,
+      "venue": "Hakodate",
+      "name": "Hakodate 1700m Dirt",
+      "surface": "dirt",
+      "distanceMeters": 1700,
+      "distanceCategory": "mile",
+      "direction": "clockwise",
+      "courseVariant": null,
+      "segments": [
+        {
+          "startMeters": 0,
+          "endMeters": 275,
+          "kind": "straight",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 275,
+          "endMeters": 350,
+          "kind": "straight",
+          "slope": "downhill"
+        },
+        {
+          "startMeters": 350,
+          "endMeters": 540,
+          "kind": "corner",
+          "slope": "downhill"
+        },
+        {
+          "startMeters": 540,
+          "endMeters": 615,
+          "kind": "corner",
+          "slope": "downhill"
+        },
+        {
+          "startMeters": 615,
+          "endMeters": 730,
+          "kind": "corner",
+          "slope": "uphill"
+        },
+        {
+          "startMeters": 730,
+          "endMeters": 1070,
+          "kind": "straight",
+          "slope": "uphill"
+        },
+        {
+          "startMeters": 1070,
+          "endMeters": 1260,
+          "kind": "corner",
+          "slope": "uphill"
+        },
+        {
+          "startMeters": 1260,
+          "endMeters": 1285,
+          "kind": "corner",
+          "slope": "uphill",
+          "tags": [
+            "finalCorner"
+          ]
+        },
+        {
+          "startMeters": 1285,
+          "endMeters": 1450,
+          "kind": "corner",
+          "slope": "flat",
+          "tags": [
+            "finalCorner"
+          ]
+        },
+        {
+          "startMeters": 1450,
+          "endMeters": 1700,
+          "kind": "straight",
+          "slope": "flat",
+          "tags": [
+            "finalStraight"
+          ]
+        }
+      ],
+      "representativeRaces": [
+        {
+          "id": 406201,
+          "name": "Onuma Stakes"
+        },
+        {
+          "id": 406501,
+          "name": "Marine Stakes"
+        }
+      ]
+    },
+    {
+      "id": "gt-10203",
+      "sourceCourseId": 10203,
+      "venueId": 10002,
+      "venue": "Hakodate",
+      "name": "Hakodate 1800m Turf",
+      "surface": "turf",
+      "distanceMeters": 1800,
+      "distanceCategory": "mile",
+      "direction": "clockwise",
+      "courseVariant": null,
+      "segments": [
+        {
+          "startMeters": 0,
+          "endMeters": 220,
+          "kind": "straight",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 220,
+          "endMeters": 320,
+          "kind": "straight",
+          "slope": "downhill"
+        },
+        {
+          "startMeters": 320,
+          "endMeters": 420,
+          "kind": "corner",
+          "slope": "downhill"
+        },
+        {
+          "startMeters": 420,
+          "endMeters": 540,
+          "kind": "corner",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 540,
+          "endMeters": 665,
+          "kind": "corner",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 665,
+          "endMeters": 760,
+          "kind": "corner",
+          "slope": "uphill"
+        },
+        {
+          "startMeters": 760,
+          "endMeters": 1110,
+          "kind": "straight",
+          "slope": "uphill"
+        },
+        {
+          "startMeters": 1110,
+          "endMeters": 1330,
+          "kind": "corner",
+          "slope": "uphill"
+        },
+        {
+          "startMeters": 1330,
+          "endMeters": 1385,
+          "kind": "corner",
+          "slope": "uphill",
+          "tags": [
+            "finalCorner"
+          ]
+        },
+        {
+          "startMeters": 1385,
+          "endMeters": 1550,
+          "kind": "corner",
+          "slope": "flat",
+          "tags": [
+            "finalCorner"
+          ]
+        },
+        {
+          "startMeters": 1550,
+          "endMeters": 1800,
+          "kind": "straight",
+          "slope": "flat",
+          "tags": [
+            "finalStraight"
+          ]
+        }
+      ],
+      "representativeRaces": [
+        {
+          "id": 406401,
+          "name": "Tomoe Sho"
+        }
+      ]
+    },
+    {
+      "id": "gt-10204",
+      "sourceCourseId": 10204,
+      "venueId": 10002,
+      "venue": "Hakodate",
+      "name": "Hakodate 2000m Turf",
+      "surface": "turf",
+      "distanceMeters": 2000,
+      "distanceCategory": "medium",
+      "direction": "clockwise",
+      "courseVariant": null,
+      "segments": [
+        {
+          "startMeters": 0,
+          "endMeters": 420,
+          "kind": "straight",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 420,
+          "endMeters": 520,
+          "kind": "straight",
+          "slope": "downhill"
+        },
+        {
+          "startMeters": 520,
+          "endMeters": 620,
+          "kind": "corner",
+          "slope": "downhill"
+        },
+        {
+          "startMeters": 620,
+          "endMeters": 740,
+          "kind": "corner",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 740,
+          "endMeters": 865,
+          "kind": "corner",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 865,
+          "endMeters": 960,
+          "kind": "corner",
+          "slope": "uphill"
+        },
+        {
+          "startMeters": 960,
+          "endMeters": 1310,
+          "kind": "straight",
+          "slope": "uphill"
+        },
+        {
+          "startMeters": 1310,
+          "endMeters": 1530,
+          "kind": "corner",
+          "slope": "uphill"
+        },
+        {
+          "startMeters": 1530,
+          "endMeters": 1585,
+          "kind": "corner",
+          "slope": "uphill",
+          "tags": [
+            "finalCorner"
+          ]
+        },
+        {
+          "startMeters": 1585,
+          "endMeters": 1750,
+          "kind": "corner",
+          "slope": "flat",
+          "tags": [
+            "finalCorner"
+          ]
+        },
+        {
+          "startMeters": 1750,
+          "endMeters": 2000,
+          "kind": "straight",
+          "slope": "flat",
+          "tags": [
+            "finalStraight"
+          ]
+        }
+      ],
+      "representativeRaces": [
+        {
+          "id": 303901,
+          "name": "Hakodate Kinen"
+        }
+      ]
+    },
+    {
+      "id": "gt-10901",
+      "sourceCourseId": 10901,
+      "venueId": 10009,
+      "venue": "Hanshin",
+      "name": "Hanshin 1200m Turf (Inner)",
+      "surface": "turf",
+      "distanceMeters": 1200,
+      "distanceCategory": "sprint",
+      "direction": "clockwise",
+      "courseVariant": "Inner",
+      "segments": [
+        {
+          "startMeters": 0,
+          "endMeters": 250,
+          "kind": "straight",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 250,
+          "endMeters": 400,
+          "kind": "corner",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 400,
+          "endMeters": 550,
+          "kind": "corner",
+          "slope": "downhill"
+        },
+        {
+          "startMeters": 550,
+          "endMeters": 850,
+          "kind": "corner",
+          "slope": "downhill",
+          "tags": [
+            "finalCorner"
+          ]
+        },
+        {
+          "startMeters": 850,
+          "endMeters": 995,
+          "kind": "straight",
+          "slope": "downhill",
+          "tags": [
+            "finalStraight"
+          ]
+        },
+        {
+          "startMeters": 995,
+          "endMeters": 1000,
+          "kind": "straight",
+          "slope": "flat",
+          "tags": [
+            "finalStraight"
+          ]
+        },
+        {
+          "startMeters": 1000,
+          "endMeters": 1125,
+          "kind": "straight",
+          "slope": "uphill",
+          "tags": [
+            "finalStraight"
+          ]
+        },
+        {
+          "startMeters": 1125,
+          "endMeters": 1200,
+          "kind": "straight",
+          "slope": "flat",
+          "tags": [
+            "finalStraight"
+          ]
+        }
+      ],
+      "representativeRaces": [
+        {
+          "id": 202101,
+          "name": "Centaur Stakes"
+        },
+        {
+          "id": 403201,
+          "name": "Marguerite Stakes"
+        },
+        {
+          "id": 411201,
+          "name": "Tanzanite Stakes"
+        },
+        {
+          "id": 452401,
+          "name": "Sazanka Sho"
+        }
+      ]
+    },
+    {
+      "id": "gt-10911",
+      "sourceCourseId": 10911,
+      "venueId": 10009,
+      "venue": "Hanshin",
+      "name": "Hanshin 1400m Dirt",
+      "surface": "dirt",
+      "distanceMeters": 1400,
+      "distanceCategory": "sprint",
+      "direction": "clockwise",
+      "courseVariant": null,
+      "segments": [
+        {
+          "startMeters": 0,
+          "endMeters": 550,
+          "kind": "straight",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 550,
+          "endMeters": 800,
+          "kind": "corner",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 800,
+          "endMeters": 1050,
+          "kind": "corner",
+          "slope": "flat",
+          "tags": [
+            "finalCorner"
+          ]
+        },
+        {
+          "startMeters": 1050,
+          "endMeters": 1200,
+          "kind": "straight",
+          "slope": "flat",
+          "tags": [
+            "finalStraight"
+          ]
+        },
+        {
+          "startMeters": 1200,
+          "endMeters": 1325,
+          "kind": "straight",
+          "slope": "uphill",
+          "tags": [
+            "finalStraight"
+          ]
+        },
+        {
+          "startMeters": 1325,
+          "endMeters": 1400,
+          "kind": "straight",
+          "slope": "flat",
+          "tags": [
+            "finalStraight"
+          ]
+        }
+      ],
+      "representativeRaces": [
+        {
+          "id": 402201,
+          "name": "Polaris Stakes"
+        },
+        {
+          "id": 403101,
+          "name": "Coral Stakes"
+        },
+        {
+          "id": 406001,
+          "name": "Tempozan Stakes"
+        },
+        {
+          "id": 408401,
+          "name": "Enif Stakes"
+        }
+      ]
+    },
+    {
+      "id": "gt-10902",
+      "sourceCourseId": 10902,
+      "venueId": 10009,
+      "venue": "Hanshin",
+      "name": "Hanshin 1400m Turf (Inner)",
+      "surface": "turf",
+      "distanceMeters": 1400,
+      "distanceCategory": "sprint",
+      "direction": "clockwise",
+      "courseVariant": "Inner",
+      "segments": [
+        {
+          "startMeters": 0,
+          "endMeters": 450,
+          "kind": "straight",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 450,
+          "endMeters": 600,
+          "kind": "corner",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 600,
+          "endMeters": 750,
+          "kind": "corner",
+          "slope": "downhill"
+        },
+        {
+          "startMeters": 750,
+          "endMeters": 1050,
+          "kind": "corner",
+          "slope": "downhill",
+          "tags": [
+            "finalCorner"
+          ]
+        },
+        {
+          "startMeters": 1050,
+          "endMeters": 1195,
+          "kind": "straight",
+          "slope": "downhill",
+          "tags": [
+            "finalStraight"
+          ]
+        },
+        {
+          "startMeters": 1195,
+          "endMeters": 1200,
+          "kind": "straight",
+          "slope": "flat",
+          "tags": [
+            "finalStraight"
+          ]
+        },
+        {
+          "startMeters": 1200,
+          "endMeters": 1325,
+          "kind": "straight",
+          "slope": "uphill",
+          "tags": [
+            "finalStraight"
+          ]
+        },
+        {
+          "startMeters": 1325,
+          "endMeters": 1400,
+          "kind": "straight",
+          "slope": "flat",
+          "tags": [
+            "finalStraight"
+          ]
+        }
+      ],
+      "representativeRaces": [
+        {
+          "id": 200801,
+          "name": "Fillies' Revue"
+        },
+        {
+          "id": 203401,
+          "name": "Hanshin Cup"
+        },
+        {
+          "id": 301701,
+          "name": "Hankyu Hai"
+        },
+        {
+          "id": 408701,
+          "name": "Kikyo Stakes"
+        }
+      ]
+    },
+    {
+      "id": "gt-10903",
+      "sourceCourseId": 10903,
+      "venueId": 10009,
+      "venue": "Hanshin",
+      "name": "Hanshin 1600m Turf (Outer)",
+      "surface": "turf",
+      "distanceMeters": 1600,
+      "distanceCategory": "mile",
+      "direction": "clockwise",
+      "courseVariant": "Outer",
+      "segments": [
+        {
+          "startMeters": 0,
+          "endMeters": 450,
+          "kind": "straight",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 450,
+          "endMeters": 800,
+          "kind": "corner",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 800,
+          "endMeters": 950,
+          "kind": "corner",
+          "slope": "flat",
+          "tags": [
+            "finalCorner"
+          ]
+        },
+        {
+          "startMeters": 950,
+          "endMeters": 1150,
+          "kind": "corner",
+          "slope": "downhill",
+          "tags": [
+            "finalCorner"
+          ]
+        },
+        {
+          "startMeters": 1150,
+          "endMeters": 1350,
+          "kind": "straight",
+          "slope": "downhill",
+          "tags": [
+            "finalStraight"
+          ]
+        },
+        {
+          "startMeters": 1350,
+          "endMeters": 1405,
+          "kind": "straight",
+          "slope": "flat",
+          "tags": [
+            "finalStraight"
+          ]
+        },
+        {
+          "startMeters": 1405,
+          "endMeters": 1525,
+          "kind": "straight",
+          "slope": "uphill",
+          "tags": [
+            "finalStraight"
+          ]
+        },
+        {
+          "startMeters": 1525,
+          "endMeters": 1600,
+          "kind": "straight",
+          "slope": "flat",
+          "tags": [
+            "finalStraight"
+          ]
+        }
+      ],
+      "representativeRaces": [
+        {
+          "id": 100401,
+          "name": "Oka Sho"
+        },
+        {
+          "id": 102101,
+          "name": "Hanshin Juvenile Fillies"
+        },
+        {
+          "id": 102201,
+          "name": "Asahi Hai Futurity Stakes"
+        },
+        {
+          "id": 201201,
+          "name": "Hanshin Umamusume Stakes"
+        }
+      ]
+    },
+    {
+      "id": "gt-10912",
+      "sourceCourseId": 10912,
+      "venueId": 10009,
+      "venue": "Hanshin",
+      "name": "Hanshin 1800m Dirt",
+      "surface": "dirt",
+      "distanceMeters": 1800,
+      "distanceCategory": "mile",
+      "direction": "clockwise",
+      "courseVariant": null,
+      "segments": [
+        {
+          "startMeters": 0,
+          "endMeters": 105,
+          "kind": "straight",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 105,
+          "endMeters": 230,
+          "kind": "straight",
+          "slope": "uphill"
+        },
+        {
+          "startMeters": 230,
+          "endMeters": 330,
+          "kind": "straight",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 330,
+          "endMeters": 480,
+          "kind": "corner",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 480,
+          "endMeters": 630,
+          "kind": "corner",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 630,
+          "endMeters": 950,
+          "kind": "straight",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 950,
+          "endMeters": 1200,
+          "kind": "corner",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 1200,
+          "endMeters": 1449,
+          "kind": "corner",
+          "slope": "flat",
+          "tags": [
+            "finalCorner"
+          ]
+        },
+        {
+          "startMeters": 1449,
+          "endMeters": 1450,
+          "kind": "corner",
+          "slope": "flat",
+          "tags": [
+            "finalCorner"
+          ]
+        },
+        {
+          "startMeters": 1450,
+          "endMeters": 1599,
+          "kind": "straight",
+          "slope": "flat",
+          "tags": [
+            "finalStraight"
+          ]
+        },
+        {
+          "startMeters": 1599,
+          "endMeters": 1724,
+          "kind": "straight",
+          "slope": "uphill",
+          "tags": [
+            "finalStraight"
+          ]
+        },
+        {
+          "startMeters": 1724,
+          "endMeters": 1800,
+          "kind": "straight",
+          "slope": "flat",
+          "tags": [
+            "finalStraight"
+          ]
+        }
+      ],
+      "representativeRaces": [
+        {
+          "id": 302601,
+          "name": "Antares Stakes"
+        },
+        {
+          "id": 411601,
+          "name": "Betelgeuse Stakes"
+        },
+        {
+          "id": 412101,
+          "name": "Sannomiya Stakes"
+        }
+      ]
+    },
+    {
+      "id": "gt-10904",
+      "sourceCourseId": 10904,
+      "venueId": 10009,
+      "venue": "Hanshin",
+      "name": "Hanshin 1800m Turf (Outer)",
+      "surface": "turf",
+      "distanceMeters": 1800,
+      "distanceCategory": "mile",
+      "direction": "clockwise",
+      "courseVariant": "Outer",
+      "segments": [
+        {
+          "startMeters": 0,
+          "endMeters": 650,
+          "kind": "straight",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 650,
+          "endMeters": 1000,
+          "kind": "corner",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 1000,
+          "endMeters": 1150,
+          "kind": "corner",
+          "slope": "flat",
+          "tags": [
+            "finalCorner"
+          ]
+        },
+        {
+          "startMeters": 1150,
+          "endMeters": 1350,
+          "kind": "corner",
+          "slope": "downhill",
+          "tags": [
+            "finalCorner"
+          ]
+        },
+        {
+          "startMeters": 1350,
+          "endMeters": 1550,
+          "kind": "straight",
+          "slope": "downhill",
+          "tags": [
+            "finalStraight"
+          ]
+        },
+        {
+          "startMeters": 1550,
+          "endMeters": 1605,
+          "kind": "straight",
+          "slope": "flat",
+          "tags": [
+            "finalStraight"
+          ]
+        },
+        {
+          "startMeters": 1605,
+          "endMeters": 1725,
+          "kind": "straight",
+          "slope": "uphill",
+          "tags": [
+            "finalStraight"
+          ]
+        },
+        {
+          "startMeters": 1725,
+          "endMeters": 1800,
+          "kind": "straight",
+          "slope": "flat",
+          "tags": [
+            "finalStraight"
+          ]
+        }
+      ],
+      "representativeRaces": [
+        {
+          "id": 202201,
+          "name": "Rose Stakes"
+        },
+        {
+          "id": 302301,
+          "name": "Mainichi Hai"
+        },
+        {
+          "id": 402101,
+          "name": "Osakajo Stakes"
+        },
+        {
+          "id": 408501,
+          "name": "Nojigiku Stakes"
+        }
+      ]
+    },
+    {
+      "id": "gt-10913",
+      "sourceCourseId": 10913,
+      "venueId": 10009,
+      "venue": "Hanshin",
+      "name": "Hanshin 2000m Dirt",
+      "surface": "dirt",
+      "distanceMeters": 2000,
+      "distanceCategory": "medium",
+      "direction": "clockwise",
+      "courseVariant": null,
+      "segments": [
+        {
+          "startMeters": 0,
+          "endMeters": 275,
+          "kind": "straight",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 275,
+          "endMeters": 400,
+          "kind": "straight",
+          "slope": "uphill"
+        },
+        {
+          "startMeters": 400,
+          "endMeters": 500,
+          "kind": "straight",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 500,
+          "endMeters": 650,
+          "kind": "corner",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 650,
+          "endMeters": 800,
+          "kind": "corner",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 800,
+          "endMeters": 1150,
+          "kind": "straight",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 1150,
+          "endMeters": 1400,
+          "kind": "corner",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 1400,
+          "endMeters": 1650,
+          "kind": "corner",
+          "slope": "flat",
+          "tags": [
+            "finalCorner"
+          ]
+        },
+        {
+          "startMeters": 1650,
+          "endMeters": 1800,
+          "kind": "straight",
+          "slope": "flat",
+          "tags": [
+            "finalStraight"
+          ]
+        },
+        {
+          "startMeters": 1800,
+          "endMeters": 1925,
+          "kind": "straight",
+          "slope": "uphill",
+          "tags": [
+            "finalStraight"
+          ]
+        },
+        {
+          "startMeters": 1925,
+          "endMeters": 2000,
+          "kind": "straight",
+          "slope": "flat",
+          "tags": [
+            "finalStraight"
+          ]
+        }
+      ],
+      "representativeRaces": [
+        {
+          "id": 305601,
+          "name": "Sirius Stakes"
+        },
+        {
+          "id": 402301,
+          "name": "Nigawa Stakes"
+        }
+      ]
+    },
+    {
+      "id": "gt-10905",
+      "sourceCourseId": 10905,
+      "venueId": 10009,
+      "venue": "Hanshin",
+      "name": "Hanshin 2000m Turf (Inner)",
+      "surface": "turf",
+      "distanceMeters": 2000,
+      "distanceCategory": "medium",
+      "direction": "clockwise",
+      "courseVariant": "Inner",
+      "segments": [
+        {
+          "startMeters": 0,
+          "endMeters": 140,
+          "kind": "straight",
+          "slope": "downhill"
+        },
+        {
+          "startMeters": 140,
+          "endMeters": 145,
+          "kind": "straight",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 145,
+          "endMeters": 270,
+          "kind": "straight",
+          "slope": "uphill"
+        },
+        {
+          "startMeters": 270,
+          "endMeters": 370,
+          "kind": "straight",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 370,
+          "endMeters": 560,
+          "kind": "corner",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 560,
+          "endMeters": 750,
+          "kind": "corner",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 750,
+          "endMeters": 1050,
+          "kind": "straight",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 1050,
+          "endMeters": 1200,
+          "kind": "corner",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 1200,
+          "endMeters": 1350,
+          "kind": "corner",
+          "slope": "downhill"
+        },
+        {
+          "startMeters": 1350,
+          "endMeters": 1650,
+          "kind": "corner",
+          "slope": "downhill",
+          "tags": [
+            "finalCorner"
+          ]
+        },
+        {
+          "startMeters": 1650,
+          "endMeters": 1795,
+          "kind": "straight",
+          "slope": "downhill",
+          "tags": [
+            "finalStraight"
+          ]
+        },
+        {
+          "startMeters": 1795,
+          "endMeters": 1800,
+          "kind": "straight",
+          "slope": "flat",
+          "tags": [
+            "finalStraight"
+          ]
+        },
+        {
+          "startMeters": 1800,
+          "endMeters": 1925,
+          "kind": "straight",
+          "slope": "uphill",
+          "tags": [
+            "finalStraight"
+          ]
+        },
+        {
+          "startMeters": 1925,
+          "endMeters": 2000,
+          "kind": "straight",
+          "slope": "flat",
+          "tags": [
+            "finalStraight"
+          ]
+        }
+      ],
+      "representativeRaces": [
+        {
+          "id": 100301,
+          "name": "Osaka Hai"
+        },
+        {
+          "id": 303001,
+          "name": "Naruo Kinen"
+        },
+        {
+          "id": 303101,
+          "name": "Mermaid Stakes"
+        },
+        {
+          "id": 306701,
+          "name": "Challenge Cup"
+        }
+      ]
+    },
+    {
+      "id": "gt-10906",
+      "sourceCourseId": 10906,
+      "venueId": 10009,
+      "venue": "Hanshin",
+      "name": "Hanshin 2200m Turf (Inner)",
+      "surface": "turf",
+      "distanceMeters": 2200,
+      "distanceCategory": "medium",
+      "direction": "clockwise",
+      "courseVariant": "Inner",
+      "segments": [
+        {
+          "startMeters": 0,
+          "endMeters": 290,
+          "kind": "straight",
+          "slope": "downhill"
+        },
+        {
+          "startMeters": 290,
+          "endMeters": 295,
+          "kind": "straight",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 295,
+          "endMeters": 420,
+          "kind": "straight",
+          "slope": "uphill"
+        },
+        {
+          "startMeters": 420,
+          "endMeters": 520,
+          "kind": "straight",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 520,
+          "endMeters": 710,
+          "kind": "corner",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 710,
+          "endMeters": 900,
+          "kind": "corner",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 900,
+          "endMeters": 1250,
+          "kind": "straight",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 1250,
+          "endMeters": 1400,
+          "kind": "corner",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 1400,
+          "endMeters": 1550,
+          "kind": "corner",
+          "slope": "downhill"
+        },
+        {
+          "startMeters": 1550,
+          "endMeters": 1850,
+          "kind": "corner",
+          "slope": "downhill",
+          "tags": [
+            "finalCorner"
+          ]
+        },
+        {
+          "startMeters": 1850,
+          "endMeters": 1995,
+          "kind": "straight",
+          "slope": "downhill",
+          "tags": [
+            "finalStraight"
+          ]
+        },
+        {
+          "startMeters": 1995,
+          "endMeters": 2000,
+          "kind": "straight",
+          "slope": "flat",
+          "tags": [
+            "finalStraight"
+          ]
+        },
+        {
+          "startMeters": 2000,
+          "endMeters": 2125,
+          "kind": "straight",
+          "slope": "uphill",
+          "tags": [
+            "finalStraight"
+          ]
+        },
+        {
+          "startMeters": 2125,
+          "endMeters": 2200,
+          "kind": "straight",
+          "slope": "flat",
+          "tags": [
+            "finalStraight"
+          ]
+        }
+      ],
+      "representativeRaces": [
+        {
+          "id": 101201,
+          "name": "Takarazuka Kinen"
+        },
+        {
+          "id": 402001,
+          "name": "Sumire Stakes"
+        }
+      ]
+    },
+    {
+      "id": "gt-10907",
+      "sourceCourseId": 10907,
+      "venueId": 10009,
+      "venue": "Hanshin",
+      "name": "Hanshin 2400m Turf (Outer)",
+      "surface": "turf",
+      "distanceMeters": 2400,
+      "distanceCategory": "medium",
+      "direction": "clockwise",
+      "courseVariant": "Outer",
+      "segments": [
+        {
+          "startMeters": 0,
+          "endMeters": 132,
+          "kind": "straight",
+          "slope": "downhill"
+        },
+        {
+          "startMeters": 132,
+          "endMeters": 187,
+          "kind": "straight",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 187,
+          "endMeters": 307,
+          "kind": "straight",
+          "slope": "uphill"
+        },
+        {
+          "startMeters": 307,
+          "endMeters": 382,
+          "kind": "straight",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 382,
+          "endMeters": 558,
+          "kind": "corner",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 558,
+          "endMeters": 572,
+          "kind": "corner",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 572,
+          "endMeters": 748,
+          "kind": "corner",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 748,
+          "endMeters": 750,
+          "kind": "straight",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 750,
+          "endMeters": 1250,
+          "kind": "straight",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 1250,
+          "endMeters": 1600,
+          "kind": "corner",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 1600,
+          "endMeters": 1750,
+          "kind": "corner",
+          "slope": "flat",
+          "tags": [
+            "finalCorner"
+          ]
+        },
+        {
+          "startMeters": 1750,
+          "endMeters": 1950,
+          "kind": "corner",
+          "slope": "downhill",
+          "tags": [
+            "finalCorner"
+          ]
+        },
+        {
+          "startMeters": 1950,
+          "endMeters": 2150,
+          "kind": "straight",
+          "slope": "downhill",
+          "tags": [
+            "finalStraight"
+          ]
+        },
+        {
+          "startMeters": 2150,
+          "endMeters": 2205,
+          "kind": "straight",
+          "slope": "flat",
+          "tags": [
+            "finalStraight"
+          ]
+        },
+        {
+          "startMeters": 2205,
+          "endMeters": 2325,
+          "kind": "straight",
+          "slope": "uphill",
+          "tags": [
+            "finalStraight"
+          ]
+        },
+        {
+          "startMeters": 2325,
+          "endMeters": 2400,
+          "kind": "straight",
+          "slope": "flat",
+          "tags": [
+            "finalStraight"
+          ]
+        }
+      ],
+      "representativeRaces": [
+        {
+          "id": 202401,
+          "name": "Kobe Shimbun Hai"
+        }
+      ]
+    },
+    {
+      "id": "gt-10909",
+      "sourceCourseId": 10909,
+      "venueId": 10009,
+      "venue": "Hanshin",
+      "name": "Hanshin 3000m Turf (Inner)",
+      "surface": "turf",
+      "distanceMeters": 3000,
+      "distanceCategory": "long",
+      "direction": "clockwise",
+      "courseVariant": "Inner",
+      "segments": [
+        {
+          "startMeters": 0,
+          "endMeters": 348,
+          "kind": "straight",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 348,
+          "endMeters": 498,
+          "kind": "corner",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 498,
+          "endMeters": 648,
+          "kind": "corner",
+          "slope": "downhill"
+        },
+        {
+          "startMeters": 648,
+          "endMeters": 948,
+          "kind": "corner",
+          "slope": "downhill"
+        },
+        {
+          "startMeters": 948,
+          "endMeters": 1093,
+          "kind": "straight",
+          "slope": "downhill"
+        },
+        {
+          "startMeters": 1093,
+          "endMeters": 1095,
+          "kind": "straight",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 1095,
+          "endMeters": 1220,
+          "kind": "straight",
+          "slope": "uphill"
+        },
+        {
+          "startMeters": 1220,
+          "endMeters": 1320,
+          "kind": "straight",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 1320,
+          "endMeters": 1510,
+          "kind": "corner",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 1510,
+          "endMeters": 1700,
+          "kind": "corner",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 1700,
+          "endMeters": 2050,
+          "kind": "straight",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 2050,
+          "endMeters": 2200,
+          "kind": "corner",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 2200,
+          "endMeters": 2350,
+          "kind": "corner",
+          "slope": "downhill"
+        },
+        {
+          "startMeters": 2350,
+          "endMeters": 2650,
+          "kind": "corner",
+          "slope": "downhill",
+          "tags": [
+            "finalCorner"
+          ]
+        },
+        {
+          "startMeters": 2650,
+          "endMeters": 2795,
+          "kind": "straight",
+          "slope": "downhill",
+          "tags": [
+            "finalStraight"
+          ]
+        },
+        {
+          "startMeters": 2795,
+          "endMeters": 2800,
+          "kind": "straight",
+          "slope": "flat",
+          "tags": [
+            "finalStraight"
+          ]
+        },
+        {
+          "startMeters": 2800,
+          "endMeters": 2925,
+          "kind": "straight",
+          "slope": "uphill",
+          "tags": [
+            "finalStraight"
+          ]
+        },
+        {
+          "startMeters": 2925,
+          "endMeters": 3000,
+          "kind": "straight",
+          "slope": "flat",
+          "tags": [
+            "finalStraight"
+          ]
+        }
+      ],
+      "representativeRaces": [
+        {
+          "id": 200901,
+          "name": "Hanshin Daishoten"
+        }
+      ]
+    },
+    {
+      "id": "gt-10914",
+      "sourceCourseId": 10914,
+      "venueId": 10009,
+      "venue": "Hanshin",
+      "name": "Hanshin 3200m Turf (Outer to Inner)",
+      "surface": "turf",
+      "distanceMeters": 3200,
+      "distanceCategory": "long",
+      "direction": "clockwise",
+      "courseVariant": "Outer to Inner",
+      "segments": [
+        {
+          "startMeters": 0,
+          "endMeters": 370,
+          "kind": "straight",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 370,
+          "endMeters": 720,
+          "kind": "corner",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 720,
+          "endMeters": 870,
+          "kind": "corner",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 870,
+          "endMeters": 1070,
+          "kind": "corner",
+          "slope": "downhill"
+        },
+        {
+          "startMeters": 1070,
+          "endMeters": 1270,
+          "kind": "straight",
+          "slope": "downhill"
+        },
+        {
+          "startMeters": 1270,
+          "endMeters": 1325,
+          "kind": "straight",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 1325,
+          "endMeters": 1445,
+          "kind": "straight",
+          "slope": "uphill"
+        },
+        {
+          "startMeters": 1445,
+          "endMeters": 1520,
+          "kind": "straight",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 1520,
+          "endMeters": 1710,
+          "kind": "corner",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 1710,
+          "endMeters": 1900,
+          "kind": "corner",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 1900,
+          "endMeters": 2250,
+          "kind": "straight",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 2250,
+          "endMeters": 2400,
+          "kind": "corner",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 2400,
+          "endMeters": 2550,
+          "kind": "corner",
+          "slope": "downhill"
+        },
+        {
+          "startMeters": 2550,
+          "endMeters": 2850,
+          "kind": "corner",
+          "slope": "downhill",
+          "tags": [
+            "finalCorner"
+          ]
+        },
+        {
+          "startMeters": 2850,
+          "endMeters": 2995,
+          "kind": "straight",
+          "slope": "downhill",
+          "tags": [
+            "finalStraight"
+          ]
+        },
+        {
+          "startMeters": 2995,
+          "endMeters": 3000,
+          "kind": "straight",
+          "slope": "flat",
+          "tags": [
+            "finalStraight"
+          ]
+        },
+        {
+          "startMeters": 3000,
+          "endMeters": 3125,
+          "kind": "straight",
+          "slope": "uphill",
+          "tags": [
+            "finalStraight"
+          ]
+        },
+        {
+          "startMeters": 3125,
+          "endMeters": 3200,
+          "kind": "straight",
+          "slope": "flat",
+          "tags": [
+            "finalStraight"
+          ]
+        }
+      ],
+      "representativeRaces": [
+        {
+          "id": 102701,
+          "name": "Tenno Sho (Spring)"
+        }
+      ]
+    },
+    {
+      "id": "gt-11001",
+      "sourceCourseId": 11001,
+      "venueId": 10010,
+      "venue": "Kokura",
+      "name": "Kokura 1200m Turf",
+      "surface": "turf",
+      "distanceMeters": 1200,
+      "distanceCategory": "sprint",
+      "direction": "clockwise",
+      "courseVariant": null,
+      "segments": [
+        {
+          "startMeters": 0,
+          "endMeters": 60,
+          "kind": "straight",
+          "slope": "downhill"
+        },
+        {
+          "startMeters": 60,
+          "endMeters": 500,
+          "kind": "straight",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 500,
+          "endMeters": 705,
+          "kind": "corner",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 705,
+          "endMeters": 910,
+          "kind": "corner",
+          "slope": "flat",
+          "tags": [
+            "finalCorner"
+          ]
+        },
+        {
+          "startMeters": 910,
+          "endMeters": 1200,
+          "kind": "straight",
+          "slope": "flat",
+          "tags": [
+            "finalStraight"
+          ]
+        }
+      ],
+      "representativeRaces": [
+        {
+          "id": 304801,
+          "name": "Kitakyushu Kinen"
+        },
+        {
+          "id": 305201,
+          "name": "Kokura Junior Stakes"
+        },
+        {
+          "id": 407401,
+          "name": "Phoenix Sho"
+        },
+        {
+          "id": 407801,
+          "name": "Himawari Sho"
+        }
+      ]
+    },
+    {
+      "id": "gt-11006",
+      "sourceCourseId": 11006,
+      "venueId": 10010,
+      "venue": "Kokura",
+      "name": "Kokura 1700m Dirt",
+      "surface": "dirt",
+      "distanceMeters": 1700,
+      "distanceCategory": "mile",
+      "direction": "clockwise",
+      "courseVariant": null,
+      "segments": [
+        {
+          "startMeters": 0,
+          "endMeters": 340,
+          "kind": "straight",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 340,
+          "endMeters": 370,
+          "kind": "corner",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 370,
+          "endMeters": 520,
+          "kind": "corner",
+          "slope": "uphill"
+        },
+        {
+          "startMeters": 520,
+          "endMeters": 700,
+          "kind": "corner",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 700,
+          "endMeters": 1060,
+          "kind": "straight",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 1060,
+          "endMeters": 1240,
+          "kind": "corner",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 1240,
+          "endMeters": 1420,
+          "kind": "corner",
+          "slope": "flat",
+          "tags": [
+            "finalCorner"
+          ]
+        },
+        {
+          "startMeters": 1420,
+          "endMeters": 1700,
+          "kind": "straight",
+          "slope": "flat",
+          "tags": [
+            "finalStraight"
+          ]
+        }
+      ],
+      "representativeRaces": [
+        {
+          "id": 407301,
+          "name": "Aso Stakes"
+        }
+      ]
+    },
+    {
+      "id": "gt-11002",
+      "sourceCourseId": 11002,
+      "venueId": 10010,
+      "venue": "Kokura",
+      "name": "Kokura 1800m Turf",
+      "surface": "turf",
+      "distanceMeters": 1800,
+      "distanceCategory": "mile",
+      "direction": "clockwise",
+      "courseVariant": null,
+      "segments": [
+        {
+          "startMeters": 0,
+          "endMeters": 280,
+          "kind": "straight",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 280,
+          "endMeters": 290,
+          "kind": "straight",
+          "slope": "uphill"
+        },
+        {
+          "startMeters": 290,
+          "endMeters": 495,
+          "kind": "corner",
+          "slope": "uphill"
+        },
+        {
+          "startMeters": 495,
+          "endMeters": 535,
+          "kind": "corner",
+          "slope": "uphill"
+        },
+        {
+          "startMeters": 535,
+          "endMeters": 700,
+          "kind": "corner",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 700,
+          "endMeters": 1100,
+          "kind": "straight",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 1100,
+          "endMeters": 1305,
+          "kind": "corner",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 1305,
+          "endMeters": 1510,
+          "kind": "corner",
+          "slope": "flat",
+          "tags": [
+            "finalCorner"
+          ]
+        },
+        {
+          "startMeters": 1510,
+          "endMeters": 1800,
+          "kind": "straight",
+          "slope": "flat",
+          "tags": [
+            "finalStraight"
+          ]
+        }
+      ],
+      "representativeRaces": [
+        {
+          "id": 301501,
+          "name": "Kokura Daishoten"
+        },
+        {
+          "id": 408001,
+          "name": "Kokura Nikkei Open"
+        }
+      ]
+    },
+    {
+      "id": "gt-11003",
+      "sourceCourseId": 11003,
+      "venueId": 10010,
+      "venue": "Kokura",
+      "name": "Kokura 2000m Turf",
+      "surface": "turf",
+      "distanceMeters": 2000,
+      "distanceCategory": "medium",
+      "direction": "clockwise",
+      "courseVariant": null,
+      "segments": [
+        {
+          "startMeters": 0,
+          "endMeters": 480,
+          "kind": "straight",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 480,
+          "endMeters": 490,
+          "kind": "straight",
+          "slope": "uphill"
+        },
+        {
+          "startMeters": 490,
+          "endMeters": 695,
+          "kind": "corner",
+          "slope": "uphill"
+        },
+        {
+          "startMeters": 695,
+          "endMeters": 735,
+          "kind": "corner",
+          "slope": "uphill"
+        },
+        {
+          "startMeters": 735,
+          "endMeters": 900,
+          "kind": "corner",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 900,
+          "endMeters": 1300,
+          "kind": "straight",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 1300,
+          "endMeters": 1505,
+          "kind": "corner",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 1505,
+          "endMeters": 1710,
+          "kind": "corner",
+          "slope": "flat",
+          "tags": [
+            "finalCorner"
+          ]
+        },
+        {
+          "startMeters": 1710,
+          "endMeters": 2000,
+          "kind": "straight",
+          "slope": "flat",
+          "tags": [
+            "finalStraight"
+          ]
+        }
+      ],
+      "representativeRaces": [
+        {
+          "id": 304401,
+          "name": "Kokura Kinen"
+        }
+      ]
+    },
+    {
+      "id": "gt-10812",
+      "sourceCourseId": 10812,
+      "venueId": 10008,
+      "venue": "Kyoto",
+      "name": "Kyoto 1200m Dirt",
+      "surface": "dirt",
+      "distanceMeters": 1200,
+      "distanceCategory": "sprint",
+      "direction": "clockwise",
+      "courseVariant": null,
+      "segments": [
+        {
+          "startMeters": 0,
+          "endMeters": 175,
+          "kind": "straight",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 175,
+          "endMeters": 375,
+          "kind": "straight",
+          "slope": "uphill"
+        },
+        {
+          "startMeters": 375,
+          "endMeters": 400,
+          "kind": "straight",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 400,
+          "endMeters": 475,
+          "kind": "corner",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 475,
+          "endMeters": 625,
+          "kind": "corner",
+          "slope": "downhill"
+        },
+        {
+          "startMeters": 625,
+          "endMeters": 675,
+          "kind": "corner",
+          "slope": "downhill",
+          "tags": [
+            "finalCorner"
+          ]
+        },
+        {
+          "startMeters": 675,
+          "endMeters": 850,
+          "kind": "corner",
+          "slope": "flat",
+          "tags": [
+            "finalCorner"
+          ]
+        },
+        {
+          "startMeters": 850,
+          "endMeters": 1200,
+          "kind": "straight",
+          "slope": "flat",
+          "tags": [
+            "finalStraight"
+          ]
+        }
+      ],
+      "representativeRaces": [
+        {
+          "id": 401301,
+          "name": "Yamato Stakes"
+        },
+        {
+          "id": 404101,
+          "name": "Tennozan Stakes"
+        },
+        {
+          "id": 409701,
+          "name": "Muromachi Stakes"
+        },
+        {
+          "id": 410801,
+          "name": "Autumn Leaf Stakes"
+        }
+      ]
+    },
+    {
+      "id": "gt-10801",
+      "sourceCourseId": 10801,
+      "venueId": 10008,
+      "venue": "Kyoto",
+      "name": "Kyoto 1200m Turf (Inner)",
+      "surface": "turf",
+      "distanceMeters": 1200,
+      "distanceCategory": "sprint",
+      "direction": "clockwise",
+      "courseVariant": "Inner",
+      "segments": [
+        {
+          "startMeters": 0,
+          "endMeters": 120,
+          "kind": "straight",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 120,
+          "endMeters": 295,
+          "kind": "straight",
+          "slope": "uphill"
+        },
+        {
+          "startMeters": 295,
+          "endMeters": 320,
+          "kind": "straight",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 320,
+          "endMeters": 420,
+          "kind": "corner",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 420,
+          "endMeters": 570,
+          "kind": "corner",
+          "slope": "downhill"
+        },
+        {
+          "startMeters": 570,
+          "endMeters": 595,
+          "kind": "corner",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 595,
+          "endMeters": 870,
+          "kind": "corner",
+          "slope": "flat",
+          "tags": [
+            "finalCorner"
+          ]
+        },
+        {
+          "startMeters": 870,
+          "endMeters": 1200,
+          "kind": "straight",
+          "slope": "flat",
+          "tags": [
+            "finalStraight"
+          ]
+        }
+      ],
+      "representativeRaces": [
+        {
+          "id": 300701,
+          "name": "Silk Road Stakes"
+        },
+        {
+          "id": 306601,
+          "name": "Keihan Hai"
+        },
+        {
+          "id": 400301,
+          "name": "Yodo Tankyori Stakes"
+        },
+        {
+          "id": 404701,
+          "name": "Kurama Stakes"
+        }
+      ]
+    },
+    {
+      "id": "gt-10813",
+      "sourceCourseId": 10813,
+      "venueId": 10008,
+      "venue": "Kyoto",
+      "name": "Kyoto 1400m Dirt",
+      "surface": "dirt",
+      "distanceMeters": 1400,
+      "distanceCategory": "sprint",
+      "direction": "clockwise",
+      "courseVariant": null,
+      "segments": [
+        {
+          "startMeters": 0,
+          "endMeters": 100,
+          "kind": "straight",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 100,
+          "endMeters": 375,
+          "kind": "straight",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 375,
+          "endMeters": 575,
+          "kind": "straight",
+          "slope": "uphill"
+        },
+        {
+          "startMeters": 575,
+          "endMeters": 600,
+          "kind": "straight",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 600,
+          "endMeters": 675,
+          "kind": "corner",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 675,
+          "endMeters": 825,
+          "kind": "corner",
+          "slope": "downhill"
+        },
+        {
+          "startMeters": 825,
+          "endMeters": 875,
+          "kind": "corner",
+          "slope": "downhill",
+          "tags": [
+            "finalCorner"
+          ]
+        },
+        {
+          "startMeters": 875,
+          "endMeters": 1050,
+          "kind": "corner",
+          "slope": "flat",
+          "tags": [
+            "finalCorner"
+          ]
+        },
+        {
+          "startMeters": 1050,
+          "endMeters": 1400,
+          "kind": "straight",
+          "slope": "flat",
+          "tags": [
+            "finalStraight"
+          ]
+        }
+      ],
+      "representativeRaces": [
+        {
+          "id": 400801,
+          "name": "Subaru Stakes"
+        },
+        {
+          "id": 404201,
+          "name": "Tango Stakes"
+        },
+        {
+          "id": 405101,
+          "name": "Ritto Stakes"
+        },
+        {
+          "id": 450601,
+          "name": "Nadeshiko Sho"
+        }
+      ]
+    },
+    {
+      "id": "gt-10803",
+      "sourceCourseId": 10803,
+      "venueId": 10008,
+      "venue": "Kyoto",
+      "name": "Kyoto 1400m Turf (Outer)",
+      "surface": "turf",
+      "distanceMeters": 1400,
+      "distanceCategory": "sprint",
+      "direction": "clockwise",
+      "courseVariant": "Outer",
+      "segments": [
+        {
+          "startMeters": 0,
+          "endMeters": 250,
+          "kind": "straight",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 250,
+          "endMeters": 350,
+          "kind": "straight",
+          "slope": "uphill"
+        },
+        {
+          "startMeters": 350,
+          "endMeters": 500,
+          "kind": "straight",
+          "slope": "uphill"
+        },
+        {
+          "startMeters": 500,
+          "endMeters": 575,
+          "kind": "corner",
+          "slope": "uphill"
+        },
+        {
+          "startMeters": 575,
+          "endMeters": 725,
+          "kind": "corner",
+          "slope": "downhill"
+        },
+        {
+          "startMeters": 725,
+          "endMeters": 750,
+          "kind": "corner",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 750,
+          "endMeters": 1000,
+          "kind": "corner",
+          "slope": "flat",
+          "tags": [
+            "finalCorner"
+          ]
+        },
+        {
+          "startMeters": 1000,
+          "endMeters": 1400,
+          "kind": "straight",
+          "slope": "flat",
+          "tags": [
+            "finalStraight"
+          ]
+        }
+      ],
+      "representativeRaces": [
+        {
+          "id": 202901,
+          "name": "Swan Stakes"
+        },
+        {
+          "id": 301301,
+          "name": "Kyoto Umamusume Stakes"
+        },
+        {
+          "id": 306001,
+          "name": "Fantasy Stakes"
+        },
+        {
+          "id": 400701,
+          "name": "Kobai Stakes"
+        }
+      ]
+    },
+    {
+      "id": "gt-10805",
+      "sourceCourseId": 10805,
+      "venueId": 10008,
+      "venue": "Kyoto",
+      "name": "Kyoto 1600m Turf (Outer)",
+      "surface": "turf",
+      "distanceMeters": 1600,
+      "distanceCategory": "mile",
+      "direction": "clockwise",
+      "courseVariant": "Outer",
+      "segments": [
+        {
+          "startMeters": 0,
+          "endMeters": 200,
+          "kind": "straight",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 200,
+          "endMeters": 450,
+          "kind": "straight",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 450,
+          "endMeters": 550,
+          "kind": "straight",
+          "slope": "uphill"
+        },
+        {
+          "startMeters": 550,
+          "endMeters": 700,
+          "kind": "straight",
+          "slope": "uphill"
+        },
+        {
+          "startMeters": 700,
+          "endMeters": 775,
+          "kind": "corner",
+          "slope": "uphill"
+        },
+        {
+          "startMeters": 775,
+          "endMeters": 925,
+          "kind": "corner",
+          "slope": "downhill"
+        },
+        {
+          "startMeters": 925,
+          "endMeters": 950,
+          "kind": "corner",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 950,
+          "endMeters": 1200,
+          "kind": "corner",
+          "slope": "flat",
+          "tags": [
+            "finalCorner"
+          ]
+        },
+        {
+          "startMeters": 1200,
+          "endMeters": 1600,
+          "kind": "straight",
+          "slope": "flat",
+          "tags": [
+            "finalStraight"
+          ]
+        }
+      ],
+      "representativeRaces": [
+        {
+          "id": 101801,
+          "name": "Mile Championship"
+        },
+        {
+          "id": 201401,
+          "name": "Milers Cup"
+        },
+        {
+          "id": 203201,
+          "name": "Daily Hai Junior Stakes"
+        },
+        {
+          "id": 300101,
+          "name": "Kyoto Kimpai"
+        }
+      ]
+    },
+    {
+      "id": "gt-10814",
+      "sourceCourseId": 10814,
+      "venueId": 10008,
+      "venue": "Kyoto",
+      "name": "Kyoto 1800m Dirt",
+      "surface": "dirt",
+      "distanceMeters": 1800,
+      "distanceCategory": "mile",
+      "direction": "clockwise",
+      "courseVariant": null,
+      "segments": [
+        {
+          "startMeters": 0,
+          "endMeters": 300,
+          "kind": "straight",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 300,
+          "endMeters": 450,
+          "kind": "corner",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 450,
+          "endMeters": 600,
+          "kind": "corner",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 600,
+          "endMeters": 775,
+          "kind": "straight",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 775,
+          "endMeters": 975,
+          "kind": "straight",
+          "slope": "uphill"
+        },
+        {
+          "startMeters": 975,
+          "endMeters": 1000,
+          "kind": "straight",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 1000,
+          "endMeters": 1075,
+          "kind": "corner",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 1075,
+          "endMeters": 1225,
+          "kind": "corner",
+          "slope": "downhill"
+        },
+        {
+          "startMeters": 1225,
+          "endMeters": 1275,
+          "kind": "corner",
+          "slope": "downhill",
+          "tags": [
+            "finalCorner"
+          ]
+        },
+        {
+          "startMeters": 1275,
+          "endMeters": 1450,
+          "kind": "corner",
+          "slope": "flat",
+          "tags": [
+            "finalCorner"
+          ]
+        },
+        {
+          "startMeters": 1450,
+          "endMeters": 1800,
+          "kind": "straight",
+          "slope": "flat",
+          "tags": [
+            "finalStraight"
+          ]
+        }
+      ],
+      "representativeRaces": [
+        {
+          "id": 306101,
+          "name": "Miyako Stakes"
+        },
+        {
+          "id": 405401,
+          "name": "Hosu Stakes"
+        },
+        {
+          "id": 412401,
+          "name": "Uzumasa Stakes"
+        },
+        {
+          "id": 451101,
+          "name": "Mochinoki Sho"
+        }
+      ]
+    },
+    {
+      "id": "gt-10806",
+      "sourceCourseId": 10806,
+      "venueId": 10008,
+      "venue": "Kyoto",
+      "name": "Kyoto 1800m Turf (Outer)",
+      "surface": "turf",
+      "distanceMeters": 1800,
+      "distanceCategory": "mile",
+      "direction": "clockwise",
+      "courseVariant": "Outer",
+      "segments": [
+        {
+          "startMeters": 0,
+          "endMeters": 400,
+          "kind": "straight",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 400,
+          "endMeters": 650,
+          "kind": "straight",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 650,
+          "endMeters": 750,
+          "kind": "straight",
+          "slope": "uphill"
+        },
+        {
+          "startMeters": 750,
+          "endMeters": 900,
+          "kind": "straight",
+          "slope": "uphill"
+        },
+        {
+          "startMeters": 900,
+          "endMeters": 975,
+          "kind": "corner",
+          "slope": "uphill"
+        },
+        {
+          "startMeters": 975,
+          "endMeters": 1125,
+          "kind": "corner",
+          "slope": "downhill"
+        },
+        {
+          "startMeters": 1125,
+          "endMeters": 1150,
+          "kind": "corner",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 1150,
+          "endMeters": 1400,
+          "kind": "corner",
+          "slope": "flat",
+          "tags": [
+            "finalCorner"
+          ]
+        },
+        {
+          "startMeters": 1400,
+          "endMeters": 1800,
+          "kind": "straight",
+          "slope": "flat",
+          "tags": [
+            "finalStraight"
+          ]
+        }
+      ],
+      "representativeRaces": [
+        {
+          "id": 300901,
+          "name": "Kisaragi Sho"
+        },
+        {
+          "id": 404901,
+          "name": "Miyakooji Stakes"
+        },
+        {
+          "id": 405601,
+          "name": "Shirayuri Stakes"
+        },
+        {
+          "id": 409901,
+          "name": "Hagi Stakes"
+        }
+      ]
+    },
+    {
+      "id": "gt-10815",
+      "sourceCourseId": 10815,
+      "venueId": 10008,
+      "venue": "Kyoto",
+      "name": "Kyoto 1900m Dirt",
+      "surface": "dirt",
+      "distanceMeters": 1900,
+      "distanceCategory": "medium",
+      "direction": "clockwise",
+      "courseVariant": null,
+      "segments": [
+        {
+          "startMeters": 0,
+          "endMeters": 400,
+          "kind": "straight",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 400,
+          "endMeters": 550,
+          "kind": "corner",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 550,
+          "endMeters": 700,
+          "kind": "corner",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 700,
+          "endMeters": 875,
+          "kind": "straight",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 875,
+          "endMeters": 1075,
+          "kind": "straight",
+          "slope": "uphill"
+        },
+        {
+          "startMeters": 1075,
+          "endMeters": 1100,
+          "kind": "straight",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 1100,
+          "endMeters": 1175,
+          "kind": "corner",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 1175,
+          "endMeters": 1325,
+          "kind": "corner",
+          "slope": "downhill"
+        },
+        {
+          "startMeters": 1325,
+          "endMeters": 1375,
+          "kind": "corner",
+          "slope": "downhill",
+          "tags": [
+            "finalCorner"
+          ]
+        },
+        {
+          "startMeters": 1375,
+          "endMeters": 1550,
+          "kind": "corner",
+          "slope": "flat",
+          "tags": [
+            "finalCorner"
+          ]
+        },
+        {
+          "startMeters": 1550,
+          "endMeters": 1900,
+          "kind": "straight",
+          "slope": "flat",
+          "tags": [
+            "finalStraight"
+          ]
+        }
+      ],
+      "representativeRaces": [
+        {
+          "id": 302901,
+          "name": "Heian Stakes"
+        },
+        {
+          "id": 401601,
+          "name": "Aldebaran Stakes"
+        }
+      ]
+    },
+    {
+      "id": "gt-10807",
+      "sourceCourseId": 10807,
+      "venueId": 10008,
+      "venue": "Kyoto",
+      "name": "Kyoto 2000m Turf (Inner)",
+      "surface": "turf",
+      "distanceMeters": 2000,
+      "distanceCategory": "medium",
+      "direction": "clockwise",
+      "courseVariant": "Inner",
+      "segments": [
+        {
+          "startMeters": 0,
+          "endMeters": 400,
+          "kind": "straight",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 400,
+          "endMeters": 585,
+          "kind": "corner",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 585,
+          "endMeters": 770,
+          "kind": "corner",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 770,
+          "endMeters": 970,
+          "kind": "straight",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 970,
+          "endMeters": 1145,
+          "kind": "straight",
+          "slope": "uphill"
+        },
+        {
+          "startMeters": 1145,
+          "endMeters": 1170,
+          "kind": "straight",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 1170,
+          "endMeters": 1270,
+          "kind": "corner",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 1270,
+          "endMeters": 1420,
+          "kind": "corner",
+          "slope": "downhill"
+        },
+        {
+          "startMeters": 1420,
+          "endMeters": 1670,
+          "kind": "corner",
+          "slope": "flat",
+          "tags": [
+            "finalCorner"
+          ]
+        },
+        {
+          "startMeters": 1670,
+          "endMeters": 2000,
+          "kind": "straight",
+          "slope": "flat",
+          "tags": [
+            "finalStraight"
+          ]
+        }
+      ],
+      "representativeRaces": [
+        {
+          "id": 101401,
+          "name": "Shuka Sho"
+        },
+        {
+          "id": 306501,
+          "name": "Kyoto Junior Stakes"
+        },
+        {
+          "id": 400901,
+          "name": "Wakagoma Stakes"
+        },
+        {
+          "id": 410401,
+          "name": "Andromeda Stakes"
+        }
+      ]
+    },
+    {
+      "id": "gt-10808",
+      "sourceCourseId": 10808,
+      "venueId": 10008,
+      "venue": "Kyoto",
+      "name": "Kyoto 2200m Turf (Outer)",
+      "surface": "turf",
+      "distanceMeters": 2200,
+      "distanceCategory": "medium",
+      "direction": "clockwise",
+      "courseVariant": "Outer",
+      "segments": [
+        {
+          "startMeters": 0,
+          "endMeters": 400,
+          "kind": "straight",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 400,
+          "endMeters": 600,
+          "kind": "corner",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 600,
+          "endMeters": 800,
+          "kind": "corner",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 800,
+          "endMeters": 1050,
+          "kind": "straight",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 1050,
+          "endMeters": 1150,
+          "kind": "straight",
+          "slope": "uphill"
+        },
+        {
+          "startMeters": 1150,
+          "endMeters": 1300,
+          "kind": "straight",
+          "slope": "uphill"
+        },
+        {
+          "startMeters": 1300,
+          "endMeters": 1375,
+          "kind": "corner",
+          "slope": "uphill"
+        },
+        {
+          "startMeters": 1375,
+          "endMeters": 1525,
+          "kind": "corner",
+          "slope": "downhill"
+        },
+        {
+          "startMeters": 1525,
+          "endMeters": 1550,
+          "kind": "corner",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 1550,
+          "endMeters": 1800,
+          "kind": "corner",
+          "slope": "flat",
+          "tags": [
+            "finalCorner"
+          ]
+        },
+        {
+          "startMeters": 1800,
+          "endMeters": 2200,
+          "kind": "straight",
+          "slope": "flat",
+          "tags": [
+            "finalStraight"
+          ]
+        }
+      ],
+      "representativeRaces": [
+        {
+          "id": 101701,
+          "name": "Queen Elizabeth II Cup"
+        },
+        {
+          "id": 102501,
+          "name": "Takarazuka Kinen"
+        },
+        {
+          "id": 200401,
+          "name": "Kyoto Kinen"
+        },
+        {
+          "id": 201701,
+          "name": "Kyoto Shimbun Hai"
+        }
+      ]
+    },
+    {
+      "id": "gt-10809",
+      "sourceCourseId": 10809,
+      "venueId": 10008,
+      "venue": "Kyoto",
+      "name": "Kyoto 2400m Turf (Outer)",
+      "surface": "turf",
+      "distanceMeters": 2400,
+      "distanceCategory": "medium",
+      "direction": "clockwise",
+      "courseVariant": "Outer",
+      "segments": [
+        {
+          "startMeters": 0,
+          "endMeters": 600,
+          "kind": "straight",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 600,
+          "endMeters": 800,
+          "kind": "corner",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 800,
+          "endMeters": 1000,
+          "kind": "corner",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 1000,
+          "endMeters": 1250,
+          "kind": "straight",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 1250,
+          "endMeters": 1350,
+          "kind": "straight",
+          "slope": "uphill"
+        },
+        {
+          "startMeters": 1350,
+          "endMeters": 1500,
+          "kind": "straight",
+          "slope": "uphill"
+        },
+        {
+          "startMeters": 1500,
+          "endMeters": 1575,
+          "kind": "corner",
+          "slope": "uphill"
+        },
+        {
+          "startMeters": 1575,
+          "endMeters": 1725,
+          "kind": "corner",
+          "slope": "downhill"
+        },
+        {
+          "startMeters": 1725,
+          "endMeters": 1750,
+          "kind": "corner",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 1750,
+          "endMeters": 2000,
+          "kind": "corner",
+          "slope": "flat",
+          "tags": [
+            "finalCorner"
+          ]
+        },
+        {
+          "startMeters": 2000,
+          "endMeters": 2400,
+          "kind": "straight",
+          "slope": "flat",
+          "tags": [
+            "finalStraight"
+          ]
+        }
+      ],
+      "representativeRaces": [
+        {
+          "id": 200101,
+          "name": "Nikkei Shinshun Hai"
+        },
+        {
+          "id": 202701,
+          "name": "Kyoto Daishoten"
+        }
+      ]
+    },
+    {
+      "id": "gt-10810",
+      "sourceCourseId": 10810,
+      "venueId": 10008,
+      "venue": "Kyoto",
+      "name": "Kyoto 3000m Turf (Outer)",
+      "surface": "turf",
+      "distanceMeters": 3000,
+      "distanceCategory": "long",
+      "direction": "clockwise",
+      "courseVariant": "Outer",
+      "segments": [
+        {
+          "startMeters": 0,
+          "endMeters": 11,
+          "kind": "straight",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 11,
+          "endMeters": 111,
+          "kind": "straight",
+          "slope": "uphill"
+        },
+        {
+          "startMeters": 111,
+          "endMeters": 261,
+          "kind": "straight",
+          "slope": "uphill"
+        },
+        {
+          "startMeters": 261,
+          "endMeters": 336,
+          "kind": "corner",
+          "slope": "uphill"
+        },
+        {
+          "startMeters": 336,
+          "endMeters": 486,
+          "kind": "corner",
+          "slope": "downhill"
+        },
+        {
+          "startMeters": 486,
+          "endMeters": 511,
+          "kind": "corner",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 511,
+          "endMeters": 761,
+          "kind": "corner",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 761,
+          "endMeters": 1250,
+          "kind": "straight",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 1250,
+          "endMeters": 1450,
+          "kind": "corner",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 1450,
+          "endMeters": 1650,
+          "kind": "corner",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 1650,
+          "endMeters": 1850,
+          "kind": "straight",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 1850,
+          "endMeters": 1950,
+          "kind": "straight",
+          "slope": "uphill"
+        },
+        {
+          "startMeters": 1950,
+          "endMeters": 2100,
+          "kind": "straight",
+          "slope": "uphill"
+        },
+        {
+          "startMeters": 2100,
+          "endMeters": 2175,
+          "kind": "corner",
+          "slope": "uphill"
+        },
+        {
+          "startMeters": 2175,
+          "endMeters": 2325,
+          "kind": "corner",
+          "slope": "downhill"
+        },
+        {
+          "startMeters": 2325,
+          "endMeters": 2350,
+          "kind": "corner",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 2350,
+          "endMeters": 2600,
+          "kind": "corner",
+          "slope": "flat",
+          "tags": [
+            "finalCorner"
+          ]
+        },
+        {
+          "startMeters": 2600,
+          "endMeters": 3000,
+          "kind": "straight",
+          "slope": "flat",
+          "tags": [
+            "finalStraight"
+          ]
+        }
+      ],
+      "representativeRaces": [
+        {
+          "id": 101501,
+          "name": "Kikuka Sho"
+        },
+        {
+          "id": 102601,
+          "name": "Kikuka Sho"
+        },
+        {
+          "id": 400101,
+          "name": "Manyo Stakes"
+        },
+        {
+          "id": 701001,
+          "name": "Kikuka Sho"
+        }
+      ]
+    },
+    {
+      "id": "gt-10811",
+      "sourceCourseId": 10811,
+      "venueId": 10008,
+      "venue": "Kyoto",
+      "name": "Kyoto 3200m Turf (Outer)",
+      "surface": "turf",
+      "distanceMeters": 3200,
+      "distanceCategory": "long",
+      "direction": "clockwise",
+      "courseVariant": "Outer",
+      "segments": [
+        {
+          "startMeters": 0,
+          "endMeters": 208,
+          "kind": "straight",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 208,
+          "endMeters": 308,
+          "kind": "straight",
+          "slope": "uphill"
+        },
+        {
+          "startMeters": 308,
+          "endMeters": 458,
+          "kind": "straight",
+          "slope": "uphill"
+        },
+        {
+          "startMeters": 458,
+          "endMeters": 533,
+          "kind": "corner",
+          "slope": "uphill"
+        },
+        {
+          "startMeters": 533,
+          "endMeters": 683,
+          "kind": "corner",
+          "slope": "downhill"
+        },
+        {
+          "startMeters": 683,
+          "endMeters": 708,
+          "kind": "corner",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 708,
+          "endMeters": 958,
+          "kind": "corner",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 958,
+          "endMeters": 1450,
+          "kind": "straight",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 1450,
+          "endMeters": 1650,
+          "kind": "corner",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 1650,
+          "endMeters": 1850,
+          "kind": "corner",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 1850,
+          "endMeters": 2050,
+          "kind": "straight",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 2050,
+          "endMeters": 2150,
+          "kind": "straight",
+          "slope": "uphill"
+        },
+        {
+          "startMeters": 2150,
+          "endMeters": 2300,
+          "kind": "straight",
+          "slope": "uphill"
+        },
+        {
+          "startMeters": 2300,
+          "endMeters": 2375,
+          "kind": "corner",
+          "slope": "uphill"
+        },
+        {
+          "startMeters": 2375,
+          "endMeters": 2525,
+          "kind": "corner",
+          "slope": "downhill"
+        },
+        {
+          "startMeters": 2525,
+          "endMeters": 2550,
+          "kind": "corner",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 2550,
+          "endMeters": 2800,
+          "kind": "corner",
+          "slope": "flat",
+          "tags": [
+            "finalCorner"
+          ]
+        },
+        {
+          "startMeters": 2800,
+          "endMeters": 3200,
+          "kind": "straight",
+          "slope": "flat",
+          "tags": [
+            "finalStraight"
+          ]
+        }
+      ],
+      "representativeRaces": [
+        {
+          "id": 100601,
+          "name": "Tenno Sho (Spring)"
+        }
+      ]
+    },
+    {
+      "id": "gt-10508",
+      "sourceCourseId": 10508,
+      "venueId": 10005,
+      "venue": "Nakayama",
+      "name": "Nakayama 1200m Dirt",
+      "surface": "dirt",
+      "distanceMeters": 1200,
+      "distanceCategory": "sprint",
+      "direction": "clockwise",
+      "courseVariant": null,
+      "segments": [
+        {
+          "startMeters": 0,
+          "endMeters": 175,
+          "kind": "straight",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 175,
+          "endMeters": 350,
+          "kind": "straight",
+          "slope": "downhill"
+        },
+        {
+          "startMeters": 350,
+          "endMeters": 500,
+          "kind": "straight",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 500,
+          "endMeters": 700,
+          "kind": "corner",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 700,
+          "endMeters": 900,
+          "kind": "corner",
+          "slope": "flat",
+          "tags": [
+            "finalCorner"
+          ]
+        },
+        {
+          "startMeters": 900,
+          "endMeters": 1000,
+          "kind": "straight",
+          "slope": "flat",
+          "tags": [
+            "finalStraight"
+          ]
+        },
+        {
+          "startMeters": 1000,
+          "endMeters": 1175,
+          "kind": "straight",
+          "slope": "uphill",
+          "tags": [
+            "finalStraight"
+          ]
+        },
+        {
+          "startMeters": 1175,
+          "endMeters": 1200,
+          "kind": "straight",
+          "slope": "flat",
+          "tags": [
+            "finalStraight"
+          ]
+        }
+      ],
+      "representativeRaces": [
+        {
+          "id": 306901,
+          "name": "Capella Stakes"
+        },
+        {
+          "id": 400501,
+          "name": "January Stakes"
+        },
+        {
+          "id": 402801,
+          "name": "Chiba Stakes"
+        },
+        {
+          "id": 403601,
+          "name": "Keiyo Stakes"
+        }
+      ]
+    },
+    {
+      "id": "gt-10501",
+      "sourceCourseId": 10501,
+      "venueId": 10005,
+      "venue": "Nakayama",
+      "name": "Nakayama 1200m Turf (Outer)",
+      "surface": "turf",
+      "distanceMeters": 1200,
+      "distanceCategory": "sprint",
+      "direction": "clockwise",
+      "courseVariant": "Outer",
+      "segments": [
+        {
+          "startMeters": 0,
+          "endMeters": 200,
+          "kind": "straight",
+          "slope": "downhill"
+        },
+        {
+          "startMeters": 200,
+          "endMeters": 300,
+          "kind": "straight",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 300,
+          "endMeters": 650,
+          "kind": "corner",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 650,
+          "endMeters": 900,
+          "kind": "corner",
+          "slope": "flat",
+          "tags": [
+            "finalCorner"
+          ]
+        },
+        {
+          "startMeters": 900,
+          "endMeters": 1025,
+          "kind": "straight",
+          "slope": "flat",
+          "tags": [
+            "finalStraight"
+          ]
+        },
+        {
+          "startMeters": 1025,
+          "endMeters": 1135,
+          "kind": "straight",
+          "slope": "uphill",
+          "tags": [
+            "finalStraight"
+          ]
+        },
+        {
+          "startMeters": 1135,
+          "endMeters": 1200,
+          "kind": "straight",
+          "slope": "flat",
+          "tags": [
+            "finalStraight"
+          ]
+        }
+      ],
+      "representativeRaces": [
+        {
+          "id": 101301,
+          "name": "Sprinters Stakes"
+        },
+        {
+          "id": 301901,
+          "name": "Ocean Stakes"
+        },
+        {
+          "id": 401001,
+          "name": "Carbuncle Stakes"
+        },
+        {
+          "id": 403701,
+          "name": "Shunrai Stakes"
+        }
+      ]
+    },
+    {
+      "id": "gt-10502",
+      "sourceCourseId": 10502,
+      "venueId": 10005,
+      "venue": "Nakayama",
+      "name": "Nakayama 1600m Turf (Outer)",
+      "surface": "turf",
+      "distanceMeters": 1600,
+      "distanceCategory": "mile",
+      "direction": "clockwise",
+      "courseVariant": "Outer",
+      "segments": [
+        {
+          "startMeters": 0,
+          "endMeters": 50,
+          "kind": "straight",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 50,
+          "endMeters": 300,
+          "kind": "corner",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 300,
+          "endMeters": 500,
+          "kind": "corner",
+          "slope": "downhill"
+        },
+        {
+          "startMeters": 500,
+          "endMeters": 600,
+          "kind": "straight",
+          "slope": "downhill"
+        },
+        {
+          "startMeters": 600,
+          "endMeters": 700,
+          "kind": "straight",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 700,
+          "endMeters": 1050,
+          "kind": "corner",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 1050,
+          "endMeters": 1300,
+          "kind": "corner",
+          "slope": "flat",
+          "tags": [
+            "finalCorner"
+          ]
+        },
+        {
+          "startMeters": 1300,
+          "endMeters": 1425,
+          "kind": "straight",
+          "slope": "flat",
+          "tags": [
+            "finalStraight"
+          ]
+        },
+        {
+          "startMeters": 1425,
+          "endMeters": 1535,
+          "kind": "straight",
+          "slope": "uphill",
+          "tags": [
+            "finalStraight"
+          ]
+        },
+        {
+          "startMeters": 1535,
+          "endMeters": 1600,
+          "kind": "straight",
+          "slope": "flat",
+          "tags": [
+            "finalStraight"
+          ]
+        }
+      ],
+      "representativeRaces": [
+        {
+          "id": 201301,
+          "name": "New Zealand Trophy"
+        },
+        {
+          "id": 300401,
+          "name": "Fairy Stakes"
+        },
+        {
+          "id": 302501,
+          "name": "Lord Derby Challenge Trophy"
+        },
+        {
+          "id": 305501,
+          "name": "Keisei Hai Autumn Handicap"
+        }
+      ]
+    },
+    {
+      "id": "gt-10509",
+      "sourceCourseId": 10509,
+      "venueId": 10005,
+      "venue": "Nakayama",
+      "name": "Nakayama 1800m Dirt",
+      "surface": "dirt",
+      "distanceMeters": 1800,
+      "distanceCategory": "mile",
+      "direction": "clockwise",
+      "courseVariant": null,
+      "segments": [
+        {
+          "startMeters": 0,
+          "endMeters": 100,
+          "kind": "straight",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 100,
+          "endMeters": 275,
+          "kind": "straight",
+          "slope": "uphill"
+        },
+        {
+          "startMeters": 275,
+          "endMeters": 350,
+          "kind": "straight",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 350,
+          "endMeters": 525,
+          "kind": "corner",
+          "slope": "uphill"
+        },
+        {
+          "startMeters": 525,
+          "endMeters": 550,
+          "kind": "corner",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 550,
+          "endMeters": 750,
+          "kind": "corner",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 750,
+          "endMeters": 775,
+          "kind": "straight",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 775,
+          "endMeters": 950,
+          "kind": "straight",
+          "slope": "downhill"
+        },
+        {
+          "startMeters": 950,
+          "endMeters": 1100,
+          "kind": "straight",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 1100,
+          "endMeters": 1300,
+          "kind": "corner",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 1300,
+          "endMeters": 1500,
+          "kind": "corner",
+          "slope": "flat",
+          "tags": [
+            "finalCorner"
+          ]
+        },
+        {
+          "startMeters": 1500,
+          "endMeters": 1600,
+          "kind": "straight",
+          "slope": "flat",
+          "tags": [
+            "finalStraight"
+          ]
+        },
+        {
+          "startMeters": 1600,
+          "endMeters": 1775,
+          "kind": "straight",
+          "slope": "uphill",
+          "tags": [
+            "finalStraight"
+          ]
+        },
+        {
+          "startMeters": 1775,
+          "endMeters": 1800,
+          "kind": "straight",
+          "slope": "flat",
+          "tags": [
+            "finalStraight"
+          ]
+        }
+      ],
+      "representativeRaces": [
+        {
+          "id": 302401,
+          "name": "March Stakes"
+        },
+        {
+          "id": 400401,
+          "name": "Pollux Stakes"
+        },
+        {
+          "id": 401901,
+          "name": "Sobu Stakes"
+        },
+        {
+          "id": 403301,
+          "name": "Fukuryu Stakes"
+        }
+      ]
+    },
+    {
+      "id": "gt-10503",
+      "sourceCourseId": 10503,
+      "venueId": 10005,
+      "venue": "Nakayama",
+      "name": "Nakayama 1800m Turf (Inner)",
+      "surface": "turf",
+      "distanceMeters": 1800,
+      "distanceCategory": "mile",
+      "direction": "clockwise",
+      "courseVariant": "Inner",
+      "segments": [
+        {
+          "startMeters": 0,
+          "endMeters": 1,
+          "kind": "straight",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 1,
+          "endMeters": 36,
+          "kind": "straight",
+          "slope": "uphill"
+        },
+        {
+          "startMeters": 36,
+          "endMeters": 125,
+          "kind": "straight",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 125,
+          "endMeters": 175,
+          "kind": "straight",
+          "slope": "uphill"
+        },
+        {
+          "startMeters": 175,
+          "endMeters": 325,
+          "kind": "corner",
+          "slope": "uphill"
+        },
+        {
+          "startMeters": 325,
+          "endMeters": 425,
+          "kind": "corner",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 425,
+          "endMeters": 675,
+          "kind": "corner",
+          "slope": "downhill"
+        },
+        {
+          "startMeters": 675,
+          "endMeters": 825,
+          "kind": "straight",
+          "slope": "downhill"
+        },
+        {
+          "startMeters": 825,
+          "endMeters": 1000,
+          "kind": "straight",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 1000,
+          "endMeters": 1250,
+          "kind": "corner",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 1250,
+          "endMeters": 1500,
+          "kind": "corner",
+          "slope": "flat",
+          "tags": [
+            "finalCorner"
+          ]
+        },
+        {
+          "startMeters": 1500,
+          "endMeters": 1625,
+          "kind": "straight",
+          "slope": "flat",
+          "tags": [
+            "finalStraight"
+          ]
+        },
+        {
+          "startMeters": 1625,
+          "endMeters": 1735,
+          "kind": "straight",
+          "slope": "uphill",
+          "tags": [
+            "finalStraight"
+          ]
+        },
+        {
+          "startMeters": 1735,
+          "endMeters": 1800,
+          "kind": "straight",
+          "slope": "flat",
+          "tags": [
+            "finalStraight"
+          ]
+        }
+      ],
+      "representativeRaces": [
+        {
+          "id": 200501,
+          "name": "Nakayama Kinen"
+        },
+        {
+          "id": 201001,
+          "name": "Spring Stakes"
+        },
+        {
+          "id": 203501,
+          "name": "Spring Stakes"
+        },
+        {
+          "id": 302001,
+          "name": "Nakayama Umamusume Stakes"
+        }
+      ]
+    },
+    {
+      "id": "gt-10504",
+      "sourceCourseId": 10504,
+      "venueId": 10005,
+      "venue": "Nakayama",
+      "name": "Nakayama 2000m Turf (Inner)",
+      "surface": "turf",
+      "distanceMeters": 2000,
+      "distanceCategory": "medium",
+      "direction": "clockwise",
+      "courseVariant": "Inner",
+      "segments": [
+        {
+          "startMeters": 0,
+          "endMeters": 125,
+          "kind": "straight",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 125,
+          "endMeters": 235,
+          "kind": "straight",
+          "slope": "uphill"
+        },
+        {
+          "startMeters": 235,
+          "endMeters": 325,
+          "kind": "straight",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 325,
+          "endMeters": 375,
+          "kind": "straight",
+          "slope": "uphill"
+        },
+        {
+          "startMeters": 375,
+          "endMeters": 525,
+          "kind": "corner",
+          "slope": "uphill"
+        },
+        {
+          "startMeters": 525,
+          "endMeters": 625,
+          "kind": "corner",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 625,
+          "endMeters": 875,
+          "kind": "corner",
+          "slope": "downhill"
+        },
+        {
+          "startMeters": 875,
+          "endMeters": 1025,
+          "kind": "straight",
+          "slope": "downhill"
+        },
+        {
+          "startMeters": 1025,
+          "endMeters": 1200,
+          "kind": "straight",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 1200,
+          "endMeters": 1450,
+          "kind": "corner",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 1450,
+          "endMeters": 1700,
+          "kind": "corner",
+          "slope": "flat",
+          "tags": [
+            "finalCorner"
+          ]
+        },
+        {
+          "startMeters": 1700,
+          "endMeters": 1825,
+          "kind": "straight",
+          "slope": "flat",
+          "tags": [
+            "finalStraight"
+          ]
+        },
+        {
+          "startMeters": 1825,
+          "endMeters": 1935,
+          "kind": "straight",
+          "slope": "uphill",
+          "tags": [
+            "finalStraight"
+          ]
+        },
+        {
+          "startMeters": 1935,
+          "endMeters": 2000,
+          "kind": "straight",
+          "slope": "flat",
+          "tags": [
+            "finalStraight"
+          ]
+        }
+      ],
+      "representativeRaces": [
+        {
+          "id": 100501,
+          "name": "Satsuki Sho"
+        },
+        {
+          "id": 102401,
+          "name": "Hopeful Stakes"
+        },
+        {
+          "id": 200601,
+          "name": "Yayoi Sho"
+        },
+        {
+          "id": 300201,
+          "name": "Nakayama Kimpai"
+        }
+      ]
+    },
+    {
+      "id": "gt-10505",
+      "sourceCourseId": 10505,
+      "venueId": 10005,
+      "venue": "Nakayama",
+      "name": "Nakayama 2200m Turf (Outer)",
+      "surface": "turf",
+      "distanceMeters": 2200,
+      "distanceCategory": "medium",
+      "direction": "clockwise",
+      "courseVariant": "Outer",
+      "segments": [
+        {
+          "startMeters": 0,
+          "endMeters": 153,
+          "kind": "straight",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 153,
+          "endMeters": 263,
+          "kind": "straight",
+          "slope": "uphill"
+        },
+        {
+          "startMeters": 263,
+          "endMeters": 353,
+          "kind": "straight",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 353,
+          "endMeters": 403,
+          "kind": "straight",
+          "slope": "uphill"
+        },
+        {
+          "startMeters": 403,
+          "endMeters": 553,
+          "kind": "corner",
+          "slope": "uphill"
+        },
+        {
+          "startMeters": 553,
+          "endMeters": 650,
+          "kind": "corner",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 650,
+          "endMeters": 900,
+          "kind": "corner",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 900,
+          "endMeters": 1100,
+          "kind": "corner",
+          "slope": "downhill"
+        },
+        {
+          "startMeters": 1100,
+          "endMeters": 1200,
+          "kind": "straight",
+          "slope": "downhill"
+        },
+        {
+          "startMeters": 1200,
+          "endMeters": 1300,
+          "kind": "straight",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 1300,
+          "endMeters": 1650,
+          "kind": "corner",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 1650,
+          "endMeters": 1900,
+          "kind": "corner",
+          "slope": "flat",
+          "tags": [
+            "finalCorner"
+          ]
+        },
+        {
+          "startMeters": 1900,
+          "endMeters": 2025,
+          "kind": "straight",
+          "slope": "flat",
+          "tags": [
+            "finalStraight"
+          ]
+        },
+        {
+          "startMeters": 2025,
+          "endMeters": 2135,
+          "kind": "straight",
+          "slope": "uphill",
+          "tags": [
+            "finalStraight"
+          ]
+        },
+        {
+          "startMeters": 2135,
+          "endMeters": 2200,
+          "kind": "straight",
+          "slope": "flat",
+          "tags": [
+            "finalStraight"
+          ]
+        }
+      ],
+      "representativeRaces": [
+        {
+          "id": 200301,
+          "name": "American JCC"
+        },
+        {
+          "id": 202301,
+          "name": "St. Lite Kinen"
+        },
+        {
+          "id": 202501,
+          "name": "All Comers"
+        }
+      ]
+    },
+    {
+      "id": "gt-10506",
+      "sourceCourseId": 10506,
+      "venueId": 10005,
+      "venue": "Nakayama",
+      "name": "Nakayama 2500m Turf (Inner)",
+      "surface": "turf",
+      "distanceMeters": 2500,
+      "distanceCategory": "long",
+      "direction": "clockwise",
+      "courseVariant": "Inner",
+      "segments": [
+        {
+          "startMeters": 0,
+          "endMeters": 100,
+          "kind": "straight",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 100,
+          "endMeters": 246,
+          "kind": "corner",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 246,
+          "endMeters": 496,
+          "kind": "corner",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 496,
+          "endMeters": 621,
+          "kind": "straight",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 621,
+          "endMeters": 731,
+          "kind": "straight",
+          "slope": "uphill"
+        },
+        {
+          "startMeters": 731,
+          "endMeters": 825,
+          "kind": "straight",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 825,
+          "endMeters": 875,
+          "kind": "straight",
+          "slope": "uphill"
+        },
+        {
+          "startMeters": 875,
+          "endMeters": 1025,
+          "kind": "corner",
+          "slope": "uphill"
+        },
+        {
+          "startMeters": 1025,
+          "endMeters": 1125,
+          "kind": "corner",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 1125,
+          "endMeters": 1375,
+          "kind": "corner",
+          "slope": "downhill"
+        },
+        {
+          "startMeters": 1375,
+          "endMeters": 1525,
+          "kind": "straight",
+          "slope": "downhill"
+        },
+        {
+          "startMeters": 1525,
+          "endMeters": 1700,
+          "kind": "straight",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 1700,
+          "endMeters": 1950,
+          "kind": "corner",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 1950,
+          "endMeters": 2200,
+          "kind": "corner",
+          "slope": "flat",
+          "tags": [
+            "finalCorner"
+          ]
+        },
+        {
+          "startMeters": 2200,
+          "endMeters": 2325,
+          "kind": "straight",
+          "slope": "flat",
+          "tags": [
+            "finalStraight"
+          ]
+        },
+        {
+          "startMeters": 2325,
+          "endMeters": 2435,
+          "kind": "straight",
+          "slope": "uphill",
+          "tags": [
+            "finalStraight"
+          ]
+        },
+        {
+          "startMeters": 2435,
+          "endMeters": 2500,
+          "kind": "straight",
+          "slope": "flat",
+          "tags": [
+            "finalStraight"
+          ]
+        }
+      ],
+      "representativeRaces": [
+        {
+          "id": 102301,
+          "name": "Arima Kinen"
+        },
+        {
+          "id": 201101,
+          "name": "Nikkei Sho"
+        }
+      ]
+    },
+    {
+      "id": "gt-10507",
+      "sourceCourseId": 10507,
+      "venueId": 10005,
+      "venue": "Nakayama",
+      "name": "Nakayama 3600m Turf (Inner)",
+      "surface": "turf",
+      "distanceMeters": 3600,
+      "distanceCategory": "long",
+      "direction": "clockwise",
+      "courseVariant": "Inner",
+      "segments": [
+        {
+          "startMeters": 0,
+          "endMeters": 40,
+          "kind": "straight",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 40,
+          "endMeters": 150,
+          "kind": "straight",
+          "slope": "uphill"
+        },
+        {
+          "startMeters": 150,
+          "endMeters": 240,
+          "kind": "straight",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 240,
+          "endMeters": 290,
+          "kind": "straight",
+          "slope": "uphill"
+        },
+        {
+          "startMeters": 290,
+          "endMeters": 440,
+          "kind": "corner",
+          "slope": "uphill"
+        },
+        {
+          "startMeters": 440,
+          "endMeters": 540,
+          "kind": "corner",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 540,
+          "endMeters": 790,
+          "kind": "corner",
+          "slope": "downhill"
+        },
+        {
+          "startMeters": 790,
+          "endMeters": 940,
+          "kind": "straight",
+          "slope": "downhill"
+        },
+        {
+          "startMeters": 940,
+          "endMeters": 1115,
+          "kind": "straight",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 1115,
+          "endMeters": 1365,
+          "kind": "corner",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 1365,
+          "endMeters": 1615,
+          "kind": "corner",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 1615,
+          "endMeters": 1740,
+          "kind": "straight",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 1740,
+          "endMeters": 1850,
+          "kind": "straight",
+          "slope": "uphill"
+        },
+        {
+          "startMeters": 1850,
+          "endMeters": 1925,
+          "kind": "straight",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 1925,
+          "endMeters": 1975,
+          "kind": "straight",
+          "slope": "uphill"
+        },
+        {
+          "startMeters": 1975,
+          "endMeters": 2125,
+          "kind": "corner",
+          "slope": "uphill"
+        },
+        {
+          "startMeters": 2125,
+          "endMeters": 2225,
+          "kind": "corner",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 2225,
+          "endMeters": 2475,
+          "kind": "corner",
+          "slope": "downhill"
+        },
+        {
+          "startMeters": 2475,
+          "endMeters": 2625,
+          "kind": "straight",
+          "slope": "downhill"
+        },
+        {
+          "startMeters": 2625,
+          "endMeters": 2800,
+          "kind": "straight",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 2800,
+          "endMeters": 3050,
+          "kind": "corner",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 3050,
+          "endMeters": 3300,
+          "kind": "corner",
+          "slope": "flat",
+          "tags": [
+            "finalCorner"
+          ]
+        },
+        {
+          "startMeters": 3300,
+          "endMeters": 3425,
+          "kind": "straight",
+          "slope": "flat",
+          "tags": [
+            "finalStraight"
+          ]
+        },
+        {
+          "startMeters": 3425,
+          "endMeters": 3535,
+          "kind": "straight",
+          "slope": "uphill",
+          "tags": [
+            "finalStraight"
+          ]
+        },
+        {
+          "startMeters": 3535,
+          "endMeters": 3600,
+          "kind": "straight",
+          "slope": "flat",
+          "tags": [
+            "finalStraight"
+          ]
+        }
+      ],
+      "representativeRaces": [
+        {
+          "id": 203301,
+          "name": "Stayers Stakes"
+        }
+      ]
+    },
+    {
+      "id": "gt-10301",
+      "sourceCourseId": 10301,
+      "venueId": 10003,
+      "venue": "Niigata",
+      "name": "Niigata 1000m Turf",
+      "surface": "turf",
+      "distanceMeters": 1000,
+      "distanceCategory": "sprint",
+      "direction": "straight",
+      "courseVariant": null,
+      "segments": [
+        {
+          "startMeters": 0,
+          "endMeters": 649.9,
+          "kind": "straight",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 649.9,
+          "endMeters": 650,
+          "kind": "straight",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 650,
+          "endMeters": 1000,
+          "kind": "straight",
+          "slope": "flat",
+          "tags": [
+            "finalStraight"
+          ]
+        }
+      ],
+      "representativeRaces": [
+        {
+          "id": 304201,
+          "name": "Ibis Summer Dash"
+        },
+        {
+          "id": 405501,
+          "name": "Idaten Stakes"
+        },
+        {
+          "id": 410101,
+          "name": "Lumiere Autumn Dash"
+        }
+      ]
+    },
+    {
+      "id": "gt-10310",
+      "sourceCourseId": 10310,
+      "venueId": 10003,
+      "venue": "Niigata",
+      "name": "Niigata 1200m Dirt",
+      "surface": "dirt",
+      "distanceMeters": 1200,
+      "distanceCategory": "sprint",
+      "direction": "counterclockwise",
+      "courseVariant": null,
+      "segments": [
+        {
+          "startMeters": 0,
+          "endMeters": 600,
+          "kind": "straight",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 600,
+          "endMeters": 750,
+          "kind": "corner",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 750,
+          "endMeters": 900,
+          "kind": "corner",
+          "slope": "flat",
+          "tags": [
+            "finalCorner"
+          ]
+        },
+        {
+          "startMeters": 900,
+          "endMeters": 1200,
+          "kind": "straight",
+          "slope": "flat",
+          "tags": [
+            "finalStraight"
+          ]
+        }
+      ],
+      "representativeRaces": [
+        {
+          "id": 407601,
+          "name": "NST Sho"
+        }
+      ]
+    },
+    {
+      "id": "gt-10303",
+      "sourceCourseId": 10303,
+      "venueId": 10003,
+      "venue": "Niigata",
+      "name": "Niigata 1400m Turf (Inner)",
+      "surface": "turf",
+      "distanceMeters": 1400,
+      "distanceCategory": "sprint",
+      "direction": "counterclockwise",
+      "courseVariant": "Inner",
+      "segments": [
+        {
+          "startMeters": 0,
+          "endMeters": 650,
+          "kind": "straight",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 650,
+          "endMeters": 850,
+          "kind": "corner",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 850,
+          "endMeters": 1050,
+          "kind": "corner",
+          "slope": "flat",
+          "tags": [
+            "finalCorner"
+          ]
+        },
+        {
+          "startMeters": 1050,
+          "endMeters": 1400,
+          "kind": "straight",
+          "slope": "flat",
+          "tags": [
+            "finalStraight"
+          ]
+        }
+      ],
+      "representativeRaces": [
+        {
+          "id": 407001,
+          "name": "Dahlia Sho"
+        },
+        {
+          "id": 408101,
+          "name": "Toki Stakes"
+        },
+        {
+          "id": 409501,
+          "name": "Shinetsu Stakes"
+        }
+      ]
+    },
+    {
+      "id": "gt-10304",
+      "sourceCourseId": 10304,
+      "venueId": 10003,
+      "venue": "Niigata",
+      "name": "Niigata 1600m Turf (Outer)",
+      "surface": "turf",
+      "distanceMeters": 1600,
+      "distanceCategory": "mile",
+      "direction": "counterclockwise",
+      "courseVariant": "Outer",
+      "segments": [
+        {
+          "startMeters": 0,
+          "endMeters": 250,
+          "kind": "straight",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 250,
+          "endMeters": 550,
+          "kind": "straight",
+          "slope": "uphill"
+        },
+        {
+          "startMeters": 550,
+          "endMeters": 600,
+          "kind": "corner",
+          "slope": "uphill"
+        },
+        {
+          "startMeters": 600,
+          "endMeters": 750,
+          "kind": "corner",
+          "slope": "downhill"
+        },
+        {
+          "startMeters": 750,
+          "endMeters": 900,
+          "kind": "corner",
+          "slope": "downhill",
+          "tags": [
+            "finalCorner"
+          ]
+        },
+        {
+          "startMeters": 900,
+          "endMeters": 950,
+          "kind": "corner",
+          "slope": "flat",
+          "tags": [
+            "finalCorner"
+          ]
+        },
+        {
+          "startMeters": 950,
+          "endMeters": 1600,
+          "kind": "straight",
+          "slope": "flat",
+          "tags": [
+            "finalStraight"
+          ]
+        }
+      ],
+      "representativeRaces": [
+        {
+          "id": 304601,
+          "name": "Sekiya Kinen"
+        },
+        {
+          "id": 304901,
+          "name": "Niigata Junior Stakes"
+        },
+        {
+          "id": 404401,
+          "name": "Tanigawadake Stakes"
+        }
+      ]
+    },
+    {
+      "id": "gt-10311",
+      "sourceCourseId": 10311,
+      "venueId": 10003,
+      "venue": "Niigata",
+      "name": "Niigata 1800m Dirt",
+      "surface": "dirt",
+      "distanceMeters": 1800,
+      "distanceCategory": "mile",
+      "direction": "counterclockwise",
+      "courseVariant": null,
+      "segments": [
+        {
+          "startMeters": 0,
+          "endMeters": 400,
+          "kind": "straight",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 400,
+          "endMeters": 560,
+          "kind": "corner",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 560,
+          "endMeters": 720,
+          "kind": "corner",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 720,
+          "endMeters": 1140,
+          "kind": "straight",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 1140,
+          "endMeters": 1300,
+          "kind": "corner",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 1300,
+          "endMeters": 1460,
+          "kind": "corner",
+          "slope": "flat",
+          "tags": [
+            "finalCorner"
+          ]
+        },
+        {
+          "startMeters": 1460,
+          "endMeters": 1800,
+          "kind": "straight",
+          "slope": "flat",
+          "tags": [
+            "finalStraight"
+          ]
+        }
+      ],
+      "representativeRaces": [
+        {
+          "id": 304501,
+          "name": "Leopard Stakes"
+        },
+        {
+          "id": 407901,
+          "name": "BSN Sho"
+        }
+      ]
+    },
+    {
+      "id": "gt-10305",
+      "sourceCourseId": 10305,
+      "venueId": 10003,
+      "venue": "Niigata",
+      "name": "Niigata 1800m Turf (Outer)",
+      "surface": "turf",
+      "distanceMeters": 1800,
+      "distanceCategory": "mile",
+      "direction": "counterclockwise",
+      "courseVariant": "Outer",
+      "segments": [
+        {
+          "startMeters": 0,
+          "endMeters": 450,
+          "kind": "straight",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 450,
+          "endMeters": 750,
+          "kind": "straight",
+          "slope": "uphill"
+        },
+        {
+          "startMeters": 750,
+          "endMeters": 800,
+          "kind": "corner",
+          "slope": "uphill"
+        },
+        {
+          "startMeters": 800,
+          "endMeters": 950,
+          "kind": "corner",
+          "slope": "downhill"
+        },
+        {
+          "startMeters": 950,
+          "endMeters": 1100,
+          "kind": "corner",
+          "slope": "downhill",
+          "tags": [
+            "finalCorner"
+          ]
+        },
+        {
+          "startMeters": 1100,
+          "endMeters": 1150,
+          "kind": "corner",
+          "slope": "flat",
+          "tags": [
+            "finalCorner"
+          ]
+        },
+        {
+          "startMeters": 1150,
+          "endMeters": 1800,
+          "kind": "straight",
+          "slope": "flat",
+          "tags": [
+            "finalStraight"
+          ]
+        }
+      ],
+      "representativeRaces": [
+        {
+          "id": 412201,
+          "name": "Kanetsu Stakes"
+        }
+      ]
+    },
+    {
+      "id": "gt-10307",
+      "sourceCourseId": 10307,
+      "venueId": 10003,
+      "venue": "Niigata",
+      "name": "Niigata 2000m Turf (Outer)",
+      "surface": "turf",
+      "distanceMeters": 2000,
+      "distanceCategory": "medium",
+      "direction": "counterclockwise",
+      "courseVariant": "Outer",
+      "segments": [
+        {
+          "startMeters": 0,
+          "endMeters": 650,
+          "kind": "straight",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 650,
+          "endMeters": 950,
+          "kind": "straight",
+          "slope": "uphill"
+        },
+        {
+          "startMeters": 950,
+          "endMeters": 1000,
+          "kind": "corner",
+          "slope": "uphill"
+        },
+        {
+          "startMeters": 1000,
+          "endMeters": 1150,
+          "kind": "corner",
+          "slope": "downhill"
+        },
+        {
+          "startMeters": 1150,
+          "endMeters": 1300,
+          "kind": "corner",
+          "slope": "downhill",
+          "tags": [
+            "finalCorner"
+          ]
+        },
+        {
+          "startMeters": 1300,
+          "endMeters": 1350,
+          "kind": "corner",
+          "slope": "flat",
+          "tags": [
+            "finalCorner"
+          ]
+        },
+        {
+          "startMeters": 1350,
+          "endMeters": 2000,
+          "kind": "straight",
+          "slope": "flat",
+          "tags": [
+            "finalStraight"
+          ]
+        }
+      ],
+      "representativeRaces": [
+        {
+          "id": 302801,
+          "name": "Niigata Daishoten"
+        },
+        {
+          "id": 305301,
+          "name": "Niigata Kinen"
+        }
+      ]
+    },
+    {
+      "id": "gt-11101",
+      "sourceCourseId": 11101,
+      "venueId": 10101,
+      "venue": "Ooi",
+      "name": "Ooi 1200m Dirt",
+      "surface": "dirt",
+      "distanceMeters": 1200,
+      "distanceCategory": "sprint",
+      "direction": "clockwise",
+      "courseVariant": null,
+      "segments": [
+        {
+          "startMeters": 0,
+          "endMeters": 500,
+          "kind": "straight",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 500,
+          "endMeters": 650,
+          "kind": "corner",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 650,
+          "endMeters": 800,
+          "kind": "corner",
+          "slope": "flat",
+          "tags": [
+            "finalCorner"
+          ]
+        },
+        {
+          "startMeters": 800,
+          "endMeters": 812,
+          "kind": "straight",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 812,
+          "endMeters": 1200,
+          "kind": "straight",
+          "slope": "flat",
+          "tags": [
+            "finalStraight"
+          ]
+        }
+      ],
+      "representativeRaces": [
+        {
+          "id": 110401,
+          "name": "JBC Sprint"
+        }
+      ]
+    },
+    {
+      "id": "gt-11102",
+      "sourceCourseId": 11102,
+      "venueId": 10101,
+      "venue": "Ooi",
+      "name": "Ooi 1800m Dirt",
+      "surface": "dirt",
+      "distanceMeters": 1800,
+      "distanceCategory": "mile",
+      "direction": "clockwise",
+      "courseVariant": null,
+      "segments": [
+        {
+          "startMeters": 0,
+          "endMeters": 300,
+          "kind": "straight",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 300,
+          "endMeters": 301,
+          "kind": "corner",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 301,
+          "endMeters": 450,
+          "kind": "corner",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 450,
+          "endMeters": 500,
+          "kind": "straight",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 500,
+          "endMeters": 600,
+          "kind": "corner",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 600,
+          "endMeters": 650,
+          "kind": "corner",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 650,
+          "endMeters": 1100,
+          "kind": "straight",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 1100,
+          "endMeters": 1100.23,
+          "kind": "corner",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 1100.23,
+          "endMeters": 1250,
+          "kind": "corner",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 1250,
+          "endMeters": 1400,
+          "kind": "corner",
+          "slope": "flat",
+          "tags": [
+            "finalCorner"
+          ]
+        },
+        {
+          "startMeters": 1400,
+          "endMeters": 1800,
+          "kind": "straight",
+          "slope": "flat",
+          "tags": [
+            "finalStraight"
+          ]
+        }
+      ],
+      "representativeRaces": [
+        {
+          "id": 110301,
+          "name": "JBC Ladies’ Classic"
+        }
+      ]
+    },
+    {
+      "id": "gt-11103",
+      "sourceCourseId": 11103,
+      "venueId": 10101,
+      "venue": "Ooi",
+      "name": "Ooi 2000m Dirt",
+      "surface": "dirt",
+      "distanceMeters": 2000,
+      "distanceCategory": "medium",
+      "direction": "clockwise",
+      "courseVariant": null,
+      "segments": [
+        {
+          "startMeters": 0,
+          "endMeters": 500,
+          "kind": "straight",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 500,
+          "endMeters": 650,
+          "kind": "corner",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 650,
+          "endMeters": 800,
+          "kind": "corner",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 800,
+          "endMeters": 1300,
+          "kind": "straight",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 1300,
+          "endMeters": 1450,
+          "kind": "corner",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 1450,
+          "endMeters": 1600,
+          "kind": "corner",
+          "slope": "flat",
+          "tags": [
+            "finalCorner"
+          ]
+        },
+        {
+          "startMeters": 1600,
+          "endMeters": 2000,
+          "kind": "straight",
+          "slope": "flat",
+          "tags": [
+            "finalStraight"
+          ]
+        }
+      ],
+      "representativeRaces": [
+        {
+          "id": 110101,
+          "name": "Teio Sho"
+        },
+        {
+          "id": 110201,
+          "name": "Japan Dirt Derby"
+        },
+        {
+          "id": 110501,
+          "name": "JBC Classic"
+        },
+        {
+          "id": 110601,
+          "name": "Tokyo Daishoten"
+        }
+      ]
+    },
+    {
+      "id": "gt-10101",
+      "sourceCourseId": 10101,
+      "venueId": 10001,
+      "venue": "Sapporo",
+      "name": "Sapporo 1200m Turf",
+      "surface": "turf",
+      "distanceMeters": 1200,
+      "distanceCategory": "sprint",
+      "direction": "clockwise",
+      "courseVariant": null,
+      "segments": [
+        {
+          "startMeters": 0,
+          "endMeters": 400,
+          "kind": "straight",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 400,
+          "endMeters": 675,
+          "kind": "corner",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 675,
+          "endMeters": 950,
+          "kind": "corner",
+          "slope": "flat",
+          "tags": [
+            "finalCorner"
+          ]
+        },
+        {
+          "startMeters": 950,
+          "endMeters": 1200,
+          "kind": "straight",
+          "slope": "flat",
+          "tags": [
+            "finalStraight"
+          ]
+        }
+      ],
+      "representativeRaces": [
+        {
+          "id": 305001,
+          "name": "Keeneland Cup"
+        },
+        {
+          "id": 407201,
+          "name": "UHB Sho"
+        },
+        {
+          "id": 408301,
+          "name": "Suzuran Sho"
+        }
+      ]
+    },
+    {
+      "id": "gt-10102",
+      "sourceCourseId": 10102,
+      "venueId": 10001,
+      "venue": "Sapporo",
+      "name": "Sapporo 1500m Turf",
+      "surface": "turf",
+      "distanceMeters": 1500,
+      "distanceCategory": "mile",
+      "direction": "clockwise",
+      "courseVariant": null,
+      "segments": [
+        {
+          "startMeters": 0,
+          "endMeters": 150,
+          "kind": "straight",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 150,
+          "endMeters": 425,
+          "kind": "corner",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 425,
+          "endMeters": 700,
+          "kind": "straight",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 700,
+          "endMeters": 975,
+          "kind": "corner",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 975,
+          "endMeters": 1250,
+          "kind": "corner",
+          "slope": "flat",
+          "tags": [
+            "finalCorner"
+          ]
+        },
+        {
+          "startMeters": 1250,
+          "endMeters": 1500,
+          "kind": "straight",
+          "slope": "flat",
+          "tags": [
+            "finalStraight"
+          ]
+        }
+      ],
+      "representativeRaces": [
+        {
+          "id": 407701,
+          "name": "Clover Sho"
+        }
+      ]
+    },
+    {
+      "id": "gt-10107",
+      "sourceCourseId": 10107,
+      "venueId": 10001,
+      "venue": "Sapporo",
+      "name": "Sapporo 1700m Dirt",
+      "surface": "dirt",
+      "distanceMeters": 1700,
+      "distanceCategory": "mile",
+      "direction": "clockwise",
+      "courseVariant": null,
+      "segments": [
+        {
+          "startMeters": 0,
+          "endMeters": 240,
+          "kind": "straight",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 240,
+          "endMeters": 470,
+          "kind": "corner",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 470,
+          "endMeters": 700,
+          "kind": "corner",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 700,
+          "endMeters": 980,
+          "kind": "straight",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 980,
+          "endMeters": 1210,
+          "kind": "corner",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 1210,
+          "endMeters": 1440,
+          "kind": "corner",
+          "slope": "flat",
+          "tags": [
+            "finalCorner"
+          ]
+        },
+        {
+          "startMeters": 1440,
+          "endMeters": 1700,
+          "kind": "straight",
+          "slope": "flat",
+          "tags": [
+            "finalStraight"
+          ]
+        }
+      ],
+      "representativeRaces": [
+        {
+          "id": 304701,
+          "name": "Elm Stakes"
+        }
+      ]
+    },
+    {
+      "id": "gt-10103",
+      "sourceCourseId": 10103,
+      "venueId": 10001,
+      "venue": "Sapporo",
+      "name": "Sapporo 1800m Turf",
+      "surface": "turf",
+      "distanceMeters": 1800,
+      "distanceCategory": "mile",
+      "direction": "clockwise",
+      "courseVariant": null,
+      "segments": [
+        {
+          "startMeters": 0,
+          "endMeters": 175,
+          "kind": "straight",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 175,
+          "endMeters": 450,
+          "kind": "corner",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 450,
+          "endMeters": 725,
+          "kind": "corner",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 725,
+          "endMeters": 1000,
+          "kind": "straight",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 1000,
+          "endMeters": 1275,
+          "kind": "corner",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 1275,
+          "endMeters": 1550,
+          "kind": "corner",
+          "slope": "flat",
+          "tags": [
+            "finalCorner"
+          ]
+        },
+        {
+          "startMeters": 1550,
+          "endMeters": 1800,
+          "kind": "straight",
+          "slope": "flat",
+          "tags": [
+            "finalStraight"
+          ]
+        }
+      ],
+      "representativeRaces": [
+        {
+          "id": 304301,
+          "name": "Queen Stakes"
+        },
+        {
+          "id": 305101,
+          "name": "Sapporo Junior Stakes"
+        },
+        {
+          "id": 407501,
+          "name": "Cosmos Sho"
+        }
+      ]
+    },
+    {
+      "id": "gt-10104",
+      "sourceCourseId": 10104,
+      "venueId": 10001,
+      "venue": "Sapporo",
+      "name": "Sapporo 2000m Turf",
+      "surface": "turf",
+      "distanceMeters": 2000,
+      "distanceCategory": "medium",
+      "direction": "clockwise",
+      "courseVariant": null,
+      "segments": [
+        {
+          "startMeters": 0,
+          "endMeters": 375,
+          "kind": "straight",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 375,
+          "endMeters": 650,
+          "kind": "corner",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 650,
+          "endMeters": 925,
+          "kind": "corner",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 925,
+          "endMeters": 1200,
+          "kind": "straight",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 1200,
+          "endMeters": 1475,
+          "kind": "corner",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 1475,
+          "endMeters": 1750,
+          "kind": "corner",
+          "slope": "flat",
+          "tags": [
+            "finalCorner"
+          ]
+        },
+        {
+          "startMeters": 1750,
+          "endMeters": 2000,
+          "kind": "straight",
+          "slope": "flat",
+          "tags": [
+            "finalStraight"
+          ]
+        }
+      ],
+      "representativeRaces": [
+        {
+          "id": 202001,
+          "name": "Sapporo Kinen"
+        }
+      ]
+    },
+    {
+      "id": "gt-10105",
+      "sourceCourseId": 10105,
+      "venueId": 10001,
+      "venue": "Sapporo",
+      "name": "Sapporo 2600m Turf",
+      "surface": "turf",
+      "distanceMeters": 2600,
+      "distanceCategory": "long",
+      "direction": "clockwise",
+      "courseVariant": null,
+      "segments": [
+        {
+          "startMeters": 0,
+          "endMeters": 175,
+          "kind": "straight",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 175,
+          "endMeters": 450,
+          "kind": "corner",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 450,
+          "endMeters": 725,
+          "kind": "corner",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 725,
+          "endMeters": 975,
+          "kind": "straight",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 975,
+          "endMeters": 1250,
+          "kind": "corner",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 1250,
+          "endMeters": 1525,
+          "kind": "corner",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 1525,
+          "endMeters": 1800,
+          "kind": "straight",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 1800,
+          "endMeters": 2075,
+          "kind": "corner",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 2075,
+          "endMeters": 2350,
+          "kind": "corner",
+          "slope": "flat",
+          "tags": [
+            "finalCorner"
+          ]
+        },
+        {
+          "startMeters": 2350,
+          "endMeters": 2600,
+          "kind": "straight",
+          "slope": "flat",
+          "tags": [
+            "finalStraight"
+          ]
+        }
+      ],
+      "representativeRaces": [
+        {
+          "id": 407101,
+          "name": "Sapporo Nikkei Open"
+        },
+        {
+          "id": 408201,
+          "name": "Tancho Stakes"
+        }
+      ]
+    },
+    {
+      "id": "gt-10610",
+      "sourceCourseId": 10610,
+      "venueId": 10006,
+      "venue": "Tokyo",
+      "name": "Tokyo 1400m Dirt",
+      "surface": "dirt",
+      "distanceMeters": 1400,
+      "distanceCategory": "sprint",
+      "direction": "counterclockwise",
+      "courseVariant": null,
+      "segments": [
+        {
+          "startMeters": 0,
+          "endMeters": 375,
+          "kind": "straight",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 375,
+          "endMeters": 450,
+          "kind": "straight",
+          "slope": "downhill"
+        },
+        {
+          "startMeters": 450,
+          "endMeters": 575,
+          "kind": "corner",
+          "slope": "downhill"
+        },
+        {
+          "startMeters": 575,
+          "endMeters": 675,
+          "kind": "corner",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 675,
+          "endMeters": 900,
+          "kind": "corner",
+          "slope": "flat",
+          "tags": [
+            "finalCorner"
+          ]
+        },
+        {
+          "startMeters": 900,
+          "endMeters": 1150,
+          "kind": "straight",
+          "slope": "uphill",
+          "tags": [
+            "finalStraight"
+          ]
+        },
+        {
+          "startMeters": 1150,
+          "endMeters": 1400,
+          "kind": "straight",
+          "slope": "flat",
+          "tags": [
+            "finalStraight"
+          ]
+        }
+      ],
+      "representativeRaces": [
+        {
+          "id": 300801,
+          "name": "Negishi Stakes"
+        },
+        {
+          "id": 401701,
+          "name": "Valentine Stakes"
+        },
+        {
+          "id": 405701,
+          "name": "Keyaki Stakes"
+        },
+        {
+          "id": 409201,
+          "name": "Green Channel Cup"
+        }
+      ]
+    },
+    {
+      "id": "gt-10601",
+      "sourceCourseId": 10601,
+      "venueId": 10006,
+      "venue": "Tokyo",
+      "name": "Tokyo 1400m Turf",
+      "surface": "turf",
+      "distanceMeters": 1400,
+      "distanceCategory": "sprint",
+      "direction": "counterclockwise",
+      "courseVariant": null,
+      "segments": [
+        {
+          "startMeters": 0,
+          "endMeters": 125,
+          "kind": "straight",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 125,
+          "endMeters": 200,
+          "kind": "straight",
+          "slope": "uphill"
+        },
+        {
+          "startMeters": 200,
+          "endMeters": 250,
+          "kind": "straight",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 250,
+          "endMeters": 350,
+          "kind": "straight",
+          "slope": "downhill"
+        },
+        {
+          "startMeters": 350,
+          "endMeters": 500,
+          "kind": "corner",
+          "slope": "downhill"
+        },
+        {
+          "startMeters": 500,
+          "endMeters": 625,
+          "kind": "corner",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 625,
+          "endMeters": 900,
+          "kind": "corner",
+          "slope": "flat",
+          "tags": [
+            "finalCorner"
+          ]
+        },
+        {
+          "startMeters": 900,
+          "endMeters": 950,
+          "kind": "straight",
+          "slope": "flat",
+          "tags": [
+            "finalStraight"
+          ]
+        },
+        {
+          "startMeters": 950,
+          "endMeters": 1100,
+          "kind": "straight",
+          "slope": "uphill",
+          "tags": [
+            "finalStraight"
+          ]
+        },
+        {
+          "startMeters": 1100,
+          "endMeters": 1400,
+          "kind": "straight",
+          "slope": "flat",
+          "tags": [
+            "finalStraight"
+          ]
+        }
+      ],
+      "representativeRaces": [
+        {
+          "id": 201801,
+          "name": "Keio Hai Spring Cup"
+        },
+        {
+          "id": 203001,
+          "name": "Keio Hai Junior Stakes"
+        },
+        {
+          "id": 401201,
+          "name": "Crocus Stakes"
+        },
+        {
+          "id": 406301,
+          "name": "Paradise Stakes"
+        }
+      ]
+    },
+    {
+      "id": "gt-10611",
+      "sourceCourseId": 10611,
+      "venueId": 10006,
+      "venue": "Tokyo",
+      "name": "Tokyo 1600m Dirt",
+      "surface": "dirt",
+      "distanceMeters": 1600,
+      "distanceCategory": "mile",
+      "direction": "counterclockwise",
+      "courseVariant": null,
+      "segments": [
+        {
+          "startMeters": 0,
+          "endMeters": 575,
+          "kind": "straight",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 575,
+          "endMeters": 650,
+          "kind": "straight",
+          "slope": "downhill"
+        },
+        {
+          "startMeters": 650,
+          "endMeters": 775,
+          "kind": "corner",
+          "slope": "downhill"
+        },
+        {
+          "startMeters": 775,
+          "endMeters": 875,
+          "kind": "corner",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 875,
+          "endMeters": 1100,
+          "kind": "corner",
+          "slope": "flat",
+          "tags": [
+            "finalCorner"
+          ]
+        },
+        {
+          "startMeters": 1100,
+          "endMeters": 1350,
+          "kind": "straight",
+          "slope": "uphill",
+          "tags": [
+            "finalStraight"
+          ]
+        },
+        {
+          "startMeters": 1350,
+          "endMeters": 1600,
+          "kind": "straight",
+          "slope": "flat",
+          "tags": [
+            "finalStraight"
+          ]
+        }
+      ],
+      "representativeRaces": [
+        {
+          "id": 100101,
+          "name": "February Stakes"
+        },
+        {
+          "id": 303301,
+          "name": "Unicorn Stakes"
+        },
+        {
+          "id": 306201,
+          "name": "Musashino Stakes"
+        },
+        {
+          "id": 401801,
+          "name": "Hyacinth Stakes"
+        }
+      ]
+    },
+    {
+      "id": "gt-10602",
+      "sourceCourseId": 10602,
+      "venueId": 10006,
+      "venue": "Tokyo",
+      "name": "Tokyo 1600m Turf",
+      "surface": "turf",
+      "distanceMeters": 1600,
+      "distanceCategory": "mile",
+      "direction": "counterclockwise",
+      "courseVariant": null,
+      "segments": [
+        {
+          "startMeters": 0,
+          "endMeters": 325,
+          "kind": "straight",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 325,
+          "endMeters": 400,
+          "kind": "straight",
+          "slope": "uphill"
+        },
+        {
+          "startMeters": 400,
+          "endMeters": 450,
+          "kind": "straight",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 450,
+          "endMeters": 550,
+          "kind": "straight",
+          "slope": "downhill"
+        },
+        {
+          "startMeters": 550,
+          "endMeters": 700,
+          "kind": "corner",
+          "slope": "downhill"
+        },
+        {
+          "startMeters": 700,
+          "endMeters": 825,
+          "kind": "corner",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 825,
+          "endMeters": 1100,
+          "kind": "corner",
+          "slope": "flat",
+          "tags": [
+            "finalCorner"
+          ]
+        },
+        {
+          "startMeters": 1100,
+          "endMeters": 1150,
+          "kind": "straight",
+          "slope": "flat",
+          "tags": [
+            "finalStraight"
+          ]
+        },
+        {
+          "startMeters": 1150,
+          "endMeters": 1300,
+          "kind": "straight",
+          "slope": "uphill",
+          "tags": [
+            "finalStraight"
+          ]
+        },
+        {
+          "startMeters": 1300,
+          "endMeters": 1600,
+          "kind": "straight",
+          "slope": "flat",
+          "tags": [
+            "finalStraight"
+          ]
+        }
+      ],
+      "representativeRaces": [
+        {
+          "id": 100701,
+          "name": "NHK Mile Cup"
+        },
+        {
+          "id": 100801,
+          "name": "Victoria Mile"
+        },
+        {
+          "id": 101101,
+          "name": "Yasuda Kinen"
+        },
+        {
+          "id": 301001,
+          "name": "Tokyo Shimbun Hai"
+        }
+      ]
+    },
+    {
+      "id": "gt-10603",
+      "sourceCourseId": 10603,
+      "venueId": 10006,
+      "venue": "Tokyo",
+      "name": "Tokyo 1800m Turf",
+      "surface": "turf",
+      "distanceMeters": 1800,
+      "distanceCategory": "mile",
+      "direction": "counterclockwise",
+      "courseVariant": null,
+      "segments": [
+        {
+          "startMeters": 0,
+          "endMeters": 75,
+          "kind": "straight",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 75,
+          "endMeters": 325,
+          "kind": "corner",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 325,
+          "endMeters": 525,
+          "kind": "straight",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 525,
+          "endMeters": 600,
+          "kind": "straight",
+          "slope": "uphill"
+        },
+        {
+          "startMeters": 600,
+          "endMeters": 650,
+          "kind": "straight",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 650,
+          "endMeters": 750,
+          "kind": "straight",
+          "slope": "downhill"
+        },
+        {
+          "startMeters": 750,
+          "endMeters": 900,
+          "kind": "corner",
+          "slope": "downhill"
+        },
+        {
+          "startMeters": 900,
+          "endMeters": 1025,
+          "kind": "corner",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 1025,
+          "endMeters": 1300,
+          "kind": "corner",
+          "slope": "flat",
+          "tags": [
+            "finalCorner"
+          ]
+        },
+        {
+          "startMeters": 1300,
+          "endMeters": 1350,
+          "kind": "straight",
+          "slope": "flat",
+          "tags": [
+            "finalStraight"
+          ]
+        },
+        {
+          "startMeters": 1350,
+          "endMeters": 1500,
+          "kind": "straight",
+          "slope": "uphill",
+          "tags": [
+            "finalStraight"
+          ]
+        },
+        {
+          "startMeters": 1500,
+          "endMeters": 1800,
+          "kind": "straight",
+          "slope": "flat",
+          "tags": [
+            "finalStraight"
+          ]
+        }
+      ],
+      "representativeRaces": [
+        {
+          "id": 202601,
+          "name": "Mainichi Okan"
+        },
+        {
+          "id": 202801,
+          "name": "Fuchu Umamusume Stakes"
+        },
+        {
+          "id": 301201,
+          "name": "Kyodo News Hai"
+        },
+        {
+          "id": 303201,
+          "name": "Epsom Cup"
+        }
+      ]
+    },
+    {
+      "id": "gt-10604",
+      "sourceCourseId": 10604,
+      "venueId": 10006,
+      "venue": "Tokyo",
+      "name": "Tokyo 2000m Turf",
+      "surface": "turf",
+      "distanceMeters": 2000,
+      "distanceCategory": "medium",
+      "direction": "counterclockwise",
+      "courseVariant": null,
+      "segments": [
+        {
+          "startMeters": 0,
+          "endMeters": 200,
+          "kind": "straight",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 200,
+          "endMeters": 400,
+          "kind": "corner",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 400,
+          "endMeters": 725,
+          "kind": "straight",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 725,
+          "endMeters": 800,
+          "kind": "straight",
+          "slope": "uphill"
+        },
+        {
+          "startMeters": 800,
+          "endMeters": 850,
+          "kind": "straight",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 850,
+          "endMeters": 950,
+          "kind": "straight",
+          "slope": "downhill"
+        },
+        {
+          "startMeters": 950,
+          "endMeters": 1100,
+          "kind": "corner",
+          "slope": "downhill"
+        },
+        {
+          "startMeters": 1100,
+          "endMeters": 1225,
+          "kind": "corner",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 1225,
+          "endMeters": 1500,
+          "kind": "corner",
+          "slope": "flat",
+          "tags": [
+            "finalCorner"
+          ]
+        },
+        {
+          "startMeters": 1500,
+          "endMeters": 1550,
+          "kind": "straight",
+          "slope": "flat",
+          "tags": [
+            "finalStraight"
+          ]
+        },
+        {
+          "startMeters": 1550,
+          "endMeters": 1700,
+          "kind": "straight",
+          "slope": "uphill",
+          "tags": [
+            "finalStraight"
+          ]
+        },
+        {
+          "startMeters": 1700,
+          "endMeters": 2000,
+          "kind": "straight",
+          "slope": "flat",
+          "tags": [
+            "finalStraight"
+          ]
+        }
+      ],
+      "representativeRaces": [
+        {
+          "id": 101601,
+          "name": "Tenno Sho (Autumn)"
+        },
+        {
+          "id": 102801,
+          "name": "Satsuki Sho"
+        },
+        {
+          "id": 201501,
+          "name": "Flora Stakes"
+        },
+        {
+          "id": 401101,
+          "name": "Shirafuji Stakes"
+        }
+      ]
+    },
+    {
+      "id": "gt-10612",
+      "sourceCourseId": 10612,
+      "venueId": 10006,
+      "venue": "Tokyo",
+      "name": "Tokyo 2100m Dirt",
+      "surface": "dirt",
+      "distanceMeters": 2100,
+      "distanceCategory": "medium",
+      "direction": "counterclockwise",
+      "courseVariant": null,
+      "segments": [
+        {
+          "startMeters": 0,
+          "endMeters": 200,
+          "kind": "straight",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 200,
+          "endMeters": 450,
+          "kind": "corner",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 450,
+          "endMeters": 700,
+          "kind": "corner",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 700,
+          "endMeters": 1075,
+          "kind": "straight",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 1075,
+          "endMeters": 1150,
+          "kind": "straight",
+          "slope": "downhill"
+        },
+        {
+          "startMeters": 1150,
+          "endMeters": 1275,
+          "kind": "corner",
+          "slope": "downhill"
+        },
+        {
+          "startMeters": 1275,
+          "endMeters": 1375,
+          "kind": "corner",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 1375,
+          "endMeters": 1600,
+          "kind": "corner",
+          "slope": "flat",
+          "tags": [
+            "finalCorner"
+          ]
+        },
+        {
+          "startMeters": 1600,
+          "endMeters": 1850,
+          "kind": "straight",
+          "slope": "uphill",
+          "tags": [
+            "finalStraight"
+          ]
+        },
+        {
+          "startMeters": 1850,
+          "endMeters": 2100,
+          "kind": "straight",
+          "slope": "flat",
+          "tags": [
+            "finalStraight"
+          ]
+        }
+      ],
+      "representativeRaces": [
+        {
+          "id": 404801,
+          "name": "Brilliant Stakes"
+        },
+        {
+          "id": 409801,
+          "name": "Brazil Cup"
+        },
+        {
+          "id": 412001,
+          "name": "Sleipnir Stakes"
+        }
+      ]
+    },
+    {
+      "id": "gt-10606",
+      "sourceCourseId": 10606,
+      "venueId": 10006,
+      "venue": "Tokyo",
+      "name": "Tokyo 2400m Turf",
+      "surface": "turf",
+      "distanceMeters": 2400,
+      "distanceCategory": "medium",
+      "direction": "counterclockwise",
+      "courseVariant": null,
+      "segments": [
+        {
+          "startMeters": 0,
+          "endMeters": 40,
+          "kind": "straight",
+          "slope": "uphill"
+        },
+        {
+          "startMeters": 40,
+          "endMeters": 325,
+          "kind": "straight",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 325,
+          "endMeters": 575,
+          "kind": "corner",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 575,
+          "endMeters": 900,
+          "kind": "corner",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 900,
+          "endMeters": 1125,
+          "kind": "straight",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 1125,
+          "endMeters": 1200,
+          "kind": "straight",
+          "slope": "uphill"
+        },
+        {
+          "startMeters": 1200,
+          "endMeters": 1250,
+          "kind": "straight",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 1250,
+          "endMeters": 1350,
+          "kind": "straight",
+          "slope": "downhill"
+        },
+        {
+          "startMeters": 1350,
+          "endMeters": 1500,
+          "kind": "corner",
+          "slope": "downhill"
+        },
+        {
+          "startMeters": 1500,
+          "endMeters": 1625,
+          "kind": "corner",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 1625,
+          "endMeters": 1900,
+          "kind": "corner",
+          "slope": "flat",
+          "tags": [
+            "finalCorner"
+          ]
+        },
+        {
+          "startMeters": 1900,
+          "endMeters": 1950,
+          "kind": "straight",
+          "slope": "flat",
+          "tags": [
+            "finalStraight"
+          ]
+        },
+        {
+          "startMeters": 1950,
+          "endMeters": 2100,
+          "kind": "straight",
+          "slope": "uphill",
+          "tags": [
+            "finalStraight"
+          ]
+        },
+        {
+          "startMeters": 2100,
+          "endMeters": 2400,
+          "kind": "straight",
+          "slope": "flat",
+          "tags": [
+            "finalStraight"
+          ]
+        }
+      ],
+      "representativeRaces": [
+        {
+          "id": 100901,
+          "name": "Japanese Oaks"
+        },
+        {
+          "id": 101001,
+          "name": "Tokyo Yushun (Japanese Derby)"
+        },
+        {
+          "id": 101901,
+          "name": "Japan Cup"
+        },
+        {
+          "id": 201601,
+          "name": "Aoba Sho"
+        }
+      ]
+    },
+    {
+      "id": "gt-10607",
+      "sourceCourseId": 10607,
+      "venueId": 10006,
+      "venue": "Tokyo",
+      "name": "Tokyo 2500m Turf",
+      "surface": "turf",
+      "distanceMeters": 2500,
+      "distanceCategory": "long",
+      "direction": "counterclockwise",
+      "courseVariant": null,
+      "segments": [
+        {
+          "startMeters": 0,
+          "endMeters": 140,
+          "kind": "straight",
+          "slope": "uphill"
+        },
+        {
+          "startMeters": 140,
+          "endMeters": 425,
+          "kind": "straight",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 425,
+          "endMeters": 675,
+          "kind": "corner",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 675,
+          "endMeters": 1000,
+          "kind": "corner",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 1000,
+          "endMeters": 1225,
+          "kind": "straight",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 1225,
+          "endMeters": 1300,
+          "kind": "straight",
+          "slope": "uphill"
+        },
+        {
+          "startMeters": 1300,
+          "endMeters": 1350,
+          "kind": "straight",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 1350,
+          "endMeters": 1450,
+          "kind": "straight",
+          "slope": "downhill"
+        },
+        {
+          "startMeters": 1450,
+          "endMeters": 1600,
+          "kind": "corner",
+          "slope": "downhill"
+        },
+        {
+          "startMeters": 1600,
+          "endMeters": 1725,
+          "kind": "corner",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 1725,
+          "endMeters": 2000,
+          "kind": "corner",
+          "slope": "flat",
+          "tags": [
+            "finalCorner"
+          ]
+        },
+        {
+          "startMeters": 2000,
+          "endMeters": 2050,
+          "kind": "straight",
+          "slope": "flat",
+          "tags": [
+            "finalStraight"
+          ]
+        },
+        {
+          "startMeters": 2050,
+          "endMeters": 2200,
+          "kind": "straight",
+          "slope": "uphill",
+          "tags": [
+            "finalStraight"
+          ]
+        },
+        {
+          "startMeters": 2200,
+          "endMeters": 2500,
+          "kind": "straight",
+          "slope": "flat",
+          "tags": [
+            "finalStraight"
+          ]
+        }
+      ],
+      "representativeRaces": [
+        {
+          "id": 201901,
+          "name": "Meguro Kinen"
+        },
+        {
+          "id": 203101,
+          "name": "Copa Republica Argentina"
+        }
+      ]
+    },
+    {
+      "id": "gt-10608",
+      "sourceCourseId": 10608,
+      "venueId": 10006,
+      "venue": "Tokyo",
+      "name": "Tokyo 3400m Turf",
+      "surface": "turf",
+      "distanceMeters": 3400,
+      "distanceCategory": "long",
+      "direction": "counterclockwise",
+      "courseVariant": null,
+      "segments": [
+        {
+          "startMeters": 0,
+          "endMeters": 67,
+          "kind": "straight",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 67,
+          "endMeters": 142,
+          "kind": "straight",
+          "slope": "uphill"
+        },
+        {
+          "startMeters": 142,
+          "endMeters": 192,
+          "kind": "straight",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 192,
+          "endMeters": 292,
+          "kind": "straight",
+          "slope": "downhill"
+        },
+        {
+          "startMeters": 292,
+          "endMeters": 442,
+          "kind": "corner",
+          "slope": "downhill"
+        },
+        {
+          "startMeters": 442,
+          "endMeters": 567,
+          "kind": "corner",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 567,
+          "endMeters": 842,
+          "kind": "corner",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 842,
+          "endMeters": 892,
+          "kind": "straight",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 892,
+          "endMeters": 1042,
+          "kind": "straight",
+          "slope": "uphill"
+        },
+        {
+          "startMeters": 1042,
+          "endMeters": 1325,
+          "kind": "straight",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 1325,
+          "endMeters": 1575,
+          "kind": "corner",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 1575,
+          "endMeters": 1900,
+          "kind": "corner",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 1900,
+          "endMeters": 2125,
+          "kind": "straight",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 2125,
+          "endMeters": 2200,
+          "kind": "straight",
+          "slope": "uphill"
+        },
+        {
+          "startMeters": 2200,
+          "endMeters": 2250,
+          "kind": "straight",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 2250,
+          "endMeters": 2350,
+          "kind": "straight",
+          "slope": "downhill"
+        },
+        {
+          "startMeters": 2350,
+          "endMeters": 2500,
+          "kind": "corner",
+          "slope": "downhill"
+        },
+        {
+          "startMeters": 2500,
+          "endMeters": 2625,
+          "kind": "corner",
+          "slope": "flat"
+        },
+        {
+          "startMeters": 2625,
+          "endMeters": 2900,
+          "kind": "corner",
+          "slope": "flat",
+          "tags": [
+            "finalCorner"
+          ]
+        },
+        {
+          "startMeters": 2900,
+          "endMeters": 2950,
+          "kind": "straight",
+          "slope": "flat",
+          "tags": [
+            "finalStraight"
+          ]
+        },
+        {
+          "startMeters": 2950,
+          "endMeters": 3100,
+          "kind": "straight",
+          "slope": "uphill",
+          "tags": [
+            "finalStraight"
+          ]
+        },
+        {
+          "startMeters": 3100,
+          "endMeters": 3400,
+          "kind": "straight",
+          "slope": "flat",
+          "tags": [
+            "finalStraight"
+          ]
+        }
+      ],
+      "representativeRaces": [
+        {
+          "id": 301401,
+          "name": "Diamond Stakes"
+        }
+      ]
+    }
+  ]
+}

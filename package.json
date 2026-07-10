@@ -1,0 +1,38 @@
+{
+	"name": "umasim",
+	"version": "0.0.1",
+	"private": true,
+	"type": "module",
+	"packageManager": "pnpm@9.15.9",
+	"engines": {
+		"node": ">=20.19.0"
+	},
+	"scripts": {
+		"dev": "vite",
+		"build": "tsc --noEmit && vite build",
+		"import:characters": "node scripts/import-umapyoi-characters.mjs",
+		"import:character-cards": "node scripts/import-gametora-character-cards.mjs",
+		"import:skills": "node scripts/import-gametora-skills.mjs",
+		"import:tracks": "node scripts/import-gametora-tracks.mjs",
+		"test": "vitest run",
+		"test:validation": "vitest run src/tests/validationRegression.test.ts src/tests/validationMechanics.test.ts src/tests/validationBenchmarks.test.ts",
+		"test:validation:regression": "vitest run src/tests/validationRegression.test.ts",
+		"test:validation:mechanics": "vitest run src/tests/validationMechanics.test.ts",
+		"test:validation:benchmarks": "vitest run src/tests/validationBenchmarks.test.ts",
+		"test:validation:source": "vitest run src/tests/validationSourceCases.test.ts",
+		"preview": "vite preview"
+	},
+	"dependencies": {
+		"@vitejs/plugin-react": "^6.0.2",
+		"lucide-react": "^1.18.0",
+		"react": "^19.2.7",
+		"react-dom": "^19.2.7",
+		"typescript": "^6.0.3",
+		"vite": "^8.0.16"
+	},
+	"devDependencies": {
+		"@types/react": "^19.2.17",
+		"@types/react-dom": "^19.2.3",
+		"vitest": "^4.1.8"
+	}
+}

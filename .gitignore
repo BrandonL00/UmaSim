@@ -1,0 +1,14 @@
+node_modules/
+dist/
+.tmp/
+.agents/
+.codex/
+.vscode/
+.env
+.env.*
+*.log
+*.local
+tsconfig.tsbuildinfo
+race-logs/*.json
+!race-logs/.gitkeep
+!race-logs/README.md

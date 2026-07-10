@@ -1,0 +1,7390 @@
+{
+  "generatedAt": "2026-06-19T04:44:06.665Z",
+  "server": "global",
+  "source": {
+    "provider": "gametora.com",
+    "charactersPage": "https://gametora.com/umamusume/characters",
+    "manifestUrl": "https://gametora.com/data/manifests/umamusume.json",
+    "cardsUrl": "https://gametora.com/data/umamusume/character-cards.077fea75.json",
+    "manifestHash": "077fea75"
+  },
+  "count": 87,
+  "characterCount": 60,
+  "cards": [
+    {
+      "cardId": 103301,
+      "characterId": 1033,
+      "characterName": "Admire Vega",
+      "characterNameJp": "アドマイヤベガ",
+      "outfitTitle": "[Starry Nocturne]",
+      "variant": null,
+      "rarity": 3,
+      "releaseGlobal": "2026-03-05",
+      "urlName": "103301-admire-vega",
+      "imageUrl": "https://gametora.com/images/umamusume/characters/chara_stand_1033_103301.png",
+      "thumbnailUrl": "https://gametora.com/images/umamusume/characters/thumb/chara_stand_1033_103301.png",
+      "aptitudes": [
+        "A",
+        "G",
+        "F",
+        "C",
+        "A",
+        "C",
+        "G",
+        "G",
+        "B",
+        "A"
+      ],
+      "baseStats": [
+        96,
+        79,
+        108,
+        69,
+        98
+      ],
+      "fourStarStats": [
+        107,
+        88,
+        120,
+        77,
+        108
+      ],
+      "fiveStarStats": [
+        118,
+        96,
+        132,
+        85,
+        119
+      ],
+      "statBonuses": [
+        10,
+        0,
+        20,
+        0,
+        0
+      ],
+      "uniqueSkillIds": [
+        100331
+      ],
+      "innateSkillIds": [
+        200492,
+        201152,
+        201492
+      ],
+      "awakeningSkillIds": [
+        200632,
+        201491,
+        200861,
+        200631
+      ],
+      "eventSkillIds": [
+        200632,
+        200362,
+        200642,
+        201102,
+        200442,
+        201452,
+        201462
+      ],
+      "evolvedSkills": [
+        {
+          "new": 103301111,
+          "old": 201491
+        },
+        {
+          "new": 103301211,
+          "old": 200631
+        }
+      ]
+    },
+    {
+      "cardId": 101901,
+      "characterId": 1019,
+      "characterName": "Agnes Digital",
+      "characterNameJp": "アグネスデジタル",
+      "outfitTitle": "[Full-Color Fangirling]",
+      "variant": null,
+      "rarity": 3,
+      "releaseGlobal": "2025-11-19",
+      "urlName": "101901-agnes-digital",
+      "imageUrl": "https://gametora.com/images/umamusume/characters/chara_stand_1019_101901.png",
+      "thumbnailUrl": "https://gametora.com/images/umamusume/characters/thumb/chara_stand_1019_101901.png",
+      "aptitudes": [
+        "A",
+        "A",
+        "F",
+        "A",
+        "A",
+        "G",
+        "G",
+        "A",
+        "A",
+        "B"
+      ],
+      "baseStats": [
+        85,
+        91,
+        83,
+        100,
+        91
+      ],
+      "fourStarStats": [
+        95,
+        101,
+        92,
+        111,
+        101
+      ],
+      "fiveStarStats": [
+        104,
+        111,
+        101,
+        122,
+        112
+      ],
+      "statBonuses": [
+        8,
+        8,
+        7,
+        0,
+        7
+      ],
+      "uniqueSkillIds": [
+        100191
+      ],
+      "innateSkillIds": [
+        201591,
+        201682,
+        201382
+      ],
+      "awakeningSkillIds": [
+        200162,
+        201592,
+        201102,
+        201681
+      ],
+      "eventSkillIds": [
+        201672,
+        201062,
+        200512,
+        200062,
+        201042,
+        200702,
+        201072
+      ],
+      "evolvedSkills": [
+        {
+          "new": 101901111,
+          "old": 201592
+        },
+        {
+          "new": 101901211,
+          "old": 201681
+        },
+        {
+          "new": 101901221,
+          "old": 201681
+        }
+      ]
+    },
+    {
+      "cardId": 103201,
+      "characterId": 1032,
+      "characterName": "Agnes Tachyon",
+      "characterNameJp": "アグネスタキオン",
+      "outfitTitle": "[Tach-nology]",
+      "variant": null,
+      "rarity": 1,
+      "releaseGlobal": "2025-06-26",
+      "urlName": "103201-agnes-tachyon",
+      "imageUrl": "https://gametora.com/images/umamusume/characters/chara_stand_1032_103201.png",
+      "thumbnailUrl": "https://gametora.com/images/umamusume/characters/thumb/chara_stand_1032_103201.png",
+      "aptitudes": [
+        "A",
+        "G",
+        "G",
+        "D",
+        "A",
+        "B",
+        "E",
+        "A",
+        "B",
+        "F"
+      ],
+      "baseStats": [
+        82,
+        76,
+        76,
+        79,
+        87
+      ],
+      "fourStarStats": [
+        102,
+        95,
+        95,
+        98,
+        110
+      ],
+      "fiveStarStats": [
+        112,
+        104,
+        104,
+        108,
+        122
+      ],
+      "statBonuses": [
+        20,
+        0,
+        0,
+        10,
+        0
+      ],
+      "uniqueSkillIds": [
+        10321,
+        100321
+      ],
+      "innateSkillIds": [
+        200132,
+        201152,
+        200572
+      ],
+      "awakeningSkillIds": [
+        201102,
+        201151,
+        201112,
+        200571
+      ],
+      "eventSkillIds": [
+        200332,
+        201362
+      ],
+      "evolvedSkills": [
+        {
+          "new": 103201111,
+          "old": 201151
+        },
+        {
+          "new": 103201211,
+          "old": 200571
+        }
+      ]
+    },
+    {
+      "cardId": 101801,
+      "characterId": 1018,
+      "characterName": "Air Groove",
+      "characterNameJp": "エアグルーヴ",
+      "outfitTitle": "[Empress Road]",
+      "variant": null,
+      "rarity": 2,
+      "releaseGlobal": "2025-06-26",
+      "urlName": "101801-air-groove",
+      "imageUrl": "https://gametora.com/images/umamusume/characters/chara_stand_1018_101801.png",
+      "thumbnailUrl": "https://gametora.com/images/umamusume/characters/thumb/chara_stand_1018_101801.png",
+      "aptitudes": [
+        "A",
+        "G",
+        "C",
+        "B",
+        "A",
+        "E",
+        "D",
+        "A",
+        "A",
+        "G"
+      ],
+      "baseStats": [
+        86,
+        81,
+        81,
+        86,
+        91
+      ],
+      "fourStarStats": [
+        101,
+        95,
+        95,
+        102,
+        107
+      ],
+      "fiveStarStats": [
+        111,
+        105,
+        105,
+        112,
+        117
+      ],
+      "statBonuses": [
+        10,
+        0,
+        20,
+        0,
+        0
+      ],
+      "uniqueSkillIds": [
+        10181,
+        100181
+      ],
+      "innateSkillIds": [
+        200502,
+        200722,
+        201372
+      ],
+      "awakeningSkillIds": [
+        200941,
+        201371,
+        200931,
+        200501
+      ],
+      "eventSkillIds": [
+        200512
+      ],
+      "evolvedSkills": [
+        {
+          "new": 101801111,
+          "old": 201371
+        },
+        {
+          "new": 101801211,
+          "old": 200501
+        }
+      ]
+    },
+    {
+      "cardId": 101802,
+      "characterId": 1018,
+      "characterName": "Air Groove",
+      "characterNameJp": "エアグルーヴ",
+      "outfitTitle": "[Quercus Civilis]",
+      "variant": "wedding",
+      "rarity": 3,
+      "releaseGlobal": "2025-08-28",
+      "urlName": "101802-air-groove",
+      "imageUrl": "https://gametora.com/images/umamusume/characters/chara_stand_1018_101802.png",
+      "thumbnailUrl": "https://gametora.com/images/umamusume/characters/thumb/chara_stand_1018_101802.png",
+      "aptitudes": [
+        "A",
+        "G",
+        "C",
+        "B",
+        "A",
+        "E",
+        "D",
+        "A",
+        "A",
+        "G"
+      ],
+      "baseStats": [
+        94,
+        82,
+        91,
+        88,
+        95
+      ],
+      "fourStarStats": [
+        104,
+        91,
+        101,
+        98,
+        106
+      ],
+      "fiveStarStats": [
+        115,
+        100,
+        111,
+        107,
+        117
+      ],
+      "statBonuses": [
+        10,
+        0,
+        10,
+        10,
+        0
+      ],
+      "uniqueSkillIds": [
+        110181
+      ],
+      "innateSkillIds": [
+        200342,
+        201072,
+        201322
+      ],
+      "awakeningSkillIds": [
+        201532,
+        201071,
+        200462,
+        200341
+      ],
+      "eventSkillIds": [
+        200512,
+        200502,
+        200722
+      ],
+      "evolvedSkills": [
+        {
+          "new": 101802111,
+          "old": 201071
+        },
+        {
+          "new": 101802211,
+          "old": 200341
+        },
+        {
+          "new": 101802221,
+          "old": 200341
+        }
+      ]
+    },
+    {
+      "cardId": 103601,
+      "characterId": 1036,
+      "characterName": "Air Shakur",
+      "characterNameJp": "エアシャカール",
+      "outfitTitle": "[unsigned]",
+      "variant": null,
+      "rarity": 3,
+      "releaseGlobal": "2026-06-18",
+      "urlName": "103601-air-shakur",
+      "imageUrl": "https://gametora.com/images/umamusume/characters/chara_stand_1036_103601.png",
+      "thumbnailUrl": "https://gametora.com/images/umamusume/characters/thumb/chara_stand_1036_103601.png",
+      "aptitudes": [
+        "A",
+        "G",
+        "G",
+        "E",
+        "A",
+        "A",
+        "G",
+        "C",
+        "A",
+        "A"
+      ],
+      "baseStats": [
+        99,
+        85,
+        95,
+        69,
+        102
+      ],
+      "fourStarStats": [
+        110,
+        95,
+        106,
+        76,
+        113
+      ],
+      "fiveStarStats": [
+        120,
+        104,
+        116,
+        84,
+        126
+      ],
+      "statBonuses": [
+        0,
+        0,
+        0,
+        0,
+        30
+      ],
+      "uniqueSkillIds": [
+        100361
+      ],
+      "innateSkillIds": [
+        200462,
+        202102,
+        201452
+      ],
+      "awakeningSkillIds": [
+        201492,
+        202101,
+        201502,
+        201453
+      ],
+      "eventSkillIds": [
+        201512,
+        202102,
+        200192,
+        202092,
+        202181
+      ],
+      "evolvedSkills": [
+        {
+          "new": 103601111,
+          "old": 202101
+        },
+        {
+          "new": 103601211,
+          "old": 201453
+        }
+      ]
+    },
+    {
+      "cardId": 102301,
+      "characterId": 1023,
+      "characterName": "Biwa Hayahide",
+      "characterNameJp": "ビワハヤヒデ",
+      "outfitTitle": "[pf. Winning Equation...]",
+      "variant": null,
+      "rarity": 3,
+      "releaseGlobal": "2025-07-10",
+      "urlName": "102301-biwa-hayahide",
+      "imageUrl": "https://gametora.com/images/umamusume/characters/chara_stand_1023_102301.png",
+      "thumbnailUrl": "https://gametora.com/images/umamusume/characters/thumb/chara_stand_1023_102301.png",
+      "aptitudes": [
+        "A",
+        "F",
+        "F",
+        "C",
+        "A",
+        "A",
+        "E",
+        "A",
+        "B",
+        "E"
+      ],
+      "baseStats": [
+        85,
+        93,
+        82,
+        93,
+        97
+      ],
+      "fourStarStats": [
+        95,
+        104,
+        91,
+        104,
+        106
+      ],
+      "fiveStarStats": [
+        104,
+        114,
+        101,
+        114,
+        117
+      ],
+      "statBonuses": [
+        0,
+        0,
+        0,
+        10,
+        20
+      ],
+      "uniqueSkillIds": [
+        100231
+      ],
+      "innateSkillIds": [
+        200162,
+        200742,
+        200562
+      ],
+      "awakeningSkillIds": [
+        200262,
+        200561,
+        200821,
+        200741
+      ],
+      "eventSkillIds": [
+        200052,
+        200372,
+        200582
+      ],
+      "evolvedSkills": [
+        {
+          "new": 102301111,
+          "old": 200561
+        },
+        {
+          "new": 102301211,
+          "old": 200741
+        }
+      ]
+    },
+    {
+      "cardId": 102302,
+      "characterId": 1023,
+      "characterName": "Biwa Hayahide",
+      "characterNameJp": "ビワハヤヒデ",
+      "outfitTitle": "[Rouge Caroler]",
+      "variant": "christmas",
+      "rarity": 3,
+      "releaseGlobal": "2026-01-05",
+      "urlName": "102302-biwa-hayahide",
+      "imageUrl": "https://gametora.com/images/umamusume/characters/chara_stand_1023_102302.png",
+      "thumbnailUrl": "https://gametora.com/images/umamusume/characters/thumb/chara_stand_1023_102302.png",
+      "aptitudes": [
+        "A",
+        "F",
+        "F",
+        "C",
+        "A",
+        "A",
+        "E",
+        "A",
+        "B",
+        "E"
+      ],
+      "baseStats": [
+        83,
+        99,
+        76,
+        96,
+        96
+      ],
+      "fourStarStats": [
+        93,
+        110,
+        85,
+        107,
+        105
+      ],
+      "fiveStarStats": [
+        102,
+        121,
+        93,
+        117,
+        117
+      ],
+      "statBonuses": [
+        0,
+        12,
+        12,
+        0,
+        6
+      ],
+      "uniqueSkillIds": [
+        110231
+      ],
+      "innateSkillIds": [
+        200512,
+        201202,
+        200572
+      ],
+      "awakeningSkillIds": [
+        201532,
+        201201,
+        201312,
+        200511
+      ],
+      "eventSkillIds": [
+        200052,
+        200202,
+        201212,
+        200372,
+        200582
+      ],
+      "evolvedSkills": [
+        {
+          "new": 102302111,
+          "old": 201201
+        },
+        {
+          "new": 102302211,
+          "old": 200511
+        }
+      ]
+    },
+    {
+      "cardId": 103801,
+      "characterId": 1038,
+      "characterName": "Curren Chan",
+      "characterNameJp": "カレンチャン",
+      "outfitTitle": "[Fille Éclair]",
+      "variant": null,
+      "rarity": 3,
+      "releaseGlobal": "2025-07-27",
+      "urlName": "103801-curren-chan",
+      "imageUrl": "https://gametora.com/images/umamusume/characters/chara_stand_1038_103801.png",
+      "thumbnailUrl": "https://gametora.com/images/umamusume/characters/thumb/chara_stand_1038_103801.png",
+      "aptitudes": [
+        "A",
+        "F",
+        "A",
+        "D",
+        "G",
+        "G",
+        "B",
+        "A",
+        "E",
+        "G"
+      ],
+      "baseStats": [
+        97,
+        58,
+        107,
+        91,
+        97
+      ],
+      "fourStarStats": [
+        108,
+        65,
+        118,
+        101,
+        108
+      ],
+      "fiveStarStats": [
+        119,
+        71,
+        130,
+        111,
+        119
+      ],
+      "statBonuses": [
+        10,
+        0,
+        20,
+        0,
+        0
+      ],
+      "uniqueSkillIds": [
+        100381
+      ],
+      "innateSkillIds": [
+        200462,
+        201372,
+        201012
+      ],
+      "awakeningSkillIds": [
+        201002,
+        201371,
+        200582,
+        201011
+      ],
+      "eventSkillIds": [
+        200811,
+        200652
+      ],
+      "evolvedSkills": [
+        {
+          "new": 103801111,
+          "old": 201371
+        },
+        {
+          "new": 103801211,
+          "old": 201011
+        }
+      ]
+    },
+    {
+      "cardId": 103802,
+      "characterId": 1038,
+      "characterName": "Curren Chan",
+      "characterNameJp": "カレンチャン",
+      "outfitTitle": "[Ma Chérie of the New Moon]",
+      "variant": "wedding",
+      "rarity": 3,
+      "releaseGlobal": "2026-05-18",
+      "urlName": "103802-curren-chan",
+      "imageUrl": "https://gametora.com/images/umamusume/characters/chara_stand_1038_103802.png",
+      "thumbnailUrl": "https://gametora.com/images/umamusume/characters/thumb/chara_stand_1038_103802.png",
+      "aptitudes": [
+        "A",
+        "F",
+        "A",
+        "D",
+        "G",
+        "G",
+        "B",
+        "A",
+        "E",
+        "G"
+      ],
+      "baseStats": [
+        100,
+        54,
+        109,
+        85,
+        102
+      ],
+      "fourStarStats": [
+        111,
+        59,
+        121,
+        95,
+        114
+      ],
+      "fiveStarStats": [
+        122,
+        65,
+        133,
+        104,
+        126
+      ],
+      "statBonuses": [
+        10,
+        0,
+        10,
+        0,
+        10
+      ],
+      "uniqueSkillIds": [
+        110381
+      ],
+      "innateSkillIds": [
+        200851,
+        201322,
+        201012
+      ],
+      "awakeningSkillIds": [
+        200652,
+        201011,
+        201532,
+        200651
+      ],
+      "eventSkillIds": [
+        200811,
+        200972,
+        201372,
+        200652
+      ],
+      "evolvedSkills": [
+        {
+          "new": 103802111,
+          "old": 201011
+        },
+        {
+          "new": 103802121,
+          "old": 201011
+        },
+        {
+          "new": 103802211,
+          "old": 200651
+        }
+      ]
+    },
+    {
+      "cardId": 100901,
+      "characterId": 1009,
+      "characterName": "Daiwa Scarlet",
+      "characterNameJp": "ダイワスカーレット",
+      "outfitTitle": "[Peak Blue]",
+      "variant": null,
+      "rarity": 2,
+      "releaseGlobal": "2025-06-26",
+      "urlName": "100901-daiwa-scarlet",
+      "imageUrl": "https://gametora.com/images/umamusume/characters/chara_stand_1009_100901.png",
+      "thumbnailUrl": "https://gametora.com/images/umamusume/characters/thumb/chara_stand_1009_100901.png",
+      "aptitudes": [
+        "A",
+        "G",
+        "F",
+        "A",
+        "A",
+        "B",
+        "A",
+        "A",
+        "E",
+        "G"
+      ],
+      "baseStats": [
+        84,
+        77,
+        79,
+        95,
+        90
+      ],
+      "fourStarStats": [
+        99,
+        90,
+        93,
+        111,
+        107
+      ],
+      "fiveStarStats": [
+        109,
+        99,
+        103,
+        122,
+        117
+      ],
+      "statBonuses": [
+        10,
+        0,
+        0,
+        20,
+        0
+      ],
+      "uniqueSkillIds": [
+        10091,
+        100091
+      ],
+      "innateSkillIds": [
+        200282,
+        200722,
+        200572
+      ],
+      "awakeningSkillIds": [
+        200562,
+        200721,
+        200582,
+        200571
+      ],
+      "eventSkillIds": [
+        201072,
+        201052,
+        201902,
+        200732
+      ],
+      "evolvedSkills": [
+        {
+          "new": 100901111,
+          "old": 200721
+        },
+        {
+          "new": 100901211,
+          "old": 200571
+        }
+      ]
+    },
+    {
+      "cardId": 103701,
+      "characterId": 1037,
+      "characterName": "Eishin Flash",
+      "characterNameJp": "エイシンフラッシュ",
+      "outfitTitle": "[Meisterschaft]",
+      "variant": null,
+      "rarity": 3,
+      "releaseGlobal": "2025-10-30",
+      "urlName": "103701-eishin-flash",
+      "imageUrl": "https://gametora.com/images/umamusume/characters/chara_stand_1037_103701.png",
+      "thumbnailUrl": "https://gametora.com/images/umamusume/characters/thumb/chara_stand_1037_103701.png",
+      "aptitudes": [
+        "A",
+        "G",
+        "G",
+        "F",
+        "A",
+        "A",
+        "G",
+        "B",
+        "A",
+        "C"
+      ],
+      "baseStats": [
+        100,
+        83,
+        93,
+        82,
+        92
+      ],
+      "fourStarStats": [
+        111,
+        92,
+        103,
+        91,
+        103
+      ],
+      "fiveStarStats": [
+        122,
+        101,
+        113,
+        100,
+        114
+      ],
+      "statBonuses": [
+        0,
+        0,
+        10,
+        0,
+        20
+      ],
+      "uniqueSkillIds": [
+        100371
+      ],
+      "innateSkillIds": [
+        200502,
+        201542,
+        201112
+      ],
+      "awakeningSkillIds": [
+        200512,
+        200501,
+        200432,
+        200511
+      ],
+      "eventSkillIds": [
+        200132,
+        201402,
+        200032
+      ],
+      "evolvedSkills": [
+        {
+          "new": 103701111,
+          "old": 200501
+        },
+        {
+          "new": 103701211,
+          "old": 200511
+        }
+      ]
+    },
+    {
+      "cardId": 103702,
+      "characterId": 1037,
+      "characterName": "Eishin Flash",
+      "characterNameJp": "エイシンフラッシュ",
+      "outfitTitle": "[Precise Chocolatier]",
+      "variant": "valentine",
+      "rarity": 3,
+      "releaseGlobal": "2026-02-18",
+      "urlName": "103702-eishin-flash",
+      "imageUrl": "https://gametora.com/images/umamusume/characters/chara_stand_1037_103702.png",
+      "thumbnailUrl": "https://gametora.com/images/umamusume/characters/thumb/chara_stand_1037_103702.png",
+      "aptitudes": [
+        "A",
+        "G",
+        "G",
+        "F",
+        "A",
+        "A",
+        "G",
+        "B",
+        "A",
+        "C"
+      ],
+      "baseStats": [
+        94,
+        88,
+        84,
+        82,
+        102
+      ],
+      "fourStarStats": [
+        104,
+        97,
+        94,
+        91,
+        114
+      ],
+      "fiveStarStats": [
+        115,
+        107,
+        103,
+        100,
+        125
+      ],
+      "statBonuses": [
+        0,
+        8,
+        8,
+        0,
+        14
+      ],
+      "uniqueSkillIds": [
+        110371
+      ],
+      "innateSkillIds": [
+        200302,
+        200592,
+        201152
+      ],
+      "awakeningSkillIds": [
+        201102,
+        201151,
+        201392,
+        201103
+      ],
+      "eventSkillIds": [
+        200132,
+        200512,
+        201162,
+        201402,
+        200032
+      ],
+      "evolvedSkills": [
+        {
+          "new": 103702111,
+          "old": 201151
+        },
+        {
+          "new": 103702121,
+          "old": 201151
+        },
+        {
+          "new": 103702211,
+          "old": 201103
+        }
+      ]
+    },
+    {
+      "cardId": 101401,
+      "characterId": 1014,
+      "characterName": "El Condor Pasa",
+      "characterNameJp": "エルコンドルパサー",
+      "outfitTitle": "[El☆Número 1]",
+      "variant": null,
+      "rarity": 2,
+      "releaseGlobal": "2025-06-26",
+      "urlName": "101401-el-condor-pasa",
+      "imageUrl": "https://gametora.com/images/umamusume/characters/chara_stand_1014_101401.png",
+      "thumbnailUrl": "https://gametora.com/images/umamusume/characters/thumb/chara_stand_1014_101401.png",
+      "aptitudes": [
+        "A",
+        "B",
+        "F",
+        "A",
+        "A",
+        "B",
+        "E",
+        "A",
+        "A",
+        "C"
+      ],
+      "baseStats": [
+        85,
+        76,
+        80,
+        93,
+        91
+      ],
+      "fourStarStats": [
+        100,
+        89,
+        94,
+        110,
+        107
+      ],
+      "fiveStarStats": [
+        110,
+        98,
+        103,
+        121,
+        118
+      ],
+      "statBonuses": [
+        20,
+        0,
+        0,
+        0,
+        10
+      ],
+      "uniqueSkillIds": [
+        10141,
+        100141
+      ],
+      "innateSkillIds": [
+        200362,
+        201122,
+        201312
+      ],
+      "awakeningSkillIds": [
+        200562,
+        201121,
+        200722,
+        200561
+      ],
+      "eventSkillIds": [
+        201142,
+        200162
+      ],
+      "evolvedSkills": [
+        {
+          "new": 101401111,
+          "old": 201121
+        },
+        {
+          "new": 101401211,
+          "old": 200561
+        }
+      ]
+    },
+    {
+      "cardId": 101402,
+      "characterId": 1014,
+      "characterName": "El Condor Pasa",
+      "characterNameJp": "エルコンドルパサー",
+      "outfitTitle": "[Kukulkan Warrior]",
+      "variant": "fantasy",
+      "rarity": 3,
+      "releaseGlobal": "2025-09-21",
+      "urlName": "101402-el-condor-pasa",
+      "imageUrl": "https://gametora.com/images/umamusume/characters/chara_stand_1014_101402.png",
+      "thumbnailUrl": "https://gametora.com/images/umamusume/characters/thumb/chara_stand_1014_101402.png",
+      "aptitudes": [
+        "A",
+        "B",
+        "F",
+        "A",
+        "A",
+        "B",
+        "E",
+        "A",
+        "A",
+        "C"
+      ],
+      "baseStats": [
+        100,
+        75,
+        91,
+        97,
+        87
+      ],
+      "fourStarStats": [
+        111,
+        83,
+        102,
+        108,
+        96
+      ],
+      "fiveStarStats": [
+        122,
+        91,
+        112,
+        119,
+        106
+      ],
+      "statBonuses": [
+        15,
+        0,
+        0,
+        15,
+        0
+      ],
+      "uniqueSkillIds": [
+        110141
+      ],
+      "innateSkillIds": [
+        200512,
+        200702,
+        200612
+      ],
+      "awakeningSkillIds": [
+        201072,
+        200701,
+        201412,
+        200611
+      ],
+      "eventSkillIds": [
+        201142,
+        200162,
+        200482,
+        200502
+      ],
+      "evolvedSkills": [
+        {
+          "new": 101402111,
+          "old": 200701
+        },
+        {
+          "new": 101402121,
+          "old": 200701
+        },
+        {
+          "new": 101402211,
+          "old": 200611
+        }
+      ]
+    },
+    {
+      "cardId": 102201,
+      "characterId": 1022,
+      "characterName": "Fine Motion",
+      "characterNameJp": "ファインモーション",
+      "outfitTitle": "[Noble Seamair]",
+      "variant": null,
+      "rarity": 3,
+      "releaseGlobal": "2026-01-15",
+      "urlName": "102201-fine-motion",
+      "imageUrl": "https://gametora.com/images/umamusume/characters/chara_stand_1022_102201.png",
+      "thumbnailUrl": "https://gametora.com/images/umamusume/characters/thumb/chara_stand_1022_102201.png",
+      "aptitudes": [
+        "A",
+        "G",
+        "F",
+        "A",
+        "A",
+        "C",
+        "D",
+        "A",
+        "E",
+        "C"
+      ],
+      "baseStats": [
+        96,
+        84,
+        95,
+        88,
+        87
+      ],
+      "fourStarStats": [
+        106,
+        93,
+        106,
+        98,
+        97
+      ],
+      "fiveStarStats": [
+        117,
+        102,
+        116,
+        108,
+        107
+      ],
+      "statBonuses": [
+        0,
+        0,
+        15,
+        0,
+        15
+      ],
+      "uniqueSkillIds": [
+        100221
+      ],
+      "innateSkillIds": [
+        200192,
+        200582,
+        201112
+      ],
+      "awakeningSkillIds": [
+        201342,
+        200581,
+        200012,
+        201341
+      ],
+      "eventSkillIds": [
+        201322,
+        201702,
+        200622,
+        200722,
+        201342,
+        200702,
+        200572,
+        201902
+      ],
+      "evolvedSkills": [
+        {
+          "new": 102201111,
+          "old": 200581
+        },
+        {
+          "new": 102201121,
+          "old": 200581
+        },
+        {
+          "new": 102201211,
+          "old": 201341
+        }
+      ]
+    },
+    {
+      "cardId": 102202,
+      "characterId": 1022,
+      "characterName": "Fine Motion",
+      "characterNameJp": "ファインモーション",
+      "outfitTitle": "[Titania]",
+      "variant": "wedding",
+      "rarity": 3,
+      "releaseGlobal": "2026-05-18",
+      "urlName": "102202-fine-motion",
+      "imageUrl": "https://gametora.com/images/umamusume/characters/chara_stand_1022_102202.png",
+      "thumbnailUrl": "https://gametora.com/images/umamusume/characters/thumb/chara_stand_1022_102202.png",
+      "aptitudes": [
+        "A",
+        "G",
+        "F",
+        "A",
+        "A",
+        "C",
+        "D",
+        "A",
+        "E",
+        "C"
+      ],
+      "baseStats": [
+        89,
+        78,
+        89,
+        94,
+        100
+      ],
+      "fourStarStats": [
+        99,
+        87,
+        99,
+        105,
+        110
+      ],
+      "fiveStarStats": [
+        109,
+        96,
+        109,
+        115,
+        121
+      ],
+      "statBonuses": [
+        0,
+        0,
+        0,
+        10,
+        20
+      ],
+      "uniqueSkillIds": [
+        110221
+      ],
+      "innateSkillIds": [
+        200152,
+        201902,
+        201052
+      ],
+      "awakeningSkillIds": [
+        201042,
+        201051,
+        200192,
+        201901
+      ],
+      "eventSkillIds": [
+        201322,
+        201702,
+        201032,
+        200582,
+        200622,
+        200722,
+        201342,
+        200702,
+        200572,
+        201902
+      ],
+      "evolvedSkills": [
+        {
+          "new": 102202111,
+          "old": 201051
+        },
+        {
+          "new": 102202211,
+          "old": 201901
+        },
+        {
+          "new": 102202221,
+          "old": 201901
+        }
+      ]
+    },
+    {
+      "cardId": 100501,
+      "characterId": 1005,
+      "characterName": "Fuji Kiseki",
+      "characterNameJp": "フジキセキ",
+      "outfitTitle": "[Shooting Star Revue]",
+      "variant": null,
+      "rarity": 3,
+      "releaseGlobal": "2025-10-02",
+      "urlName": "100501-fuji-kiseki",
+      "imageUrl": "https://gametora.com/images/umamusume/characters/chara_stand_1005_100501.png",
+      "thumbnailUrl": "https://gametora.com/images/umamusume/characters/thumb/chara_stand_1005_100501.png",
+      "aptitudes": [
+        "A",
+        "F",
+        "B",
+        "A",
+        "B",
+        "E",
+        "C",
+        "A",
+        "C",
+        "G"
+      ],
+      "baseStats": [
+        96,
+        88,
+        97,
+        82,
+        87
+      ],
+      "fourStarStats": [
+        106,
+        98,
+        108,
+        91,
+        97
+      ],
+      "fiveStarStats": [
+        117,
+        107,
+        118,
+        100,
+        108
+      ],
+      "statBonuses": [
+        0,
+        0,
+        20,
+        0,
+        10
+      ],
+      "uniqueSkillIds": [
+        100051
+      ],
+      "innateSkillIds": [
+        200771,
+        201072,
+        200572
+      ],
+      "awakeningSkillIds": [
+        201052,
+        201071,
+        201042,
+        200571
+      ],
+      "eventSkillIds": [
+        201372,
+        200582,
+        201072,
+        200572
+      ],
+      "evolvedSkills": [
+        {
+          "new": 100501111,
+          "old": 201071
+        },
+        {
+          "new": 100501211,
+          "old": 200571
+        },
+        {
+          "new": 100501221,
+          "old": 200571
+        }
+      ]
+    },
+    {
+      "cardId": 100502,
+      "characterId": 1005,
+      "characterName": "Fuji Kiseki",
+      "characterNameJp": "フジキセキ",
+      "outfitTitle": "[Succès Étoilé]",
+      "variant": "ballroom",
+      "rarity": 3,
+      "releaseGlobal": "2026-04-05",
+      "urlName": "100502-fuji-kiseki",
+      "imageUrl": "https://gametora.com/images/umamusume/characters/chara_stand_1005_100502.png",
+      "thumbnailUrl": "https://gametora.com/images/umamusume/characters/thumb/chara_stand_1005_100502.png",
+      "aptitudes": [
+        "A",
+        "F",
+        "B",
+        "A",
+        "B",
+        "E",
+        "C",
+        "A",
+        "C",
+        "G"
+      ],
+      "baseStats": [
+        98,
+        77,
+        102,
+        78,
+        95
+      ],
+      "fourStarStats": [
+        109,
+        86,
+        113,
+        87,
+        105
+      ],
+      "fiveStarStats": [
+        120,
+        94,
+        124,
+        96,
+        116
+      ],
+      "statBonuses": [
+        8,
+        0,
+        14,
+        0,
+        8
+      ],
+      "uniqueSkillIds": [
+        110051
+      ],
+      "innateSkillIds": [
+        200771,
+        201042,
+        200582
+      ],
+      "awakeningSkillIds": [
+        201332,
+        200772,
+        201902,
+        200581
+      ],
+      "eventSkillIds": [
+        201372,
+        200012,
+        201072,
+        200582,
+        200572
+      ],
+      "evolvedSkills": [
+        {
+          "new": 100502111,
+          "old": 200772
+        },
+        {
+          "new": 100502121,
+          "old": 200772
+        },
+        {
+          "new": 100502211,
+          "old": 200581
+        }
+      ]
+    },
+    {
+      "cardId": 104001,
+      "characterId": 1040,
+      "characterName": "Gold City",
+      "characterNameJp": "ゴールドシチー",
+      "outfitTitle": "[Authentic / 1928]",
+      "variant": null,
+      "rarity": 3,
+      "releaseGlobal": "2025-10-07",
+      "urlName": "104001-gold-city",
+      "imageUrl": "https://gametora.com/images/umamusume/characters/chara_stand_1040_104001.png",
+      "thumbnailUrl": "https://gametora.com/images/umamusume/characters/thumb/chara_stand_1040_104001.png",
+      "aptitudes": [
+        "A",
+        "D",
+        "F",
+        "A",
+        "B",
+        "B",
+        "F",
+        "A",
+        "A",
+        "F"
+      ],
+      "baseStats": [
+        89,
+        92,
+        94,
+        92,
+        83
+      ],
+      "fourStarStats": [
+        99,
+        103,
+        104,
+        102,
+        92
+      ],
+      "fiveStarStats": [
+        109,
+        113,
+        114,
+        112,
+        102
+      ],
+      "statBonuses": [
+        0,
+        0,
+        10,
+        20,
+        0
+      ],
+      "uniqueSkillIds": [
+        100401
+      ],
+      "innateSkillIds": [
+        200052,
+        200692,
+        200602
+      ],
+      "awakeningSkillIds": [
+        201651,
+        200691,
+        201062,
+        200601
+      ],
+      "eventSkillIds": [
+        201072
+      ],
+      "evolvedSkills": [
+        {
+          "new": 104001111,
+          "old": 200691
+        },
+        {
+          "new": 104001211,
+          "old": 200601
+        },
+        {
+          "new": 104001221,
+          "old": 200601
+        }
+      ]
+    },
+    {
+      "cardId": 104002,
+      "characterId": 1040,
+      "characterName": "Gold City",
+      "characterNameJp": "ゴールドシチー",
+      "outfitTitle": "[Autumn Cosmos]",
+      "variant": "fall_festival",
+      "rarity": 3,
+      "releaseGlobal": "2025-12-14",
+      "urlName": "104002-gold-city",
+      "imageUrl": "https://gametora.com/images/umamusume/characters/chara_stand_1040_104002.png",
+      "thumbnailUrl": "https://gametora.com/images/umamusume/characters/thumb/chara_stand_1040_104002.png",
+      "aptitudes": [
+        "A",
+        "D",
+        "F",
+        "A",
+        "B",
+        "B",
+        "F",
+        "A",
+        "A",
+        "F"
+      ],
+      "baseStats": [
+        86,
+        98,
+        86,
+        98,
+        82
+      ],
+      "fourStarStats": [
+        95,
+        109,
+        95,
+        108,
+        93
+      ],
+      "fiveStarStats": [
+        105,
+        120,
+        105,
+        119,
+        101
+      ],
+      "statBonuses": [
+        8,
+        0,
+        8,
+        0,
+        14
+      ],
+      "uniqueSkillIds": [
+        110401
+      ],
+      "innateSkillIds": [
+        200232,
+        201092,
+        201692
+      ],
+      "awakeningSkillIds": [
+        201542,
+        201091,
+        201392,
+        201691
+      ],
+      "eventSkillIds": [
+        201072,
+        201412,
+        200602
+      ],
+      "evolvedSkills": [
+        {
+          "new": 104002111,
+          "old": 201091
+        },
+        {
+          "new": 104002211,
+          "old": 201691
+        }
+      ]
+    },
+    {
+      "cardId": 100701,
+      "characterId": 1007,
+      "characterName": "Gold Ship",
+      "characterNameJp": "ゴールドシップ",
+      "outfitTitle": "[Red Strife]",
+      "variant": null,
+      "rarity": 2,
+      "releaseGlobal": "2025-06-26",
+      "urlName": "100701-gold-ship",
+      "imageUrl": "https://gametora.com/images/umamusume/characters/chara_stand_1007_100701.png",
+      "thumbnailUrl": "https://gametora.com/images/umamusume/characters/thumb/chara_stand_1007_100701.png",
+      "aptitudes": [
+        "A",
+        "G",
+        "G",
+        "C",
+        "A",
+        "A",
+        "G",
+        "B",
+        "B",
+        "A"
+      ],
+      "baseStats": [
+        82,
+        96,
+        100,
+        77,
+        70
+      ],
+      "fourStarStats": [
+        97,
+        113,
+        117,
+        90,
+        83
+      ],
+      "fiveStarStats": [
+        106,
+        124,
+        129,
+        99,
+        92
+      ],
+      "statBonuses": [
+        0,
+        20,
+        10,
+        0,
+        0
+      ],
+      "uniqueSkillIds": [
+        10071,
+        100071
+      ],
+      "innateSkillIds": [
+        201591,
+        201212,
+        201472
+      ],
+      "awakeningSkillIds": [
+        201482,
+        201471,
+        200622,
+        201481
+      ],
+      "eventSkillIds": [
+        200052,
+        200142,
+        200433
+      ],
+      "evolvedSkills": [
+        {
+          "new": 100701111,
+          "old": 201471
+        },
+        {
+          "new": 100701211,
+          "old": 201481
+        }
+      ]
+    },
+    {
+      "cardId": 101101,
+      "characterId": 1011,
+      "characterName": "Grass Wonder",
+      "characterNameJp": "グラスワンダー",
+      "outfitTitle": "[Stone-Piercing Blue]",
+      "variant": null,
+      "rarity": 2,
+      "releaseGlobal": "2025-06-26",
+      "urlName": "101101-grass-wonder",
+      "imageUrl": "https://gametora.com/images/umamusume/characters/chara_stand_1011_101101.png",
+      "thumbnailUrl": "https://gametora.com/images/umamusume/characters/thumb/chara_stand_1011_101101.png",
+      "aptitudes": [
+        "A",
+        "G",
+        "G",
+        "A",
+        "B",
+        "A",
+        "F",
+        "A",
+        "A",
+        "F"
+      ],
+      "baseStats": [
+        91,
+        70,
+        99,
+        74,
+        91
+      ],
+      "fourStarStats": [
+        107,
+        83,
+        117,
+        87,
+        106
+      ],
+      "fiveStarStats": [
+        118,
+        91,
+        129,
+        96,
+        116
+      ],
+      "statBonuses": [
+        20,
+        0,
+        10,
+        0,
+        0
+      ],
+      "uniqueSkillIds": [
+        10111,
+        100111
+      ],
+      "innateSkillIds": [
+        200871,
+        201152,
+        200602
+      ],
+      "awakeningSkillIds": [
+        200512,
+        201151,
+        200592,
+        200601
+      ],
+      "eventSkillIds": [
+        200282,
+        201412,
+        201692,
+        200722
+      ],
+      "evolvedSkills": [
+        {
+          "new": 101101111,
+          "old": 201151
+        },
+        {
+          "new": 101101211,
+          "old": 200601
+        }
+      ]
+    },
+    {
+      "cardId": 101102,
+      "characterId": 1011,
+      "characterName": "Grass Wonder",
+      "characterNameJp": "グラスワンダー",
+      "outfitTitle": "[Saintly Jade Cleric ]",
+      "variant": "fantasy",
+      "rarity": 3,
+      "releaseGlobal": "2025-09-21",
+      "urlName": "101102-grass-wonder",
+      "imageUrl": "https://gametora.com/images/umamusume/characters/chara_stand_1011_101102.png",
+      "thumbnailUrl": "https://gametora.com/images/umamusume/characters/thumb/chara_stand_1011_101102.png",
+      "aptitudes": [
+        "A",
+        "G",
+        "G",
+        "A",
+        "B",
+        "A",
+        "F",
+        "A",
+        "A",
+        "F"
+      ],
+      "baseStats": [
+        91,
+        83,
+        97,
+        79,
+        100
+      ],
+      "fourStarStats": [
+        101,
+        92,
+        108,
+        88,
+        111
+      ],
+      "fiveStarStats": [
+        111,
+        101,
+        119,
+        96,
+        123
+      ],
+      "statBonuses": [
+        0,
+        15,
+        0,
+        0,
+        15
+      ],
+      "uniqueSkillIds": [
+        110111
+      ],
+      "innateSkillIds": [
+        200472,
+        200742,
+        201422
+      ],
+      "awakeningSkillIds": [
+        200771,
+        200741,
+        201542,
+        201421
+      ],
+      "eventSkillIds": [
+        200282,
+        201412,
+        201692,
+        201442,
+        200722
+      ],
+      "evolvedSkills": [
+        {
+          "new": 101102111,
+          "old": 200741
+        },
+        {
+          "new": 101102211,
+          "old": 201421
+        }
+      ]
+    },
+    {
+      "cardId": 105201,
+      "characterId": 1052,
+      "characterName": "Haru Urara",
+      "characterNameJp": "ハルウララ",
+      "outfitTitle": "[Bestest Prize ♪]",
+      "variant": null,
+      "rarity": 1,
+      "releaseGlobal": "2025-06-26",
+      "urlName": "105201-haru-urara",
+      "imageUrl": "https://gametora.com/images/umamusume/characters/chara_stand_1052_105201.png",
+      "thumbnailUrl": "https://gametora.com/images/umamusume/characters/thumb/chara_stand_1052_105201.png",
+      "aptitudes": [
+        "G",
+        "A",
+        "A",
+        "B",
+        "G",
+        "G",
+        "G",
+        "G",
+        "A",
+        "B"
+      ],
+      "baseStats": [
+        83,
+        58,
+        89,
+        86,
+        84
+      ],
+      "fourStarStats": [
+        104,
+        72,
+        112,
+        108,
+        104
+      ],
+      "fiveStarStats": [
+        115,
+        79,
+        123,
+        119,
+        114
+      ],
+      "statBonuses": [
+        0,
+        0,
+        10,
+        20,
+        0
+      ],
+      "uniqueSkillIds": [
+        10521,
+        100521
+      ],
+      "innateSkillIds": [
+        200442,
+        200652,
+        201412
+      ],
+      "awakeningSkillIds": [
+        200472,
+        200441,
+        200302,
+        200471
+      ],
+      "eventSkillIds": [
+        200302
+      ],
+      "evolvedSkills": [
+        {
+          "new": 105201111,
+          "old": 200441
+        },
+        {
+          "new": 105201211,
+          "old": 200471
+        }
+      ]
+    },
+    {
+      "cardId": 105202,
+      "characterId": 1052,
+      "characterName": "Haru Urara",
+      "characterNameJp": "ハルウララ",
+      "outfitTitle": "[New Year ♪ New Urara!]",
+      "variant": "new_year",
+      "rarity": 3,
+      "releaseGlobal": "2026-01-29",
+      "urlName": "105202-haru-urara",
+      "imageUrl": "https://gametora.com/images/umamusume/characters/chara_stand_1052_105202.png",
+      "thumbnailUrl": "https://gametora.com/images/umamusume/characters/thumb/chara_stand_1052_105202.png",
+      "aptitudes": [
+        "G",
+        "A",
+        "A",
+        "A",
+        "G",
+        "G",
+        "G",
+        "G",
+        "A",
+        "B"
+      ],
+      "baseStats": [
+        94,
+        54,
+        106,
+        98,
+        98
+      ],
+      "fourStarStats": [
+        105,
+        60,
+        118,
+        109,
+        108
+      ],
+      "fiveStarStats": [
+        115,
+        66,
+        130,
+        119,
+        120
+      ],
+      "statBonuses": [
+        0,
+        0,
+        20,
+        10,
+        0
+      ],
+      "uniqueSkillIds": [
+        110521
+      ],
+      "innateSkillIds": [
+        200452,
+        201072,
+        201402
+      ],
+      "awakeningSkillIds": [
+        201621,
+        200451,
+        200242,
+        201401
+      ],
+      "eventSkillIds": [
+        201402,
+        200472,
+        200302
+      ],
+      "evolvedSkills": [
+        {
+          "new": 105202111,
+          "old": 200451
+        },
+        {
+          "new": 105202121,
+          "old": 200451
+        },
+        {
+          "new": 105202211,
+          "old": 201401
+        }
+      ]
+    },
+    {
+      "cardId": 102801,
+      "characterId": 1028,
+      "characterName": "Hishi Akebono",
+      "characterNameJp": "ヒシアケボノ",
+      "outfitTitle": "[Buono ☆ Alla Moda]",
+      "variant": null,
+      "rarity": 3,
+      "releaseGlobal": "2025-11-11",
+      "urlName": "102801-hishi-akebono",
+      "imageUrl": "https://gametora.com/images/umamusume/characters/chara_stand_1028_102801.png",
+      "thumbnailUrl": "https://gametora.com/images/umamusume/characters/thumb/chara_stand_1028_102801.png",
+      "aptitudes": [
+        "A",
+        "F",
+        "A",
+        "B",
+        "F",
+        "G",
+        "B",
+        "A",
+        "C",
+        "G"
+      ],
+      "baseStats": [
+        99,
+        60,
+        108,
+        91,
+        92
+      ],
+      "fourStarStats": [
+        110,
+        67,
+        120,
+        101,
+        102
+      ],
+      "fiveStarStats": [
+        120,
+        74,
+        132,
+        111,
+        113
+      ],
+      "statBonuses": [
+        0,
+        0,
+        20,
+        10,
+        0
+      ],
+      "uniqueSkillIds": [
+        100281
+      ],
+      "innateSkillIds": [
+        200212,
+        201352,
+        201002
+      ],
+      "awakeningSkillIds": [
+        201362,
+        201001,
+        201012,
+        201351
+      ],
+      "eventSkillIds": [
+        200562,
+        200992
+      ],
+      "evolvedSkills": [
+        {
+          "new": 102801111,
+          "old": 201001
+        },
+        {
+          "new": 102801211,
+          "old": 201351
+        },
+        {
+          "new": 102801221,
+          "old": 201351
+        }
+      ]
+    },
+    {
+      "cardId": 101201,
+      "characterId": 1012,
+      "characterName": "Hishi Amazon",
+      "characterNameJp": "ヒシアマゾン",
+      "outfitTitle": "[Azure Amazon]",
+      "variant": null,
+      "rarity": 3,
+      "releaseGlobal": "2025-09-17",
+      "urlName": "101201-hishi-amazon",
+      "imageUrl": "https://gametora.com/images/umamusume/characters/chara_stand_1012_101201.png",
+      "thumbnailUrl": "https://gametora.com/images/umamusume/characters/thumb/chara_stand_1012_101201.png",
+      "aptitudes": [
+        "A",
+        "E",
+        "D",
+        "A",
+        "A",
+        "B",
+        "G",
+        "B",
+        "C",
+        "A"
+      ],
+      "baseStats": [
+        93,
+        84,
+        105,
+        82,
+        86
+      ],
+      "fourStarStats": [
+        103,
+        94,
+        117,
+        91,
+        95
+      ],
+      "fiveStarStats": [
+        113,
+        103,
+        129,
+        100,
+        105
+      ],
+      "statBonuses": [
+        0,
+        0,
+        20,
+        10,
+        0
+      ],
+      "uniqueSkillIds": [
+        100121
+      ],
+      "innateSkillIds": [
+        200502,
+        200632,
+        200732
+      ],
+      "awakeningSkillIds": [
+        201452,
+        200731,
+        201462,
+        200631
+      ],
+      "eventSkillIds": [
+        200512,
+        200732
+      ],
+      "evolvedSkills": [
+        {
+          "new": 101201111,
+          "old": 200731
+        },
+        {
+          "new": 101201121,
+          "old": 200731
+        },
+        {
+          "new": 101201211,
+          "old": 200631
+        }
+      ]
+    },
+    {
+      "cardId": 103401,
+      "characterId": 1034,
+      "characterName": "Inari One",
+      "characterNameJp": "イナリワン",
+      "outfitTitle": "[Edomurasaki]",
+      "variant": null,
+      "rarity": 3,
+      "releaseGlobal": "2026-05-28",
+      "urlName": "103401-inari-one",
+      "imageUrl": "https://gametora.com/images/umamusume/characters/chara_stand_1034_103401.png",
+      "thumbnailUrl": "https://gametora.com/images/umamusume/characters/thumb/chara_stand_1034_103401.png",
+      "aptitudes": [
+        "A",
+        "A",
+        "F",
+        "B",
+        "A",
+        "A",
+        "G",
+        "B",
+        "B",
+        "A"
+      ],
+      "baseStats": [
+        88,
+        100,
+        109,
+        74,
+        79
+      ],
+      "fourStarStats": [
+        98,
+        111,
+        121,
+        82,
+        88
+      ],
+      "fiveStarStats": [
+        108,
+        122,
+        133,
+        90,
+        97
+      ],
+      "statBonuses": [
+        0,
+        10,
+        20,
+        0,
+        0
+      ],
+      "uniqueSkillIds": [
+        100341
+      ],
+      "innateSkillIds": [
+        201611,
+        201452,
+        202002
+      ],
+      "awakeningSkillIds": [
+        200202,
+        201612,
+        200642,
+        202001
+      ],
+      "eventSkillIds": [
+        200462,
+        201682,
+        201611,
+        202102,
+        201702,
+        202092
+      ],
+      "evolvedSkills": [
+        {
+          "new": 103401111,
+          "old": 201612
+        },
+        {
+          "new": 103401211,
+          "old": 202001
+        },
+        {
+          "new": 103401221,
+          "old": 202001
+        }
+      ]
+    },
+    {
+      "cardId": 103101,
+      "characterId": 1031,
+      "characterName": "Ines Fujin",
+      "characterNameJp": "アイネスフウジン",
+      "outfitTitle": "[Always Electrifying]",
+      "variant": null,
+      "rarity": 3,
+      "releaseGlobal": "2026-04-30",
+      "urlName": "103101-ines-fujin",
+      "imageUrl": "https://gametora.com/images/umamusume/characters/chara_stand_1031_103101.png",
+      "thumbnailUrl": "https://gametora.com/images/umamusume/characters/thumb/chara_stand_1031_103101.png",
+      "aptitudes": [
+        "A",
+        "G",
+        "G",
+        "A",
+        "A",
+        "C",
+        "A",
+        "C",
+        "G",
+        "G"
+      ],
+      "baseStats": [
+        100,
+        96,
+        72,
+        98,
+        84
+      ],
+      "fourStarStats": [
+        111,
+        106,
+        80,
+        109,
+        94
+      ],
+      "fiveStarStats": [
+        122,
+        117,
+        88,
+        120,
+        103
+      ],
+      "statBonuses": [
+        15,
+        0,
+        0,
+        15,
+        0
+      ],
+      "uniqueSkillIds": [
+        100311
+      ],
+      "innateSkillIds": [
+        201651,
+        201282,
+        202132
+      ],
+      "awakeningSkillIds": [
+        200032,
+        201281,
+        201082,
+        202131
+      ],
+      "eventSkillIds": [
+        201661,
+        201262,
+        200532,
+        201242
+      ],
+      "evolvedSkills": [
+        {
+          "new": 103101111,
+          "old": 201281
+        },
+        {
+          "new": 103101211,
+          "old": 202131
+        }
+      ]
+    },
+    {
+      "cardId": 103901,
+      "characterId": 1039,
+      "characterName": "Kawakami Princess",
+      "characterNameJp": "カワカミプリンセス",
+      "outfitTitle": "[Princess of Pink]",
+      "variant": null,
+      "rarity": 3,
+      "releaseGlobal": "2025-12-01",
+      "urlName": "103901-kawakami-princess",
+      "imageUrl": "https://gametora.com/images/umamusume/characters/chara_stand_1039_103901.png",
+      "thumbnailUrl": "https://gametora.com/images/umamusume/characters/thumb/chara_stand_1039_103901.png",
+      "aptitudes": [
+        "A",
+        "G",
+        "D",
+        "B",
+        "A",
+        "F",
+        "G",
+        "C",
+        "A",
+        "D"
+      ],
+      "baseStats": [
+        100,
+        71,
+        107,
+        82,
+        90
+      ],
+      "fourStarStats": [
+        111,
+        79,
+        119,
+        91,
+        100
+      ],
+      "fiveStarStats": [
+        122,
+        87,
+        131,
+        101,
+        109
+      ],
+      "statBonuses": [
+        0,
+        0,
+        10,
+        20,
+        0
+      ],
+      "uniqueSkillIds": [
+        100391
+      ],
+      "innateSkillIds": [
+        200492,
+        201072,
+        200612
+      ],
+      "awakeningSkillIds": [
+        201382,
+        200491,
+        200132,
+        200611
+      ],
+      "eventSkillIds": [
+        200582,
+        200512,
+        200612
+      ],
+      "evolvedSkills": [
+        {
+          "new": 103901111,
+          "old": 200491
+        },
+        {
+          "new": 103901211,
+          "old": 200611
+        }
+      ]
+    },
+    {
+      "cardId": 106101,
+      "characterId": 1061,
+      "characterName": "King Halo",
+      "characterNameJp": "キングヘイロー",
+      "outfitTitle": "[King of Emeralds]",
+      "variant": null,
+      "rarity": 1,
+      "releaseGlobal": "2025-06-26",
+      "urlName": "106101-king-halo",
+      "imageUrl": "https://gametora.com/images/umamusume/characters/chara_stand_1061_106101.png",
+      "thumbnailUrl": "https://gametora.com/images/umamusume/characters/thumb/chara_stand_1061_106101.png",
+      "aptitudes": [
+        "A",
+        "G",
+        "A",
+        "B",
+        "B",
+        "C",
+        "G",
+        "B",
+        "A",
+        "D"
+      ],
+      "baseStats": [
+        87,
+        60,
+        93,
+        73,
+        87
+      ],
+      "fourStarStats": [
+        109,
+        74,
+        116,
+        91,
+        110
+      ],
+      "fiveStarStats": [
+        120,
+        82,
+        127,
+        100,
+        121
+      ],
+      "statBonuses": [
+        0,
+        0,
+        20,
+        10,
+        0
+      ],
+      "uniqueSkillIds": [
+        10611,
+        100611
+      ],
+      "innateSkillIds": [
+        200262,
+        200672,
+        201432
+      ],
+      "awakeningSkillIds": [
+        201142,
+        200671,
+        201072,
+        201431
+      ],
+      "eventSkillIds": [
+        200612,
+        201432
+      ],
+      "evolvedSkills": [
+        {
+          "new": 106101111,
+          "old": 200671
+        },
+        {
+          "new": 106101211,
+          "old": 201431
+        }
+      ]
+    },
+    {
+      "cardId": 106102,
+      "characterId": 1061,
+      "characterName": "King Halo",
+      "characterNameJp": "キングヘイロー",
+      "outfitTitle": "[Cheerleader in Noble White]",
+      "variant": "cheerleader",
+      "rarity": 3,
+      "releaseGlobal": "2026-04-26",
+      "urlName": "106102-king-halo",
+      "imageUrl": "https://gametora.com/images/umamusume/characters/chara_stand_1061_106102.png",
+      "thumbnailUrl": "https://gametora.com/images/umamusume/characters/thumb/chara_stand_1061_106102.png",
+      "aptitudes": [
+        "A",
+        "G",
+        "A",
+        "B",
+        "B",
+        "C",
+        "G",
+        "B",
+        "A",
+        "D"
+      ],
+      "baseStats": [
+        100,
+        62,
+        110,
+        89,
+        89
+      ],
+      "fourStarStats": [
+        111,
+        69,
+        122,
+        99,
+        99
+      ],
+      "fiveStarStats": [
+        122,
+        76,
+        134,
+        108,
+        110
+      ],
+      "statBonuses": [
+        10,
+        0,
+        10,
+        10,
+        0
+      ],
+      "uniqueSkillIds": [
+        110611
+      ],
+      "innateSkillIds": [
+        200172,
+        200672,
+        200612
+      ],
+      "awakeningSkillIds": [
+        200692,
+        200611,
+        201382,
+        200174
+      ],
+      "eventSkillIds": [
+        200612,
+        201432,
+        202112,
+        201072
+      ],
+      "evolvedSkills": [
+        {
+          "new": 106102111,
+          "old": 200611
+        },
+        {
+          "new": 106102211,
+          "old": 200174
+        }
+      ]
+    },
+    {
+      "cardId": 106801,
+      "characterId": 1068,
+      "characterName": "Kitasan Black",
+      "characterNameJp": "キタサンブラック",
+      "outfitTitle": "[Gilded Shrine to Glory]",
+      "variant": null,
+      "rarity": 3,
+      "releaseGlobal": "2026-03-12",
+      "urlName": "106801-kitasan-black",
+      "imageUrl": "https://gametora.com/images/umamusume/characters/chara_stand_1068_106801.png",
+      "thumbnailUrl": "https://gametora.com/images/umamusume/characters/thumb/chara_stand_1068_106801.png",
+      "aptitudes": [
+        "A",
+        "G",
+        "E",
+        "C",
+        "A",
+        "A",
+        "A",
+        "B",
+        "C",
+        "G"
+      ],
+      "baseStats": [
+        97,
+        100,
+        79,
+        86,
+        88
+      ],
+      "fourStarStats": [
+        108,
+        111,
+        88,
+        96,
+        97
+      ],
+      "fiveStarStats": [
+        119,
+        122,
+        97,
+        105,
+        107
+      ],
+      "statBonuses": [
+        20,
+        10,
+        0,
+        0,
+        0
+      ],
+      "uniqueSkillIds": [
+        100681
+      ],
+      "innateSkillIds": [
+        200432,
+        201172,
+        200532
+      ],
+      "awakeningSkillIds": [
+        201102,
+        200531,
+        201272,
+        201173
+      ],
+      "eventSkillIds": [
+        200332,
+        200352,
+        200172,
+        201142,
+        201192,
+        200452
+      ],
+      "evolvedSkills": [
+        {
+          "new": 106801111,
+          "old": 200531
+        },
+        {
+          "new": 106801211,
+          "old": 201173
+        },
+        {
+          "new": 106801221,
+          "old": 201173
+        }
+      ]
+    },
+    {
+      "cardId": 102501,
+      "characterId": 1025,
+      "characterName": "Manhattan Cafe",
+      "characterNameJp": "マンハッタンカフェ",
+      "outfitTitle": "[Creeping Shadow]",
+      "variant": null,
+      "rarity": 3,
+      "releaseGlobal": "2025-12-08",
+      "urlName": "102501-manhattan-cafe",
+      "imageUrl": "https://gametora.com/images/umamusume/characters/chara_stand_1025_102501.png",
+      "thumbnailUrl": "https://gametora.com/images/umamusume/characters/thumb/chara_stand_1025_102501.png",
+      "aptitudes": [
+        "A",
+        "G",
+        "G",
+        "F",
+        "B",
+        "A",
+        "G",
+        "C",
+        "A",
+        "C"
+      ],
+      "baseStats": [
+        83,
+        98,
+        94,
+        86,
+        89
+      ],
+      "fourStarStats": [
+        92,
+        109,
+        105,
+        95,
+        99
+      ],
+      "fiveStarStats": [
+        101,
+        120,
+        115,
+        105,
+        109
+      ],
+      "statBonuses": [
+        0,
+        30,
+        0,
+        0,
+        0
+      ],
+      "uniqueSkillIds": [
+        100251
+      ],
+      "innateSkillIds": [
+        200232,
+        201222,
+        201422
+      ],
+      "awakeningSkillIds": [
+        201581,
+        201421,
+        201202,
+        201221
+      ],
+      "eventSkillIds": [
+        200602,
+        201172,
+        201182
+      ],
+      "evolvedSkills": [
+        {
+          "new": 102501111,
+          "old": 201421
+        },
+        {
+          "new": 102501211,
+          "old": 201221
+        }
+      ]
+    },
+    {
+      "cardId": 100401,
+      "characterId": 1004,
+      "characterName": "Maruzensky",
+      "characterNameJp": "マルゼンスキー",
+      "outfitTitle": "[Formula R]",
+      "variant": null,
+      "rarity": 3,
+      "releaseGlobal": "2025-06-26",
+      "urlName": "100401-maruzensky",
+      "imageUrl": "https://gametora.com/images/umamusume/characters/chara_stand_1004_100401.png",
+      "thumbnailUrl": "https://gametora.com/images/umamusume/characters/thumb/chara_stand_1004_100401.png",
+      "aptitudes": [
+        "A",
+        "D",
+        "B",
+        "A",
+        "B",
+        "C",
+        "A",
+        "E",
+        "G",
+        "G"
+      ],
+      "baseStats": [
+        96,
+        68,
+        86,
+        100,
+        100
+      ],
+      "fourStarStats": [
+        107,
+        76,
+        96,
+        111,
+        110
+      ],
+      "fiveStarStats": [
+        118,
+        84,
+        105,
+        122,
+        121
+      ],
+      "statBonuses": [
+        10,
+        0,
+        0,
+        0,
+        20
+      ],
+      "uniqueSkillIds": [
+        100041
+      ],
+      "innateSkillIds": [
+        200362,
+        201052,
+        200532
+      ],
+      "awakeningSkillIds": [
+        201062,
+        201051,
+        200432,
+        201061
+      ],
+      "eventSkillIds": [
+        200982,
+        200742
+      ],
+      "evolvedSkills": [
+        {
+          "new": 100401111,
+          "old": 201051
+        },
+        {
+          "new": 100401211,
+          "old": 201061
+        },
+        {
+          "new": 100401221,
+          "old": 201061
+        }
+      ]
+    },
+    {
+      "cardId": 100402,
+      "characterId": 1004,
+      "characterName": "Maruzensky",
+      "characterNameJp": "マルゼンスキー",
+      "outfitTitle": "[Hot☆Summer Night]",
+      "variant": "summer",
+      "rarity": 3,
+      "releaseGlobal": "2025-10-14",
+      "urlName": "100402-maruzensky",
+      "imageUrl": "https://gametora.com/images/umamusume/characters/chara_stand_1004_100402.png",
+      "thumbnailUrl": "https://gametora.com/images/umamusume/characters/thumb/chara_stand_1004_100402.png",
+      "aptitudes": [
+        "A",
+        "D",
+        "B",
+        "A",
+        "B",
+        "C",
+        "A",
+        "E",
+        "G",
+        "G"
+      ],
+      "baseStats": [
+        100,
+        69,
+        93,
+        87,
+        101
+      ],
+      "fourStarStats": [
+        111,
+        77,
+        104,
+        97,
+        111
+      ],
+      "fiveStarStats": [
+        122,
+        85,
+        114,
+        107,
+        122
+      ],
+      "statBonuses": [
+        15,
+        0,
+        0,
+        0,
+        15
+      ],
+      "uniqueSkillIds": [
+        110041
+      ],
+      "innateSkillIds": [
+        200352,
+        200682,
+        201282
+      ],
+      "awakeningSkillIds": [
+        201571,
+        201281,
+        201082,
+        200681
+      ],
+      "eventSkillIds": [
+        200982,
+        200742,
+        200542
+      ],
+      "evolvedSkills": [
+        {
+          "new": 100402111,
+          "old": 201281
+        },
+        {
+          "new": 100402121,
+          "old": 201281
+        },
+        {
+          "new": 100402211,
+          "old": 200681
+        }
+      ]
+    },
+    {
+      "cardId": 105601,
+      "characterId": 1056,
+      "characterName": "Matikanefukukitaru",
+      "characterNameJp": "マチカネフクキタル",
+      "outfitTitle": "[Rising☆Fortune]",
+      "variant": null,
+      "rarity": 1,
+      "releaseGlobal": "2025-06-26",
+      "urlName": "105601-matikanefukukitaru",
+      "imageUrl": "https://gametora.com/images/umamusume/characters/chara_stand_1056_105601.png",
+      "thumbnailUrl": "https://gametora.com/images/umamusume/characters/thumb/chara_stand_1056_105601.png",
+      "aptitudes": [
+        "A",
+        "F",
+        "F",
+        "C",
+        "A",
+        "A",
+        "G",
+        "B",
+        "A",
+        "F"
+      ],
+      "baseStats": [
+        77,
+        81,
+        88,
+        81,
+        73
+      ],
+      "fourStarStats": [
+        97,
+        101,
+        110,
+        101,
+        91
+      ],
+      "fiveStarStats": [
+        106,
+        111,
+        121,
+        111,
+        101
+      ],
+      "statBonuses": [
+        0,
+        20,
+        10,
+        0,
+        0
+      ],
+      "uniqueSkillIds": [
+        10561,
+        100561
+      ],
+      "innateSkillIds": [
+        201562,
+        201422,
+        201232
+      ],
+      "awakeningSkillIds": [
+        201571,
+        201231,
+        200781,
+        201561
+      ],
+      "eventSkillIds": [
+        200851,
+        200602
+      ],
+      "evolvedSkills": [
+        {
+          "new": 105601111,
+          "old": 201231
+        },
+        {
+          "new": 105601211,
+          "old": 201561
+        }
+      ]
+    },
+    {
+      "cardId": 105602,
+      "characterId": 1056,
+      "characterName": "Matikanefukukitaru",
+      "characterNameJp": "マチカネフクキタル",
+      "outfitTitle": "[Lucky Tidings]",
+      "variant": "full_armor",
+      "rarity": 3,
+      "releaseGlobal": "2025-11-06",
+      "urlName": "105602-matikanefukukitaru",
+      "imageUrl": "https://gametora.com/images/umamusume/characters/chara_stand_1056_105602.png",
+      "thumbnailUrl": "https://gametora.com/images/umamusume/characters/thumb/chara_stand_1056_105602.png",
+      "aptitudes": [
+        "A",
+        "F",
+        "F",
+        "C",
+        "A",
+        "A",
+        "G",
+        "B",
+        "A",
+        "F"
+      ],
+      "baseStats": [
+        87,
+        100,
+        94,
+        94,
+        75
+      ],
+      "fourStarStats": [
+        96,
+        111,
+        104,
+        104,
+        85
+      ],
+      "fiveStarStats": [
+        106,
+        122,
+        115,
+        115,
+        92
+      ],
+      "statBonuses": [
+        0,
+        10,
+        0,
+        10,
+        10
+      ],
+      "uniqueSkillIds": [
+        110561
+      ],
+      "innateSkillIds": [
+        200012,
+        200602,
+        201212
+      ],
+      "awakeningSkillIds": [
+        200752,
+        201211,
+        200062,
+        200751
+      ],
+      "eventSkillIds": [
+        200851,
+        201562,
+        200602
+      ],
+      "evolvedSkills": [
+        {
+          "new": 105602111,
+          "old": 201211
+        },
+        {
+          "new": 105602121,
+          "old": 201211
+        },
+        {
+          "new": 105602211,
+          "old": 200751
+        }
+      ]
+    },
+    {
+      "cardId": 106201,
+      "characterId": 1062,
+      "characterName": "Matikanetannhauser",
+      "characterNameJp": "マチカネタンホイザ",
+      "outfitTitle": "[Clippety-Tippety-Clop]",
+      "variant": null,
+      "rarity": 2,
+      "releaseGlobal": "2026-03-12",
+      "urlName": "106201-matikanetannhauser",
+      "imageUrl": "https://gametora.com/images/umamusume/characters/chara_stand_1062_106201.png",
+      "thumbnailUrl": "https://gametora.com/images/umamusume/characters/thumb/chara_stand_1062_106201.png",
+      "aptitudes": [
+        "A",
+        "G",
+        "G",
+        "D",
+        "A",
+        "A",
+        "F",
+        "A",
+        "A",
+        "E"
+      ],
+      "baseStats": [
+        79,
+        91,
+        82,
+        88,
+        85
+      ],
+      "fourStarStats": [
+        93,
+        107,
+        97,
+        103,
+        100
+      ],
+      "fiveStarStats": [
+        103,
+        117,
+        106,
+        114,
+        110
+      ],
+      "statBonuses": [
+        0,
+        20,
+        0,
+        10,
+        0
+      ],
+      "uniqueSkillIds": [
+        10621,
+        100621
+      ],
+      "innateSkillIds": [
+        200482,
+        201212,
+        200602
+      ],
+      "awakeningSkillIds": [
+        201621,
+        200481,
+        200512,
+        201211
+      ],
+      "eventSkillIds": [
+        200472,
+        201042,
+        200752,
+        200702,
+        201702
+      ],
+      "evolvedSkills": [
+        {
+          "new": 106201111,
+          "old": 200481
+        },
+        {
+          "new": 106201211,
+          "old": 201211
+        }
+      ]
+    },
+    {
+      "cardId": 102401,
+      "characterId": 1024,
+      "characterName": "Mayano Top Gun",
+      "characterNameJp": "マヤノトップガン",
+      "outfitTitle": "[Scramble☆Zone]",
+      "variant": null,
+      "rarity": 2,
+      "releaseGlobal": "2025-06-26",
+      "urlName": "102401-mayano-top-gun",
+      "imageUrl": "https://gametora.com/images/umamusume/characters/chara_stand_1024_102401.png",
+      "thumbnailUrl": "https://gametora.com/images/umamusume/characters/thumb/chara_stand_1024_102401.png",
+      "aptitudes": [
+        "A",
+        "E",
+        "D",
+        "D",
+        "A",
+        "A",
+        "A",
+        "A",
+        "B",
+        "B"
+      ],
+      "baseStats": [
+        73,
+        100,
+        67,
+        95,
+        90
+      ],
+      "fourStarStats": [
+        86,
+        118,
+        79,
+        112,
+        105
+      ],
+      "fiveStarStats": [
+        94,
+        130,
+        86,
+        123,
+        117
+      ],
+      "statBonuses": [
+        0,
+        20,
+        0,
+        10,
+        0
+      ],
+      "uniqueSkillIds": [
+        10241,
+        100241
+      ],
+      "innateSkillIds": [
+        200382,
+        201272,
+        200742
+      ],
+      "awakeningSkillIds": [
+        200492,
+        200381,
+        200502,
+        200491
+      ],
+      "eventSkillIds": [
+        200362,
+        200552,
+        201902,
+        200602,
+        200642
+      ],
+      "evolvedSkills": [
+        {
+          "new": 102401111,
+          "old": 200381
+        },
+        {
+          "new": 102401211,
+          "old": 200491
+        }
+      ]
+    },
+    {
+      "cardId": 102402,
+      "characterId": 1024,
+      "characterName": "Mayano Top Gun",
+      "characterNameJp": "マヤノトップガン",
+      "outfitTitle": "[Sunlight Bouquet]",
+      "variant": "wedding",
+      "rarity": 3,
+      "releaseGlobal": "2025-08-28",
+      "urlName": "102402-mayano-top-gun",
+      "imageUrl": "https://gametora.com/images/umamusume/characters/chara_stand_1024_102402.png",
+      "thumbnailUrl": "https://gametora.com/images/umamusume/characters/thumb/chara_stand_1024_102402.png",
+      "aptitudes": [
+        "A",
+        "E",
+        "D",
+        "D",
+        "A",
+        "A",
+        "A",
+        "A",
+        "B",
+        "B"
+      ],
+      "baseStats": [
+        83,
+        100,
+        82,
+        90,
+        95
+      ],
+      "fourStarStats": [
+        92,
+        112,
+        91,
+        100,
+        105
+      ],
+      "fiveStarStats": [
+        102,
+        123,
+        100,
+        110,
+        115
+      ],
+      "statBonuses": [
+        10,
+        10,
+        0,
+        0,
+        10
+      ],
+      "uniqueSkillIds": [
+        110241
+      ],
+      "innateSkillIds": [
+        200352,
+        201332,
+        201162
+      ],
+      "awakeningSkillIds": [
+        200432,
+        201161,
+        200332,
+        200351
+      ],
+      "eventSkillIds": [
+        200362,
+        200472,
+        200372,
+        200552,
+        201902,
+        200602,
+        200642
+      ],
+      "evolvedSkills": [
+        {
+          "new": 102402111,
+          "old": 201161
+        },
+        {
+          "new": 102402211,
+          "old": 200351
+        }
+      ]
+    },
+    {
+      "cardId": 105801,
+      "characterId": 1058,
+      "characterName": "Meisho Doto",
+      "characterNameJp": "メイショウドトウ",
+      "outfitTitle": "[Turbulent Blue]",
+      "variant": null,
+      "rarity": 3,
+      "releaseGlobal": "2025-10-21",
+      "urlName": "105801-meisho-doto",
+      "imageUrl": "https://gametora.com/images/umamusume/characters/chara_stand_1058_105801.png",
+      "thumbnailUrl": "https://gametora.com/images/umamusume/characters/thumb/chara_stand_1058_105801.png",
+      "aptitudes": [
+        "A",
+        "E",
+        "G",
+        "F",
+        "A",
+        "A",
+        "F",
+        "A",
+        "B",
+        "E"
+      ],
+      "baseStats": [
+        93,
+        95,
+        85,
+        96,
+        81
+      ],
+      "fourStarStats": [
+        103,
+        105,
+        95,
+        107,
+        90
+      ],
+      "fiveStarStats": [
+        113,
+        116,
+        104,
+        118,
+        99
+      ],
+      "statBonuses": [
+        0,
+        20,
+        0,
+        10,
+        0
+      ],
+      "uniqueSkillIds": [
+        100581
+      ],
+      "innateSkillIds": [
+        200472,
+        201112,
+        200582
+      ],
+      "awakeningSkillIds": [
+        200142,
+        200581,
+        200861,
+        200471
+      ],
+      "eventSkillIds": [
+        201362,
+        200582,
+        200722
+      ],
+      "evolvedSkills": [
+        {
+          "new": 105801111,
+          "old": 200581
+        },
+        {
+          "new": 105801211,
+          "old": 200471
+        }
+      ]
+    },
+    {
+      "cardId": 107101,
+      "characterId": 1071,
+      "characterName": "Mejiro Ardan",
+      "characterNameJp": "メジロアルダン",
+      "outfitTitle": "[Crystalline]",
+      "variant": null,
+      "rarity": 3,
+      "releaseGlobal": "2026-02-25",
+      "urlName": "107101-mejiro-ardan",
+      "imageUrl": "https://gametora.com/images/umamusume/characters/chara_stand_1071_107101.png",
+      "thumbnailUrl": "https://gametora.com/images/umamusume/characters/thumb/chara_stand_1071_107101.png",
+      "aptitudes": [
+        "A",
+        "F",
+        "E",
+        "B",
+        "A",
+        "D",
+        "C",
+        "A",
+        "D",
+        "G"
+      ],
+      "baseStats": [
+        92,
+        89,
+        89,
+        80,
+        100
+      ],
+      "fourStarStats": [
+        102,
+        99,
+        99,
+        89,
+        111
+      ],
+      "fiveStarStats": [
+        113,
+        109,
+        109,
+        98,
+        121
+      ],
+      "statBonuses": [
+        10,
+        0,
+        0,
+        0,
+        20
+      ],
+      "uniqueSkillIds": [
+        100711
+      ],
+      "innateSkillIds": [
+        200022,
+        200572,
+        201702
+      ],
+      "awakeningSkillIds": [
+        201322,
+        200571,
+        201142,
+        201701
+      ],
+      "eventSkillIds": [
+        200582,
+        201532,
+        201702,
+        200732,
+        201212,
+        200462,
+        200352
+      ],
+      "evolvedSkills": [
+        {
+          "new": 107101111,
+          "old": 200571
+        },
+        {
+          "new": 107101211,
+          "old": 201701
+        }
+      ]
+    },
+    {
+      "cardId": 107401,
+      "characterId": 1074,
+      "characterName": "Mejiro Bright",
+      "characterNameJp": "メジロブライト",
+      "outfitTitle": "[Brunissage Line]",
+      "variant": null,
+      "rarity": 3,
+      "releaseGlobal": "2026-03-26",
+      "urlName": "107401-mejiro-bright",
+      "imageUrl": "https://gametora.com/images/umamusume/characters/chara_stand_1074_107401.png",
+      "thumbnailUrl": "https://gametora.com/images/umamusume/characters/thumb/chara_stand_1074_107401.png",
+      "aptitudes": [
+        "A",
+        "G",
+        "F",
+        "C",
+        "A",
+        "A",
+        "G",
+        "D",
+        "A",
+        "A"
+      ],
+      "baseStats": [
+        89,
+        107,
+        87,
+        75,
+        92
+      ],
+      "fourStarStats": [
+        99,
+        119,
+        97,
+        83,
+        102
+      ],
+      "fiveStarStats": [
+        109,
+        130,
+        106,
+        92,
+        113
+      ],
+      "statBonuses": [
+        0,
+        14,
+        0,
+        8,
+        8
+      ],
+      "uniqueSkillIds": [
+        100741
+      ],
+      "innateSkillIds": [
+        200472,
+        201462,
+        202072
+      ],
+      "awakeningSkillIds": [
+        201212,
+        200471,
+        201222,
+        202071
+      ],
+      "eventSkillIds": [
+        200162,
+        200752,
+        200732,
+        200142,
+        201182,
+        201202,
+        201232
+      ],
+      "evolvedSkills": [
+        {
+          "new": 107401111,
+          "old": 200471
+        },
+        {
+          "new": 107401211,
+          "old": 202071
+        }
+      ]
+    },
+    {
+      "cardId": 105901,
+      "characterId": 1059,
+      "characterName": "Mejiro Dober",
+      "characterNameJp": "メジロドーベル",
+      "outfitTitle": "[Off the Line]",
+      "variant": null,
+      "rarity": 3,
+      "releaseGlobal": "2025-12-28",
+      "urlName": "105901-mejiro-dober",
+      "imageUrl": "https://gametora.com/images/umamusume/characters/chara_stand_1059_105901.png",
+      "thumbnailUrl": "https://gametora.com/images/umamusume/characters/thumb/chara_stand_1059_105901.png",
+      "aptitudes": [
+        "A",
+        "G",
+        "E",
+        "A",
+        "A",
+        "F",
+        "C",
+        "B",
+        "A",
+        "G"
+      ],
+      "baseStats": [
+        96,
+        85,
+        97,
+        75,
+        97
+      ],
+      "fourStarStats": [
+        107,
+        95,
+        108,
+        83,
+        107
+      ],
+      "fiveStarStats": [
+        117,
+        104,
+        119,
+        92,
+        118
+      ],
+      "statBonuses": [
+        10,
+        0,
+        0,
+        0,
+        20
+      ],
+      "uniqueSkillIds": [
+        100591
+      ],
+      "innateSkillIds": [
+        200062,
+        201442,
+        201142
+      ],
+      "awakeningSkillIds": [
+        201382,
+        201441,
+        200722,
+        200064
+      ],
+      "eventSkillIds": [
+        200192,
+        201072,
+        201702
+      ],
+      "evolvedSkills": [
+        {
+          "new": 105901111,
+          "old": 201441
+        },
+        {
+          "new": 105901121,
+          "old": 201441
+        },
+        {
+          "new": 105901211,
+          "old": 200064
+        }
+      ]
+    },
+    {
+      "cardId": 105902,
+      "characterId": 1059,
+      "characterName": "Mejiro Dober",
+      "characterNameJp": "メジロドーベル",
+      "outfitTitle": "[Sapphire Sojourn]",
+      "variant": "camping",
+      "rarity": 3,
+      "releaseGlobal": "2026-06-11",
+      "urlName": "105902-mejiro-dober",
+      "imageUrl": "https://gametora.com/images/umamusume/characters/chara_stand_1059_105902.png",
+      "thumbnailUrl": "https://gametora.com/images/umamusume/characters/thumb/chara_stand_1059_105902.png",
+      "aptitudes": [
+        "A",
+        "G",
+        "E",
+        "A",
+        "A",
+        "F",
+        "C",
+        "B",
+        "A",
+        "G"
+      ],
+      "baseStats": [
+        94,
+        78,
+        92,
+        86,
+        100
+      ],
+      "fourStarStats": [
+        104,
+        86,
+        103,
+        96,
+        111
+      ],
+      "fiveStarStats": [
+        115,
+        95,
+        113,
+        105,
+        122
+      ],
+      "statBonuses": [
+        20,
+        0,
+        0,
+        0,
+        10
+      ],
+      "uniqueSkillIds": [
+        110591
+      ],
+      "innateSkillIds": [
+        200062,
+        202122,
+        202082
+      ],
+      "awakeningSkillIds": [
+        201102,
+        202121,
+        202152,
+        202081
+      ],
+      "eventSkillIds": [
+        200192,
+        200702,
+        202172,
+        201072,
+        201702
+      ],
+      "evolvedSkills": [
+        {
+          "new": 105902111,
+          "old": 202121
+        },
+        {
+          "new": 105902121,
+          "old": 202121
+        },
+        {
+          "new": 105902211,
+          "old": 202081
+        }
+      ]
+    },
+    {
+      "cardId": 101301,
+      "characterId": 1013,
+      "characterName": "Mejiro McQueen",
+      "characterNameJp": "メジロマックイーン",
+      "outfitTitle": "[Frontline Elegance]",
+      "variant": null,
+      "rarity": 3,
+      "releaseGlobal": "2025-06-26",
+      "urlName": "101301-mejiro-mcqueen",
+      "imageUrl": "https://gametora.com/images/umamusume/characters/chara_stand_1013_101301.png",
+      "thumbnailUrl": "https://gametora.com/images/umamusume/characters/thumb/chara_stand_1013_101301.png",
+      "aptitudes": [
+        "A",
+        "E",
+        "G",
+        "F",
+        "A",
+        "A",
+        "B",
+        "A",
+        "D",
+        "F"
+      ],
+      "baseStats": [
+        71,
+        111,
+        71,
+        103,
+        94
+      ],
+      "fourStarStats": [
+        79,
+        123,
+        79,
+        114,
+        105
+      ],
+      "fiveStarStats": [
+        87,
+        136,
+        87,
+        125,
+        115
+      ],
+      "statBonuses": [
+        0,
+        20,
+        0,
+        0,
+        10
+      ],
+      "uniqueSkillIds": [
+        100131
+      ],
+      "innateSkillIds": [
+        200172,
+        200562,
+        201192
+      ],
+      "awakeningSkillIds": [
+        201182,
+        201191,
+        201352,
+        200561
+      ],
+      "eventSkillIds": [
+        200532
+      ],
+      "evolvedSkills": [
+        {
+          "new": 101301111,
+          "old": 201191
+        },
+        {
+          "new": 101301211,
+          "old": 200561
+        }
+      ]
+    },
+    {
+      "cardId": 101302,
+      "characterId": 1013,
+      "characterName": "Mejiro McQueen",
+      "characterNameJp": "メジロマックイーン",
+      "outfitTitle": "[End of the Skies]",
+      "variant": "anime_collab",
+      "rarity": 3,
+      "releaseGlobal": "2025-07-16",
+      "urlName": "101302-mejiro-mcqueen",
+      "imageUrl": "https://gametora.com/images/umamusume/characters/chara_stand_1013_101302.png",
+      "thumbnailUrl": "https://gametora.com/images/umamusume/characters/thumb/chara_stand_1013_101302.png",
+      "aptitudes": [
+        "A",
+        "E",
+        "G",
+        "F",
+        "A",
+        "A",
+        "B",
+        "A",
+        "D",
+        "F"
+      ],
+      "baseStats": [
+        74,
+        110,
+        72,
+        108,
+        86
+      ],
+      "fourStarStats": [
+        82,
+        122,
+        80,
+        120,
+        96
+      ],
+      "fiveStarStats": [
+        90,
+        134,
+        89,
+        132,
+        105
+      ],
+      "statBonuses": [
+        0,
+        10,
+        10,
+        0,
+        10
+      ],
+      "uniqueSkillIds": [
+        110131
+      ],
+      "innateSkillIds": [
+        200362,
+        200562,
+        200742
+      ],
+      "awakeningSkillIds": [
+        200192,
+        200741,
+        200462,
+        200361
+      ],
+      "eventSkillIds": [
+        200532,
+        200482,
+        200452
+      ],
+      "evolvedSkills": [
+        {
+          "new": 101302111,
+          "old": 200741
+        },
+        {
+          "new": 101302211,
+          "old": 200361
+        }
+      ]
+    },
+    {
+      "cardId": 106401,
+      "characterId": 1064,
+      "characterName": "Mejiro Palmer",
+      "characterNameJp": "メジロパーマー",
+      "outfitTitle": "[Line Breakthrough]",
+      "variant": null,
+      "rarity": 3,
+      "releaseGlobal": "2026-05-10",
+      "urlName": "106401-mejiro-palmer",
+      "imageUrl": "https://gametora.com/images/umamusume/characters/chara_stand_1064_106401.png",
+      "thumbnailUrl": "https://gametora.com/images/umamusume/characters/thumb/chara_stand_1064_106401.png",
+      "aptitudes": [
+        "A",
+        "G",
+        "G",
+        "F",
+        "A",
+        "A",
+        "A",
+        "E",
+        "F",
+        "G"
+      ],
+      "baseStats": [
+        92,
+        103,
+        76,
+        91,
+        88
+      ],
+      "fourStarStats": [
+        102,
+        115,
+        84,
+        101,
+        98
+      ],
+      "fiveStarStats": [
+        112,
+        126,
+        93,
+        111,
+        108
+      ],
+      "statBonuses": [
+        10,
+        10,
+        0,
+        10,
+        0
+      ],
+      "uniqueSkillIds": [
+        100641
+      ],
+      "innateSkillIds": [
+        201661,
+        201242,
+        201192
+      ],
+      "awakeningSkillIds": [
+        200532,
+        201662,
+        200302,
+        201191
+      ],
+      "eventSkillIds": [
+        201522,
+        201631,
+        202051
+      ],
+      "evolvedSkills": [
+        {
+          "new": 106401111,
+          "old": 201662
+        },
+        {
+          "new": 106401211,
+          "old": 201191
+        },
+        {
+          "new": 106401221,
+          "old": 201191
+        }
+      ]
+    },
+    {
+      "cardId": 102701,
+      "characterId": 1027,
+      "characterName": "Mejiro Ryan",
+      "characterNameJp": "メジロライアン",
+      "outfitTitle": "[Down the Line]",
+      "variant": null,
+      "rarity": 1,
+      "releaseGlobal": "2025-06-26",
+      "urlName": "102701-mejiro-ryan",
+      "imageUrl": "https://gametora.com/images/umamusume/characters/chara_stand_1027_102701.png",
+      "thumbnailUrl": "https://gametora.com/images/umamusume/characters/thumb/chara_stand_1027_102701.png",
+      "aptitudes": [
+        "A",
+        "G",
+        "E",
+        "C",
+        "A",
+        "B",
+        "F",
+        "A",
+        "A",
+        "F"
+      ],
+      "baseStats": [
+        87,
+        66,
+        95,
+        71,
+        81
+      ],
+      "fourStarStats": [
+        109,
+        83,
+        118,
+        89,
+        101
+      ],
+      "fiveStarStats": [
+        120,
+        91,
+        130,
+        98,
+        111
+      ],
+      "statBonuses": [
+        0,
+        0,
+        20,
+        0,
+        10
+      ],
+      "uniqueSkillIds": [
+        10271,
+        100271
+      ],
+      "innateSkillIds": [
+        200232,
+        200722,
+        200612
+      ],
+      "awakeningSkillIds": [
+        200472,
+        200721,
+        201102,
+        200611
+      ],
+      "eventSkillIds": [
+        200162,
+        200602
+      ],
+      "evolvedSkills": [
+        {
+          "new": 102701111,
+          "old": 200721
+        },
+        {
+          "new": 102701211,
+          "old": 200611
+        }
+      ]
+    },
+    {
+      "cardId": 102601,
+      "characterId": 1026,
+      "characterName": "Mihono Bourbon",
+      "characterNameJp": "ミホノブルボン",
+      "outfitTitle": "[MB-19890425]",
+      "variant": null,
+      "rarity": 3,
+      "releaseGlobal": "2025-07-02",
+      "urlName": "102601-mihono-bourbon",
+      "imageUrl": "https://gametora.com/images/umamusume/characters/chara_stand_1026_102601.png",
+      "thumbnailUrl": "https://gametora.com/images/umamusume/characters/thumb/chara_stand_1026_102601.png",
+      "aptitudes": [
+        "A",
+        "G",
+        "C",
+        "B",
+        "A",
+        "B",
+        "A",
+        "E",
+        "G",
+        "G"
+      ],
+      "baseStats": [
+        96,
+        72,
+        92,
+        102,
+        88
+      ],
+      "fourStarStats": [
+        106,
+        80,
+        102,
+        113,
+        99
+      ],
+      "fiveStarStats": [
+        117,
+        88,
+        112,
+        124,
+        109
+      ],
+      "statBonuses": [
+        0,
+        20,
+        10,
+        0,
+        0
+      ],
+      "uniqueSkillIds": [
+        100261
+      ],
+      "innateSkillIds": [
+        200232,
+        200532,
+        200712
+      ],
+      "awakeningSkillIds": [
+        201242,
+        200531,
+        201252,
+        200711
+      ],
+      "eventSkillIds": [
+        200162,
+        200552,
+        200372
+      ],
+      "evolvedSkills": [
+        {
+          "new": 102601111,
+          "old": 200531
+        },
+        {
+          "new": 102601211,
+          "old": 200711
+        }
+      ]
+    },
+    {
+      "cardId": 102602,
+      "characterId": 1026,
+      "characterName": "Mihono Bourbon",
+      "characterNameJp": "ミホノブルボン",
+      "outfitTitle": "[CODE: ICING]",
+      "variant": "valentine",
+      "rarity": 3,
+      "releaseGlobal": "2026-02-18",
+      "urlName": "102602-mihono-bourbon",
+      "imageUrl": "https://gametora.com/images/umamusume/characters/chara_stand_1026_102602.png",
+      "thumbnailUrl": "https://gametora.com/images/umamusume/characters/thumb/chara_stand_1026_102602.png",
+      "aptitudes": [
+        "A",
+        "G",
+        "C",
+        "B",
+        "A",
+        "B",
+        "A",
+        "E",
+        "G",
+        "G"
+      ],
+      "baseStats": [
+        100,
+        68,
+        92,
+        96,
+        94
+      ],
+      "fourStarStats": [
+        111,
+        75,
+        102,
+        106,
+        106
+      ],
+      "fiveStarStats": [
+        123,
+        83,
+        112,
+        117,
+        115
+      ],
+      "statBonuses": [
+        10,
+        10,
+        10,
+        0,
+        0
+      ],
+      "uniqueSkillIds": [
+        110261
+      ],
+      "innateSkillIds": [
+        200432,
+        200542,
+        200762
+      ],
+      "awakeningSkillIds": [
+        201522,
+        200541,
+        201601,
+        200431
+      ],
+      "eventSkillIds": [
+        200162,
+        200532,
+        201082,
+        200552,
+        200372
+      ],
+      "evolvedSkills": [
+        {
+          "new": 102602111,
+          "old": 200541
+        },
+        {
+          "new": 102602121,
+          "old": 200541
+        },
+        {
+          "new": 102602211,
+          "old": 200431
+        }
+      ]
+    },
+    {
+      "cardId": 101601,
+      "characterId": 1016,
+      "characterName": "Narita Brian",
+      "characterNameJp": "ナリタブライアン",
+      "outfitTitle": "[Maverick]",
+      "variant": null,
+      "rarity": 3,
+      "releaseGlobal": "2025-08-20",
+      "urlName": "101601-narita-brian",
+      "imageUrl": "https://gametora.com/images/umamusume/characters/chara_stand_1016_101601.png",
+      "thumbnailUrl": "https://gametora.com/images/umamusume/characters/thumb/chara_stand_1016_101601.png",
+      "aptitudes": [
+        "A",
+        "G",
+        "F",
+        "B",
+        "A",
+        "A",
+        "G",
+        "A",
+        "A",
+        "D"
+      ],
+      "baseStats": [
+        93,
+        89,
+        100,
+        89,
+        79
+      ],
+      "fourStarStats": [
+        103,
+        99,
+        111,
+        98,
+        89
+      ],
+      "fiveStarStats": [
+        113,
+        109,
+        122,
+        108,
+        98
+      ],
+      "statBonuses": [
+        10,
+        20,
+        0,
+        0,
+        0
+      ],
+      "uniqueSkillIds": [
+        100161
+      ],
+      "innateSkillIds": [
+        200362,
+        201102,
+        200572
+      ],
+      "awakeningSkillIds": [
+        200512,
+        200361,
+        201641,
+        200511
+      ],
+      "eventSkillIds": [
+        201202
+      ],
+      "evolvedSkills": [
+        {
+          "new": 101601111,
+          "old": 200361
+        },
+        {
+          "new": 101601211,
+          "old": 200511
+        }
+      ]
+    },
+    {
+      "cardId": 105001,
+      "characterId": 1050,
+      "characterName": "Narita Taishin",
+      "characterNameJp": "ナリタタイシン",
+      "outfitTitle": "[Nevertheless]",
+      "variant": null,
+      "rarity": 3,
+      "releaseGlobal": "2025-08-03",
+      "urlName": "105001-narita-taishin",
+      "imageUrl": "https://gametora.com/images/umamusume/characters/chara_stand_1050_105001.png",
+      "thumbnailUrl": "https://gametora.com/images/umamusume/characters/thumb/chara_stand_1050_105001.png",
+      "aptitudes": [
+        "A",
+        "G",
+        "F",
+        "D",
+        "A",
+        "A",
+        "G",
+        "F",
+        "B",
+        "A"
+      ],
+      "baseStats": [
+        96,
+        82,
+        99,
+        79,
+        94
+      ],
+      "fourStarStats": [
+        107,
+        91,
+        110,
+        88,
+        104
+      ],
+      "fiveStarStats": [
+        118,
+        100,
+        121,
+        97,
+        114
+      ],
+      "statBonuses": [
+        10,
+        0,
+        0,
+        20,
+        0
+      ],
+      "uniqueSkillIds": [
+        100501
+      ],
+      "innateSkillIds": [
+        201641,
+        200622,
+        201162
+      ],
+      "awakeningSkillIds": [
+        200642,
+        200621,
+        201452,
+        200641
+      ],
+      "eventSkillIds": [
+        200622,
+        202022
+      ],
+      "evolvedSkills": [
+        {
+          "new": 105001111,
+          "old": 200621
+        },
+        {
+          "new": 105001211,
+          "old": 200641
+        }
+      ]
+    },
+    {
+      "cardId": 106001,
+      "characterId": 1060,
+      "characterName": "Nice Nature",
+      "characterNameJp": "ナイスネイチャ",
+      "outfitTitle": "[Poinsettia Ribbon]",
+      "variant": null,
+      "rarity": 1,
+      "releaseGlobal": "2025-06-26",
+      "urlName": "106001-nice-nature",
+      "imageUrl": "https://gametora.com/images/umamusume/characters/chara_stand_1060_106001.png",
+      "thumbnailUrl": "https://gametora.com/images/umamusume/characters/thumb/chara_stand_1060_106001.png",
+      "aptitudes": [
+        "A",
+        "G",
+        "G",
+        "C",
+        "A",
+        "A",
+        "F",
+        "B",
+        "A",
+        "D"
+      ],
+      "baseStats": [
+        86,
+        72,
+        89,
+        69,
+        84
+      ],
+      "fourStarStats": [
+        107,
+        90,
+        112,
+        87,
+        104
+      ],
+      "fiveStarStats": [
+        118,
+        99,
+        123,
+        96,
+        114
+      ],
+      "statBonuses": [
+        0,
+        0,
+        20,
+        0,
+        10
+      ],
+      "uniqueSkillIds": [
+        10601,
+        100601
+      ],
+      "innateSkillIds": [
+        200122,
+        201162,
+        201442
+      ],
+      "awakeningSkillIds": [
+        200911,
+        201161,
+        201422,
+        201441
+      ],
+      "eventSkillIds": [
+        201432,
+        200512
+      ],
+      "evolvedSkills": [
+        {
+          "new": 106001111,
+          "old": 201161
+        },
+        {
+          "new": 106001211,
+          "old": 201441
+        }
+      ]
+    },
+    {
+      "cardId": 106002,
+      "characterId": 1060,
+      "characterName": "Nice Nature",
+      "characterNameJp": "ナイスネイチャ",
+      "outfitTitle": "[Run & Win]",
+      "variant": "cheerleader",
+      "rarity": 3,
+      "releaseGlobal": "2026-04-26",
+      "urlName": "106002-nice-nature",
+      "imageUrl": "https://gametora.com/images/umamusume/characters/chara_stand_1060_106002.png",
+      "thumbnailUrl": "https://gametora.com/images/umamusume/characters/thumb/chara_stand_1060_106002.png",
+      "aptitudes": [
+        "A",
+        "G",
+        "G",
+        "C",
+        "A",
+        "A",
+        "F",
+        "B",
+        "A",
+        "D"
+      ],
+      "baseStats": [
+        86,
+        86,
+        94,
+        86,
+        98
+      ],
+      "fourStarStats": [
+        95,
+        95,
+        105,
+        95,
+        110
+      ],
+      "fiveStarStats": [
+        105,
+        105,
+        115,
+        105,
+        120
+      ],
+      "statBonuses": [
+        0,
+        10,
+        10,
+        0,
+        10
+      ],
+      "uniqueSkillIds": [
+        110601
+      ],
+      "innateSkillIds": [
+        200492,
+        201152,
+        201542
+      ],
+      "awakeningSkillIds": [
+        202082,
+        201151,
+        200302,
+        200491
+      ],
+      "eventSkillIds": [
+        201432,
+        201402,
+        202122,
+        200512
+      ],
+      "evolvedSkills": [
+        {
+          "new": 106002111,
+          "old": 201151
+        },
+        {
+          "new": 106002211,
+          "old": 200491
+        }
+      ]
+    },
+    {
+      "cardId": 105101,
+      "characterId": 1051,
+      "characterName": "Nishino Flower",
+      "characterNameJp": "ニシノフラワー",
+      "outfitTitle": "[Layered Petals]",
+      "variant": null,
+      "rarity": 3,
+      "releaseGlobal": "2026-04-12",
+      "urlName": "105101-nishino-flower",
+      "imageUrl": "https://gametora.com/images/umamusume/characters/chara_stand_1051_105101.png",
+      "thumbnailUrl": "https://gametora.com/images/umamusume/characters/thumb/chara_stand_1051_105101.png",
+      "aptitudes": [
+        "A",
+        "F",
+        "A",
+        "A",
+        "E",
+        "G",
+        "F",
+        "A",
+        "A",
+        "G"
+      ],
+      "baseStats": [
+        93,
+        81,
+        95,
+        86,
+        95
+      ],
+      "fourStarStats": [
+        103,
+        90,
+        105,
+        96,
+        106
+      ],
+      "fiveStarStats": [
+        113,
+        99,
+        116,
+        105,
+        117
+      ],
+      "statBonuses": [
+        15,
+        0,
+        15,
+        0,
+        0
+      ],
+      "uniqueSkillIds": [
+        100511
+      ],
+      "innateSkillIds": [
+        200362,
+        201062,
+        201342
+      ],
+      "awakeningSkillIds": [
+        200652,
+        200361,
+        201392,
+        201341
+      ],
+      "eventSkillIds": [
+        200152,
+        200332,
+        200702,
+        201052,
+        200732,
+        201902
+      ],
+      "evolvedSkills": [
+        {
+          "new": 105101111,
+          "old": 200361
+        },
+        {
+          "new": 105101121,
+          "old": 200361
+        },
+        {
+          "new": 105101211,
+          "old": 201341
+        }
+      ]
+    },
+    {
+      "cardId": 100601,
+      "characterId": 1006,
+      "characterName": "Oguri Cap",
+      "characterNameJp": "オグリキャップ",
+      "outfitTitle": "[Starlight Beat]",
+      "variant": null,
+      "rarity": 3,
+      "releaseGlobal": "2025-06-26",
+      "urlName": "100601-oguri-cap",
+      "imageUrl": "https://gametora.com/images/umamusume/characters/chara_stand_1006_100601.png",
+      "thumbnailUrl": "https://gametora.com/images/umamusume/characters/thumb/chara_stand_1006_100601.png",
+      "aptitudes": [
+        "A",
+        "B",
+        "E",
+        "A",
+        "A",
+        "B",
+        "F",
+        "A",
+        "A",
+        "D"
+      ],
+      "baseStats": [
+        101,
+        66,
+        106,
+        84,
+        93
+      ],
+      "fourStarStats": [
+        112,
+        74,
+        118,
+        94,
+        102
+      ],
+      "fiveStarStats": [
+        124,
+        81,
+        130,
+        103,
+        112
+      ],
+      "statBonuses": [
+        20,
+        0,
+        10,
+        0,
+        0
+      ],
+      "uniqueSkillIds": [
+        100061
+      ],
+      "innateSkillIds": [
+        200342,
+        201062,
+        201352
+      ],
+      "awakeningSkillIds": [
+        200222,
+        201351,
+        200492,
+        200341
+      ],
+      "eventSkillIds": [
+        200042,
+        201352
+      ],
+      "evolvedSkills": [
+        {
+          "new": 100601111,
+          "old": 201351
+        },
+        {
+          "new": 100601121,
+          "old": 201351
+        },
+        {
+          "new": 100601211,
+          "old": 200341
+        }
+      ]
+    },
+    {
+      "cardId": 100602,
+      "characterId": 1006,
+      "characterName": "Oguri Cap",
+      "characterNameJp": "オグリキャップ",
+      "outfitTitle": "[Ashen Miracle]",
+      "variant": "christmas",
+      "rarity": 3,
+      "releaseGlobal": "2026-01-05",
+      "urlName": "100602-oguri-cap",
+      "imageUrl": "https://gametora.com/images/umamusume/characters/chara_stand_1006_100602.png",
+      "thumbnailUrl": "https://gametora.com/images/umamusume/characters/thumb/chara_stand_1006_100602.png",
+      "aptitudes": [
+        "A",
+        "B",
+        "E",
+        "A",
+        "A",
+        "B",
+        "F",
+        "A",
+        "A",
+        "D"
+      ],
+      "baseStats": [
+        94,
+        91,
+        111,
+        76,
+        78
+      ],
+      "fourStarStats": [
+        105,
+        101,
+        124,
+        85,
+        85
+      ],
+      "fiveStarStats": [
+        115,
+        111,
+        136,
+        93,
+        95
+      ],
+      "statBonuses": [
+        15,
+        15,
+        0,
+        0,
+        0
+      ],
+      "uniqueSkillIds": [
+        110061
+      ],
+      "innateSkillIds": [
+        201621,
+        200752,
+        201352
+      ],
+      "awakeningSkillIds": [
+        201422,
+        201351,
+        201571,
+        200751
+      ],
+      "eventSkillIds": [
+        200042,
+        201352,
+        200202
+      ],
+      "evolvedSkills": [
+        {
+          "new": 100602111,
+          "old": 201351
+        },
+        {
+          "new": 100602211,
+          "old": 200751
+        }
+      ]
+    },
+    {
+      "cardId": 103001,
+      "characterId": 1030,
+      "characterName": "Rice Shower",
+      "characterNameJp": "ライスシャワー",
+      "outfitTitle": "[Rosy Dreams]",
+      "variant": null,
+      "rarity": 3,
+      "releaseGlobal": "2025-06-26",
+      "urlName": "103001-rice-shower",
+      "imageUrl": "https://gametora.com/images/umamusume/characters/chara_stand_1030_103001.png",
+      "thumbnailUrl": "https://gametora.com/images/umamusume/characters/thumb/chara_stand_1030_103001.png",
+      "aptitudes": [
+        "A",
+        "G",
+        "E",
+        "C",
+        "A",
+        "A",
+        "B",
+        "A",
+        "C",
+        "G"
+      ],
+      "baseStats": [
+        71,
+        117,
+        70,
+        102,
+        90
+      ],
+      "fourStarStats": [
+        79,
+        130,
+        78,
+        114,
+        99
+      ],
+      "fiveStarStats": [
+        87,
+        143,
+        86,
+        125,
+        109
+      ],
+      "statBonuses": [
+        0,
+        10,
+        0,
+        20,
+        0
+      ],
+      "uniqueSkillIds": [
+        100301
+      ],
+      "innateSkillIds": [
+        200861,
+        201342,
+        200742
+      ],
+      "awakeningSkillIds": [
+        201581,
+        201341,
+        201352,
+        200741
+      ],
+      "eventSkillIds": [
+        200152,
+        200062
+      ],
+      "evolvedSkills": [
+        {
+          "new": 103001111,
+          "old": 201341
+        },
+        {
+          "new": 103001211,
+          "old": 200741
+        }
+      ]
+    },
+    {
+      "cardId": 103002,
+      "characterId": 1030,
+      "characterName": "Rice Shower",
+      "characterNameJp": "ライスシャワー",
+      "outfitTitle": "[Vampire Makeover!]",
+      "variant": "halloween",
+      "rarity": 3,
+      "releaseGlobal": "2025-11-24",
+      "urlName": "103002-rice-shower",
+      "imageUrl": "https://gametora.com/images/umamusume/characters/chara_stand_1030_103002.png",
+      "thumbnailUrl": "https://gametora.com/images/umamusume/characters/thumb/chara_stand_1030_103002.png",
+      "aptitudes": [
+        "A",
+        "G",
+        "E",
+        "C",
+        "A",
+        "A",
+        "B",
+        "A",
+        "C",
+        "G"
+      ],
+      "baseStats": [
+        76,
+        121,
+        67,
+        97,
+        89
+      ],
+      "fourStarStats": [
+        85,
+        135,
+        75,
+        107,
+        98
+      ],
+      "fiveStarStats": [
+        93,
+        148,
+        82,
+        118,
+        109
+      ],
+      "statBonuses": [
+        0,
+        15,
+        15,
+        0,
+        0
+      ],
+      "uniqueSkillIds": [
+        110301
+      ],
+      "innateSkillIds": [
+        200771,
+        201172,
+        200562
+      ],
+      "awakeningSkillIds": [
+        200352,
+        200561,
+        200851,
+        200772
+      ],
+      "eventSkillIds": [
+        200152,
+        200742,
+        200801,
+        200062
+      ],
+      "evolvedSkills": [
+        {
+          "new": 103002111,
+          "old": 200561
+        },
+        {
+          "new": 103002211,
+          "old": 200772
+        }
+      ]
+    },
+    {
+      "cardId": 104101,
+      "characterId": 1041,
+      "characterName": "Sakura Bakushin O",
+      "characterNameJp": "サクラバクシンオー",
+      "outfitTitle": "[Blossom in Learning]",
+      "variant": null,
+      "rarity": 1,
+      "releaseGlobal": "2025-06-26",
+      "urlName": "104101-sakura-bakushin-o",
+      "imageUrl": "https://gametora.com/images/umamusume/characters/chara_stand_1041_104101.png",
+      "thumbnailUrl": "https://gametora.com/images/umamusume/characters/thumb/chara_stand_1041_104101.png",
+      "aptitudes": [
+        "A",
+        "G",
+        "A",
+        "B",
+        "G",
+        "G",
+        "A",
+        "A",
+        "F",
+        "G"
+      ],
+      "baseStats": [
+        87,
+        54,
+        93,
+        85,
+        81
+      ],
+      "fourStarStats": [
+        109,
+        67,
+        116,
+        106,
+        102
+      ],
+      "fiveStarStats": [
+        120,
+        74,
+        128,
+        116,
+        112
+      ],
+      "statBonuses": [
+        20,
+        0,
+        0,
+        0,
+        10
+      ],
+      "uniqueSkillIds": [
+        10411,
+        100411
+      ],
+      "innateSkillIds": [
+        200841,
+        201312,
+        200652
+      ],
+      "awakeningSkillIds": [
+        200982,
+        200651,
+        200992,
+        200981
+      ],
+      "eventSkillIds": [
+        200042,
+        201282
+      ],
+      "evolvedSkills": [
+        {
+          "new": 104101111,
+          "old": 200651
+        },
+        {
+          "new": 104101211,
+          "old": 200981
+        }
+      ]
+    },
+    {
+      "cardId": 106901,
+      "characterId": 1069,
+      "characterName": "Sakura Chiyono O",
+      "characterNameJp": "サクラチヨノオー",
+      "outfitTitle": "[Strength in Full Bloom]",
+      "variant": null,
+      "rarity": 3,
+      "releaseGlobal": "2026-02-11",
+      "urlName": "106901-sakura-chiyono-o",
+      "imageUrl": "https://gametora.com/images/umamusume/characters/chara_stand_1069_106901.png",
+      "thumbnailUrl": "https://gametora.com/images/umamusume/characters/thumb/chara_stand_1069_106901.png",
+      "aptitudes": [
+        "A",
+        "G",
+        "E",
+        "A",
+        "A",
+        "E",
+        "B",
+        "A",
+        "F",
+        "G"
+      ],
+      "baseStats": [
+        93,
+        96,
+        78,
+        93,
+        90
+      ],
+      "fourStarStats": [
+        103,
+        107,
+        87,
+        103,
+        100
+      ],
+      "fiveStarStats": [
+        114,
+        117,
+        95,
+        114,
+        110
+      ],
+      "statBonuses": [
+        10,
+        0,
+        0,
+        10,
+        10
+      ],
+      "uniqueSkillIds": [
+        100691
+      ],
+      "innateSkillIds": [
+        200172,
+        200582,
+        201112
+      ],
+      "awakeningSkillIds": [
+        200342,
+        200581,
+        201532,
+        200174
+      ],
+      "eventSkillIds": [
+        201532,
+        200722,
+        201902,
+        202012
+      ],
+      "evolvedSkills": [
+        {
+          "new": 106901111,
+          "old": 200581
+        },
+        {
+          "new": 106901121,
+          "old": 200581
+        },
+        {
+          "new": 106901211,
+          "old": 200174
+        }
+      ]
+    },
+    {
+      "cardId": 106701,
+      "characterId": 1067,
+      "characterName": "Satono Diamond",
+      "characterNameJp": "サトノダイヤモンド",
+      "outfitTitle": "[Natural Brilliance]",
+      "variant": null,
+      "rarity": 3,
+      "releaseGlobal": "2026-03-22",
+      "urlName": "106701-satono-diamond",
+      "imageUrl": "https://gametora.com/images/umamusume/characters/chara_stand_1067_106701.png",
+      "thumbnailUrl": "https://gametora.com/images/umamusume/characters/thumb/chara_stand_1067_106701.png",
+      "aptitudes": [
+        "A",
+        "G",
+        "G",
+        "C",
+        "A",
+        "A",
+        "G",
+        "B",
+        "A",
+        "D"
+      ],
+      "baseStats": [
+        91,
+        88,
+        93,
+        83,
+        95
+      ],
+      "fourStarStats": [
+        101,
+        98,
+        103,
+        92,
+        106
+      ],
+      "fiveStarStats": [
+        111,
+        108,
+        113,
+        101,
+        117
+      ],
+      "statBonuses": [
+        0,
+        15,
+        0,
+        0,
+        15
+      ],
+      "uniqueSkillIds": [
+        100671
+      ],
+      "innateSkillIds": [
+        200012,
+        201692,
+        201102
+      ],
+      "awakeningSkillIds": [
+        202012,
+        201691,
+        200152,
+        200014
+      ],
+      "eventSkillIds": [
+        200362,
+        200742,
+        200192
+      ],
+      "evolvedSkills": [
+        {
+          "new": 106701111,
+          "old": 201691
+        },
+        {
+          "new": 106701121,
+          "old": 201691
+        },
+        {
+          "new": 106701211,
+          "old": 200014
+        }
+      ]
+    },
+    {
+      "cardId": 102001,
+      "characterId": 1020,
+      "characterName": "Seiun Sky",
+      "characterNameJp": "セイウンスカイ",
+      "outfitTitle": "[Reeling in the Big One]",
+      "variant": null,
+      "rarity": 3,
+      "releaseGlobal": "2025-09-07",
+      "urlName": "102001-seiun-sky",
+      "imageUrl": "https://gametora.com/images/umamusume/characters/chara_stand_1020_102001.png",
+      "thumbnailUrl": "https://gametora.com/images/umamusume/characters/thumb/chara_stand_1020_102001.png",
+      "aptitudes": [
+        "A",
+        "G",
+        "G",
+        "C",
+        "A",
+        "A",
+        "A",
+        "B",
+        "D",
+        "E"
+      ],
+      "baseStats": [
+        98,
+        98,
+        88,
+        83,
+        83
+      ],
+      "fourStarStats": [
+        109,
+        109,
+        98,
+        92,
+        92
+      ],
+      "fiveStarStats": [
+        120,
+        120,
+        108,
+        101,
+        101
+      ],
+      "statBonuses": [
+        0,
+        10,
+        0,
+        0,
+        20
+      ],
+      "uniqueSkillIds": [
+        100201
+      ],
+      "innateSkillIds": [
+        200881,
+        201192,
+        200542
+      ],
+      "awakeningSkillIds": [
+        201522,
+        201191,
+        201611,
+        200541
+      ],
+      "eventSkillIds": [
+        200891,
+        200742,
+        201242,
+        201621,
+        201581,
+        200732,
+        200911,
+        200542
+      ],
+      "evolvedSkills": [
+        {
+          "new": 102001111,
+          "old": 201191
+        },
+        {
+          "new": 102001121,
+          "old": 201191
+        },
+        {
+          "new": 102001211,
+          "old": 200541
+        }
+      ]
+    },
+    {
+      "cardId": 102002,
+      "characterId": 1020,
+      "characterName": "Seiun Sky",
+      "characterNameJp": "セイウンスカイ",
+      "outfitTitle": "[Soirée des Chatons]",
+      "variant": "ballroom",
+      "rarity": 3,
+      "releaseGlobal": "2026-04-05",
+      "urlName": "102002-seiun-sky",
+      "imageUrl": "https://gametora.com/images/umamusume/characters/chara_stand_1020_102002.png",
+      "thumbnailUrl": "https://gametora.com/images/umamusume/characters/thumb/chara_stand_1020_102002.png",
+      "aptitudes": [
+        "A",
+        "G",
+        "G",
+        "C",
+        "A",
+        "A",
+        "A",
+        "B",
+        "D",
+        "E"
+      ],
+      "baseStats": [
+        101,
+        89,
+        84,
+        88,
+        88
+      ],
+      "fourStarStats": [
+        112,
+        99,
+        94,
+        98,
+        97
+      ],
+      "fiveStarStats": [
+        123,
+        109,
+        103,
+        108,
+        107
+      ],
+      "statBonuses": [
+        8,
+        0,
+        8,
+        14,
+        0
+      ],
+      "uniqueSkillIds": [
+        110201
+      ],
+      "innateSkillIds": [
+        200172,
+        200712,
+        200542
+      ],
+      "awakeningSkillIds": [
+        201272,
+        200541,
+        200532,
+        201271
+      ],
+      "eventSkillIds": [
+        200891,
+        200742,
+        201242,
+        201621,
+        201581,
+        200732,
+        200911,
+        200012,
+        200542
+      ],
+      "evolvedSkills": [
+        {
+          "new": 102002111,
+          "old": 200541
+        },
+        {
+          "new": 102002121,
+          "old": 200541
+        },
+        {
+          "new": 102002211,
+          "old": 201271
+        }
+      ]
+    },
+    {
+      "cardId": 100201,
+      "characterId": 1002,
+      "characterName": "Silence Suzuka",
+      "characterNameJp": "サイレンススズカ",
+      "outfitTitle": "[Innocent Silence]",
+      "variant": null,
+      "rarity": 3,
+      "releaseGlobal": "2025-06-26",
+      "urlName": "100201-silence-suzuka",
+      "imageUrl": "https://gametora.com/images/umamusume/characters/chara_stand_1002_100201.png",
+      "thumbnailUrl": "https://gametora.com/images/umamusume/characters/thumb/chara_stand_1002_100201.png",
+      "aptitudes": [
+        "A",
+        "G",
+        "D",
+        "A",
+        "A",
+        "E",
+        "A",
+        "C",
+        "E",
+        "G"
+      ],
+      "baseStats": [
+        101,
+        84,
+        77,
+        100,
+        88
+      ],
+      "fourStarStats": [
+        112,
+        93,
+        85,
+        111,
+        99
+      ],
+      "fiveStarStats": [
+        124,
+        102,
+        94,
+        122,
+        108
+      ],
+      "statBonuses": [
+        20,
+        0,
+        0,
+        10,
+        0
+      ],
+      "uniqueSkillIds": [
+        100021
+      ],
+      "innateSkillIds": [
+        200432,
+        200552,
+        200712
+      ],
+      "awakeningSkillIds": [
+        200022,
+        200431,
+        200542,
+        200551
+      ],
+      "eventSkillIds": [
+        200022,
+        202051,
+        200532
+      ],
+      "evolvedSkills": [
+        {
+          "new": 100201111,
+          "old": 200431
+        },
+        {
+          "new": 100201211,
+          "old": 200551
+        }
+      ]
+    },
+    {
+      "cardId": 104601,
+      "characterId": 1046,
+      "characterName": "Smart Falcon",
+      "characterNameJp": "スマートファルコン",
+      "outfitTitle": "[LOVE☆4EVER]",
+      "variant": null,
+      "rarity": 3,
+      "releaseGlobal": "2025-08-11",
+      "urlName": "104601-smart-falcon",
+      "imageUrl": "https://gametora.com/images/umamusume/characters/chara_stand_1046_104601.png",
+      "thumbnailUrl": "https://gametora.com/images/umamusume/characters/thumb/chara_stand_1046_104601.png",
+      "aptitudes": [
+        "E",
+        "A",
+        "B",
+        "A",
+        "A",
+        "E",
+        "A",
+        "D",
+        "G",
+        "G"
+      ],
+      "baseStats": [
+        94,
+        85,
+        85,
+        100,
+        86
+      ],
+      "fourStarStats": [
+        104,
+        95,
+        95,
+        111,
+        95
+      ],
+      "fiveStarStats": [
+        115,
+        104,
+        104,
+        122,
+        105
+      ],
+      "statBonuses": [
+        20,
+        0,
+        10,
+        0,
+        0
+      ],
+      "uniqueSkillIds": [
+        100461
+      ],
+      "innateSkillIds": [
+        200452,
+        201522,
+        201672
+      ],
+      "awakeningSkillIds": [
+        200162,
+        200451,
+        200952,
+        201671
+      ],
+      "eventSkillIds": [
+        201272,
+        201672
+      ],
+      "evolvedSkills": [
+        {
+          "new": 104601111,
+          "old": 200451
+        },
+        {
+          "new": 104601121,
+          "old": 200451
+        },
+        {
+          "new": 104601211,
+          "old": 201671
+        }
+      ]
+    },
+    {
+      "cardId": 100101,
+      "characterId": 1001,
+      "characterName": "Special Week",
+      "characterNameJp": "スペシャルウィーク",
+      "outfitTitle": "[Special Dreamer]",
+      "variant": null,
+      "rarity": 3,
+      "releaseGlobal": "2025-06-26",
+      "urlName": "100101-special-week",
+      "imageUrl": "https://gametora.com/images/umamusume/characters/chara_stand_1001_100101.png",
+      "thumbnailUrl": "https://gametora.com/images/umamusume/characters/thumb/chara_stand_1001_100101.png",
+      "aptitudes": [
+        "A",
+        "G",
+        "F",
+        "C",
+        "A",
+        "A",
+        "G",
+        "A",
+        "A",
+        "C"
+      ],
+      "baseStats": [
+        83,
+        88,
+        98,
+        90,
+        91
+      ],
+      "fourStarStats": [
+        92,
+        98,
+        109,
+        100,
+        101
+      ],
+      "fiveStarStats": [
+        102,
+        108,
+        120,
+        110,
+        110
+      ],
+      "statBonuses": [
+        0,
+        20,
+        0,
+        0,
+        10
+      ],
+      "uniqueSkillIds": [
+        100011
+      ],
+      "innateSkillIds": [
+        200512,
+        201352,
+        200732
+      ],
+      "awakeningSkillIds": [
+        200162,
+        201351,
+        200612,
+        200511,
+        204262,
+        204111
+      ],
+      "eventSkillIds": [
+        200472,
+        200512,
+        200332,
+        200032,
+        200042,
+        200562,
+        200602
+      ],
+      "evolvedSkills": [
+        {
+          "new": 100101111,
+          "old": 201351
+        },
+        {
+          "new": 100101211,
+          "old": 200511
+        },
+        {
+          "new": 100101311,
+          "old": 204111
+        }
+      ]
+    },
+    {
+      "cardId": 100102,
+      "characterId": 1001,
+      "characterName": "Special Week",
+      "characterNameJp": "スペシャルウィーク",
+      "outfitTitle": "[Hopp'n♪Happy Heart]",
+      "variant": "summer",
+      "rarity": 3,
+      "releaseGlobal": "2025-10-14",
+      "urlName": "100102-special-week",
+      "imageUrl": "https://gametora.com/images/umamusume/characters/chara_stand_1001_100102.png",
+      "thumbnailUrl": "https://gametora.com/images/umamusume/characters/thumb/chara_stand_1001_100102.png",
+      "aptitudes": [
+        "A",
+        "G",
+        "F",
+        "C",
+        "A",
+        "A",
+        "G",
+        "A",
+        "A",
+        "C"
+      ],
+      "baseStats": [
+        77,
+        90,
+        103,
+        98,
+        82
+      ],
+      "fourStarStats": [
+        86,
+        100,
+        114,
+        109,
+        91
+      ],
+      "fiveStarStats": [
+        94,
+        110,
+        125,
+        119,
+        102
+      ],
+      "statBonuses": [
+        0,
+        10,
+        10,
+        10,
+        0
+      ],
+      "uniqueSkillIds": [
+        110011
+      ],
+      "innateSkillIds": [
+        200462,
+        200592,
+        201132
+      ],
+      "awakeningSkillIds": [
+        200212,
+        200591,
+        201611,
+        200461
+      ],
+      "eventSkillIds": [
+        200472,
+        200512,
+        200332,
+        200032,
+        200042,
+        201402,
+        200562,
+        200602
+      ],
+      "evolvedSkills": [
+        {
+          "new": 100102111,
+          "old": 200591
+        },
+        {
+          "new": 100102211,
+          "old": 200461
+        }
+      ]
+    },
+    {
+      "cardId": 104501,
+      "characterId": 1045,
+      "characterName": "Super Creek",
+      "characterNameJp": "スーパークリーク",
+      "outfitTitle": "[Murmuring Stream]",
+      "variant": null,
+      "rarity": 2,
+      "releaseGlobal": "2025-06-26",
+      "urlName": "104501-super-creek",
+      "imageUrl": "https://gametora.com/images/umamusume/characters/chara_stand_1045_104501.png",
+      "thumbnailUrl": "https://gametora.com/images/umamusume/characters/thumb/chara_stand_1045_104501.png",
+      "aptitudes": [
+        "A",
+        "G",
+        "G",
+        "G",
+        "A",
+        "A",
+        "D",
+        "A",
+        "B",
+        "G"
+      ],
+      "baseStats": [
+        65,
+        100,
+        71,
+        100,
+        89
+      ],
+      "fourStarStats": [
+        76,
+        118,
+        84,
+        118,
+        104
+      ],
+      "fiveStarStats": [
+        84,
+        129,
+        92,
+        129,
+        116
+      ],
+      "statBonuses": [
+        0,
+        10,
+        0,
+        0,
+        20
+      ],
+      "uniqueSkillIds": [
+        10451,
+        100451
+      ],
+      "innateSkillIds": [
+        200352,
+        200742,
+        201372
+      ],
+      "awakeningSkillIds": [
+        200462,
+        201371,
+        200881,
+        200351
+      ],
+      "eventSkillIds": [
+        200352,
+        "201352",
+        200582
+      ],
+      "evolvedSkills": [
+        {
+          "new": 104501111,
+          "old": 201371
+        },
+        {
+          "new": 104501211,
+          "old": 200351
+        }
+      ]
+    },
+    {
+      "cardId": 104502,
+      "characterId": 1045,
+      "characterName": "Super Creek",
+      "characterNameJp": "スーパークリーク",
+      "outfitTitle": "[Chiffon-Wrapped Mummy]",
+      "variant": "halloween",
+      "rarity": 3,
+      "releaseGlobal": "2025-11-24",
+      "urlName": "104502-super-creek",
+      "imageUrl": "https://gametora.com/images/umamusume/characters/chara_stand_1045_104502.png",
+      "thumbnailUrl": "https://gametora.com/images/umamusume/characters/thumb/chara_stand_1045_104502.png",
+      "aptitudes": [
+        "A",
+        "G",
+        "G",
+        "G",
+        "A",
+        "A",
+        "D",
+        "A",
+        "B",
+        "G"
+      ],
+      "baseStats": [
+        74,
+        106,
+        75,
+        98,
+        97
+      ],
+      "fourStarStats": [
+        82,
+        118,
+        84,
+        108,
+        108
+      ],
+      "fiveStarStats": [
+        90,
+        129,
+        92,
+        119,
+        120
+      ],
+      "statBonuses": [
+        14,
+        8,
+        0,
+        8,
+        0
+      ],
+      "uniqueSkillIds": [
+        110451
+      ],
+      "innateSkillIds": [
+        200332,
+        201162,
+        201352
+      ],
+      "awakeningSkillIds": [
+        201322,
+        200331,
+        201102,
+        201161
+      ],
+      "eventSkillIds": [
+        200352,
+        "201352",
+        201432,
+        200732,
+        200582
+      ],
+      "evolvedSkills": [
+        {
+          "new": 104502111,
+          "old": 200331
+        },
+        {
+          "new": 104502211,
+          "old": 201161
+        }
+      ]
+    },
+    {
+      "cardId": 104401,
+      "characterId": 1044,
+      "characterName": "Sweep Tosho",
+      "characterNameJp": "スイープトウショウ",
+      "outfitTitle": "[Platanus Witch]",
+      "variant": null,
+      "rarity": 3,
+      "releaseGlobal": "2026-06-04",
+      "urlName": "104401-sweep-tosho",
+      "imageUrl": "https://gametora.com/images/umamusume/characters/chara_stand_1044_104401.png",
+      "thumbnailUrl": "https://gametora.com/images/umamusume/characters/thumb/chara_stand_1044_104401.png",
+      "aptitudes": [
+        "A",
+        "G",
+        "E",
+        "A",
+        "A",
+        "D",
+        "G",
+        "G",
+        "A",
+        "A"
+      ],
+      "baseStats": [
+        101,
+        85,
+        110,
+        65,
+        89
+      ],
+      "fourStarStats": [
+        112,
+        94,
+        122,
+        72,
+        100
+      ],
+      "fiveStarStats": [
+        123,
+        104,
+        135,
+        79,
+        109
+      ],
+      "statBonuses": [
+        10,
+        0,
+        20,
+        0,
+        0
+      ],
+      "uniqueSkillIds": [
+        100441
+      ],
+      "innateSkillIds": [
+        200781,
+        201482,
+        202082
+      ],
+      "awakeningSkillIds": [
+        201512,
+        201481,
+        200642,
+        201511
+      ],
+      "eventSkillIds": [
+        201651,
+        201462,
+        202141,
+        202161
+      ],
+      "evolvedSkills": [
+        {
+          "new": 104401111,
+          "old": 201481
+        },
+        {
+          "new": 104401211,
+          "old": 201511
+        },
+        {
+          "new": 104401221,
+          "old": 201511
+        }
+      ]
+    },
+    {
+      "cardId": 101701,
+      "characterId": 1017,
+      "characterName": "Symboli Rudolf",
+      "characterNameJp": "シンボリルドルフ",
+      "outfitTitle": "[Emperor's Path]",
+      "variant": null,
+      "rarity": 3,
+      "releaseGlobal": "2025-06-26",
+      "urlName": "101701-symboli-rudolf",
+      "imageUrl": "https://gametora.com/images/umamusume/characters/chara_stand_1017_101701.png",
+      "thumbnailUrl": "https://gametora.com/images/umamusume/characters/thumb/chara_stand_1017_101701.png",
+      "aptitudes": [
+        "A",
+        "G",
+        "E",
+        "C",
+        "A",
+        "A",
+        "B",
+        "A",
+        "A",
+        "C"
+      ],
+      "baseStats": [
+        86,
+        91,
+        83,
+        96,
+        94
+      ],
+      "fourStarStats": [
+        96,
+        101,
+        92,
+        107,
+        104
+      ],
+      "fiveStarStats": [
+        106,
+        111,
+        101,
+        118,
+        114
+      ],
+      "statBonuses": [
+        0,
+        20,
+        0,
+        10,
+        0
+      ],
+      "uniqueSkillIds": [
+        100171
+      ],
+      "innateSkillIds": [
+        200332,
+        201152,
+        200572
+      ],
+      "awakeningSkillIds": [
+        200891,
+        201151,
+        201322,
+        200331
+      ],
+      "eventSkillIds": [
+        200232,
+        201692
+      ],
+      "evolvedSkills": [
+        {
+          "new": 101701111,
+          "old": 201151
+        },
+        {
+          "new": 101701121,
+          "old": 201151
+        },
+        {
+          "new": 101701211,
+          "old": 200331
+        }
+      ]
+    },
+    {
+      "cardId": 101702,
+      "characterId": 1017,
+      "characterName": "Symboli Rudolf",
+      "characterNameJp": "シンボリルドルフ",
+      "outfitTitle": "[Archer by Moonlight]",
+      "variant": "fall_festival",
+      "rarity": 3,
+      "releaseGlobal": "2025-12-14",
+      "urlName": "101702-symboli-rudolf",
+      "imageUrl": "https://gametora.com/images/umamusume/characters/chara_stand_1017_101702.png",
+      "thumbnailUrl": "https://gametora.com/images/umamusume/characters/thumb/chara_stand_1017_101702.png",
+      "aptitudes": [
+        "A",
+        "G",
+        "E",
+        "C",
+        "A",
+        "A",
+        "B",
+        "A",
+        "A",
+        "C"
+      ],
+      "baseStats": [
+        83,
+        87,
+        90,
+        90,
+        100
+      ],
+      "fourStarStats": [
+        92,
+        97,
+        100,
+        100,
+        111
+      ],
+      "fiveStarStats": [
+        101,
+        107,
+        110,
+        110,
+        122
+      ],
+      "statBonuses": [
+        8,
+        14,
+        0,
+        0,
+        8
+      ],
+      "uniqueSkillIds": [
+        110171
+      ],
+      "innateSkillIds": [
+        200192,
+        200752,
+        200562
+      ],
+      "awakeningSkillIds": [
+        201342,
+        200561,
+        201312,
+        200194
+      ],
+      "eventSkillIds": [
+        200232,
+        200582,
+        201322,
+        201692
+      ],
+      "evolvedSkills": [
+        {
+          "new": 101702111,
+          "old": 200561
+        },
+        {
+          "new": 101702211,
+          "old": 200194
+        }
+      ]
+    },
+    {
+      "cardId": 101001,
+      "characterId": 1010,
+      "characterName": "Taiki Shuttle",
+      "characterNameJp": "タイキシャトル",
+      "outfitTitle": "[Wild Frontier]",
+      "variant": null,
+      "rarity": 3,
+      "releaseGlobal": "2025-06-26",
+      "urlName": "101001-taiki-shuttle",
+      "imageUrl": "https://gametora.com/images/umamusume/characters/chara_stand_1010_101001.png",
+      "thumbnailUrl": "https://gametora.com/images/umamusume/characters/thumb/chara_stand_1010_101001.png",
+      "aptitudes": [
+        "A",
+        "B",
+        "A",
+        "A",
+        "E",
+        "G",
+        "C",
+        "A",
+        "E",
+        "G"
+      ],
+      "baseStats": [
+        96,
+        71,
+        98,
+        93,
+        92
+      ],
+      "fourStarStats": [
+        107,
+        79,
+        108,
+        103,
+        103
+      ],
+      "fiveStarStats": [
+        118,
+        87,
+        119,
+        113,
+        113
+      ],
+      "statBonuses": [
+        20,
+        0,
+        0,
+        0,
+        10
+      ],
+      "uniqueSkillIds": [
+        100101
+      ],
+      "innateSkillIds": [
+        200362,
+        201052,
+        201532
+      ],
+      "awakeningSkillIds": [
+        200682,
+        201051,
+        201032,
+        200681
+      ],
+      "eventSkillIds": [
+        200582,
+        201702,
+        201902
+      ],
+      "evolvedSkills": [
+        {
+          "new": 101001111,
+          "old": 201051
+        },
+        {
+          "new": 101001211,
+          "old": 200681
+        }
+      ]
+    },
+    {
+      "cardId": 101002,
+      "characterId": 1010,
+      "characterName": "Taiki Shuttle",
+      "characterNameJp": "タイキシャトル",
+      "outfitTitle": "[Bubblegum☆Memories]",
+      "variant": "camping",
+      "rarity": 3,
+      "releaseGlobal": "2026-06-11",
+      "urlName": "101002-taiki-shuttle",
+      "imageUrl": "https://gametora.com/images/umamusume/characters/chara_stand_1010_101002.png",
+      "thumbnailUrl": "https://gametora.com/images/umamusume/characters/thumb/chara_stand_1010_101002.png",
+      "aptitudes": [
+        "A",
+        "B",
+        "A",
+        "A",
+        "E",
+        "G",
+        "C",
+        "A",
+        "E",
+        "G"
+      ],
+      "baseStats": [
+        102,
+        71,
+        107,
+        92,
+        78
+      ],
+      "fourStarStats": [
+        113,
+        79,
+        119,
+        102,
+        87
+      ],
+      "fiveStarStats": [
+        124,
+        87,
+        130,
+        112,
+        97
+      ],
+      "statBonuses": [
+        0,
+        0,
+        30,
+        0,
+        0
+      ],
+      "uniqueSkillIds": [
+        110101
+      ],
+      "innateSkillIds": [
+        200162,
+        200682,
+        201902
+      ],
+      "awakeningSkillIds": [
+        201042,
+        200681,
+        201322,
+        201901
+      ],
+      "eventSkillIds": [
+        200582,
+        202042,
+        201052,
+        201702,
+        201902
+      ],
+      "evolvedSkills": [
+        {
+          "new": 101002111,
+          "old": 200681
+        },
+        {
+          "new": 101002211,
+          "old": 201901
+        }
+      ]
+    },
+    {
+      "cardId": 102101,
+      "characterId": 1021,
+      "characterName": "Tamamo Cross",
+      "characterNameJp": "タマモクロス",
+      "outfitTitle": "[Fast as Lightning]",
+      "variant": null,
+      "rarity": 3,
+      "releaseGlobal": "2026-01-22",
+      "urlName": "102101-tamamo-cross",
+      "imageUrl": "https://gametora.com/images/umamusume/characters/chara_stand_1021_102101.png",
+      "thumbnailUrl": "https://gametora.com/images/umamusume/characters/thumb/chara_stand_1021_102101.png",
+      "aptitudes": [
+        "A",
+        "F",
+        "G",
+        "E",
+        "A",
+        "A",
+        "G",
+        "A",
+        "A",
+        "A"
+      ],
+      "baseStats": [
+        83,
+        95,
+        105,
+        83,
+        84
+      ],
+      "fourStarStats": [
+        92,
+        105,
+        117,
+        93,
+        93
+      ],
+      "fiveStarStats": [
+        101,
+        116,
+        129,
+        102,
+        102
+      ],
+      "statBonuses": [
+        0,
+        20,
+        10,
+        0,
+        0
+      ],
+      "uniqueSkillIds": [
+        100211
+      ],
+      "innateSkillIds": [
+        201611,
+        201132,
+        200592
+      ],
+      "awakeningSkillIds": [
+        200572,
+        200591,
+        200642,
+        201612
+      ],
+      "eventSkillIds": [
+        200052,
+        201611,
+        200062,
+        200702,
+        200042,
+        200722
+      ],
+      "evolvedSkills": [
+        {
+          "new": 102101111,
+          "old": 200591
+        },
+        {
+          "new": 102101121,
+          "old": 200591
+        },
+        {
+          "new": 102101211,
+          "old": 201612
+        }
+      ]
+    },
+    {
+      "cardId": 101501,
+      "characterId": 1015,
+      "characterName": "TM Opera O",
+      "characterNameJp": "テイエムオペラオー",
+      "outfitTitle": "[O Sole Suo!]",
+      "variant": null,
+      "rarity": 3,
+      "releaseGlobal": "2025-06-26",
+      "urlName": "101501-tm-opera-o",
+      "imageUrl": "https://gametora.com/images/umamusume/characters/chara_stand_1015_101501.png",
+      "thumbnailUrl": "https://gametora.com/images/umamusume/characters/thumb/chara_stand_1015_101501.png",
+      "aptitudes": [
+        "A",
+        "E",
+        "G",
+        "E",
+        "A",
+        "A",
+        "C",
+        "A",
+        "A",
+        "G"
+      ],
+      "baseStats": [
+        75,
+        108,
+        75,
+        102,
+        90
+      ],
+      "fourStarStats": [
+        83,
+        120,
+        83,
+        113,
+        101
+      ],
+      "fiveStarStats": [
+        91,
+        132,
+        91,
+        125,
+        111
+      ],
+      "statBonuses": [
+        0,
+        20,
+        0,
+        0,
+        10
+      ],
+      "uniqueSkillIds": [
+        100151
+      ],
+      "innateSkillIds": [
+        200582,
+        200722,
+        200142
+      ],
+      "awakeningSkillIds": [
+        200362,
+        200581,
+        200562,
+        200721
+      ],
+      "eventSkillIds": [
+        200142
+      ],
+      "evolvedSkills": [
+        {
+          "new": 101501111,
+          "old": 200581
+        },
+        {
+          "new": 101501211,
+          "old": 200721
+        }
+      ]
+    },
+    {
+      "cardId": 101502,
+      "characterId": 1015,
+      "characterName": "TM Opera O",
+      "characterNameJp": "テイエムオペラオー",
+      "outfitTitle": "[New Year, Same Radiance!]",
+      "variant": "new_year",
+      "rarity": 3,
+      "releaseGlobal": "2026-01-29",
+      "urlName": "101502-tm-opera-o",
+      "imageUrl": "https://gametora.com/images/umamusume/characters/chara_stand_1015_101502.png",
+      "thumbnailUrl": "https://gametora.com/images/umamusume/characters/thumb/chara_stand_1015_101502.png",
+      "aptitudes": [
+        "A",
+        "E",
+        "G",
+        "E",
+        "A",
+        "A",
+        "C",
+        "A",
+        "A",
+        "G"
+      ],
+      "baseStats": [
+        87,
+        102,
+        74,
+        88,
+        99
+      ],
+      "fourStarStats": [
+        96,
+        113,
+        83,
+        98,
+        110
+      ],
+      "fiveStarStats": [
+        106,
+        124,
+        91,
+        107,
+        122
+      ],
+      "statBonuses": [
+        14,
+        8,
+        0,
+        0,
+        8
+      ],
+      "uniqueSkillIds": [
+        110151
+      ],
+      "innateSkillIds": [
+        201312,
+        202012,
+        200352
+      ],
+      "awakeningSkillIds": [
+        200252,
+        200351,
+        200202,
+        202011
+      ],
+      "eventSkillIds": [
+        200142,
+        200582,
+        201152
+      ],
+      "evolvedSkills": [
+        {
+          "new": 101502111,
+          "old": 200351
+        },
+        {
+          "new": 101502121,
+          "old": 200351
+        },
+        {
+          "new": 101502211,
+          "old": 202011
+        }
+      ]
+    },
+    {
+      "cardId": 100301,
+      "characterId": 1003,
+      "characterName": "Tokai Teio",
+      "characterNameJp": "トウカイテイオー",
+      "outfitTitle": "[Peak Joy]",
+      "variant": null,
+      "rarity": 3,
+      "releaseGlobal": "2025-06-26",
+      "urlName": "100301-tokai-teio",
+      "imageUrl": "https://gametora.com/images/umamusume/characters/chara_stand_1003_100301.png",
+      "thumbnailUrl": "https://gametora.com/images/umamusume/characters/thumb/chara_stand_1003_100301.png",
+      "aptitudes": [
+        "A",
+        "G",
+        "F",
+        "E",
+        "A",
+        "B",
+        "D",
+        "A",
+        "C",
+        "E"
+      ],
+      "baseStats": [
+        90,
+        89,
+        83,
+        92,
+        96
+      ],
+      "fourStarStats": [
+        99,
+        99,
+        92,
+        102,
+        108
+      ],
+      "fiveStarStats": [
+        109,
+        109,
+        102,
+        112,
+        118
+      ],
+      "statBonuses": [
+        20,
+        10,
+        0,
+        0,
+        0
+      ],
+      "uniqueSkillIds": [
+        100031
+      ],
+      "innateSkillIds": [
+        200452,
+        201132,
+        201332
+      ],
+      "awakeningSkillIds": [
+        200502,
+        201331,
+        201142,
+        201131,
+        204262,
+        203441
+      ],
+      "eventSkillIds": [
+        200582,
+        201352,
+        201902
+      ],
+      "evolvedSkills": [
+        {
+          "new": 100301111,
+          "old": 201331
+        },
+        {
+          "new": 100301211,
+          "old": 201131
+        },
+        {
+          "new": 100301311,
+          "old": 203441
+        }
+      ]
+    },
+    {
+      "cardId": 100302,
+      "characterId": 1003,
+      "characterName": "Tokai Teio",
+      "characterNameJp": "トウカイテイオー",
+      "outfitTitle": "[Beyond the Horizon]",
+      "variant": "anime_collab",
+      "rarity": 3,
+      "releaseGlobal": "2025-07-16",
+      "urlName": "100302-tokai-teio",
+      "imageUrl": "https://gametora.com/images/umamusume/characters/chara_stand_1003_100302.png",
+      "thumbnailUrl": "https://gametora.com/images/umamusume/characters/thumb/chara_stand_1003_100302.png",
+      "aptitudes": [
+        "A",
+        "G",
+        "F",
+        "E",
+        "A",
+        "B",
+        "D",
+        "A",
+        "C",
+        "E"
+      ],
+      "baseStats": [
+        89,
+        102,
+        80,
+        86,
+        93
+      ],
+      "fourStarStats": [
+        99,
+        113,
+        89,
+        96,
+        103
+      ],
+      "fiveStarStats": [
+        109,
+        125,
+        98,
+        106,
+        112
+      ],
+      "statBonuses": [
+        10,
+        10,
+        0,
+        10,
+        0
+      ],
+      "uniqueSkillIds": [
+        110031
+      ],
+      "innateSkillIds": [
+        200452,
+        201142,
+        200572
+      ],
+      "awakeningSkillIds": [
+        200172,
+        200571,
+        200352,
+        201141
+      ],
+      "eventSkillIds": [
+        200582,
+        201352,
+        200562,
+        200342,
+        201902
+      ],
+      "evolvedSkills": [
+        {
+          "new": 100302111,
+          "old": 200571
+        },
+        {
+          "new": 100302211,
+          "old": 201141
+        }
+      ]
+    },
+    {
+      "cardId": 104801,
+      "characterId": 1048,
+      "characterName": "Tosen Jordan",
+      "characterNameJp": "トーセンジョーダン",
+      "outfitTitle": "[Jokester ☆ Vibes]",
+      "variant": null,
+      "rarity": 3,
+      "releaseGlobal": "2025-12-18",
+      "urlName": "104801-tosen-jordan",
+      "imageUrl": "https://gametora.com/images/umamusume/characters/chara_stand_1048_104801.png",
+      "thumbnailUrl": "https://gametora.com/images/umamusume/characters/thumb/chara_stand_1048_104801.png",
+      "aptitudes": [
+        "A",
+        "G",
+        "G",
+        "F",
+        "A",
+        "B",
+        "C",
+        "A",
+        "B",
+        "G"
+      ],
+      "baseStats": [
+        89,
+        98,
+        75,
+        101,
+        87
+      ],
+      "fourStarStats": [
+        99,
+        109,
+        83,
+        112,
+        97
+      ],
+      "fiveStarStats": [
+        109,
+        120,
+        92,
+        123,
+        106
+      ],
+      "statBonuses": [
+        10,
+        0,
+        10,
+        10,
+        0
+      ],
+      "uniqueSkillIds": [
+        100481
+      ],
+      "innateSkillIds": [
+        200302,
+        200602,
+        201102
+      ],
+      "awakeningSkillIds": [
+        200572,
+        200601,
+        201702,
+        200571
+      ],
+      "eventSkillIds": [
+        200372,
+        201402
+      ],
+      "evolvedSkills": [
+        {
+          "new": 104801111,
+          "old": 200601
+        },
+        {
+          "new": 104801211,
+          "old": 200571
+        }
+      ]
+    },
+    {
+      "cardId": 100801,
+      "characterId": 1008,
+      "characterName": "Vodka",
+      "characterNameJp": "ウオッカ",
+      "outfitTitle": "[Wild Top Gear]",
+      "variant": null,
+      "rarity": 2,
+      "releaseGlobal": "2025-06-26",
+      "urlName": "100801-vodka",
+      "imageUrl": "https://gametora.com/images/umamusume/characters/chara_stand_1008_100801.png",
+      "thumbnailUrl": "https://gametora.com/images/umamusume/characters/thumb/chara_stand_1008_100801.png",
+      "aptitudes": [
+        "A",
+        "G",
+        "F",
+        "A",
+        "A",
+        "F",
+        "C",
+        "B",
+        "A",
+        "F"
+      ],
+      "baseStats": [
+        96,
+        61,
+        105,
+        75,
+        88
+      ],
+      "fourStarStats": [
+        113,
+        72,
+        124,
+        88,
+        103
+      ],
+      "fiveStarStats": [
+        124,
+        79,
+        136,
+        97,
+        114
+      ],
+      "statBonuses": [
+        10,
+        0,
+        20,
+        0,
+        0
+      ],
+      "uniqueSkillIds": [
+        10081,
+        100081
+      ],
+      "innateSkillIds": [
+        200382,
+        200702,
+        200602
+      ],
+      "awakeningSkillIds": [
+        200372,
+        200381,
+        201032,
+        200701
+      ],
+      "eventSkillIds": [
+        201052,
+        201702,
+        200602,
+        200492
+      ],
+      "evolvedSkills": [
+        {
+          "new": 100801111,
+          "old": 200381
+        },
+        {
+          "new": 100801211,
+          "old": 200701
+        }
+      ]
+    },
+    {
+      "cardId": 103501,
+      "characterId": 1035,
+      "characterName": "Winning Ticket",
+      "characterNameJp": "ウイニングチケット",
+      "outfitTitle": "[Get to Winning!]",
+      "variant": null,
+      "rarity": 1,
+      "releaseGlobal": "2025-06-26",
+      "urlName": "103501-winning-ticket",
+      "imageUrl": "https://gametora.com/images/umamusume/characters/chara_stand_1035_103501.png",
+      "thumbnailUrl": "https://gametora.com/images/umamusume/characters/thumb/chara_stand_1035_103501.png",
+      "aptitudes": [
+        "A",
+        "G",
+        "G",
+        "F",
+        "A",
+        "B",
+        "G",
+        "B",
+        "A",
+        "G"
+      ],
+      "baseStats": [
+        87,
+        68,
+        91,
+        74,
+        80
+      ],
+      "fourStarStats": [
+        109,
+        85,
+        114,
+        92,
+        100
+      ],
+      "fiveStarStats": [
+        120,
+        93,
+        125,
+        101,
+        111
+      ],
+      "statBonuses": [
+        0,
+        10,
+        20,
+        0,
+        0
+      ],
+      "uniqueSkillIds": [
+        10351,
+        100351
+      ],
+      "innateSkillIds": [
+        200152,
+        200732,
+        201402
+      ],
+      "awakeningSkillIds": [
+        200592,
+        201401,
+        201392,
+        200591
+      ],
+      "eventSkillIds": [
+        200492,
+        201382,
+        201392,
+        200592,
+        200602,
+        200612
+      ],
+      "evolvedSkills": [
+        {
+          "new": 103501111,
+          "old": 201401
+        },
+        {
+          "new": 103501211,
+          "old": 200591
+        }
+      ]
+    },
+    {
+      "cardId": 107201,
+      "characterId": 1072,
+      "characterName": "Yaeno Muteki",
+      "characterNameJp": "ヤエノムテキ",
+      "outfitTitle": "[Blazed Head, Covered Fists]",
+      "variant": null,
+      "rarity": 3,
+      "releaseGlobal": "2026-04-20",
+      "urlName": "107201-yaeno-muteki",
+      "imageUrl": "https://gametora.com/images/umamusume/characters/chara_stand_1072_107201.png",
+      "thumbnailUrl": "https://gametora.com/images/umamusume/characters/thumb/chara_stand_1072_107201.png",
+      "aptitudes": [
+        "A",
+        "E",
+        "G",
+        "B",
+        "A",
+        "E",
+        "F",
+        "A",
+        "A",
+        "G"
+      ],
+      "baseStats": [
+        92,
+        81,
+        97,
+        97,
+        83
+      ],
+      "fourStarStats": [
+        103,
+        90,
+        108,
+        108,
+        91
+      ],
+      "fiveStarStats": [
+        113,
+        99,
+        119,
+        119,
+        100
+      ],
+      "statBonuses": [
+        0,
+        0,
+        20,
+        10,
+        0
+      ],
+      "uniqueSkillIds": [
+        100721
+      ],
+      "innateSkillIds": [
+        200462,
+        200732,
+        201322
+      ],
+      "awakeningSkillIds": [
+        202092,
+        200461,
+        200342,
+        200731
+      ],
+      "eventSkillIds": [
+        200132,
+        201661,
+        200462,
+        200512
+      ],
+      "evolvedSkills": [
+        {
+          "new": 107201111,
+          "old": 200461
+        },
+        {
+          "new": 107201211,
+          "old": 200731
+        },
+        {
+          "new": 107201221,
+          "old": 200731
+        }
+      ]
+    }
+  ]
+}
