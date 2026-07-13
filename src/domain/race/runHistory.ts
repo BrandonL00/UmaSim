@@ -1,5 +1,12 @@
 import type { RaceResult, RaceSetup, Track } from "./types";
 
+export type RaceRunProvenance = {
+  engineVersion: string;
+  server: string;
+  source: string;
+  snapshotGeneratedAt: string;
+};
+
 export const raceRunHistoryStorageKey = "umasim.race-run-history.v1";
 export const raceRunHistoryLimit = 1;
 
@@ -15,6 +22,7 @@ export type RaceRunLog = {
   };
   setup: RaceSetup;
   result: RaceResult;
+  provenance?: RaceRunProvenance;
 };
 
 export type RaceRunHistoryDocument = {
@@ -23,7 +31,12 @@ export type RaceRunHistoryDocument = {
   runs: RaceRunLog[];
 };
 
-export function createRaceRunLog(setup: RaceSetup, track: Track, result: RaceResult): RaceRunLog {
+export function createRaceRunLog(
+  setup: RaceSetup,
+  track: Track,
+  result: RaceResult,
+  provenance?: RaceRunProvenance,
+): RaceRunLog {
   return {
     version: 1,
     id: createRunLogId(),
@@ -36,6 +49,7 @@ export function createRaceRunLog(setup: RaceSetup, track: Track, result: RaceRes
     },
     setup,
     result,
+    provenance,
   };
 }
 

@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { catalog } from "../data/catalog";
 import { globalSkills } from "../data/skills";
-import { simulateRace } from "../domain/race/simulateRace";
+import { simulateRace, simulationTickSeconds } from "../domain/race/simulateRace";
 import type { RaceSetup } from "../domain/race/types";
 import type { Skill } from "../domain/skills/types";
 
@@ -41,6 +41,21 @@ describe("simulateRace", () => {
         skillName: expect.any(String),
       }),
     );
+  });
+
+  it("records skill activation times at the documented simulation tick resolution", () => {
+    const result = simulateRace(setup, catalog);
+
+    expect(simulationTickSeconds).toBe(0.5);
+    expect(result.skillEvents.every((event) => Number.isInteger(event.second / simulationTickSeconds))).toBe(true);
+  });
+
+  it("uses a configured tick resolution and records it with the result", () => {
+    const tickSeconds = 0.1;
+    const result = simulateRace({ ...setup, tickSeconds }, catalog);
+
+    expect(result.tickSeconds).toBe(tickSeconds);
+    expect(result.skillEvents.every((event) => Math.abs(event.second / tickSeconds - Math.round(event.second / tickSeconds)) < 1e-8)).toBe(true);
   });
 
   it("does not activate a prerequisite when its upgrade is owned", () => {

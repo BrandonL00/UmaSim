@@ -1,15 +1,16 @@
 {
-  "generatedAt": "2026-06-19T04:44:06.665Z",
+  "generatedAt": "2026-07-13T05:58:00.991Z",
+  "importerVersion": "1",
   "server": "global",
   "source": {
     "provider": "gametora.com",
     "charactersPage": "https://gametora.com/umamusume/characters",
     "manifestUrl": "https://gametora.com/data/manifests/umamusume.json",
-    "cardsUrl": "https://gametora.com/data/umamusume/character-cards.077fea75.json",
-    "manifestHash": "077fea75"
+    "cardsUrl": "https://gametora.com/data/umamusume/character-cards.c2ffe140.json",
+    "manifestHash": "c2ffe140"
   },
-  "count": 87,
-  "characterCount": 60,
+  "count": 91,
+  "characterCount": 61,
   "cards": [
     {
       "cardId": 103301,
@@ -170,7 +171,9 @@
         200062,
         201042,
         200702,
-        201072
+        201072,
+        202222,
+        202322
       ],
       "evolvedSkills": [
         {
@@ -192,7 +195,7 @@
       "characterId": 1032,
       "characterName": "Agnes Tachyon",
       "characterNameJp": "アグネスタキオン",
-      "outfitTitle": "[Tach-nology]",
+      "outfitTitle": "[tach-nology]",
       "variant": null,
       "rarity": 1,
       "releaseGlobal": "2025-06-26",
@@ -506,6 +509,7 @@
         201512,
         202102,
         200192,
+        200332,
         202092,
         202181
       ],
@@ -517,6 +521,92 @@
         {
           "new": 103601211,
           "old": 201453
+        }
+      ]
+    },
+    {
+      "cardId": 105301,
+      "characterId": 1053,
+      "characterName": "Bamboo Memory",
+      "characterNameJp": "バンブーメモリー",
+      "outfitTitle": "[Iron Ambition]",
+      "variant": null,
+      "rarity": 3,
+      "releaseGlobal": "2026-07-07",
+      "urlName": "105301-bamboo-memory",
+      "imageUrl": "https://gametora.com/images/umamusume/characters/chara_stand_1053_105301.png",
+      "thumbnailUrl": "https://gametora.com/images/umamusume/characters/thumb/chara_stand_1053_105301.png",
+      "aptitudes": [
+        "A",
+        "D",
+        "A",
+        "A",
+        "C",
+        "G",
+        "G",
+        "E",
+        "A",
+        "C"
+      ],
+      "baseStats": [
+        98,
+        74,
+        104,
+        92,
+        82
+      ],
+      "fourStarStats": [
+        109,
+        82,
+        115,
+        102,
+        92
+      ],
+      "fiveStarStats": [
+        119,
+        90,
+        127,
+        112,
+        102
+      ],
+      "statBonuses": [
+        10,
+        0,
+        10,
+        10,
+        0
+      ],
+      "uniqueSkillIds": [
+        100531
+      ],
+      "innateSkillIds": [
+        200462,
+        200612,
+        202112
+      ],
+      "awakeningSkillIds": [
+        200972,
+        200611,
+        202122,
+        202111
+      ],
+      "eventSkillIds": [
+        200292,
+        200962,
+        200512
+      ],
+      "evolvedSkills": [
+        {
+          "new": 105301111,
+          "old": 200611
+        },
+        {
+          "new": 105301121,
+          "old": 200611
+        },
+        {
+          "new": 105301211,
+          "old": 202111
         }
       ]
     },
@@ -925,6 +1015,7 @@
         201072,
         201052,
         201902,
+        200492,
         200732
       ],
       "evolvedSkills": [
@@ -1886,6 +1977,93 @@
       ]
     },
     {
+      "cardId": 100702,
+      "characterId": 1007,
+      "characterName": "Gold Ship",
+      "characterNameJp": "ゴールドシップ",
+      "outfitTitle": "[RUN! RUIN! LAUNCHER!]",
+      "variant": "summer",
+      "rarity": 3,
+      "releaseGlobal": "2026-07-02",
+      "urlName": "100702-gold-ship",
+      "imageUrl": "https://gametora.com/images/umamusume/characters/chara_stand_1007_100702.png",
+      "thumbnailUrl": "https://gametora.com/images/umamusume/characters/thumb/chara_stand_1007_100702.png",
+      "aptitudes": [
+        "A",
+        "G",
+        "G",
+        "C",
+        "A",
+        "A",
+        "G",
+        "B",
+        "B",
+        "A"
+      ],
+      "baseStats": [
+        79,
+        93,
+        112,
+        73,
+        93
+      ],
+      "fourStarStats": [
+        88,
+        103,
+        125,
+        81,
+        103
+      ],
+      "fiveStarStats": [
+        96,
+        113,
+        137,
+        89,
+        115
+      ],
+      "statBonuses": [
+        0,
+        0,
+        20,
+        0,
+        10
+      ],
+      "uniqueSkillIds": [
+        110071
+      ],
+      "innateSkillIds": [
+        201562,
+        200752,
+        201482
+      ],
+      "awakeningSkillIds": [
+        202102,
+        200751,
+        202032,
+        202101
+      ],
+      "eventSkillIds": [
+        200052,
+        200142,
+        200182,
+        200433
+      ],
+      "evolvedSkills": [
+        {
+          "new": 100702111,
+          "old": 200751
+        },
+        {
+          "new": 100702211,
+          "old": 202101
+        },
+        {
+          "new": 100702221,
+          "old": 202101
+        }
+      ]
+    },
+    {
       "cardId": 101101,
       "characterId": 1011,
       "characterName": "Grass Wonder",
@@ -1974,7 +2152,7 @@
       "characterId": 1011,
       "characterName": "Grass Wonder",
       "characterNameJp": "グラスワンダー",
-      "outfitTitle": "[Saintly Jade Cleric ]",
+      "outfitTitle": "[Saintly Jade Cleric]",
       "variant": "fantasy",
       "rarity": 3,
       "releaseGlobal": "2025-09-21",
@@ -2881,6 +3059,7 @@
         200172,
         201142,
         201192,
+        202462,
         200452
       ],
       "evolvedSkills": [
@@ -3727,8 +3906,8 @@
         200582,
         201532,
         201702,
-        200732,
         201212,
+        200732,
         200462,
         200352
       ],
@@ -4162,6 +4341,88 @@
         {
           "new": 101302211,
           "old": 200361
+        }
+      ]
+    },
+    {
+      "cardId": 101303,
+      "characterId": 1013,
+      "characterName": "Mejiro McQueen",
+      "characterNameJp": "メジロマックイーン",
+      "outfitTitle": "[Fair Lady of the Waves]",
+      "variant": "summer",
+      "rarity": 3,
+      "releaseGlobal": "2026-07-02",
+      "urlName": "101303-mejiro-mcqueen",
+      "imageUrl": "https://gametora.com/images/umamusume/characters/chara_stand_1013_101303.png",
+      "thumbnailUrl": "https://gametora.com/images/umamusume/characters/thumb/chara_stand_1013_101303.png",
+      "aptitudes": [
+        "A",
+        "E",
+        "G",
+        "F",
+        "A",
+        "A",
+        "B",
+        "A",
+        "D",
+        "F"
+      ],
+      "baseStats": [
+        82,
+        85,
+        82,
+        113,
+        88
+      ],
+      "fourStarStats": [
+        91,
+        95,
+        91,
+        125,
+        98
+      ],
+      "fiveStarStats": [
+        100,
+        104,
+        100,
+        138,
+        108
+      ],
+      "statBonuses": [
+        8,
+        8,
+        0,
+        0,
+        14
+      ],
+      "uniqueSkillIds": [
+        120131
+      ],
+      "innateSkillIds": [
+        200432,
+        201532,
+        202012
+      ],
+      "awakeningSkillIds": [
+        202192,
+        202011,
+        200562,
+        202191
+      ],
+      "eventSkillIds": [
+        200532,
+        201661,
+        200182
+      ],
+      "evolvedSkills": [
+        {
+          "new": 101303111,
+          "old": 202011
+        },
+        {
+          "new": 101303211,
+          "old": 202191
         }
       ]
     },
@@ -5318,7 +5579,8 @@
       ],
       "eventSkillIds": [
         200042,
-        201282
+        201282,
+        202042
       ],
       "evolvedSkills": [
         {
@@ -5837,7 +6099,9 @@
       ],
       "eventSkillIds": [
         201272,
-        201672
+        201672,
+        202202,
+        202262
       ],
       "evolvedSkills": [
         {
@@ -6030,6 +6294,93 @@
         {
           "new": 100102211,
           "old": 200461
+        }
+      ]
+    },
+    {
+      "cardId": 100103,
+      "characterId": 1001,
+      "characterName": "Special Week",
+      "characterNameJp": "スペシャルウィーク",
+      "outfitTitle": "[Ruler of Japan]",
+      "variant": "commander",
+      "rarity": 3,
+      "releaseGlobal": "2026-06-25",
+      "urlName": "100103-special-week",
+      "imageUrl": "https://gametora.com/images/umamusume/characters/chara_stand_1001_100103.png",
+      "thumbnailUrl": "https://gametora.com/images/umamusume/characters/thumb/chara_stand_1001_100103.png",
+      "aptitudes": [
+        "A",
+        "G",
+        "F",
+        "C",
+        "A",
+        "A",
+        "G",
+        "A",
+        "A",
+        "C"
+      ],
+      "baseStats": [
+        96,
+        82,
+        94,
+        82,
+        96
+      ],
+      "fourStarStats": [
+        107,
+        91,
+        105,
+        91,
+        106
+      ],
+      "fiveStarStats": [
+        117,
+        100,
+        115,
+        100,
+        118
+      ],
+      "statBonuses": [
+        10,
+        10,
+        0,
+        0,
+        10
+      ],
+      "uniqueSkillIds": [
+        120011
+      ],
+      "innateSkillIds": [
+        200332,
+        201212,
+        200612
+      ],
+      "awakeningSkillIds": [
+        201172,
+        201211,
+        201182,
+        202061
+      ],
+      "eventSkillIds": [
+        200472,
+        200512,
+        200332,
+        200032,
+        200042,
+        200202,
+        200562,
+        200602
+      ],
+      "evolvedSkills": [
+        {
+          "new": 100103111,
+          "old": 201211
+        },
+        {
+          "new": 100103211,
+          "old": 202061
         }
       ]
     },
@@ -6524,6 +6875,7 @@
       "eventSkillIds": [
         200582,
         201702,
+        202502,
         201902
       ],
       "evolvedSkills": [
@@ -6608,6 +6960,7 @@
         202042,
         201052,
         201702,
+        202502,
         201902
       ],
       "evolvedSkills": [
@@ -7200,6 +7553,7 @@
         201052,
         201702,
         200602,
+        202452,
         200492
       ],
       "evolvedSkills": [

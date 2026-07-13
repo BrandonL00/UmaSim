@@ -53,14 +53,18 @@ type SimulateRaceOptions = {
   debugSkills?: boolean;
 };
 
-const tickSeconds = 0.5;
+export const simulationTickSeconds = 0.5;
 const maxRaceSeconds = 260;
 
 export function simulateRace(setup: RaceSetup, catalog: SimCatalog, options: SimulateRaceOptions = {}): RaceResult {
   const track = catalog.tracks.find((candidate) => candidate.id === setup.trackId);
+  const tickSeconds = setup.tickSeconds ?? simulationTickSeconds;
 
   if (!track) {
     throw new Error(`Unknown track: ${setup.trackId}`);
+  }
+  if (!Number.isFinite(tickSeconds) || tickSeconds <= 0) {
+    throw new Error("Simulation tick must be a positive number of seconds.");
   }
 
   const random = createSeededRandom(setup.seed);
@@ -203,6 +207,7 @@ export function simulateRace(setup: RaceSetup, catalog: SimCatalog, options: Sim
 
   const result: RaceResult = {
     seed: setup.seed,
+    tickSeconds,
     placements,
     runners: runners.map((runner) => ({
       runnerId: runner.build.id,

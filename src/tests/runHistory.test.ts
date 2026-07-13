@@ -44,6 +44,7 @@ const track: Track = {
 
 const result: RaceResult = {
   seed: "test-seed",
+  tickSeconds: 0.5,
   placements: [{ place: 1, runnerId: "runner-1", runnerName: "Test Runner", finishTime: 91.25 }],
   runners: [
     {
@@ -88,12 +89,18 @@ const result: RaceResult = {
 
 describe("race run history", () => {
   it("captures setup, result, track summary, and debug details", () => {
-    const log = createRaceRunLog(setup, track, result);
+    const log = createRaceRunLog(setup, track, result, {
+      engineVersion: "0.1.0",
+      server: "global",
+      source: "gametora.com",
+      snapshotGeneratedAt: "2026-06-19T04:44:06.665Z",
+    });
 
     expect(log.track.name).toBe("Tokyo Turf 1600m");
     expect(log.setup.runners[0].buildName).toBe("Debug Build");
     expect(log.result.skillEvents).toHaveLength(1);
     expect(log.result.skillDebug?.[0].skillId).toBe("gt-100171");
+    expect(log.provenance).toMatchObject({ engineVersion: "0.1.0", server: "global" });
   });
 
   it("keeps newest logs first and respects the limit", () => {

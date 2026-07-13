@@ -3,6 +3,7 @@ import path from "node:path";
 
 const manifestUrl = "https://gametora.com/data/manifests/umamusume.json";
 const dataBaseUrl = "https://gametora.com/data/umamusume";
+const importerVersion = "1";
 const trackDataKey = "history/pre_2nd_anni/racetracks";
 const outputDir = path.resolve("src/data/generated");
 const outputPath = path.join(outputDir, "gametoraGlobalTracks.json");
@@ -189,6 +190,7 @@ const tracks = rawVenues
 
 const payload = {
   generatedAt: new Date().toISOString(),
+  importerVersion,
   server: "global",
   ruleset: trackDataKey,
   source: {

@@ -3,6 +3,7 @@ import path from "node:path";
 
 const manifestUrl = "https://gametora.com/data/manifests/umamusume.json";
 const dataBaseUrl = "https://gametora.com/data/umamusume";
+const importerVersion = "1";
 const outputDir = path.resolve("src/data/generated");
 const outputPath = path.join(outputDir, "gametoraGlobalSkills.json");
 
@@ -115,6 +116,16 @@ function normalizeSkill(skill, skillById) {
   };
 }
 
+function hasGlobalSkillData(skill, skillById) {
+  if (skill.loc?.en) {
+    return true;
+  }
+
+  // Shared skill tiers can inherit Global availability from their linked tier
+  // even when the tier itself carries no server-specific override.
+  return (skill.versions ?? []).some((id) => skillById.get(Number(id))?.loc?.en);
+}
+
 const manifest = await fetchJson(manifestUrl);
 const skillsHash = manifest.skills;
 
@@ -132,12 +143,15 @@ if (!Array.isArray(rawSkills)) {
 
 const skillById = new Map(rawSkills.map((skill) => [Number(skill.id), skill]));
 const skills = rawSkills
-  .filter((skill) => skill.name_en)
+  // `name_en` is a localization string, not a Global release flag. Only the
+  // per-server record (or a linked shared tier) confirms Global availability.
+  .filter((skill) => skill.name_en && hasGlobalSkillData(skill, skillById))
   .map((skill) => normalizeSkill(skill, skillById))
   .sort((left, right) => Number(left.id) - Number(right.id));
 
 const payload = {
   generatedAt: new Date().toISOString(),
+  importerVersion,
   server: "global",
   source: {
     provider: "gametora.com",

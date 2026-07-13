@@ -204,6 +204,28 @@ We should use these as architectural inspiration only. Avoid copying implementat
 
 ## Data Questions To Resolve
 
+## Data Snapshot And Engine Versioning
+
+The app displays the newest bundled Global data snapshot in its header. This is
+the GameTora retrieval timestamp, not a verified Umamusume client build number:
+the current source data does not expose an authoritative Global game-version tag.
+
+Each generated GameTora dataset records its server, retrieval time, source
+manifest hash, and (for new imports) importer revision. A saved race also records
+the engine revision and data snapshot used to create it. The engine revision is
+maintained in `src/domain/race/engineVersion.ts` and should be bumped whenever a
+deterministic result can change for the same setup and seed. Git tags/releases
+can map those revisions to published app builds, but they are not required for
+the engine or data provenance itself.
+
+To refresh Global data, run `npm run import:character-cards`, `npm run
+import:skills`, and `npm run import:tracks`, then review the generated JSON diff
+and run the validation suite. Re-importing is mechanically low risk because the
+scripts write only generated catalog files, but the resulting changes can be
+high impact: changed conditions/effects, new stat-cap rules, and mechanics
+changes require engine and regression-test work before the simulator can claim
+current behavior.
+
 Before implementing high-confidence race results, we need to answer:
 
 - What is the best legally safe source for game data?

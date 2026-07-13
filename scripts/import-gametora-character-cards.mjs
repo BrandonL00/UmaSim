@@ -3,6 +3,7 @@ import path from "node:path";
 
 const manifestUrl = "https://gametora.com/data/manifests/umamusume.json";
 const dataBaseUrl = "https://gametora.com/data/umamusume";
+const importerVersion = "1";
 const outputDir = path.resolve("src/data/generated");
 const outputPath = path.join(outputDir, "gametoraGlobalCharacterCards.json");
 
@@ -75,6 +76,7 @@ const cards = rawCards
 
 const payload = {
   generatedAt: new Date().toISOString(),
+  importerVersion,
   server: "global",
   source: {
     provider: "gametora.com",

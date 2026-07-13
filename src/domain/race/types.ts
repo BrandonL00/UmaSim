@@ -33,6 +33,8 @@ export type Track = {
 
 export type RaceSetup = {
   seed: string;
+  /** Simulation evaluation interval. Omit to use the engine default. */
+  tickSeconds?: number;
   trackId: string;
   groundCondition: GroundCondition;
   weather: Weather;
@@ -115,6 +117,7 @@ export type SimulationWarning = {
 
 export type RaceResult = {
   seed: string;
+  tickSeconds: number;
   placements: Placement[];
   runners: RunnerSummary[];
   timeline: RaceTick[];

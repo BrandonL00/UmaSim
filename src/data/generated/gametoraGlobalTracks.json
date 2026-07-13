@@ -1,14 +1,15 @@
 {
-  "generatedAt": "2026-06-18T21:51:01.966Z",
+  "generatedAt": "2026-07-13T05:58:02.036Z",
+  "importerVersion": "1",
   "server": "global",
   "ruleset": "history/pre_2nd_anni/racetracks",
   "source": {
     "provider": "gametora.com",
     "manifestUrl": "https://gametora.com/data/manifests/umamusume.json",
     "tracksUrl": "https://gametora.com/data/umamusume/history/pre_2nd_anni/racetracks.b0425e67.json",
-    "racesUrl": "https://gametora.com/data/umamusume/races.5139e0e3.json",
+    "racesUrl": "https://gametora.com/data/umamusume/races.2d313c47.json",
     "trackHash": "b0425e67",
-    "raceHash": "5139e0e3"
+    "raceHash": "2d313c47"
   },
   "count": 78,
   "tracks": [
@@ -5146,6 +5147,14 @@
         {
           "id": 201101,
           "name": "Nikkei Sho"
+        },
+        {
+          "id": 701901,
+          "name": "Arima Kinen"
+        },
+        {
+          "id": 702301,
+          "name": "Arima Kinen"
         }
       ]
     },
