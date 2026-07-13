@@ -119,6 +119,24 @@ h2 {
   max-width: 560px;
 }
 
+.data-provenance {
+  align-items: center;
+  color: #82958a;
+  display: flex;
+  flex-wrap: wrap;
+  font-size: 11px;
+  gap: 5px;
+  margin-top: 9px;
+}
+
+.data-provenance span {
+  border-left: 1px solid rgb(255 255 255 / 16%);
+  color: #b7c6bb;
+  font-weight: 800;
+  margin-left: 3px;
+  padding-left: 8px;
+}
+
 .toolbar-actions,
 .panel-heading,
 .track-facts,
@@ -182,6 +200,260 @@ h2 {
 .detail-grid {
   grid-template-columns: minmax(520px, 1fr) 360px;
 }
+
+.race-details-panel {
+  margin: 0 auto 14px;
+  max-width: 1380px;
+  padding: 15px;
+  white-space: normal;
+}
+
+.race-details-panel .panel-heading { margin-bottom: 15px; }
+
+.race-details-layout {
+  display: grid;
+  gap: 18px;
+  grid-template-columns: minmax(0, 1.2fr) minmax(360px, 0.8fr);
+}
+
+.race-state-section,
+.skill-log-section {
+  min-width: 0;
+}
+
+.race-details-section-heading {
+  align-items: end;
+  display: flex;
+  gap: 12px;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.race-details-section-heading > div { display: grid; gap: 2px; }
+
+.race-details-section-heading span {
+  color: #9eaaa2;
+  font-size: 10px;
+  font-weight: 850;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.race-details-section-heading h3 {
+  color: #edf3eb;
+  font-size: 14px;
+  margin: 0;
+}
+
+.race-details-section-heading > small {
+  color: #97a69b;
+  font-size: 11px;
+  max-width: 180px;
+  overflow: hidden;
+  text-align: right;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.race-state-table { display: grid; gap: 6px; }
+
+.race-state-table-header,
+.race-state-row {
+  align-items: center;
+  display: grid;
+  grid-template-columns: minmax(150px, 1.45fr) repeat(4, minmax(68px, 0.72fr));
+}
+
+.race-state-table-header {
+  color: #8f9c94;
+  font-size: 10px;
+  font-weight: 850;
+  letter-spacing: 0.04em;
+  padding: 0 10px 4px;
+  text-transform: uppercase;
+}
+
+.race-state-row {
+  background: rgb(255 255 255 / 4%);
+  border: 1px solid rgb(255 255 255 / 8%);
+  border-radius: 8px;
+  color: inherit;
+  cursor: pointer;
+  font: inherit;
+  min-height: 64px;
+  padding: 8px 10px;
+  text-align: left;
+  transition: background 140ms ease, border-color 140ms ease;
+}
+
+.race-state-row:hover,
+.race-state-row:focus-visible {
+  background: rgb(45 140 120 / 11%);
+  border-color: rgb(45 140 120 / 46%);
+  outline: none;
+}
+
+.race-state-runner,
+.race-state-metric {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  min-width: 0;
+}
+
+.race-state-runner { align-items: center; flex-direction: row; gap: 8px; }
+.race-state-runner > strong { color: #d8be79; font-size: 13px; min-width: 22px; }
+.race-state-runner span { display: grid; gap: 2px; min-width: 0; }
+.race-state-runner b { color: #f2f7ef; font-size: 12px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.race-state-runner small,
+.race-state-metric small { color: #8f9c94; font-size: 10px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.race-state-metric > strong { color: #dbe5dd; font-size: 12px; }
+
+.skill-log-section {
+  background: rgb(255 255 255 / 2%);
+  border: 1px solid rgb(255 255 255 / 7%);
+  border-radius: 8px;
+  position: relative;
+  padding: 12px;
+}
+
+.runner-filter-picker {
+  min-width: 186px;
+  position: relative;
+}
+
+.runner-filter-label {
+  align-items: center;
+  color: #aeb9aa;
+  display: flex;
+  font-size: 10px;
+  gap: 4px;
+  margin: 0 0 4px;
+}
+
+.runner-filter-trigger,
+.runner-filter-menu button {
+  align-items: center;
+  color: #dce7dc;
+  display: grid;
+  font: inherit;
+  gap: 7px;
+  grid-template-columns: 25px minmax(0, 1fr) auto;
+  text-align: left;
+  width: 100%;
+}
+
+.runner-filter-trigger {
+  background: #101415;
+  border: 1px solid rgb(255 255 255 / 12%);
+  border-radius: 7px;
+  min-height: 42px;
+  padding: 5px 7px;
+}
+
+.runner-filter-trigger:hover,
+.runner-filter-trigger[aria-expanded="true"] {
+  border-color: rgb(45 140 120 / 55%);
+}
+
+.runner-filter-trigger > img,
+.runner-filter-menu img,
+.runner-filter-all-icon {
+  background: rgb(45 140 120 / 14%);
+  border: 1px solid rgb(45 140 120 / 25%);
+  border-radius: 50%;
+  height: 25px;
+  object-fit: cover;
+  width: 25px;
+}
+
+.runner-filter-all-icon {
+  align-items: center;
+  color: #aee2d7;
+  display: inline-flex;
+  justify-content: center;
+}
+
+.runner-filter-trigger span,
+.runner-filter-menu button > span { display: grid; gap: 1px; min-width: 0; }
+.runner-filter-trigger strong,
+.runner-filter-menu strong { color: #edf3eb; font-size: 11px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.runner-filter-trigger small,
+.runner-filter-menu small { color: #8f9c94; font-size: 9px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+.runner-filter-menu {
+  background: #19201f;
+  border: 1px solid rgb(45 140 120 / 45%);
+  border-radius: 8px;
+  box-shadow: 0 14px 30px rgb(0 0 0 / 42%);
+  display: grid;
+  gap: 3px;
+  max-height: 260px;
+  overflow-y: auto;
+  padding: 5px;
+  position: absolute;
+  right: 0;
+  top: calc(100% + 5px);
+  width: min(300px, calc(100vw - 48px));
+  z-index: 4;
+}
+
+.runner-filter-menu button {
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  min-height: 40px;
+  padding: 5px;
+}
+
+.runner-filter-menu button:hover,
+.runner-filter-menu button.is-selected {
+  background: rgb(45 140 120 / 14%);
+  border-color: rgb(45 140 120 / 32%);
+}
+
+.skill-log-resolution {
+  align-items: center;
+  color: #9eaaa2;
+  display: flex;
+  font-size: 11px;
+  gap: 6px;
+  line-height: 1.35;
+  margin: 0 0 10px;
+}
+
+.skill-log-list {
+  display: grid;
+  gap: 7px;
+  max-height: 320px;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding-right: 4px;
+}
+
+.skill-log-event {
+  align-items: center;
+  background: rgb(255 255 255 / 4%);
+  border: 1px solid rgb(255 255 255 / 8%);
+  border-radius: 7px;
+  display: grid;
+  gap: 9px;
+  grid-template-columns: 50px minmax(100px, 0.75fr) minmax(0, 1fr);
+  padding: 8px;
+}
+
+.skill-log-event time {
+  color: #d8be79;
+  font-size: 16px;
+  font-weight: 900;
+  letter-spacing: -0.03em;
+}
+
+.skill-log-event time small { font-size: 10px; margin-left: 1px; }
+.skill-log-event > div { display: grid; gap: 3px; min-width: 0; }
+.skill-log-event strong { align-items: center; color: #f1f6ef; display: flex; font-size: 12px; gap: 5px; min-width: 0; }
+.skill-log-event > div span { color: #8f9c94; font-size: 10px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.skill-log-event p { color: #b8c4bb; font-size: 11px; line-height: 1.35; margin: 0; }
 
 .builder-grid {
   grid-template-columns: 1fr;
@@ -285,6 +557,19 @@ h2 {
 .analysis-run-button {
   justify-content: center;
   width: 100%;
+}
+
+.simulation-spinner { animation: simulation-spin 0.8s linear infinite; }
+
+.simulation-progress {
+  color: #aee2d7;
+  font-size: 11px;
+  margin: 8px 0 0;
+  text-align: center;
+}
+
+@keyframes simulation-spin {
+  to { transform: rotate(360deg); }
 }
 
 .analysis-controls > span {
@@ -714,6 +999,12 @@ h2 {
   color: #aeb9aa;
   font-size: 12px;
   font-weight: 800;
+}
+
+.field-note {
+  color: #859188;
+  font-size: 10px;
+  line-height: 1.25;
 }
 
 input,
@@ -2634,6 +2925,7 @@ select:disabled {
 @media (max-width: 1080px) {
   .workspace-grid,
   .detail-grid,
+  .race-details-layout,
   .builder-layout,
   .builder-intro,
   .library-layout {
@@ -2678,6 +2970,35 @@ select:disabled {
   .placement-row {
     align-items: flex-start;
   }
+
+  .race-details-panel { padding: 11px; }
+
+  .race-details-section-heading {
+    align-items: start;
+    flex-direction: column;
+  }
+
+  .race-details-section-heading > small { max-width: 100%; text-align: left; }
+
+  .runner-filter-picker { width: 100%; }
+  .runner-filter-menu { left: 0; right: auto; width: 100%; }
+
+  .race-state-table-header { display: none; }
+
+  .race-state-row {
+    align-items: start;
+    gap: 9px 12px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .race-state-runner { grid-column: 1 / -1; }
+
+  .skill-log-event {
+    align-items: start;
+    grid-template-columns: 46px minmax(0, 1fr);
+  }
+
+  .skill-log-event p { grid-column: 2; }
 
   h1 {
     font-size: 34px;

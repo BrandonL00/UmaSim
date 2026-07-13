@@ -1,5 +1,5 @@
-import { RaceSimulator } from "../features/race-sim/RaceSimulator";
+import { RaceSimulatorPage } from "../features/race-sim/RaceSimulatorPage";
 
 export function App() {
-  return <RaceSimulator />;
+  return <RaceSimulatorPage />;
 }
