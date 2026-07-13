@@ -278,9 +278,8 @@ h2 {
 .analysis-controls {
   border-top: 1px solid rgb(255 255 255 / 8%);
   display: grid;
-  gap: 8px;
-  margin-top: 4px;
-  padding-top: 13px;
+  gap: 12px;
+  padding-top: 15px;
 }
 
 .analysis-run-button {
@@ -868,7 +867,6 @@ select:disabled {
 
 .setup-panel .panel-heading,
 .setup-panel .field,
-.setup-panel .track-facts,
 .setup-panel .analysis-controls,
 .setup-panel .replay-seed-control {
   margin: 0;
@@ -876,7 +874,74 @@ select:disabled {
 
 .setup-panel .panel-heading { margin-bottom: 1px; }
 
-.setup-panel .compact-grid.two { gap: 10px; }
+.setup-panel .compact-grid.two { gap: 12px; }
+
+.preset-stubs {
+  background: rgb(255 255 255 / 3%);
+  border: 1px solid rgb(255 255 255 / 9%);
+  border-radius: 8px;
+  display: grid;
+  gap: 10px;
+  padding: 11px;
+}
+
+.preset-stubs > div:first-child {
+  display: grid;
+  gap: 3px;
+}
+
+.preset-stubs span {
+  color: #aeb9aa;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.preset-stubs small {
+  color: #859188;
+  font-size: 11px;
+  line-height: 1.35;
+}
+
+.preset-stub-actions {
+  display: grid;
+  gap: 9px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.preset-stub-button {
+  align-items: center;
+  background: rgb(45 140 120 / 8%);
+  border: 1px solid rgb(45 140 120 / 23%);
+  border-radius: 7px;
+  color: #aec4bc;
+  display: grid;
+  font-size: 11px;
+  gap: 5px;
+  justify-items: start;
+  min-height: 62px;
+  padding: 9px;
+  text-align: left;
+}
+
+.preset-stub-button em {
+  color: #78847d;
+  font-size: 10px;
+  font-style: normal;
+}
+
+.analysis-empty-state {
+  background: rgb(255 255 255 / 3%);
+  border: 1px dashed rgb(255 255 255 / 15%);
+  border-radius: 8px;
+  display: grid;
+  gap: 5px;
+  margin-bottom: 12px;
+  padding: 16px;
+}
+
+.analysis-empty-state strong { color: #e8eee5; font-size: 13px; }
+.analysis-empty-state p { color: #9eaaa2; font-size: 12px; line-height: 1.45; margin: 0; }
+.analysis-empty-state em { color: #d8bf7e; font-style: normal; }
 
 .runner-row {
   align-items: center;

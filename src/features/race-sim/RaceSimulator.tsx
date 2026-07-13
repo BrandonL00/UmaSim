@@ -30,7 +30,6 @@ import {
   globalSkills,
   inheritedUniqueSkillOptions,
 } from "../../data/skills";
-import { globalTrackDataMeta } from "../../data/tracks";
 import {
   CharacterCardAmbiguityError,
   createSkillSelectionKey,
@@ -147,6 +146,7 @@ export function RaceSimulator() {
   const [weather, setWeather] = useState<Weather>("sunny");
   const [seed, setSeed] = useState(createRandomSeed);
   const [runMode, setRunMode] = useState<"replay" | "analysis">("analysis");
+  const [hasRunSimulation, setHasRunSimulation] = useState(false);
   const [batchRunCount, setBatchRunCount] = useState<(typeof batchRunCounts)[number]>(100);
   const [batchResult, setBatchResult] = useState<RaceBatchResult | null>(null);
   const [batchView, setBatchView] = useState<"overview" | "runs" | "skills">("overview");
@@ -338,6 +338,7 @@ export function RaceSimulator() {
     setSelectedBatchRunnerId(nextBatch.runners[0]?.runnerId ?? null);
     setBatchReplayRunIndex(null);
     setInspectedRaceRunnerId(null);
+    setHasRunSimulation(true);
   }
 
   function runReplay() {
@@ -348,6 +349,7 @@ export function RaceSimulator() {
     setBatchReplayRunIndex(null);
     setResult(nextResult);
     setRunHistory((current) => appendRaceRunLog(current, createRaceRunLog(setup, track, nextResult)));
+    setHasRunSimulation(true);
   }
 
   function changeTrack(nextTrackId: string) {
@@ -369,6 +371,7 @@ export function RaceSimulator() {
     setRunMode("analysis");
     setBatchResult(null);
     setBatchReplayRunIndex(null);
+    setHasRunSimulation(false);
     setSelectedCharacterId(defaultCharacterTemplate.id);
     setCustomDraft(defaultCustomRunner);
     setSkillSearch("");
@@ -637,6 +640,25 @@ export function RaceSimulator() {
             </select>
           </label>
 
+          <section className="preset-stubs" aria-labelledby="preset-stubs-heading">
+            <div>
+              <span id="preset-stubs-heading">Preset setup</span>
+              <small>Preset catalogs will apply reviewable course and condition drafts.</small>
+            </div>
+            <div className="preset-stub-actions">
+              <button className="preset-stub-button" disabled type="button">
+                <Route size={16} />
+                Choose race preset
+                <em>Coming soon</em>
+              </button>
+              <button className="preset-stub-button" disabled type="button">
+                <Medal size={16} />
+                Choose CM preset
+                <em>Coming soon</em>
+              </button>
+            </div>
+          </section>
+
           <div className="analysis-controls">
             <span>Analysis job</span>
             <label className="field compact-field">
@@ -649,15 +671,6 @@ export function RaceSimulator() {
               <BarChart3 size={16} />
               Run {batchRunCount}-race analysis
             </button>
-          </div>
-
-          <div className="track-facts">
-            <span>{globalTrackDataMeta.count} Global courses</span>
-            <span>{track.surface}</span>
-            <span>{track.distanceMeters}m</span>
-            <span>{track.distanceCategory}</span>
-            <span>{track.direction}</span>
-            <span>{weather}</span>
           </div>
 
           <div className="compact-grid two">
@@ -834,7 +847,7 @@ export function RaceSimulator() {
         <div className={runMode === "analysis" && batchResult ? "panel result-panel analysis-result-panel" : "panel result-panel"}>
           <div className="panel-heading">
             <Medal size={18} />
-            <h2>{runMode === "analysis" && batchResult ? "Analysis" : "Result"}</h2>
+            <h2>{runMode === "analysis" && batchResult ? "Analysis - batch" : "Analysis - single run"}</h2>
             <span className="simulation-badge">Approximate model</span>
           </div>
 
@@ -878,7 +891,7 @@ export function RaceSimulator() {
               view={batchView}
               onViewChange={setBatchView}
             />
-          ) : (
+          ) : hasRunSimulation ? (
           <div className="placements">
             {result.placements.map((placement) => {
               const summary = resultByRunnerId.get(placement.runnerId);
@@ -902,6 +915,11 @@ export function RaceSimulator() {
               );
             })}
           </div>
+          ) : (
+            <div className="analysis-empty-state">
+              <strong>Ready for a single-run analysis</strong>
+              <p>Choose a seed and select <em>Replay one seed</em> to inspect this field, or run a batch analysis for aggregate results.</p>
+            </div>
           )}
 
           <div className="run-history">
