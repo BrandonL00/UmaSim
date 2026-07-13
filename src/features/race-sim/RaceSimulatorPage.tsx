@@ -12,6 +12,7 @@ import {
 } from "lucide-react";
 import type { CSSProperties } from "react";
 import { useEffect, useMemo, useState } from "react";
+import { flushSync } from "react-dom";
 import { catalog } from "../../data/catalog";
 import { characterDataMeta, characterTemplates } from "../../data/characters";
 import { formatSnapshotDate, simulationProvenance } from "../../data/simulationProvenance";
@@ -320,7 +321,7 @@ export function RaceSimulatorPage() {
   }, [runHistory]);
 
   async function runAnalysis() {
-    setIsSimulating(true);
+    flushSync(() => setIsSimulating(true));
     await yieldToBrowser();
 
     try {
@@ -339,7 +340,7 @@ export function RaceSimulatorPage() {
   }
 
   async function runReplay() {
-    setIsSimulating(true);
+    flushSync(() => setIsSimulating(true));
     await yieldToBrowser();
 
     try {
@@ -675,6 +676,7 @@ export function RaceSimulatorPage() {
           batchResult={batchResult}
           batchView={batchView}
           hasRunSimulation={hasRunSimulation}
+          isSimulating={isSimulating}
           inspectedBatchRunner={inspectedBatchRunner}
           onBackToBatch={() => setBatchReplayRunIndex(null)}
           onBatchViewChange={setBatchView}
@@ -1585,14 +1587,9 @@ function createSetup(
 }
 
 function yieldToBrowser(): Promise<void> {
-  return new Promise((resolve) => {
-    if (typeof requestAnimationFrame === "function") {
-      requestAnimationFrame(() => resolve());
-      return;
-    }
-
-    setTimeout(resolve, 0);
-  });
+  // React has committed the loading state synchronously. Starting the engine
+  // in the following task gives the browser an actual paint opportunity.
+  return new Promise((resolve) => setTimeout(resolve, 0));
 }
 
 function getRaceLaneCapacity(track: typeof catalog.tracks[number]): number {

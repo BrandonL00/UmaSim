@@ -27,6 +27,7 @@ export type AnalysisPanelProps = {
   batchResult: RaceBatchResult | null;
   batchView: BatchView;
   hasRunSimulation: boolean;
+  isSimulating: boolean;
   inspectedBatchRunner: RaceBatchResult["runners"][number] | null;
   onBackToBatch: () => void;
   onBatchViewChange: (view: BatchView) => void;
@@ -48,6 +49,7 @@ export function AnalysisPanel({
   batchResult,
   batchView,
   hasRunSimulation,
+  isSimulating,
   inspectedBatchRunner,
   onBackToBatch,
   onBatchViewChange,
@@ -67,7 +69,10 @@ export function AnalysisPanel({
   const resultByRunnerId = new Map(result.runners.map((runner) => [runner.runnerId, runner]));
 
   return (
-    <div className={batchActive ? "panel result-panel analysis-result-panel" : "panel result-panel"}>
+    <div
+      aria-busy={isSimulating}
+      className={`${batchActive ? "panel result-panel analysis-result-panel" : "panel result-panel"}${isSimulating ? " is-simulating" : ""}`}
+    >
       <div className="panel-heading">
         <Medal size={18} />
         <h2>{batchActive ? "Analysis - batch" : "Analysis - single run"}</h2>
@@ -149,6 +154,16 @@ export function AnalysisPanel({
         onExport={onExportRunHistory}
         onLoad={onLoadRunLog}
       />
+
+      {isSimulating ? (
+        <div className="analysis-loading-overlay" role="status">
+          <div className="analysis-loading-orbit" aria-hidden="true">
+            <span />
+          </div>
+          <strong>Simulating race data</strong>
+          <p>Calculating placements, pace, stamina, and skill activations.</p>
+        </div>
+      ) : null}
     </div>
   );
 }
