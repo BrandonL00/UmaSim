@@ -2,6 +2,7 @@ import { Clock, Download, Medal, Trash2 } from "lucide-react";
 import { useState } from "react";
 import { createPortal } from "react-dom";
 import { characterTemplates } from "../../../data/characters";
+import { globalSkills } from "../../../data/skills";
 import {
   accuracyLedger,
   accuracyStatusLabels,
@@ -10,9 +11,11 @@ import {
 import type { RaceBatchResult } from "../../../domain/race/simulateRaceBatch";
 import type { RaceRunLog } from "../../../domain/race/runHistory";
 import type { RaceResult } from "../../../domain/race/types";
+import { buildGlobalSkillCoverageReport } from "../../../domain/race/globalSkillCoverage";
 import type { RunnerBuild } from "../../../domain/uma/types";
 
 const accuracyStatusCounts = countAccuracyStatuses();
+const globalSkillCoverage = buildGlobalSkillCoverageReport(globalSkills);
 
 export type BatchView = "overview" | "runs" | "skills";
 
@@ -91,6 +94,35 @@ export function AnalysisPanel({
         <p>
           This simulator reports approximations explicitly. See each area below before using a result for theorycrafting.
         </p>
+        <div className="catalog-coverage-summary">
+          <div>
+            <span>Imported skills</span>
+            <strong>{globalSkillCoverage.modeledSkillCount}/{globalSkillCoverage.skillCount}</strong>
+          </div>
+          <div>
+            <span>Owner uniques</span>
+            <strong>{globalSkillCoverage.uniqueSkills.owner.modeledSkillCount}/{globalSkillCoverage.uniqueSkills.owner.skillCount}</strong>
+          </div>
+          <div>
+            <span>Inherited uniques</span>
+            <strong>{globalSkillCoverage.uniqueSkills.inherited.modeledSkillCount}/{globalSkillCoverage.uniqueSkills.inherited.skillCount}</strong>
+          </div>
+        </div>
+        {globalSkillCoverage.uniqueSkills.owner.unsupportedSkillCount > 0 ? (
+          <details className="unique-coverage-list">
+            <summary>{globalSkillCoverage.uniqueSkills.owner.unsupportedSkillCount} owner uniques not simulated</summary>
+            <div>
+              {globalSkillCoverage.uniqueSkills.owner.unsupportedSkills.map((skill) => (
+                <p key={skill.id}>
+                  <strong>{skill.name}</strong>
+                  <span>{formatCoverageBlockers(skill.report)}</span>
+                </p>
+              ))}
+            </div>
+          </details>
+        ) : (
+          <p className="unique-coverage-complete">All imported owner and inherited unique skills are modeled.</p>
+        )}
         <div className="accuracy-ledger-list">
           {accuracyLedger.map((entry) => (
             <div className={`accuracy-ledger-row is-${entry.status}`} key={entry.id}>
@@ -166,6 +198,17 @@ export function AnalysisPanel({
       ) : null}
     </div>
   );
+}
+
+function formatCoverageBlockers(report: { unsupportedConditionTokens: string[]; unsupportedEffectTypes: number[] }) {
+  return [
+    report.unsupportedConditionTokens.length
+      ? `conditions: ${report.unsupportedConditionTokens.join(", ")}`
+      : null,
+    report.unsupportedEffectTypes.length
+      ? `effects: ${report.unsupportedEffectTypes.join(", ")}`
+      : null,
+  ].filter(Boolean).join(" · ");
 }
 
 function RunHistory({

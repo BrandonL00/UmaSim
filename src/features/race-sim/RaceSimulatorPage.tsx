@@ -42,7 +42,7 @@ import {
   saveRaceRunHistory,
   type RaceRunLog,
 } from "../../domain/race/runHistory";
-import type { GroundCondition, RaceResult, RaceSetup, Weather } from "../../domain/race/types";
+import type { GroundCondition, RaceResult, RaceSeason, RaceSetup, Weather } from "../../domain/race/types";
 import { getPrerequisiteLockOwners, selectSkillWithPrerequisites } from "../../domain/skills/selection";
 import {
   createUmaLibraryDocument,
@@ -132,6 +132,7 @@ export function RaceSimulatorPage() {
   const [trackId, setTrackId] = useState(catalog.tracks[0].id);
   const [groundCondition, setGroundCondition] = useState<GroundCondition>("firm");
   const [weather, setWeather] = useState<Weather>("sunny");
+  const [season, setSeason] = useState<RaceSeason>("spring");
   const [seed, setSeed] = useState(createRandomSeed);
   const [tickSeconds, setTickSeconds] = useState(simulationTickSeconds);
   const [runMode, setRunMode] = useState<"replay" | "analysis">("analysis");
@@ -173,6 +174,7 @@ export function RaceSimulatorPage() {
         trackId,
         groundCondition,
         weather,
+        season,
         seed,
         tickSeconds,
         [...catalog.runners, ...savedUmas.map((uma): RunnerBuild => ({ ...uma, mood: "normal" }))],
@@ -219,8 +221,8 @@ export function RaceSimulatorPage() {
   const track = catalog.tracks.find((candidate) => candidate.id === trackId) ?? catalog.tracks[0];
 
   const setup = useMemo(
-    () => createSetup(trackId, groundCondition, weather, seed, tickSeconds, allRunners, selectedRunnerIds, runnerOverrides),
-    [trackId, groundCondition, weather, seed, tickSeconds, allRunners, selectedRunnerIds, runnerOverrides],
+    () => createSetup(trackId, groundCondition, weather, season, seed, tickSeconds, allRunners, selectedRunnerIds, runnerOverrides),
+    [trackId, groundCondition, weather, season, seed, tickSeconds, allRunners, selectedRunnerIds, runnerOverrides],
   );
 
   const selectedRunners = setup.runners;
@@ -237,6 +239,7 @@ export function RaceSimulatorPage() {
     ? runnerOverrides[inspectedUma.id] ?? {
         strategy: inspectedUma.strategy,
         mood: inspectedUma.mood,
+        popularityRank: Math.max(selectedRunnerIds.indexOf(inspectedUma.id), 0) + 1,
       }
     : null;
   const inspectedRaceRunner = selectedRunners.find((runner) => runner.id === inspectedRaceRunnerId) ?? null;
@@ -247,6 +250,8 @@ export function RaceSimulatorPage() {
     ? runnerOverrides[inspectedRaceRunner.id] ?? {
         strategy: inspectedRaceRunner.strategy,
         mood: inspectedRaceRunner.mood,
+        popularityRank: inspectedRaceRunner.popularityRank ?? 1,
+        gateBlock: inspectedRaceRunner.gateBlock,
       }
     : null;
   const inspectedRaceSummary = inspectedRaceRunner ? resultByRunnerId.get(inspectedRaceRunner.id) ?? null : null;
@@ -374,6 +379,7 @@ export function RaceSimulatorPage() {
     setTrackId(defaultTrack.id);
     setGroundCondition("firm");
     setWeather("sunny");
+    setSeason("spring");
     setSeed(nextSeed);
     setTickSeconds(simulationTickSeconds);
     setRunMode("analysis");
@@ -400,6 +406,7 @@ export function RaceSimulatorPage() {
           defaultTrack.id,
           "firm",
           "sunny",
+          "spring",
           nextSeed,
           simulationTickSeconds,
           allRunners,
@@ -416,11 +423,17 @@ export function RaceSimulatorPage() {
     setTrackId(log.setup.trackId);
     setGroundCondition(log.setup.groundCondition);
     setWeather(log.setup.weather);
+    setSeason(log.setup.season ?? "spring");
     setSeed(log.setup.seed);
     setTickSeconds(log.setup.tickSeconds ?? log.result.tickSeconds ?? simulationTickSeconds);
     setSelectedRunnerIds(log.setup.runners.map((runner) => runner.id));
     setRunnerOverrides(
-      Object.fromEntries(log.setup.runners.map((runner) => [runner.id, { strategy: runner.strategy, mood: runner.mood }])),
+      Object.fromEntries(log.setup.runners.map((runner, index) => [runner.id, {
+        strategy: runner.strategy,
+        mood: runner.mood,
+        popularityRank: runner.popularityRank ?? index + 1,
+        gateBlock: runner.gateBlock,
+      }])),
     );
     setResult({
       ...log.result,
@@ -629,10 +642,12 @@ export function RaceSimulatorPage() {
           onRunAnalysis={runAnalysis}
           onRunReplay={runReplay}
           onSeedChange={setSeed}
+          onSeasonChange={setSeason}
           onTickSecondsChange={setTickSeconds}
           onTrackChange={changeTrack}
           onWeatherChange={setWeather}
           seed={seed}
+          season={season}
           tickSeconds={tickSeconds}
           track={track}
           trackId={trackId}
@@ -1565,11 +1580,12 @@ function createSetup(
   trackId: string,
   groundCondition: GroundCondition,
   weather: Weather,
+  season: RaceSeason,
   seed: string,
   tickSeconds: number,
   runners: RunnerBuild[],
   selectedRunnerIds: string[],
-  runnerOverrides: Record<string, Pick<RunnerBuild, "strategy" | "mood">>,
+  runnerOverrides: Record<string, RunnerOverride>,
 ): RaceSetup {
   return {
     seed,
@@ -1577,11 +1593,15 @@ function createSetup(
     trackId,
     groundCondition,
     weather,
+    season,
     runners: runners
       .filter((runner) => selectedRunnerIds.includes(runner.id))
-      .map((runner) => ({
+      .map((runner, index) => ({
         ...runner,
-        ...(runnerOverrides[runner.id] ?? {}),
+        strategy: runnerOverrides[runner.id]?.strategy ?? runner.strategy,
+        mood: runnerOverrides[runner.id]?.mood ?? runner.mood,
+        popularityRank: runnerOverrides[runner.id]?.popularityRank ?? index + 1,
+        gateBlock: runnerOverrides[runner.id]?.gateBlock,
     })),
   };
 }

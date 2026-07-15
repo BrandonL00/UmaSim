@@ -1,7 +1,9 @@
 import { globalSkillOptions, globalSkills } from "../../data/skills";
 import { resolveActiveSkillIds, type SelectableSkill } from "../skills/selection";
-import type { RunnerBuild, StatBlock } from "../uma/types";
+import type { StatBlock } from "../uma/types";
 import { adjustStats, staminaBudget } from "./formulas";
+import { calculateRushProbability, createRushState, type RushState } from "./rush";
+import { createDuelState, type DuelState } from "./dueling";
 import {
   canModelGlobalSkill,
   resolveGlobalSkillActivation,
@@ -12,6 +14,7 @@ import type { TrafficSnapshot } from "./traffic";
 import type {
   GroundCondition,
   RacePhase,
+  RaceRunner,
   RaceSetup,
   RunnerTick,
   Track,
@@ -23,6 +26,8 @@ export type ActiveEffect = {
   skillId: string;
   expiresAt: number;
   speed: number;
+  currentSpeed: number;
+  naturalDeceleration: boolean;
   acceleration: number;
   navigation: number;
   stats: Partial<StatBlock>;
@@ -46,6 +51,19 @@ export type RunnerSpatialState = {
   bashinDiffBehind: number | null;
   lastOrder: number;
   overtakeCount: number;
+  overtakesMiddle: number;
+  overtakesLateRace: number;
+  overtakesAfterFinalCorner: number;
+  hasEnteredFinalCorner: boolean;
+  hasEnteredLastStraight: boolean;
+  overtakeTargetSeconds: number;
+  asOvertakeTargetSeconds: number;
+  orderRateIn20Continue: boolean;
+  orderRateIn50Continue: boolean;
+  orderRateIn80Continue: boolean;
+  orderRateOut40Continue: boolean;
+  orderRateOut50Continue: boolean;
+  orderRateOut70Continue: boolean;
   changeOrderHistory: number[];
 };
 
@@ -55,6 +73,9 @@ export type RunnerTriggerState = {
   activationHistory: Array<{
     skillId: string;
     second: number;
+    phase: RacePhase;
+    recoveredStamina: boolean;
+    distanceRate: number;
   }>;
 };
 
@@ -76,7 +97,7 @@ export type RunnerTrafficState = {
 };
 
 export type RuntimeRunner = {
-  build: RunnerBuild;
+  build: RaceRunner;
   adjustedStats: StatBlock;
   resolvedSkillIds: string[];
   distanceMeters: number;
@@ -90,6 +111,11 @@ export type RuntimeRunner = {
   speedTotal: number;
   tickCount: number;
   staminaSpent: number;
+  startDelaySeconds: number;
+  startDelayRemainingSeconds: number;
+  isBadStart: boolean;
+  rush: RushState;
+  duel: DuelState;
   spatial: RunnerSpatialState;
   triggers: RunnerTriggerState;
   rival: RunnerRivalState;
@@ -144,14 +170,14 @@ export function createRaceRuntimeState(
 function createRuntimeRunner(
   setup: RaceSetup,
   track: Track,
-  runner: RunnerBuild,
+  runner: RaceRunner,
   selectionSkills: SelectableSkill[],
   random: () => number,
   globalSkillById: Map<string, (typeof globalSkills)[number]>,
 ): RuntimeRunner {
   const adjustedStats = adjustStats(runner.stats, runner.mood, setup.groundCondition, track.surface);
   const resolvedSkillIds = resolveActiveSkillIds([runner.uniqueSkillId, ...runner.skillIds], selectionSkills);
-  const passiveStats = applyPassiveGlobalSkillStats(resolvedSkillIds, adjustedStats, globalSkillById, {
+  const initialSkillContext: GlobalSkillContext = {
     second: 0,
     elapsedMs: 0,
     previousDistanceMeters: 0,
@@ -166,9 +192,15 @@ function createRuntimeRunner(
     hpPercent: 100,
     strategy: runner.strategy,
     weather: setup.weather,
+    season: setup.season ?? "spring",
+    popularityRank: runner.popularityRank,
+    gateBlock: runner.gateBlock,
+    runningStyleEqualPopularityOne: setup.runners.find((entry) => entry.popularityRank === 1)?.strategy === runner.strategy,
     groundCondition: setup.groundCondition,
     surface: track.surface,
     distanceCategory: track.distanceCategory,
+    isBasisDistance: track.distanceMeters % 400 === 0,
+    isFinalCornerLaterHalf: false,
     rotation: track.direction ?? "straight",
     trackId: track.venueId,
     laneType: 0,
@@ -184,7 +216,32 @@ function createRuntimeRunner(
     blockedFront: false,
     blockedFrontSeconds: 0,
     blockedSideSeconds: 0,
-  });
+  };
+  const passiveStats = applyPassiveGlobalSkillStats(
+    resolvedSkillIds,
+    adjustedStats,
+    globalSkillById,
+    initialSkillContext,
+  );
+  const passiveWitBonus = passiveStats.wit - adjustedStats.wit;
+  const rushProbability = calculateRushProbability(
+      runner.stats.wit,
+      runner.mood,
+      runner.aptitudes.strategy[runner.strategy],
+      passiveWitBonus,
+    ) + resolveRushProbabilityModifier(resolvedSkillIds, globalSkillById, initialSkillContext);
+  const rush = createRushState(
+    Math.min(Math.max(rushProbability, 0), 1),
+    track.distanceMeters,
+    random,
+  );
+  const rawStartDelaySeconds = random() * 0.1;
+  const startDelayEffects = resolveStartDelayEffects(
+    resolvedSkillIds,
+    globalSkillById,
+    initialSkillContext,
+  );
+  const startDelaySeconds = (startDelayEffects.fixedSeconds ?? rawStartDelaySeconds) * startDelayEffects.multiplier;
   const randomProfiles = buildSkillRandomProfiles(resolvedSkillIds, globalSkillById, track, random);
   const startingSpeed = 3 + random() * 0.35;
   const maxStamina = staminaBudget(passiveStats.stamina, passiveStats.guts);
@@ -203,6 +260,11 @@ function createRuntimeRunner(
     speedTotal: 0,
     tickCount: 0,
     staminaSpent: 0,
+    startDelaySeconds,
+    startDelayRemainingSeconds: startDelaySeconds,
+    isBadStart: startDelaySeconds > 0.08,
+    rush,
+    duel: createDuelState(),
     spatial: {
       lastEvaluatedDistanceMeters: 0,
       lane: 0,
@@ -221,6 +283,19 @@ function createRuntimeRunner(
       bashinDiffBehind: null,
       lastOrder: 1,
       overtakeCount: 0,
+      overtakesMiddle: 0,
+      overtakesLateRace: 0,
+      overtakesAfterFinalCorner: 0,
+      hasEnteredFinalCorner: false,
+      hasEnteredLastStraight: false,
+      overtakeTargetSeconds: 0,
+      asOvertakeTargetSeconds: 0,
+      orderRateIn20Continue: true,
+      orderRateIn50Continue: true,
+      orderRateIn80Continue: true,
+      orderRateOut40Continue: true,
+      orderRateOut50Continue: true,
+      orderRateOut70Continue: true,
       changeOrderHistory: [],
     },
     triggers: {
@@ -270,6 +345,10 @@ function buildSkillRandomProfile(
     .filter((expression): expression is string => Boolean(expression));
 
   const profile: SkillRandomState = {};
+
+  if (containsToken(expressions, "random_lot")) {
+    profile.randomLotRoll = random() * 100;
+  }
 
   const phaseRandomValues = extractTokenValues(expressions, "phase_random");
   if (phaseRandomValues.length) {
@@ -534,7 +613,7 @@ export function snapshotRunnerState(
   return {
     runnerId: runner.build.id,
     distanceMeters: round(Math.min(runner.distanceMeters, track.distanceMeters)),
-    speed: round(runner.speed),
+    speed: round(runner.speed + runner.activeEffects.reduce((sum, effect) => sum + effect.currentSpeed, 0)),
     targetSpeed: round(runner.targetSpeed),
     stamina: round(runner.stamina),
     phase,
@@ -572,6 +651,36 @@ function applyPassiveGlobalSkillStats(
 
     return mergeStats(stats, activation.effects.stats);
   }, adjustedStats);
+}
+
+function resolveStartDelayEffects(
+  skillIds: string[],
+  globalSkillById: Map<string, (typeof globalSkills)[number]>,
+  context: GlobalSkillContext,
+) {
+  return skillIds.reduce((result, skillId) => {
+    const skill = globalSkillById.get(skillId);
+    if (!skill || !canModelGlobalSkill(skill)) return result;
+
+    const activation = resolveGlobalSkillActivation(skill, context);
+    if (!activation) return result;
+    return {
+      multiplier: result.multiplier * activation.effects.startDelayMultiplier,
+      fixedSeconds: activation.effects.fixedStartDelaySeconds ?? result.fixedSeconds,
+    };
+  }, { multiplier: 1, fixedSeconds: undefined as number | undefined });
+}
+
+function resolveRushProbabilityModifier(
+  skillIds: string[],
+  globalSkillById: Map<string, (typeof globalSkills)[number]>,
+  context: GlobalSkillContext,
+) {
+  return skillIds.reduce((modifier, skillId) => {
+    const skill = globalSkillById.get(skillId);
+    if (!skill || !canModelGlobalSkill(skill)) return modifier;
+    return modifier + (resolveGlobalSkillActivation(skill, context)?.effects.rushProbabilityModifier ?? 0);
+  }, 0);
 }
 
 function round(value: number): number {

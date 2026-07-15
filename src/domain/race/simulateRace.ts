@@ -1,6 +1,6 @@
 import type { Skill, SkillAlternative } from "../skills/types";
 import type { StatBlock } from "../uma/types";
-import { createGlobalSkillEngineMap, globalSkills } from "../../data/skills";
+import { createGlobalSkillEngineMap, globalSkills, type GlobalSkill } from "../../data/skills";
 import {
   acceleration,
   baseSpeed,
@@ -21,6 +21,7 @@ import {
 import {
   canModelGlobalSkill,
   getGlobalSkillModelingReport,
+  resolveForcedGlobalSkillActivation,
   resolveGlobalSkillActivation,
   type GlobalSkillContext,
   type RandomSegmentTarget,
@@ -28,6 +29,8 @@ import {
 } from "./globalSkillModel";
 import { getLaneType, updateRunnerPathing } from "./pathing";
 import { createSeededRandom } from "./random";
+import { activateRushAtDistance, advanceRushState } from "./rush";
+import { updateDuelState } from "./dueling";
 import { buildTrafficSnapshot, resolveTrafficMovementPenalty } from "./traffic";
 import { resolveOwnedUniqueSkill } from "./uniqueSkillModel";
 import type {
@@ -76,10 +79,25 @@ export function simulateRace(setup: RaceSetup, catalog: SimCatalog, options: Sim
   const runtime = createRaceRuntimeState(setup, track, catalog.skills, random, globalSkillById);
   const runners = runtime.runners;
 
+  for (const runner of runners) {
+    if (runner.build.gateBlock === undefined && runner.resolvedSkillIds.some((skillId) => {
+      const skill = globalSkillById.get(skillId);
+      return skill?.conditionGroups.some((group) =>
+        group.condition?.includes("post_number") || group.precondition?.includes("post_number"),
+      );
+    })) {
+      warnings.push({
+        code: "missing_gate_block",
+        message: `${runner.build.name} has a gate-block skill, but no gate block is set. That skill cannot activate.`,
+      });
+    }
+  }
+
   for (let second = 0; second <= maxRaceSeconds; second += tickSeconds) {
     const snapshots: RunnerTick[] = [];
     let finishedCount = 0;
     const standings = getRaceStandings(runners);
+    const duelParticipants = runners.map(toDuelParticipant);
     resetRivalState(runners);
 
     for (const runner of runners) {
@@ -96,8 +114,29 @@ export function simulateRace(setup: RaceSetup, catalog: SimCatalog, options: Sim
       const order = standing?.order ?? runners.length;
       const neighbors = getRunnerNeighbors(standings, standing?.order ?? runners.length, runner);
       const traffic = buildTrafficSnapshot(standings, runner);
+      const hasOvertakeTarget = updateOvertakeTargetState(runner, standings, tickSeconds);
+      const justEnteredLastStraight = Boolean(
+        segment?.tags?.includes("finalStraight") && !runner.spatial.hasEnteredLastStraight,
+      );
+      if (segment?.tags?.includes("finalStraight")) runner.spatial.hasEnteredLastStraight = true;
       const changeOrder = applyRunnerSpatialSnapshot(runner, order, neighbors, traffic, tickSeconds);
+      updateOvertakeHistory(runner, changeOrder, phase, segment);
+      updateContinuousOrderRateHistory(runner, second, order, runners.length);
+      runner.rush = activateRushAtDistance(runner.rush, runner.distanceMeters);
+      runner.duel = updateDuelState(
+        runner.duel,
+        duelParticipants.find((participant) => participant.id === runner.build.id) ?? toDuelParticipant(runner),
+        duelParticipants,
+        Boolean(segment?.tags?.includes("finalStraight")),
+        tickSeconds,
+      );
 
+      const expiredEffects = runner.activeEffects.filter((effect) => effect.expiresAt <= second);
+      for (const effect of expiredEffects) {
+        if (effect.naturalDeceleration && effect.currentSpeed > 0) {
+          runner.speed += effect.currentSpeed;
+        }
+      }
       runner.activeEffects = runner.activeEffects.filter((effect) => effect.expiresAt > second);
       evaluateSkills({
         runner,
@@ -114,6 +153,8 @@ export function simulateRace(setup: RaceSetup, catalog: SimCatalog, options: Sim
         order,
         runnerCount: runners.length,
         changeOrder,
+        hasOvertakeTarget,
+        justEnteredLastStraight,
         neighbors,
         standings,
       });
@@ -122,6 +163,9 @@ export function simulateRace(setup: RaceSetup, catalog: SimCatalog, options: Sim
       const navigationBonus = runner.activeEffects.reduce((sum, effect) => sum + effect.navigation, 0);
       const trafficPenalty = resolveTrafficMovementPenalty(runner.traffic, navigationBonus);
       updateRunnerPathing(runner, neighbors, runners.length, navigationBonus, trafficPenalty.laneChangeResistance);
+      const delayedSeconds = Math.min(runner.startDelayRemainingSeconds, tickSeconds);
+      runner.startDelayRemainingSeconds = Math.max(0, runner.startDelayRemainingSeconds - tickSeconds);
+      const movementTickSeconds = tickSeconds - delayedSeconds;
 
       const speedBonus = runner.activeEffects.reduce((sum, effect) => sum + effect.speed, 0);
       const accelerationBonus = runner.activeEffects.reduce((sum, effect) => sum + effect.acceleration, 0);
@@ -157,20 +201,25 @@ export function simulateRace(setup: RaceSetup, catalog: SimCatalog, options: Sim
       ) - trafficPenalty.accelerationPenalty;
 
       const staminaRate = runner.stamina > 0 ? 1 : 0.72;
-      const speedDelta = runner.targetSpeed > runner.speed ? accel * tickSeconds : -0.36 * tickSeconds;
+      const speedDelta = runner.targetSpeed > runner.speed
+        ? accel * movementTickSeconds
+        : -0.36 * movementTickSeconds;
       runner.speed = clamp(runner.speed + speedDelta, 1, runner.targetSpeed * staminaRate * trafficPenalty.speedCapFactor);
-      runner.distanceMeters += runner.speed * tickSeconds;
-      const staminaDrain = staminaCostPerSecond(runner.speed, phase) * tickSeconds;
+      const actualSpeed = getActualRunnerSpeed(runner);
+      runner.distanceMeters += actualSpeed * movementTickSeconds;
+      const rushStaminaFactor = runner.rush.active ? 1.6 : 1;
+      const staminaDrain = staminaCostPerSecond(runner.speed, phase) * movementTickSeconds * rushStaminaFactor;
       runner.stamina = Math.max(0, runner.stamina - staminaDrain);
-      runner.topSpeed = Math.max(runner.topSpeed, runner.speed);
-      runner.speedTotal += runner.speed;
+      runner.rush = advanceRushState(runner.rush, movementTickSeconds, random);
+      runner.topSpeed = Math.max(runner.topSpeed, actualSpeed);
+      runner.speedTotal += actualSpeed;
       runner.tickCount += 1;
       runner.staminaSpent += staminaDrain;
       runner.spatial.lastOrder = order;
 
       if (runner.distanceMeters >= track.distanceMeters) {
         const overrun = runner.distanceMeters - track.distanceMeters;
-        const correction = overrun / Math.max(runner.speed, 1);
+        const correction = overrun / Math.max(actualSpeed, 1);
         runner.finishTime = round(second + tickSeconds - correction);
         runner.distanceMeters = track.distanceMeters;
       }
@@ -413,6 +462,8 @@ function evaluateSkills(args: {
   order: number;
   runnerCount: number;
   changeOrder: number;
+  hasOvertakeTarget: boolean;
+  justEnteredLastStraight: boolean;
   neighbors: RunnerNeighbors;
   standings: Array<{ runner: RuntimeRunner; order: number }>;
 }) {
@@ -431,11 +482,17 @@ function evaluateSkills(args: {
     order,
     runnerCount,
     changeOrder,
+    hasOvertakeTarget,
+    justEnteredLastStraight,
     neighbors,
     standings,
   } = args;
 
-  for (const skillId of runner.resolvedSkillIds) {
+  const orderedSkillIds = [...runner.resolvedSkillIds].sort((left, right) =>
+    Number(requiresSameTickSkillActivation(globalSkillById.get(left)))
+      - Number(requiresSameTickSkillActivation(globalSkillById.get(right))));
+
+  for (const skillId of orderedSkillIds) {
     if (runner.triggers.triggeredSkillIds.has(skillId)) {
       continue;
     }
@@ -452,7 +509,15 @@ function evaluateSkills(args: {
       }
 
       runner.triggers.triggeredSkillIds.add(skill.id);
-      runner.triggers.activationHistory.push({ skillId: skill.id, second: round(second) });
+      runner.triggers.activationHistory.push({
+        skillId: skill.id,
+        second: round(second),
+        phase,
+        distanceRate: (runner.distanceMeters / track.distanceMeters) * 100,
+        recoveredStamina: alternative.effects.some(
+          (effect) => effect.kind === "staminaRecovery" && effect.amount > 0,
+        ),
+      });
       applyAlternativeEffects(runner, skill.id, second, alternative);
       skillEvents.push({
         second: round(second),
@@ -486,25 +551,81 @@ function evaluateSkills(args: {
       previousDistanceMeters,
       distanceMeters: runner.distanceMeters,
       activatedSkillCount: runner.triggers.triggeredSkillIds.size,
+      activatedSkillCountStart: runner.triggers.activationHistory.filter(
+        (activation) => activation.phase === "early",
+      ).length,
+      activatedSkillCountMiddle: runner.triggers.activationHistory.filter(
+        (activation) => activation.phase === "middle",
+      ).length,
+      activatedSkillCountEndAfter: runner.triggers.activationHistory.filter(
+        (activation) => activation.phase === "late" || activation.phase === "lastSpurt",
+      ).length,
+      activatedSkillCountLaterHalf: runner.triggers.activationHistory.filter(
+        (activation) => activation.distanceRate >= 50,
+      ).length,
+      activatedHealSkillCount: runner.triggers.activationHistory.filter(
+        (activation) => activation.recoveredStamina,
+      ).length,
       phase,
       segment,
       order,
       runnerCount,
       orderRate: (order / Math.max(runnerCount, 1)) * 100,
       distanceRate: (runner.distanceMeters / track.distanceMeters) * 100,
+      distanceDiffTop: getDistanceDiffTop(runner, standings),
+      distanceDiffRate: getDistanceDiffRate(runner, standings),
       remainDistance: Math.max(track.distanceMeters - runner.distanceMeters, 0),
       hpPercent: (runner.stamina / Math.max(runner.maxStamina, 1)) * 100,
       strategy: runner.build.strategy,
       weather: setup.weather,
+      season: setup.season ?? "spring",
+      popularityRank: runner.build.popularityRank,
+      gateBlock: runner.build.gateBlock,
+      runningStyleEqualPopularityOne:
+        setup.runners.find((entry) => entry.popularityRank === 1)?.strategy === runner.build.strategy,
+      sameSkillHorseCount: standings.filter((standing) =>
+        standing.runner.resolvedSkillIds.includes(skillId),
+      ).length,
+      temptationCount: runner.rush.count,
+      competeFightCount: runner.duel.count,
       groundCondition: setup.groundCondition,
       surface: track.surface,
       distanceCategory: track.distanceCategory,
+      isBasisDistance: track.distanceMeters % 400 === 0,
+      isFinalCornerLaterHalf: isRunnerInFinalCornerLaterHalf(segment, runner.distanceMeters),
+      hasEnteredFinalCorner: runner.spatial.hasEnteredFinalCorner,
+      isBadStart: runner.isBadStart,
+      isLastStraight: justEnteredLastStraight,
+      isLastStraightSegment: Boolean(segment?.tags?.includes("finalStraight")),
+      isBehindIn: Boolean(
+        neighbors.behindRunner && neighbors.behindRunner.spatial.lane < runner.spatial.lane,
+      ),
+      isSurrounded: isRunnerSurrounded(runner, standings),
+      isTemptation: runner.rush.active,
+      isActivateAnySkill: runner.triggers.activationHistory.some(
+        (activation) => activation.second === round(second) && activation.skillId !== skillId,
+      ),
+      isActivateHealSkill: runner.triggers.activationHistory.some(
+        (activation) => activation.second === round(second) && activation.recoveredStamina,
+      ),
       rotation: track.direction ?? "straight",
       trackId: track.venueId,
       laneType: getLaneType(runner),
       isMoveLane: runner.spatial.moveLane,
       changeOrder,
-      isOvertake: changeOrder < 0,
+      changeOrderUpMiddle: runner.spatial.overtakesMiddle,
+      changeOrderUpEndAfter: runner.spatial.overtakesLateRace,
+      changeOrderUpFinalCornerAfter: runner.spatial.overtakesAfterFinalCorner,
+      isOvertake: hasOvertakeTarget,
+      overtakeTargetTime: runner.spatial.asOvertakeTargetSeconds,
+      overtakeTargetNoOrderUpTime: runner.spatial.overtakeTargetSeconds,
+      orderRateIn20Continue: runner.spatial.orderRateIn20Continue,
+      orderRateIn50Continue: runner.spatial.orderRateIn50Continue,
+      orderRateIn80Continue: runner.spatial.orderRateIn80Continue,
+      orderRateOut40Continue: runner.spatial.orderRateOut40Continue,
+      orderRateOut50Continue: runner.spatial.orderRateOut50Continue,
+      orderRateOut70Continue: runner.spatial.orderRateOut70Continue,
+      ...getRunningStyleCounts(runner, setup.runners),
       bashinDiffInfront: neighbors.bashinDiffInfront,
       bashinDiffBehind: neighbors.bashinDiffBehind,
       nearCount: neighbors.nearCount,
@@ -523,7 +644,13 @@ function evaluateSkills(args: {
     }
 
     runner.triggers.triggeredSkillIds.add(skillId);
-    runner.triggers.activationHistory.push({ skillId, second: round(second) });
+    runner.triggers.activationHistory.push({
+      skillId,
+      second: round(second),
+      phase,
+      distanceRate: (runner.distanceMeters / track.distanceMeters) * 100,
+      recoveredStamina: activation.effects.staminaRecoveryRatio > 0,
+    });
     applyResolvedEffects(runner, skillId, second, activation, selectPressureTarget(runner, standings));
     skillEvents.push({
       second: round(second),
@@ -533,7 +660,104 @@ function evaluateSkills(args: {
       message: `${runner.build.name} activated ${globalSkill.name} (${describeResolvedEffects(activation.effects)})`,
       source: "global",
     });
+    forceRareSkillActivations({
+      runner,
+      sourceSkillId: skillId,
+      count: activation.effects.forcedRareSkillCount,
+      context,
+      second,
+      phase,
+      random,
+      globalSkillById,
+      skillEvents,
+      standings,
+      track,
+    });
   }
+}
+
+function forceRareSkillActivations(args: {
+  runner: RuntimeRunner;
+  sourceSkillId: string;
+  count: number;
+  context: GlobalSkillContext;
+  second: number;
+  phase: RacePhase;
+  random: () => number;
+  globalSkillById: Map<string, GlobalSkill>;
+  skillEvents: SkillEvent[];
+  standings: Array<{ runner: RuntimeRunner; order: number }>;
+  track: Track;
+}) {
+  const {
+    runner,
+    sourceSkillId,
+    count,
+    context,
+    second,
+    phase,
+    random,
+    globalSkillById,
+    skillEvents,
+    standings,
+    track,
+  } = args;
+
+  if (count <= 0) return;
+
+  const candidates = runner.resolvedSkillIds
+    .filter((skillId) => skillId !== sourceSkillId && !runner.triggers.triggeredSkillIds.has(skillId))
+    .map((skillId) => ({ skillId, skill: globalSkillById.get(skillId) }))
+    .filter((entry): entry is { skillId: string; skill: GlobalSkill } => entry.skill?.rarity === "rare")
+    .map((entry) => ({
+      ...entry,
+      activation: resolveForcedGlobalSkillActivation(entry.skill, {
+        ...context,
+        skillRandomState: runner.triggers.randomProfiles[entry.skillId],
+      }),
+    }))
+    .filter((entry) => entry.activation !== null)
+    .sort((left, right) => left.skillId.localeCompare(right.skillId));
+
+  for (let index = candidates.length - 1; index > 0; index -= 1) {
+    const swapIndex = Math.floor(random() * (index + 1));
+    [candidates[index], candidates[swapIndex]] = [candidates[swapIndex], candidates[index]];
+  }
+
+  for (const candidate of candidates.slice(0, count)) {
+    const activation = candidate.activation!;
+    runner.triggers.triggeredSkillIds.add(candidate.skillId);
+    runner.triggers.activationHistory.push({
+      skillId: candidate.skillId,
+      second: round(second),
+      phase,
+      distanceRate: (runner.distanceMeters / track.distanceMeters) * 100,
+      recoveredStamina: activation.effects.staminaRecoveryRatio > 0,
+    });
+    applyResolvedEffects(
+      runner,
+      candidate.skillId,
+      second,
+      activation,
+      selectPressureTarget(runner, standings),
+    );
+    skillEvents.push({
+      second: round(second),
+      runnerId: runner.build.id,
+      skillId: candidate.skillId,
+      skillName: candidate.skill.name,
+      message: `${runner.build.name} activated ${candidate.skill.name} (forced by 564 Escapades)`,
+      source: "global",
+    });
+  }
+}
+
+function requiresSameTickSkillActivation(skill: GlobalSkill | undefined) {
+  return skill?.conditionGroups.some((group) =>
+    [group.precondition, group.condition].some((expression) =>
+      expression?.includes("is_activate_any_skill") || expression?.includes("is_activate_heal_skill"),
+    ),
+  ) ?? false;
 }
 
 function doesAlternativeTrigger(
@@ -593,6 +817,129 @@ function getCurrentSegment(track: Track, distanceMeters: number): TrackSegment |
   );
 }
 
+function isRunnerInFinalCornerLaterHalf(
+  segment: TrackSegment | undefined,
+  distanceMeters: number,
+): boolean {
+  if (!segment?.tags?.includes("finalCorner")) return false;
+
+  return distanceMeters >= (segment.startMeters + segment.endMeters) / 2;
+}
+
+function updateOvertakeHistory(
+  runner: RuntimeRunner,
+  changeOrder: number,
+  phase: RacePhase,
+  segment: TrackSegment | undefined,
+) {
+  if (segment?.tags?.includes("finalCorner")) {
+    runner.spatial.hasEnteredFinalCorner = true;
+  }
+
+  const overtakes = Math.max(-changeOrder, 0);
+  if (overtakes === 0) return;
+
+  if (phase === "middle") runner.spatial.overtakesMiddle += overtakes;
+  if (phase === "late" || phase === "lastSpurt") runner.spatial.overtakesLateRace += overtakes;
+  if (runner.spatial.hasEnteredFinalCorner) runner.spatial.overtakesAfterFinalCorner += overtakes;
+}
+
+function getDistanceDiffTop(
+  runner: RuntimeRunner,
+  standings: Array<{ runner: RuntimeRunner; order: number }>,
+) {
+  const leaderDistance = standings[0]?.runner.distanceMeters ?? runner.distanceMeters;
+  return Math.max(leaderDistance - runner.distanceMeters, 0);
+}
+
+function getDistanceDiffRate(
+  runner: RuntimeRunner,
+  standings: Array<{ runner: RuntimeRunner; order: number }>,
+) {
+  const leaderDistance = standings[0]?.runner.distanceMeters ?? runner.distanceMeters;
+  const lastDistance = standings.at(-1)?.runner.distanceMeters ?? runner.distanceMeters;
+  const fieldSpread = leaderDistance - lastDistance;
+
+  return fieldSpread > 0 ? ((leaderDistance - runner.distanceMeters) / fieldSpread) * 100 : 0;
+}
+
+function updateOvertakeTargetState(
+  runner: RuntimeRunner,
+  standings: Array<{ runner: RuntimeRunner; order: number }>,
+  tickSeconds: number,
+) {
+  const others = standings.map((standing) => standing.runner).filter((candidate) => candidate !== runner);
+  const hasTarget = others.some((candidate) => canCatchRunner(runner, candidate));
+  const isTarget = others.some((candidate) => canCatchRunner(candidate, runner));
+
+  runner.spatial.overtakeTargetSeconds = hasTarget
+    ? runner.spatial.overtakeTargetSeconds + tickSeconds
+    : 0;
+  runner.spatial.asOvertakeTargetSeconds = isTarget
+    ? runner.spatial.asOvertakeTargetSeconds + tickSeconds
+    : 0;
+
+  return hasTarget;
+}
+
+function canCatchRunner(chaser: RuntimeRunner, target: RuntimeRunner) {
+  const gap = target.distanceMeters - chaser.distanceMeters;
+  const closingSpeed = chaser.speed - target.speed;
+  return gap > 0 && gap <= 20 && closingSpeed > 0 && gap / closingSpeed <= 15;
+}
+
+function isRunnerSurrounded(
+  runner: RuntimeRunner,
+  standings: Array<{ runner: RuntimeRunner; order: number }>,
+) {
+  const others = standings.map((standing) => standing.runner).filter((candidate) => candidate !== runner);
+  const front = others.some((candidate) => {
+    const gap = candidate.distanceMeters - runner.distanceMeters;
+    return gap > 0 && gap <= 3 && Math.abs(candidate.spatial.lane - runner.spatial.lane) < 1.5;
+  });
+  const behind = others.some((candidate) => {
+    const gap = runner.distanceMeters - candidate.distanceMeters;
+    return gap > 0 && gap <= 3 && Math.abs(candidate.spatial.lane - runner.spatial.lane) < 1.5;
+  });
+  const side = others.some((candidate) => {
+    const laneGap = Math.abs(candidate.spatial.lane - runner.spatial.lane);
+    return Math.abs(candidate.distanceMeters - runner.distanceMeters) < 1.5 && laneGap > 0 && laneGap < 3;
+  });
+
+  return front && behind && side;
+}
+
+function getRunningStyleCounts(runner: RuntimeRunner, builds: RaceSetup["runners"]) {
+  const otherBuilds = builds.filter((build) => build.id !== runner.build.id);
+  const sameCount = builds.filter((build) => build.strategy === runner.build.strategy).length;
+
+  return {
+    runningStyleCountFrontOthers: otherBuilds.filter((build) => build.strategy === "front").length,
+    runningStyleCountPaceOthers: otherBuilds.filter((build) => build.strategy === "pace").length,
+    runningStyleCountLateOthers: otherBuilds.filter((build) => build.strategy === "late").length,
+    runningStyleCountEndOthers: otherBuilds.filter((build) => build.strategy === "end").length,
+    runningStyleCountSame: sameCount,
+    runningStyleCountSameRate: (sameCount / Math.max(builds.length, 1)) * 100,
+  };
+}
+
+function updateContinuousOrderRateHistory(
+  runner: RuntimeRunner,
+  second: number,
+  order: number,
+  runnerCount: number,
+) {
+  if (second < 5) return;
+
+  const orderRate = (order / Math.max(runnerCount, 1)) * 100;
+  runner.spatial.orderRateIn20Continue &&= orderRate <= 20;
+  runner.spatial.orderRateIn50Continue &&= orderRate <= 50;
+  runner.spatial.orderRateIn80Continue &&= orderRate <= 80;
+  runner.spatial.orderRateOut40Continue &&= orderRate > 40;
+  runner.spatial.orderRateOut50Continue &&= orderRate > 50;
+  runner.spatial.orderRateOut70Continue &&= orderRate > 70;
+}
+
 function applyAlternativeEffects(
   runner: RuntimeRunner,
   skillId: string,
@@ -623,6 +970,8 @@ function applyAlternativeEffects(
     skillId,
     expiresAt: second + alternative.durationSeconds,
     speed,
+    currentSpeed: 0,
+    naturalDeceleration: false,
     acceleration: accelerationBonus,
     navigation,
     stats: {},
@@ -657,6 +1006,8 @@ function applyResolvedEffects(
       skillId: `${skillId}::pressure`,
       expiresAt: second + activation.durationSeconds,
       speed: -activation.effects.pressure,
+      currentSpeed: 0,
+      naturalDeceleration: false,
       acceleration: 0,
       navigation: 0,
       stats: {},
@@ -667,6 +1018,8 @@ function applyResolvedEffects(
     skillId,
     expiresAt: second + activation.durationSeconds,
     speed: activation.effects.speed,
+    currentSpeed: activation.effects.currentSpeed + activation.effects.naturalDecelerationCurrentSpeed,
+    naturalDeceleration: activation.effects.naturalDecelerationCurrentSpeed !== 0,
     acceleration: activation.effects.acceleration,
     navigation: activation.effects.navigation,
     stats: activation.effects.stats,
@@ -697,18 +1050,32 @@ function describeEffects(effects: SkillAlternative["effects"]) {
 
 function describeResolvedEffects(effects: {
   speed: number;
+  currentSpeed: number;
+  naturalDecelerationCurrentSpeed: number;
+  forcedRareSkillCount: number;
   acceleration: number;
   navigation: number;
   pressure: number;
+  startDelayMultiplier: number;
+  fixedStartDelaySeconds?: number;
+  rushProbabilityModifier: number;
   staminaRecoveryRatio: number;
   stats: Partial<StatBlock>;
 }) {
   const parts: string[] = [];
 
   if (effects.speed) parts.push(`${effects.speed > 0 ? "+" : ""}${effects.speed.toFixed(2)} speed`);
+  if (effects.currentSpeed) {
+    parts.push(`${effects.currentSpeed > 0 ? "+" : ""}${effects.currentSpeed.toFixed(2)} current speed`);
+  }
+  if (effects.naturalDecelerationCurrentSpeed) {
+    parts.push(`${effects.naturalDecelerationCurrentSpeed > 0 ? "+" : ""}${effects.naturalDecelerationCurrentSpeed.toFixed(2)} surge`);
+  }
+  if (effects.forcedRareSkillCount) parts.push(`force ${effects.forcedRareSkillCount} rare skill${effects.forcedRareSkillCount === 1 ? "" : "s"}`);
   if (effects.acceleration) parts.push(`${effects.acceleration > 0 ? "+" : ""}${effects.acceleration.toFixed(2)} accel`);
   if (effects.navigation) parts.push(`${effects.navigation > 0 ? "+" : ""}${effects.navigation.toFixed(2)} navigation`);
   if (effects.pressure) parts.push(`${effects.pressure > 0 ? "-" : ""}${effects.pressure.toFixed(2)} rival speed`);
+  if (effects.startDelayMultiplier !== 1) parts.push(`${effects.startDelayMultiplier.toFixed(2)}× start delay`);
   if (effects.staminaRecoveryRatio) {
     parts.push(`${effects.staminaRecoveryRatio > 0 ? "+" : ""}${(effects.staminaRecoveryRatio * 100).toFixed(1)}% stamina`);
   }
@@ -719,6 +1086,19 @@ function describeResolvedEffects(effects: {
   }
 
   return parts.join(", ") || "condition met";
+}
+
+function toDuelParticipant(runner: RuntimeRunner) {
+  return {
+    id: runner.build.id,
+    distanceMeters: runner.distanceMeters,
+    speed: getActualRunnerSpeed(runner),
+    hpPercent: (runner.stamina / Math.max(runner.maxStamina, 1)) * 100,
+  };
+}
+
+function getActualRunnerSpeed(runner: RuntimeRunner) {
+  return runner.speed + runner.activeEffects.reduce((sum, effect) => sum + effect.currentSpeed, 0);
 }
 
 function clamp(value: number, min: number, max: number): number {

@@ -7,7 +7,10 @@ const moods: Mood[] = ["awful", "bad", "normal", "good", "great"];
 const strategies: Strategy[] = ["front", "pace", "late", "end"];
 const statKeys: StatKey[] = ["speed", "stamina", "power", "guts", "wit"];
 
-export type RunnerOverride = Pick<RunnerBuild, "strategy" | "mood">;
+export type RunnerOverride = Pick<RunnerBuild, "strategy" | "mood"> & {
+  popularityRank: number;
+  gateBlock?: number;
+};
 
 export type UmaListPanelProps = {
   batchActive: boolean;
@@ -67,10 +70,15 @@ export function UmaListPanel({
         </button>
       </div>
 
+      <p className="field-drawer-note">
+        Popularity defaults to list order. Gate block is intentionally unset until you enter the race draw.
+      </p>
+
       <div className="runner-table">
         {runners.map((runner) => {
           const isSelected = selectedRunnerIds.includes(runner.id);
-          const override = runnerOverrides[runner.id] ?? { strategy: runner.strategy, mood: runner.mood };
+          const entryIndex = Math.max(selectedRunnerIds.indexOf(runner.id), 0);
+          const override = runnerOverrides[runner.id] ?? getDefaultRunnerOverride(runner, entryIndex);
           const placement = batchActive ? null : placementByRunnerId.get(runner.id);
 
           return (
@@ -100,6 +108,7 @@ export function UmaListPanel({
               </div>
               <select
                 aria-label={`${runner.name} strategy`}
+                className="runner-strategy-select"
                 disabled={!isSelected}
                 value={override.strategy}
                 onChange={(event) =>
@@ -110,8 +119,43 @@ export function UmaListPanel({
                   <option key={strategy} value={strategy}>{strategy}</option>
                 ))}
               </select>
+              <label className="runner-entry-field">
+                <span>Popularity</span>
+                <select
+                  aria-label={`${runner.name} popularity rank`}
+                  disabled={!isSelected}
+                  value={override.popularityRank}
+                  onChange={(event) =>
+                    onChangeOverride(runner.id, { ...override, popularityRank: Number(event.target.value) })
+                  }
+                >
+                  {Array.from({ length: Math.max(selectedRunnerIds.length, 1) }, (_, index) => index + 1).map((rank) => (
+                    <option key={rank} value={rank}>#{rank}</option>
+                  ))}
+                </select>
+              </label>
+              <label className="runner-entry-field">
+                <span>Gate block</span>
+                <select
+                  aria-label={`${runner.name} gate block`}
+                  disabled={!isSelected}
+                  value={override.gateBlock ?? ""}
+                  onChange={(event) =>
+                    onChangeOverride(runner.id, {
+                      ...override,
+                      gateBlock: event.target.value ? Number(event.target.value) : undefined,
+                    })
+                  }
+                >
+                  <option value="">Not set</option>
+                  {Array.from({ length: 8 }, (_, index) => index + 1).map((block) => (
+                    <option key={block} value={block}>{block}</option>
+                  ))}
+                </select>
+              </label>
               <select
                 aria-label={`${runner.name} mood`}
+                className="runner-mood-select"
                 disabled={!isSelected}
                 value={override.mood}
                 onChange={(event) => onChangeOverride(runner.id, { ...override, mood: event.target.value as Mood })}
@@ -136,6 +180,14 @@ export function UmaListPanel({
       </div>
     </div>
   );
+}
+
+function getDefaultRunnerOverride(runner: RunnerBuild, entryIndex: number): RunnerOverride {
+  return {
+    strategy: runner.strategy,
+    mood: runner.mood,
+    popularityRank: entryIndex + 1,
+  };
 }
 
 function CompactStatRow({ stats }: { stats: RunnerBuild["stats"] }) {

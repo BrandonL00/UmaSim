@@ -2,7 +2,16 @@ import type { DistanceCategory, RunnerBuild, StatBlock, Strategy, Surface } from
 
 export type GroundCondition = "firm" | "good" | "soft" | "heavy";
 export type Weather = "sunny" | "cloudy" | "rainy" | "snowy";
+export type RaceSeason = "spring" | "summer" | "fall" | "winter" | "cherryBlossom";
 export type RacePhase = "early" | "middle" | "late" | "lastSpurt";
+
+/** Race-specific entry metadata. These values belong to an entry, not its saved build. */
+export type RaceRunner = RunnerBuild & {
+  /** Popularity rank used by skills whose conditions reference popularity. */
+  popularityRank?: number;
+  /** Gate block (waku), numbered 1 through 8. */
+  gateBlock?: number;
+};
 
 export type TrackSegment = {
   startMeters: number;
@@ -38,7 +47,9 @@ export type RaceSetup = {
   trackId: string;
   groundCondition: GroundCondition;
   weather: Weather;
-  runners: RunnerBuild[];
+  /** Event season used by seasonal passive skills. */
+  season?: RaceSeason;
+  runners: RaceRunner[];
 };
 
 export type RaceCatalog = {
