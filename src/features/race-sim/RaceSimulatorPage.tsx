@@ -1,5 +1,4 @@
 import {
-  Activity,
   ChevronRight,
   Database,
   Download,
@@ -42,7 +41,7 @@ import {
   saveRaceRunHistory,
   type RaceRunLog,
 } from "../../domain/race/runHistory";
-import type { GroundCondition, RaceResult, RaceSetup, Weather } from "../../domain/race/types";
+import type { GroundCondition, RaceResult, RaceSeason, RaceSetup, RaceTeam, Weather } from "../../domain/race/types";
 import { getPrerequisiteLockOwners, selectSkillWithPrerequisites } from "../../domain/skills/selection";
 import {
   createUmaLibraryDocument,
@@ -75,6 +74,7 @@ const distanceCategories: DistanceCategory[] = ["sprint", "mile", "medium", "lon
 const statKeys: StatKey[] = ["speed", "stamina", "power", "guts", "wit"];
 const strategies: Strategy[] = ["front", "pace", "late", "end"];
 const surfaces: Surface[] = ["turf", "dirt"];
+const teamColors = ["#55b89c", "#d6a944", "#6f9de8", "#d8738a", "#a887e8", "#e4874f"];
 
 const defaultCharacterTemplate = characterTemplates[0];
 const defaultBuilderSkillIds = [
@@ -132,6 +132,7 @@ export function RaceSimulatorPage() {
   const [trackId, setTrackId] = useState(catalog.tracks[0].id);
   const [groundCondition, setGroundCondition] = useState<GroundCondition>("firm");
   const [weather, setWeather] = useState<Weather>("sunny");
+  const [season, setSeason] = useState<RaceSeason>("spring");
   const [seed, setSeed] = useState(createRandomSeed);
   const [tickSeconds, setTickSeconds] = useState(simulationTickSeconds);
   const [runMode, setRunMode] = useState<"replay" | "analysis">("analysis");
@@ -167,17 +168,24 @@ export function RaceSimulatorPage() {
     ),
   );
   const [runnerOverrides, setRunnerOverrides] = useState<Record<string, RunnerOverride>>({});
+  const [teamMode, setTeamMode] = useState<"individual" | "teams">("individual");
+  const [raceTeams, setRaceTeams] = useState<RaceTeam[]>(createDefaultRaceTeams);
+  const [runnerTeamIds, setRunnerTeamIds] = useState<Record<string, string>>({});
   const [result, setResult] = useState<RaceResult>(() =>
     simulateRace(
       createSetup(
         trackId,
         groundCondition,
         weather,
+        season,
         seed,
         tickSeconds,
         [...catalog.runners, ...savedUmas.map((uma): RunnerBuild => ({ ...uma, mood: "normal" }))],
         selectedRunnerIds,
         runnerOverrides,
+        teamMode,
+        raceTeams,
+        runnerTeamIds,
       ),
       catalog,
       { debugSkills: true },
@@ -219,8 +227,34 @@ export function RaceSimulatorPage() {
   const track = catalog.tracks.find((candidate) => candidate.id === trackId) ?? catalog.tracks[0];
 
   const setup = useMemo(
-    () => createSetup(trackId, groundCondition, weather, seed, tickSeconds, allRunners, selectedRunnerIds, runnerOverrides),
-    [trackId, groundCondition, weather, seed, tickSeconds, allRunners, selectedRunnerIds, runnerOverrides],
+    () => createSetup(
+      trackId,
+      groundCondition,
+      weather,
+      season,
+      seed,
+      tickSeconds,
+      allRunners,
+      selectedRunnerIds,
+      runnerOverrides,
+      teamMode,
+      raceTeams,
+      runnerTeamIds,
+    ),
+    [
+      trackId,
+      groundCondition,
+      weather,
+      season,
+      seed,
+      tickSeconds,
+      allRunners,
+      selectedRunnerIds,
+      runnerOverrides,
+      teamMode,
+      raceTeams,
+      runnerTeamIds,
+    ],
   );
 
   const selectedRunners = setup.runners;
@@ -237,6 +271,7 @@ export function RaceSimulatorPage() {
     ? runnerOverrides[inspectedUma.id] ?? {
         strategy: inspectedUma.strategy,
         mood: inspectedUma.mood,
+        popularityRank: Math.max(selectedRunnerIds.indexOf(inspectedUma.id), 0) + 1,
       }
     : null;
   const inspectedRaceRunner = selectedRunners.find((runner) => runner.id === inspectedRaceRunnerId) ?? null;
@@ -247,6 +282,8 @@ export function RaceSimulatorPage() {
     ? runnerOverrides[inspectedRaceRunner.id] ?? {
         strategy: inspectedRaceRunner.strategy,
         mood: inspectedRaceRunner.mood,
+        popularityRank: inspectedRaceRunner.popularityRank ?? 1,
+        gateBlock: inspectedRaceRunner.gateBlock,
       }
     : null;
   const inspectedRaceSummary = inspectedRaceRunner ? resultByRunnerId.get(inspectedRaceRunner.id) ?? null : null;
@@ -374,6 +411,7 @@ export function RaceSimulatorPage() {
     setTrackId(defaultTrack.id);
     setGroundCondition("firm");
     setWeather("sunny");
+    setSeason("spring");
     setSeed(nextSeed);
     setTickSeconds(simulationTickSeconds);
     setRunMode("analysis");
@@ -394,12 +432,16 @@ export function RaceSimulatorPage() {
     setImportSkillSelections({});
     setSelectedRunnerIds(selectDefaultRunnerIds(allRunners, defaultTrack));
     setRunnerOverrides({});
+    setTeamMode("individual");
+    setRaceTeams(createDefaultRaceTeams());
+    setRunnerTeamIds({});
     setResult(
       simulateRace(
         createSetup(
           defaultTrack.id,
           "firm",
           "sunny",
+          "spring",
           nextSeed,
           simulationTickSeconds,
           allRunners,
@@ -416,11 +458,23 @@ export function RaceSimulatorPage() {
     setTrackId(log.setup.trackId);
     setGroundCondition(log.setup.groundCondition);
     setWeather(log.setup.weather);
+    setSeason(log.setup.season ?? "spring");
     setSeed(log.setup.seed);
     setTickSeconds(log.setup.tickSeconds ?? log.result.tickSeconds ?? simulationTickSeconds);
     setSelectedRunnerIds(log.setup.runners.map((runner) => runner.id));
+    const loggedTeams = log.setup.teams ?? [];
+    setTeamMode(loggedTeams.length > 0 || log.setup.runners.some((runner) => runner.teamId) ? "teams" : "individual");
+    setRaceTeams(loggedTeams.length > 0 ? loggedTeams : createDefaultRaceTeams());
+    setRunnerTeamIds(Object.fromEntries(
+      log.setup.runners.flatMap((runner) => runner.teamId ? [[runner.id, runner.teamId]] : []),
+    ));
     setRunnerOverrides(
-      Object.fromEntries(log.setup.runners.map((runner) => [runner.id, { strategy: runner.strategy, mood: runner.mood }])),
+      Object.fromEntries(log.setup.runners.map((runner, index) => [runner.id, {
+        strategy: runner.strategy,
+        mood: runner.mood,
+        popularityRank: runner.popularityRank ?? index + 1,
+        gateBlock: runner.gateBlock,
+      }])),
     );
     setResult({
       ...log.result,
@@ -502,6 +556,62 @@ export function RaceSimulatorPage() {
     setSavedUmas((current) => current.filter((runner) => runner.id !== runnerId));
     setSelectedRunnerIds((current) => current.filter((id) => id !== runnerId));
     setRunnerOverrides((current) => {
+      const next = { ...current };
+      delete next[runnerId];
+      return next;
+    });
+    setRunnerTeamIds((current) => {
+      const next = { ...current };
+      delete next[runnerId];
+      return next;
+    });
+  }
+
+  function changeTeamMode(nextMode: "individual" | "teams") {
+    setTeamMode(nextMode);
+    if (nextMode === "teams" && raceTeams.length === 0) {
+      setRaceTeams(createDefaultRaceTeams());
+    }
+  }
+
+  function addRaceTeam() {
+    setRaceTeams((current) => {
+      const number = current.length + 1;
+      return [...current, {
+        id: `team-${Date.now()}-${number}`,
+        name: `Team ${number}`,
+        color: teamColors[current.length % teamColors.length],
+      }];
+    });
+  }
+
+  function updateRaceTeam(teamId: string, updates: Partial<Pick<RaceTeam, "name" | "color">>) {
+    setRaceTeams((current) => current.map((team) => team.id === teamId ? { ...team, ...updates } : team));
+  }
+
+  function removeRaceTeam(teamId: string) {
+    setRaceTeams((current) => current.filter((team) => team.id !== teamId));
+    setRunnerTeamIds((current) => Object.fromEntries(
+      Object.entries(current).filter(([, assignedTeamId]) => assignedTeamId !== teamId),
+    ));
+  }
+
+  function moveRunnerToField(runnerId: string, teamId?: string) {
+    if (!selectedRunnerIds.includes(runnerId) && selectedRunnerIds.length >= getRaceLaneCapacity(track)) {
+      return;
+    }
+    setSelectedRunnerIds((current) => current.includes(runnerId) ? current : [...current, runnerId]);
+    setRunnerTeamIds((current) => {
+      const next = { ...current };
+      if (teamId) next[runnerId] = teamId;
+      else delete next[runnerId];
+      return next;
+    });
+  }
+
+  function removeRunnerFromField(runnerId: string) {
+    setSelectedRunnerIds((current) => current.filter((id) => id !== runnerId));
+    setRunnerTeamIds((current) => {
       const next = { ...current };
       delete next[runnerId];
       return next;
@@ -610,10 +720,6 @@ export function RaceSimulatorPage() {
             <RotateCcw size={16} />
             Reset
           </button>
-          <button className="ghost-button" onClick={() => setIsFieldDrawerOpen(true)} type="button">
-            <Activity size={16} />
-            Uma list
-          </button>
         </div>
       </section>
 
@@ -629,10 +735,12 @@ export function RaceSimulatorPage() {
           onRunAnalysis={runAnalysis}
           onRunReplay={runReplay}
           onSeedChange={setSeed}
+          onSeasonChange={setSeason}
           onTickSecondsChange={setTickSeconds}
           onTrackChange={changeTrack}
           onWeatherChange={setWeather}
           seed={seed}
+          season={season}
           tickSeconds={tickSeconds}
           track={track}
           trackId={trackId}
@@ -643,11 +751,16 @@ export function RaceSimulatorPage() {
         <UmaListPanel
           batchActive={batchResult !== null}
           isOpen={isFieldDrawerOpen}
+          laneCapacity={getRaceLaneCapacity(track)}
+          onAddTeam={addRaceTeam}
           onChangeOverride={(runnerId, override) =>
             setRunnerOverrides((current) => ({ ...current, [runnerId]: override }))
           }
-          onClose={() => setIsFieldDrawerOpen(false)}
+          onChangeTeam={updateRaceTeam}
+          onChangeTeamMode={changeTeamMode}
+          onToggle={() => setIsFieldDrawerOpen((current) => !current)}
           onInspectRunner={setInspectedUmaId}
+          onMoveRunnerToField={moveRunnerToField}
           onOpenBuilder={() => {
             setIsBuilderOpen(true);
             setIsLibraryOpen(false);
@@ -656,19 +769,15 @@ export function RaceSimulatorPage() {
             setIsLibraryOpen(true);
             setIsBuilderOpen(false);
           }}
-          onRemoveRunner={removeCustomRunner}
-          onToggleRunner={(runnerId) =>
-            setSelectedRunnerIds((current) =>
-              current.includes(runnerId)
-                ? current.filter((id) => id !== runnerId)
-                : addRunnerIdsWithinCapacity(current, [runnerId], track),
-            )
-          }
+          onRemoveRunnerFromField={removeRunnerFromField}
+          onRemoveTeam={removeRaceTeam}
           placements={result.placements}
           runnerOverrides={runnerOverrides}
           runners={allRunners}
-          savedUmas={savedUmas}
+          runnerTeamIds={runnerTeamIds}
           selectedRunnerIds={selectedRunnerIds}
+          teamMode={teamMode}
+          teams={raceTeams}
         />
 
         <AnalysisPanel
@@ -1565,11 +1674,15 @@ function createSetup(
   trackId: string,
   groundCondition: GroundCondition,
   weather: Weather,
+  season: RaceSeason,
   seed: string,
   tickSeconds: number,
   runners: RunnerBuild[],
   selectedRunnerIds: string[],
-  runnerOverrides: Record<string, Pick<RunnerBuild, "strategy" | "mood">>,
+  runnerOverrides: Record<string, RunnerOverride>,
+  teamMode: "individual" | "teams" = "individual",
+  raceTeams: RaceTeam[] = [],
+  runnerTeamIds: Record<string, string> = {},
 ): RaceSetup {
   return {
     seed,
@@ -1577,11 +1690,18 @@ function createSetup(
     trackId,
     groundCondition,
     weather,
-    runners: runners
-      .filter((runner) => selectedRunnerIds.includes(runner.id))
-      .map((runner) => ({
+    season,
+    teams: teamMode === "teams" ? raceTeams : undefined,
+    runners: selectedRunnerIds
+      .map((runnerId) => runners.find((runner) => runner.id === runnerId))
+      .filter((runner): runner is RunnerBuild => runner !== undefined)
+      .map((runner, index) => ({
         ...runner,
-        ...(runnerOverrides[runner.id] ?? {}),
+        strategy: runnerOverrides[runner.id]?.strategy ?? runner.strategy,
+        mood: runnerOverrides[runner.id]?.mood ?? runner.mood,
+        popularityRank: runnerOverrides[runner.id]?.popularityRank ?? index + 1,
+        gateBlock: runnerOverrides[runner.id]?.gateBlock,
+        teamId: teamMode === "teams" ? runnerTeamIds[runner.id] : undefined,
     })),
   };
 }
@@ -1594,6 +1714,13 @@ function yieldToBrowser(): Promise<void> {
 
 function getRaceLaneCapacity(track: typeof catalog.tracks[number]): number {
   return track.laneCount ?? 18;
+}
+
+function createDefaultRaceTeams(): RaceTeam[] {
+  return [
+    { id: "team-1", name: "Team 1", color: teamColors[0] },
+    { id: "team-2", name: "Team 2", color: teamColors[1] },
+  ];
 }
 
 function selectDefaultRunnerIds(runners: RunnerBuild[], track: typeof catalog.tracks[number]): string[] {

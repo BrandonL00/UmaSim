@@ -1,6 +1,6 @@
 import { BarChart3, Dices, Gauge, LoaderCircle, Medal, Play, Route } from "lucide-react";
 import { useMemo } from "react";
-import type { GroundCondition, Track, Weather } from "../../../domain/race/types";
+import type { GroundCondition, RaceSeason, Track, Weather } from "../../../domain/race/types";
 
 export const batchRunCounts = [25, 100, 500] as const;
 export type BatchRunCount = (typeof batchRunCounts)[number];
@@ -14,6 +14,7 @@ const tickRateOptions = [
 
 const groundConditions: GroundCondition[] = ["firm", "good", "soft", "heavy"];
 const weatherConditions: Weather[] = ["sunny", "cloudy", "rainy", "snowy"];
+const seasons: RaceSeason[] = ["spring", "summer", "fall", "winter", "cherryBlossom"];
 
 export type SetupPanelProps = {
   batchRunCount: BatchRunCount;
@@ -26,10 +27,12 @@ export type SetupPanelProps = {
   onRunAnalysis: () => void;
   onRunReplay: () => void;
   onSeedChange: (seed: string) => void;
+  onSeasonChange: (season: RaceSeason) => void;
   onTickSecondsChange: (tickSeconds: number) => void;
   onTrackChange: (trackId: string) => void;
   onWeatherChange: (weather: Weather) => void;
   seed: string;
+  season: RaceSeason;
   tickSeconds: number;
   track: Track;
   trackId: string;
@@ -48,10 +51,12 @@ export function SetupPanel({
   onRunAnalysis,
   onRunReplay,
   onSeedChange,
+  onSeasonChange,
   onTickSecondsChange,
   onTrackChange,
   onWeatherChange,
   seed,
+  season,
   tickSeconds,
   track,
   trackId,
@@ -157,7 +162,7 @@ export function SetupPanel({
         </button>
       </div>
 
-      <div className="compact-grid two">
+      <div className="compact-grid three">
         <label className="field">
           <span>Ground</span>
           <select
@@ -175,6 +180,17 @@ export function SetupPanel({
           <select value={weather} onChange={(event) => onWeatherChange(event.target.value as Weather)}>
             {weatherConditions.map((condition) => (
               <option key={condition} value={condition}>{condition}</option>
+            ))}
+          </select>
+        </label>
+
+        <label className="field">
+          <span>Season</span>
+          <select value={season} onChange={(event) => onSeasonChange(event.target.value as RaceSeason)}>
+            {seasons.map((candidate) => (
+              <option key={candidate} value={candidate}>
+                {candidate === "cherryBlossom" ? "cherry blossom" : candidate}
+              </option>
             ))}
           </select>
         </label>
