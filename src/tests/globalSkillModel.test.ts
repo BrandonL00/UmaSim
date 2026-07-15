@@ -110,6 +110,36 @@ function makeSkill(condition: string): GlobalSkill {
 }
 
 describe("globalSkillModel lane tokens", () => {
+  it("models rushed-opponent team conditions and targets the stamina drain away from the owner", () => {
+    const activation = resolveGlobalSkillActivation(
+      {
+        ...makeSkill("temptation_opponent_count_behind>=1"),
+        conditionGroups: [{
+          ...makeSkill("temptation_opponent_count_behind>=1").conditionGroups[0]!,
+          effects: [{ type: 9, value: -100 }],
+        }],
+      },
+      { ...baseContext, temptationOpponentCountBehind: 2 },
+    );
+
+    expect(activation).not.toBeNull();
+    expect(activation?.effects.opponentStaminaDrainRatio).toBeCloseTo(0.01);
+    expect(activation?.effects.staminaRecoveryRatio).toBe(0);
+  });
+
+  it("supports strategy-specific rushed opponent counts", () => {
+    const condition = "running_style_temptation_opponent_count_nige>=1&is_temptation==0";
+
+    expect(resolveGlobalSkillActivation(
+      makeSkill(condition),
+      { ...baseContext, rushedFrontOpponentCount: 1, isTemptation: false },
+    )).not.toBeNull();
+    expect(resolveGlobalSkillActivation(
+      makeSkill(condition),
+      { ...baseContext, rushedFrontOpponentCount: 0, isTemptation: false },
+    )).toBeNull();
+  });
+
   it("supports lane_type conditions", () => {
     const activation = resolveGlobalSkillActivation(makeSkill("lane_type==0"), baseContext);
     const miss = resolveGlobalSkillActivation(makeSkill("lane_type==2"), baseContext);

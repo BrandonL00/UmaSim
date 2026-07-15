@@ -5,8 +5,16 @@ export type Weather = "sunny" | "cloudy" | "rainy" | "snowy";
 export type RaceSeason = "spring" | "summer" | "fall" | "winter" | "cherryBlossom";
 export type RacePhase = "early" | "middle" | "late" | "lastSpurt";
 
+export type RaceTeam = {
+  id: string;
+  name: string;
+  color: string;
+};
+
 /** Race-specific entry metadata. These values belong to an entry, not its saved build. */
 export type RaceRunner = RunnerBuild & {
+  /** Explicit race team. Omit to treat this runner as an individual entrant. */
+  teamId?: string;
   /** Popularity rank used by skills whose conditions reference popularity. */
   popularityRank?: number;
   /** Gate block (waku), numbered 1 through 8. */
@@ -49,6 +57,8 @@ export type RaceSetup = {
   weather: Weather;
   /** Event season used by seasonal passive skills. */
   season?: RaceSeason;
+  /** Optional display metadata for explicitly configured teams. */
+  teams?: RaceTeam[];
   runners: RaceRunner[];
 };
 

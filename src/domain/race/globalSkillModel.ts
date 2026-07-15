@@ -15,6 +15,12 @@ export type GlobalSkillContext = {
   activatedSkillCountEndAfter?: number;
   activatedSkillCountLaterHalf?: number;
   activatedHealSkillCount?: number;
+  temptationOpponentCountBehind?: number;
+  temptationOpponentCountInfront?: number;
+  rushedFrontOpponentCount?: number;
+  rushedPaceOpponentCount?: number;
+  rushedLateOpponentCount?: number;
+  rushedEndOpponentCount?: number;
   phase: RacePhase;
   segment?: TrackSegment;
   order: number;
@@ -117,6 +123,7 @@ export type ResolvedSkillEffects = {
   fixedStartDelaySeconds?: number;
   rushProbabilityModifier: number;
   staminaRecoveryRatio: number;
+  opponentStaminaDrainRatio: number;
   stats: Partial<StatBlock>;
 };
 
@@ -142,6 +149,12 @@ const supportedTokens = new Set([
   "activate_count_later_half",
   "activate_count_middle",
   "activate_count_start",
+  "temptation_opponent_count_behind",
+  "temptation_opponent_count_infront",
+  "running_style_temptation_opponent_count_nige",
+  "running_style_temptation_opponent_count_senko",
+  "running_style_temptation_opponent_count_sashi",
+  "running_style_temptation_opponent_count_oikomi",
   "all_corner_random",
   "bashin_diff_behind",
   "bashin_diff_infront",
@@ -330,6 +343,18 @@ function evaluateField(field: string, operator: ComparisonOperator, value: numbe
       return compareNumber(field, context.activatedSkillCountMiddle ?? 0, operator, value);
     case "activate_count_start":
       return compareNumber(field, context.activatedSkillCountStart ?? 0, operator, value);
+    case "temptation_opponent_count_behind":
+      return compareNumber(field, context.temptationOpponentCountBehind ?? 0, operator, value);
+    case "temptation_opponent_count_infront":
+      return compareNumber(field, context.temptationOpponentCountInfront ?? 0, operator, value);
+    case "running_style_temptation_opponent_count_nige":
+      return compareNumber(field, context.rushedFrontOpponentCount ?? 0, operator, value);
+    case "running_style_temptation_opponent_count_senko":
+      return compareNumber(field, context.rushedPaceOpponentCount ?? 0, operator, value);
+    case "running_style_temptation_opponent_count_sashi":
+      return compareNumber(field, context.rushedLateOpponentCount ?? 0, operator, value);
+    case "running_style_temptation_opponent_count_oikomi":
+      return compareNumber(field, context.rushedEndOpponentCount ?? 0, operator, value);
     case "all_corner_random":
       return compareRandomBoolean(operator, value, isSegmentTargetActive(context.skillRandomState?.allCornerRandom, context));
     case "corner_random": {
@@ -614,6 +639,7 @@ function resolveEffects(group: GlobalSkillConditionGroup): ResolvedSkillEffects 
     fixedStartDelaySeconds: undefined,
     rushProbabilityModifier: 0,
     staminaRecoveryRatio: 0,
+    opponentStaminaDrainRatio: 0,
     stats: {},
   };
 
@@ -641,7 +667,11 @@ function resolveEffects(group: GlobalSkillConditionGroup): ResolvedSkillEffects 
         resolved.stats.wit = (resolved.stats.wit ?? 0) + scaled;
         break;
       case 9:
-        resolved.staminaRecoveryRatio += scaled;
+        if (scaled < 0 && group.condition?.includes("temptation_opponent_count")) {
+          resolved.opponentStaminaDrainRatio += Math.abs(scaled);
+        } else {
+          resolved.staminaRecoveryRatio += scaled;
+        }
         break;
       case 10:
         resolved.startDelayMultiplier *= scaled;

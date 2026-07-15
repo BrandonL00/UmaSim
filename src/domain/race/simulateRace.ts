@@ -32,6 +32,7 @@ import { createSeededRandom } from "./random";
 import { activateRushAtDistance, advanceRushState } from "./rush";
 import { updateDuelState } from "./dueling";
 import { buildTrafficSnapshot, resolveTrafficMovementPenalty } from "./traffic";
+import { areRaceOpponents } from "./teams";
 import { resolveOwnedUniqueSkill } from "./uniqueSkillModel";
 import type {
   RaceCatalog,
@@ -566,6 +567,7 @@ function evaluateSkills(args: {
       activatedHealSkillCount: runner.triggers.activationHistory.filter(
         (activation) => activation.recoveredStamina,
       ).length,
+      ...getRushedOpponentCounts(runner, standings),
       phase,
       segment,
       order,
@@ -651,7 +653,14 @@ function evaluateSkills(args: {
       distanceRate: (runner.distanceMeters / track.distanceMeters) * 100,
       recoveredStamina: activation.effects.staminaRecoveryRatio > 0,
     });
-    applyResolvedEffects(runner, skillId, second, activation, selectPressureTarget(runner, standings));
+    applyResolvedEffects(
+      runner,
+      skillId,
+      second,
+      activation,
+      selectPressureTarget(runner, standings),
+      selectOpponentEffectTargets(runner, standings, activation.conditionSummary),
+    );
     skillEvents.push({
       second: round(second),
       runnerId: runner.build.id,
@@ -923,6 +932,28 @@ function getRunningStyleCounts(runner: RuntimeRunner, builds: RaceSetup["runners
   };
 }
 
+function getRushedOpponentCounts(
+  runner: RuntimeRunner,
+  standings: Array<{ runner: RuntimeRunner; order: number }>,
+) {
+  const rushedOpponents = standings
+    .map((standing) => standing.runner)
+    .filter((candidate) => candidate.rush.active && areRaceOpponents(runner.build, candidate.build));
+
+  return {
+    temptationOpponentCountBehind: rushedOpponents.filter(
+      (candidate) => candidate.distanceMeters < runner.distanceMeters,
+    ).length,
+    temptationOpponentCountInfront: rushedOpponents.filter(
+      (candidate) => candidate.distanceMeters > runner.distanceMeters,
+    ).length,
+    rushedFrontOpponentCount: rushedOpponents.filter((candidate) => candidate.build.strategy === "front").length,
+    rushedPaceOpponentCount: rushedOpponents.filter((candidate) => candidate.build.strategy === "pace").length,
+    rushedLateOpponentCount: rushedOpponents.filter((candidate) => candidate.build.strategy === "late").length,
+    rushedEndOpponentCount: rushedOpponents.filter((candidate) => candidate.build.strategy === "end").length,
+  };
+}
+
 function updateContinuousOrderRateHistory(
   runner: RuntimeRunner,
   second: number,
@@ -984,6 +1015,7 @@ function applyResolvedEffects(
   second: number,
   activation: ReturnType<typeof resolveGlobalSkillActivation>,
   pressureTarget?: RuntimeRunner,
+  opponentTargets: RuntimeRunner[] = [],
 ) {
   if (!activation) {
     return;
@@ -993,6 +1025,15 @@ function applyResolvedEffects(
     runner.maxStamina,
     runner.stamina + runner.maxStamina * activation.effects.staminaRecoveryRatio,
   );
+
+  if (activation.effects.opponentStaminaDrainRatio > 0) {
+    for (const target of opponentTargets) {
+      target.stamina = Math.max(
+        0,
+        target.stamina - target.maxStamina * activation.effects.opponentStaminaDrainRatio,
+      );
+    }
+  }
 
   if (activation.durationSeconds <= 0) {
     runner.adjustedStats = mergeStats(runner.adjustedStats, activation.effects.stats);
@@ -1030,12 +1071,32 @@ function selectPressureTarget(
   runner: RuntimeRunner,
   standings: Array<{ runner: RuntimeRunner; order: number }>,
 ) {
-  const traffic = buildTrafficSnapshot(standings, runner);
+  const opponentStandings = standings.filter((standing) =>
+    areRaceOpponents(runner.build, standing.runner.build));
+  const traffic = buildTrafficSnapshot(opponentStandings, runner);
   const directAhead = traffic.frontRivals[0]?.runner;
   if (directAhead) {
     return directAhead;
   }
   return traffic.sideRivals[0]?.runner;
+}
+
+function selectOpponentEffectTargets(
+  runner: RuntimeRunner,
+  standings: Array<{ runner: RuntimeRunner; order: number }>,
+  conditionSummary: string,
+) {
+  const opponents = standings
+    .map((standing) => standing.runner)
+    .filter((candidate) => candidate.rush.active && areRaceOpponents(runner.build, candidate.build));
+
+  if (conditionSummary.includes("temptation_opponent_count_behind")) {
+    return opponents.filter((candidate) => candidate.distanceMeters < runner.distanceMeters);
+  }
+  if (conditionSummary.includes("temptation_opponent_count_infront")) {
+    return opponents.filter((candidate) => candidate.distanceMeters > runner.distanceMeters);
+  }
+  return [];
 }
 
 function describeEffects(effects: SkillAlternative["effects"]) {
@@ -1060,6 +1121,7 @@ function describeResolvedEffects(effects: {
   fixedStartDelaySeconds?: number;
   rushProbabilityModifier: number;
   staminaRecoveryRatio: number;
+  opponentStaminaDrainRatio: number;
   stats: Partial<StatBlock>;
 }) {
   const parts: string[] = [];
@@ -1078,6 +1140,9 @@ function describeResolvedEffects(effects: {
   if (effects.startDelayMultiplier !== 1) parts.push(`${effects.startDelayMultiplier.toFixed(2)}× start delay`);
   if (effects.staminaRecoveryRatio) {
     parts.push(`${effects.staminaRecoveryRatio > 0 ? "+" : ""}${(effects.staminaRecoveryRatio * 100).toFixed(1)}% stamina`);
+  }
+  if (effects.opponentStaminaDrainRatio) {
+    parts.push(`-${(effects.opponentStaminaDrainRatio * 100).toFixed(1)}% opponent stamina`);
   }
 
   for (const [key, value] of Object.entries(effects.stats)) {
