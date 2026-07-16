@@ -22,6 +22,8 @@ export type SetupPanelProps = {
   isSimulating: boolean;
   onBatchRunCountChange: (count: BatchRunCount) => void;
   onGroundConditionChange: (condition: GroundCondition) => void;
+  onOpenChampionsMeetingPresets: () => void;
+  onOpenRacePresets: () => void;
   onOpenTrackDetails: () => void;
   onRandomizeSeed: () => void;
   onRunAnalysis: () => void;
@@ -31,6 +33,14 @@ export type SetupPanelProps = {
   onTickSecondsChange: (tickSeconds: number) => void;
   onTrackChange: (trackId: string) => void;
   onWeatherChange: (weather: Weather) => void;
+  racePresetCount: number;
+  selectedPreset: {
+    detail: string;
+    imageAlt: string;
+    imageUrl: string;
+    name: string;
+    type: "Champions Meeting" | "Race preset";
+  } | null;
   seed: string;
   season: RaceSeason;
   tickSeconds: number;
@@ -46,6 +56,8 @@ export function SetupPanel({
   isSimulating,
   onBatchRunCountChange,
   onGroundConditionChange,
+  onOpenChampionsMeetingPresets,
+  onOpenRacePresets,
   onOpenTrackDetails,
   onRandomizeSeed,
   onRunAnalysis,
@@ -55,6 +67,8 @@ export function SetupPanel({
   onTickSecondsChange,
   onTrackChange,
   onWeatherChange,
+  racePresetCount,
+  selectedPreset,
   seed,
   season,
   tickSeconds,
@@ -100,6 +114,17 @@ export function SetupPanel({
         ) : null}
       </button>
 
+      {selectedPreset ? (
+        <section className="selected-preset" aria-label={`Selected ${selectedPreset.type}`}>
+          <img alt={selectedPreset.imageAlt} src={selectedPreset.imageUrl} />
+          <div>
+            <span>{selectedPreset.type}</span>
+            <strong>{selectedPreset.name}</strong>
+            <small>{selectedPreset.detail}</small>
+          </div>
+        </section>
+      ) : null}
+
       <label className="field">
         <span>Course</span>
         <select value={trackId} onChange={(event) => onTrackChange(event.target.value)}>
@@ -118,18 +143,18 @@ export function SetupPanel({
       <section className="preset-stubs" aria-labelledby="preset-stubs-heading">
         <div>
           <span id="preset-stubs-heading">Preset setup</span>
-          <small>Preset catalogs will apply reviewable course and condition drafts.</small>
+          <small>Apply a known race or Champions Meeting setup.</small>
         </div>
         <div className="preset-stub-actions">
-          <button className="preset-stub-button" disabled type="button">
+          <button className="preset-stub-button" onClick={onOpenRacePresets} type="button">
             <Route size={16} />
             Choose race preset
-            <em>Coming soon</em>
+            <em>{racePresetCount} races</em>
           </button>
-          <button className="preset-stub-button" disabled type="button">
+          <button className="preset-stub-button" onClick={onOpenChampionsMeetingPresets} type="button">
             <Medal size={16} />
             Choose CM preset
-            <em>Coming soon</em>
+            <em>Global + JP archive</em>
           </button>
         </div>
       </section>
