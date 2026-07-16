@@ -14,6 +14,7 @@ import { useEffect, useMemo, useState } from "react";
 import { flushSync } from "react-dom";
 import { catalog } from "../../data/catalog";
 import { characterDataMeta, characterTemplates } from "../../data/characters";
+import { championsMeetingPresets, racePresets } from "../../data/presets";
 import { formatSnapshotDate, simulationProvenance } from "../../data/simulationProvenance";
 import {
   createGlobalSkillEngineMap,
@@ -42,6 +43,7 @@ import {
   type RaceRunLog,
 } from "../../domain/race/runHistory";
 import type { GroundCondition, RaceResult, RaceSeason, RaceSetup, RaceTeam, Weather } from "../../domain/race/types";
+import { formatChampionsMeetingPresetName, type ChampionsMeetingPreset, type RacePreset } from "../../domain/race/presets";
 import { getPrerequisiteLockOwners, selectSkillWithPrerequisites } from "../../domain/skills/selection";
 import {
   createUmaLibraryDocument,
@@ -63,7 +65,9 @@ import {
   AnalysisPanel,
   type BatchRunCount,
   type BatchView,
+  ChampionsMeetingPresetPicker,
   RaceDetailsPanel,
+  RacePresetPicker,
   SetupPanel,
   UmaListPanel,
   type RunnerOverride,
@@ -128,6 +132,10 @@ type PendingSkillChoice = {
   choices: SkillChoice[];
 };
 
+type SelectedSetupPreset =
+  | { kind: "race"; preset: RacePreset }
+  | { kind: "championsMeeting"; preset: ChampionsMeetingPreset };
+
 export function RaceSimulatorPage() {
   const [trackId, setTrackId] = useState(catalog.tracks[0].id);
   const [groundCondition, setGroundCondition] = useState<GroundCondition>("firm");
@@ -160,6 +168,9 @@ export function RaceSimulatorPage() {
   const [inspectedUmaId, setInspectedUmaId] = useState<string | null>(null);
   const [inspectedRaceRunnerId, setInspectedRaceRunnerId] = useState<string | null>(null);
   const [isTrackDetailsOpen, setIsTrackDetailsOpen] = useState(false);
+  const [isRacePresetPickerOpen, setIsRacePresetPickerOpen] = useState(false);
+  const [isChampionsMeetingPresetPickerOpen, setIsChampionsMeetingPresetPickerOpen] = useState(false);
+  const [selectedSetupPreset, setSelectedSetupPreset] = useState<SelectedSetupPreset | null>(null);
   const [runHistory, setRunHistory] = useState<RaceRunLog[]>(loadRaceRunHistory);
   const [selectedRunnerIds, setSelectedRunnerIds] = useState(() =>
     selectDefaultRunnerIds(
@@ -403,6 +414,24 @@ export function RaceSimulatorPage() {
     setSelectedRunnerIds((current) => current.slice(0, getRaceLaneCapacity(nextTrack)));
   }
 
+  function applyRacePreset(preset: RacePreset) {
+    changeTrack(preset.trackId);
+    setSeason(preset.season);
+    setSelectedSetupPreset({ kind: "race", preset });
+    setIsRacePresetPickerOpen(false);
+  }
+
+  function applyChampionsMeetingPreset(preset: ChampionsMeetingPreset) {
+    if (!preset.trackId || !preset.season || !preset.weather || !preset.groundCondition) return;
+
+    changeTrack(preset.trackId);
+    setSeason(preset.season);
+    setWeather(preset.weather);
+    setGroundCondition(preset.groundCondition);
+    setSelectedSetupPreset({ kind: "championsMeeting", preset });
+    setIsChampionsMeetingPresetPickerOpen(false);
+  }
+
   function resetSample() {
     const nextSeed = createRandomSeed();
 
@@ -428,6 +457,9 @@ export function RaceSimulatorPage() {
     setInspectedUmaId(null);
     setInspectedRaceRunnerId(null);
     setIsTrackDetailsOpen(false);
+    setIsRacePresetPickerOpen(false);
+    setIsChampionsMeetingPresetPickerOpen(false);
+    setSelectedSetupPreset(null);
     setImportCardSelections({});
     setImportSkillSelections({});
     setSelectedRunnerIds(selectDefaultRunnerIds(allRunners, defaultTrack));
@@ -729,16 +761,32 @@ export function RaceSimulatorPage() {
           groundCondition={groundCondition}
           isSimulating={isSimulating}
           onBatchRunCountChange={setBatchRunCount}
-          onGroundConditionChange={setGroundCondition}
+          onGroundConditionChange={(value) => {
+            setSelectedSetupPreset(null);
+            setGroundCondition(value);
+          }}
+          onOpenChampionsMeetingPresets={() => setIsChampionsMeetingPresetPickerOpen(true)}
+          onOpenRacePresets={() => setIsRacePresetPickerOpen(true)}
           onOpenTrackDetails={() => setIsTrackDetailsOpen(true)}
           onRandomizeSeed={() => setSeed(createRandomSeed())}
           onRunAnalysis={runAnalysis}
           onRunReplay={runReplay}
           onSeedChange={setSeed}
-          onSeasonChange={setSeason}
+          onSeasonChange={(value) => {
+            setSelectedSetupPreset(null);
+            setSeason(value);
+          }}
           onTickSecondsChange={setTickSeconds}
-          onTrackChange={changeTrack}
-          onWeatherChange={setWeather}
+          onTrackChange={(value) => {
+            setSelectedSetupPreset(null);
+            changeTrack(value);
+          }}
+          onWeatherChange={(value) => {
+            setSelectedSetupPreset(null);
+            setWeather(value);
+          }}
+          racePresetCount={racePresets.length}
+          selectedPreset={getSetupPresetDisplay(selectedSetupPreset)}
           seed={seed}
           season={season}
           tickSeconds={tickSeconds}
@@ -1589,6 +1637,24 @@ export function RaceSimulatorPage() {
         </section>
       ) : null}
 
+      {isRacePresetPickerOpen ? (
+        <RacePresetPicker
+          onApply={applyRacePreset}
+          onClose={() => setIsRacePresetPickerOpen(false)}
+          presets={racePresets}
+          tracks={catalog.tracks}
+        />
+      ) : null}
+
+      {isChampionsMeetingPresetPickerOpen ? (
+        <ChampionsMeetingPresetPicker
+          onApply={applyChampionsMeetingPreset}
+          onClose={() => setIsChampionsMeetingPresetPickerOpen(false)}
+          presets={championsMeetingPresets}
+          tracks={catalog.tracks}
+        />
+      ) : null}
+
       {isTrackDetailsOpen ? (
         <section
           aria-labelledby="track-details-title"
@@ -1776,6 +1842,30 @@ function createRandomSeed(): string {
 
 function isUniqueSkill(skillId: string): boolean {
   return skillId.startsWith("unique-") || globalUniqueSkillIds.has(skillId);
+}
+
+function getSetupPresetDisplay(selectedPreset: SelectedSetupPreset | null) {
+  if (!selectedPreset) return null;
+
+  if (selectedPreset.kind === "race") {
+    const { preset } = selectedPreset;
+    return {
+      type: "Race preset" as const,
+      name: preset.name,
+      detail: `${toTitleCase(preset.season)} · ${preset.entryCount ?? "?"} entries`,
+      imageAlt: `${preset.name} race banner`,
+      imageUrl: `https://media.gametora.com/umamusume/races/banners/en/${preset.bannerId}.png`,
+    };
+  }
+
+  const { preset } = selectedPreset;
+  return {
+    type: "Champions Meeting" as const,
+    name: formatChampionsMeetingPresetName(preset),
+    detail: `${preset.distanceMeters}m · ${toTitleCase(preset.groundCondition ?? "unknown")} · ${toTitleCase(preset.weather ?? "unknown")}`,
+    imageAlt: `${preset.name} Champions Meeting logo`,
+    imageUrl: `https://media.gametora.com/umamusume/events/cm/icon_${Math.min(preset.resourceId || 1, 13)}.png`,
+  };
 }
 
 function toTitleCase(value: string): string {
