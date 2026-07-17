@@ -1,8 +1,8 @@
 import {
   Activity,
-  ChevronsLeft,
   ChevronsRight,
   Database,
+  Dices,
   GripVertical,
   Plus,
   Trash2,
@@ -26,11 +26,14 @@ export type RunnerOverride = Pick<RunnerBuild, "strategy" | "mood"> & {
 export type UmaListPanelProps = {
   batchActive: boolean;
   isOpen: boolean;
-  laneCapacity: number;
+  maxRunnerCount: number;
+  targetRunnerCount: number;
   onAddTeam: () => void;
   onChangeOverride: (runnerId: string, override: RunnerOverride) => void;
   onChangeTeam: (teamId: string, updates: Partial<Pick<RaceTeam, "name" | "color">>) => void;
   onChangeTeamMode: (mode: "individual" | "teams") => void;
+  onFillRaceField: () => void;
+  onTargetRunnerCountChange: (count: number) => void;
   onToggle: () => void;
   onInspectRunner: (runnerId: string) => void;
   onMoveRunnerToField: (runnerId: string, teamId?: string) => void;
@@ -50,11 +53,14 @@ export type UmaListPanelProps = {
 export function UmaListPanel({
   batchActive,
   isOpen,
-  laneCapacity,
+  maxRunnerCount,
+  targetRunnerCount,
   onAddTeam,
   onChangeOverride,
   onChangeTeam,
   onChangeTeamMode,
+  onFillRaceField,
+  onTargetRunnerCountChange,
   onToggle,
   onInspectRunner,
   onMoveRunnerToField,
@@ -70,6 +76,8 @@ export function UmaListPanel({
   teamMode,
   teams,
 }: UmaListPanelProps) {
+  if (!isOpen) return null;
+
   const [draggedRunnerId, setDraggedRunnerId] = useState<string | null>(null);
   const placementByRunnerId = new Map(placements.map((placement) => [placement.runnerId, placement]));
   const selectedSet = new Set(selectedRunnerIds);
@@ -207,26 +215,11 @@ export function UmaListPanel({
   };
 
   return (
-    <aside className={isOpen ? "panel runner-panel field-drawer is-open" : "panel runner-panel field-drawer is-collapsed"}>
-      {!isOpen ? (
-        <button
-          aria-label="Edit race roster"
-          className="field-rail-toggle"
-          onClick={onToggle}
-          title="Edit race roster"
-          type="button"
-        >
-          <Users size={19} />
-          <span className="field-rail-label">Roster</span>
-          <strong>{selectedRunnerIds.length} / {laneCapacity}</strong>
-          <ChevronsLeft size={17} />
-        </button>
-      ) : (
-        <>
+    <aside className="panel runner-panel field-drawer is-open">
       <div className="panel-heading">
         <Activity size={18} />
         <h2>Race field</h2>
-        <span className="field-drawer-count">{selectedRunnerIds.length} / {laneCapacity}</span>
+        <span className="field-drawer-count">{selectedRunnerIds.length} / {targetRunnerCount}</span>
         <button className="drawer-close-button" onClick={onToggle} title="Collapse race field" type="button">
           <ChevronsRight size={18} />
         </button>
@@ -235,6 +228,24 @@ export function UmaListPanel({
       <div className="field-drawer-actions">
         <button className="ghost-button" onClick={onOpenLibrary} type="button"><Database size={16} /> Uma Library</button>
         <button className="ghost-button" onClick={onOpenBuilder} type="button"><Plus size={16} /> Add Uma</button>
+      </div>
+
+      <div className="field-roster-controls">
+        <label>
+          <span>Runners</span>
+          <input
+            aria-label="Declared runner count"
+            max={maxRunnerCount}
+            min={1}
+            onChange={(event) => onTargetRunnerCountChange(Number(event.target.value))}
+            type="number"
+            value={targetRunnerCount}
+          />
+          <small>Max {maxRunnerCount} for this course</small>
+        </label>
+        <button className="ghost-button" disabled={selectedRunnerIds.length >= targetRunnerCount} onClick={onFillRaceField} type="button">
+          <Dices size={16} /> Fill roster
+        </button>
       </div>
 
       <section className="team-mode-card">
@@ -340,8 +351,6 @@ export function UmaListPanel({
           )}
         </div>
       </div>
-        </>
-      )}
     </aside>
   );
 }

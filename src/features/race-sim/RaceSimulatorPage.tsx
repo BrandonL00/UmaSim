@@ -7,13 +7,14 @@ import {
   Sparkles,
   Trash2,
   Upload,
+  Users,
   X,
 } from "lucide-react";
 import type { CSSProperties } from "react";
 import { useEffect, useMemo, useState } from "react";
 import { flushSync } from "react-dom";
 import { catalog } from "../../data/catalog";
-import { characterDataMeta, characterTemplates } from "../../data/characters";
+import { characterDataMeta, characterTemplates, type CharacterTemplate } from "../../data/characters";
 import { championsMeetingPresets, racePresets } from "../../data/presets";
 import { formatSnapshotDate, simulationProvenance } from "../../data/simulationProvenance";
 import {
@@ -25,6 +26,7 @@ import {
 } from "../../data/skills";
 import {
   CharacterCardAmbiguityError,
+  BuildNameRequiredError,
   createSkillSelectionKey,
   parseHarvestedUmaJson,
   SkillAmbiguityError,
@@ -132,12 +134,19 @@ type PendingSkillChoice = {
   choices: SkillChoice[];
 };
 
+type PendingBuildName = {
+  candidateIndex: number;
+  characterName: string;
+  value: string;
+};
+
 type SelectedSetupPreset =
   | { kind: "race"; preset: RacePreset }
   | { kind: "championsMeeting"; preset: ChampionsMeetingPreset };
 
 export function RaceSimulatorPage() {
   const [trackId, setTrackId] = useState(catalog.tracks[0].id);
+  const [targetRunnerCount, setTargetRunnerCount] = useState(() => getRaceLaneCapacity(catalog.tracks[0]));
   const [groundCondition, setGroundCondition] = useState<GroundCondition>("firm");
   const [weather, setWeather] = useState<Weather>("sunny");
   const [season, setSeason] = useState<RaceSeason>("spring");
@@ -153,6 +162,7 @@ export function RaceSimulatorPage() {
   const [batchReplayRunIndex, setBatchReplayRunIndex] = useState<number | null>(null);
   const [isFieldDrawerOpen, setIsFieldDrawerOpen] = useState(false);
   const [savedUmas, setSavedUmas] = useState<StoredUma[]>(loadUmaLibrary);
+  const [fieldFillers, setFieldFillers] = useState<RunnerBuild[]>([]);
   const [selectedCharacterId, setSelectedCharacterId] = useState(defaultCharacterTemplate.id);
   const [customDraft, setCustomDraft] = useState<RunnerBuild>(defaultCustomRunner);
   const [skillSearch, setSkillSearch] = useState("");
@@ -165,6 +175,8 @@ export function RaceSimulatorPage() {
   const [pendingSkillChoice, setPendingSkillChoice] = useState<PendingSkillChoice | null>(null);
   const [importCardSelections, setImportCardSelections] = useState<Record<number, number>>({});
   const [importSkillSelections, setImportSkillSelections] = useState<Record<string, string>>({});
+  const [importBuildNameSelections, setImportBuildNameSelections] = useState<Record<number, string>>({});
+  const [pendingBuildName, setPendingBuildName] = useState<PendingBuildName | null>(null);
   const [inspectedUmaId, setInspectedUmaId] = useState<string | null>(null);
   const [inspectedRaceRunnerId, setInspectedRaceRunnerId] = useState<string | null>(null);
   const [isTrackDetailsOpen, setIsTrackDetailsOpen] = useState(false);
@@ -173,10 +185,7 @@ export function RaceSimulatorPage() {
   const [selectedSetupPreset, setSelectedSetupPreset] = useState<SelectedSetupPreset | null>(null);
   const [runHistory, setRunHistory] = useState<RaceRunLog[]>(loadRaceRunHistory);
   const [selectedRunnerIds, setSelectedRunnerIds] = useState(() =>
-    selectDefaultRunnerIds(
-      [...catalog.runners, ...savedUmas.map((uma): RunnerBuild => ({ ...uma, mood: "normal" }))],
-      catalog.tracks[0],
-    ),
+    selectDefaultRunnerIds(catalog.runners, catalog.tracks[0]),
   );
   const [runnerOverrides, setRunnerOverrides] = useState<Record<string, RunnerOverride>>({});
   const [teamMode, setTeamMode] = useState<"individual" | "teams">("individual");
@@ -191,7 +200,7 @@ export function RaceSimulatorPage() {
         season,
         seed,
         tickSeconds,
-        [...catalog.runners, ...savedUmas.map((uma): RunnerBuild => ({ ...uma, mood: "normal" }))],
+        [...catalog.runners, ...savedUmas.map((uma): RunnerBuild => ({ ...uma, mood: "normal" })), ...fieldFillers],
         selectedRunnerIds,
         runnerOverrides,
         teamMode,
@@ -204,8 +213,8 @@ export function RaceSimulatorPage() {
   );
 
   const allRunners = useMemo(
-    () => [...catalog.runners, ...savedUmas.map((uma): RunnerBuild => ({ ...uma, mood: "normal" }))],
-    [savedUmas],
+    () => [...catalog.runners, ...savedUmas.map((uma): RunnerBuild => ({ ...uma, mood: "normal" })), ...fieldFillers],
+    [fieldFillers, savedUmas],
   );
   const selectedCharacter =
     characterTemplates.find((character) => character.id === selectedCharacterId) ?? defaultCharacterTemplate;
@@ -412,6 +421,25 @@ export function RaceSimulatorPage() {
 
     setTrackId(nextTrack.id);
     setSelectedRunnerIds((current) => current.slice(0, getRaceLaneCapacity(nextTrack)));
+    setTargetRunnerCount((current) => Math.min(current, getRaceLaneCapacity(nextTrack)));
+  }
+
+  function changeTargetRunnerCount(nextCount: number) {
+    const target = Math.min(Math.max(Math.round(nextCount) || 1, 1), getRaceLaneCapacity(track));
+    setTargetRunnerCount(target);
+    setSelectedRunnerIds((current) => current.slice(0, target));
+  }
+
+  function fillRaceField() {
+    setSelectedRunnerIds((current) => {
+      const needed = targetRunnerCount - current.length;
+      if (needed <= 0) return current;
+
+      const templates = [...characterTemplates].sort(() => Math.random() - 0.5).slice(0, needed);
+      const fillers = templates.map((template, index) => createFieldFiller(template, Date.now() + index));
+      setFieldFillers((existing) => [...existing, ...fillers]);
+      return [...current, ...fillers.map((runner) => runner.id)];
+    });
   }
 
   function applyRacePreset(preset: RacePreset) {
@@ -438,6 +466,7 @@ export function RaceSimulatorPage() {
     const defaultTrack = catalog.tracks[0];
 
     setTrackId(defaultTrack.id);
+    setTargetRunnerCount(getRaceLaneCapacity(defaultTrack));
     setGroundCondition("firm");
     setWeather("sunny");
     setSeason("spring");
@@ -462,7 +491,8 @@ export function RaceSimulatorPage() {
     setSelectedSetupPreset(null);
     setImportCardSelections({});
     setImportSkillSelections({});
-    setSelectedRunnerIds(selectDefaultRunnerIds(allRunners, defaultTrack));
+    setFieldFillers([]);
+    setSelectedRunnerIds(selectDefaultRunnerIds(catalog.runners, defaultTrack));
     setRunnerOverrides({});
     setTeamMode("individual");
     setRaceTeams(createDefaultRaceTeams());
@@ -477,7 +507,7 @@ export function RaceSimulatorPage() {
           nextSeed,
           simulationTickSeconds,
           allRunners,
-          selectDefaultRunnerIds(allRunners, defaultTrack),
+          selectDefaultRunnerIds(catalog.runners, defaultTrack),
           {},
         ),
         catalog,
@@ -554,7 +584,7 @@ export function RaceSimulatorPage() {
     };
 
     setSavedUmas((current) => mergeUmaLibrary(current, [runner]));
-    setSelectedRunnerIds((current) => addRunnerIdsWithinCapacity(current, [runner.id], track));
+    setSelectedRunnerIds((current) => addRunnerIdsWithinCapacity(current, [runner.id], targetRunnerCount));
     setCustomDraft({
       ...runner,
       mood: "normal",
@@ -629,7 +659,7 @@ export function RaceSimulatorPage() {
   }
 
   function moveRunnerToField(runnerId: string, teamId?: string) {
-    if (!selectedRunnerIds.includes(runnerId) && selectedRunnerIds.length >= getRaceLaneCapacity(track)) {
+    if (!selectedRunnerIds.includes(runnerId) && selectedRunnerIds.length >= targetRunnerCount) {
       return;
     }
     setSelectedRunnerIds((current) => current.includes(runnerId) ? current : [...current, runnerId]);
@@ -653,20 +683,23 @@ export function RaceSimulatorPage() {
   function importRawUmas(
     cardSelections = importCardSelections,
     skillSelections = importSkillSelections,
+    buildNameSelections = importBuildNameSelections,
   ) {
     setImportError("");
     setImportMessage("");
 
     try {
-      const imported = parseHarvestedUmaJson(rawUmaJson, { cardSelections, skillSelections });
+      const imported = parseHarvestedUmaJson(rawUmaJson, { cardSelections, skillSelections, buildNameSelections });
       setSavedUmas((current) => mergeUmaLibrary(current, imported));
-      setSelectedRunnerIds((current) => addRunnerIdsWithinCapacity(current, imported.map((runner) => runner.id), track));
+      setSelectedRunnerIds((current) => addRunnerIdsWithinCapacity(current, imported.map((runner) => runner.id), targetRunnerCount));
       setImportMessage(`Imported ${imported.length} Uma${imported.length === 1 ? "" : "s"}.`);
       setRawUmaJson("");
       setPendingCharacterChoice(null);
       setPendingSkillChoice(null);
+      setPendingBuildName(null);
       setImportCardSelections({});
       setImportSkillSelections({});
+      setImportBuildNameSelections({});
     } catch (error) {
       if (error instanceof CharacterCardAmbiguityError) {
         setPendingCharacterChoice({
@@ -685,6 +718,14 @@ export function RaceSimulatorPage() {
         });
         return;
       }
+      if (error instanceof BuildNameRequiredError) {
+        setPendingBuildName({
+          candidateIndex: error.candidateIndex,
+          characterName: error.characterName,
+          value: `${error.characterName} Build`,
+        });
+        return;
+      }
       setImportError(error instanceof Error ? error.message : "Could not import Uma JSON.");
     }
   }
@@ -698,7 +739,7 @@ export function RaceSimulatorPage() {
     };
     setImportCardSelections(nextSelections);
     setPendingCharacterChoice(null);
-    importRawUmas(nextSelections, importSkillSelections);
+    importRawUmas(nextSelections, importSkillSelections, importBuildNameSelections);
   }
 
   function chooseImportedSkill(skillId: string) {
@@ -714,7 +755,21 @@ export function RaceSimulatorPage() {
     };
     setImportSkillSelections(nextSelections);
     setPendingSkillChoice(null);
-    importRawUmas(importCardSelections, nextSelections);
+    importRawUmas(importCardSelections, nextSelections, importBuildNameSelections);
+  }
+
+  function chooseImportedBuildName() {
+    if (!pendingBuildName) return;
+
+    const value = pendingBuildName.value.trim();
+    if (!value) {
+      setImportError("Build name is required.");
+      return;
+    }
+    const nextSelections = { ...importBuildNameSelections, [pendingBuildName.candidateIndex]: value };
+    setImportBuildNameSelections(nextSelections);
+    setPendingBuildName(null);
+    importRawUmas(importCardSelections, importSkillSelections, nextSelections);
   }
 
   function exportUmaLibrary() {
@@ -748,6 +803,11 @@ export function RaceSimulatorPage() {
           </p>
         </div>
         <div className="toolbar-actions">
+          <button className="ghost-button roster-toolbar-button" onClick={() => setIsFieldDrawerOpen(true)} type="button">
+            <Users size={16} />
+            Race roster
+            <span>{selectedRunnerIds.length}/{targetRunnerCount}</span>
+          </button>
           <button className="ghost-button" onClick={resetSample} type="button">
             <RotateCcw size={16} />
             Reset
@@ -799,13 +859,16 @@ export function RaceSimulatorPage() {
         <UmaListPanel
           batchActive={batchResult !== null}
           isOpen={isFieldDrawerOpen}
-          laneCapacity={getRaceLaneCapacity(track)}
+          maxRunnerCount={getRaceLaneCapacity(track)}
+          targetRunnerCount={targetRunnerCount}
           onAddTeam={addRaceTeam}
           onChangeOverride={(runnerId, override) =>
             setRunnerOverrides((current) => ({ ...current, [runnerId]: override }))
           }
           onChangeTeam={updateRaceTeam}
           onChangeTeamMode={changeTeamMode}
+          onFillRaceField={fillRaceField}
+          onTargetRunnerCountChange={changeTargetRunnerCount}
           onToggle={() => setIsFieldDrawerOpen((current) => !current)}
           onInspectRunner={setInspectedUmaId}
           onMoveRunnerToField={moveRunnerToField}
@@ -1242,8 +1305,10 @@ export function RaceSimulatorPage() {
                     setImportMessage("");
                     setPendingCharacterChoice(null);
                     setPendingSkillChoice(null);
+                    setPendingBuildName(null);
                     setImportCardSelections({});
                     setImportSkillSelections({});
+                    setImportBuildNameSelections({});
                   }}
                 />
                 {importError ? <p className="form-message error">{importError}</p> : null}
@@ -1367,6 +1432,23 @@ export function RaceSimulatorPage() {
                 </button>
               ))}
             </div>
+          </div>
+        </section>
+      ) : null}
+
+      {pendingBuildName ? (
+        <section aria-labelledby="build-name-title" aria-modal="true" className="modal-backdrop character-choice-backdrop" role="dialog">
+          <div className="panel modal-panel character-choice-panel build-name-panel">
+            <div className="modal-heading">
+              <div className="panel-heading"><Sparkles size={18} /><h2 id="build-name-title">Name this build</h2></div>
+              <button className="icon-button modal-close" onClick={() => setPendingBuildName(null)} title="Close" type="button"><X size={16} /></button>
+            </div>
+            <p className="choice-query">Give <strong>{pendingBuildName.characterName}</strong> a build name before adding it to your library.</p>
+            <label className="field">
+              <span>Build name</span>
+              <input autoFocus onChange={(event) => setPendingBuildName((current) => current ? { ...current, value: event.target.value } : null)} value={pendingBuildName.value} />
+            </label>
+            <button className="primary-button" onClick={chooseImportedBuildName} type="button">Save build name</button>
           </div>
         </section>
       ) : null}
@@ -1793,17 +1875,36 @@ function selectDefaultRunnerIds(runners: RunnerBuild[], track: typeof catalog.tr
   return runners.slice(0, getRaceLaneCapacity(track)).map((runner) => runner.id);
 }
 
+function createFieldFiller(template: CharacterTemplate, nonce: number): RunnerBuild {
+  return {
+    id: `field-filler-${template.cardId}-${nonce}`,
+    name: template.name,
+    cardId: template.cardId,
+    characterId: template.characterId,
+    characterName: template.name,
+    outfitTitle: template.outfitTitle,
+    variant: template.variant,
+    buildName: "Default field build",
+    stats: { speed: 800, stamina: 800, power: 800, guts: 600, wit: 600 },
+    aptitudes: template.aptitudes,
+    strategy: template.defaultStrategy,
+    mood: "normal",
+    uniqueSkillId: template.uniqueSkillId,
+    uniqueSkillLevel: 1,
+    skillIds: template.innateSkillIds.slice(0, 2),
+  };
+}
+
 function addRunnerIdsWithinCapacity(
   currentRunnerIds: string[],
   nextRunnerIds: string[],
-  track: typeof catalog.tracks[number],
+  targetRunnerCount: number,
 ): string[] {
   const selected = [...currentRunnerIds];
   const selectedSet = new Set(selected);
-  const capacity = getRaceLaneCapacity(track);
 
   for (const runnerId of nextRunnerIds) {
-    if (selectedSet.has(runnerId) || selected.length >= capacity) {
+    if (selectedSet.has(runnerId) || selected.length >= targetRunnerCount) {
       continue;
     }
 

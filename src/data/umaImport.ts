@@ -52,7 +52,18 @@ export class SkillAmbiguityError extends Error {
   }
 }
 
+export class BuildNameRequiredError extends Error {
+  constructor(
+    public readonly candidateIndex: number,
+    public readonly characterName: string,
+  ) {
+    super(`Uma ${candidateIndex + 1} needs a build name.`);
+    this.name = "BuildNameRequiredError";
+  }
+}
+
 type ParseHarvestedUmaOptions = {
+  buildNameSelections?: Record<number, string>;
   cardSelections?: Record<number, number>;
   skillSelections?: Record<string, string>;
 };
@@ -125,8 +136,12 @@ export function parseHarvestedUmaJson(
   const candidates = extractCandidates(parsed);
 
   return candidates.map((candidate, index) => {
-    if (isStoredRunner(candidate)) {
-      return parseUmaJson(JSON.stringify(candidate))[0];
+    if (isStoredRunner(candidate) && isRecord(candidate)) {
+      const selectedBuildName = options.buildNameSelections?.[index];
+      if (!firstString(candidate.buildName) && !selectedBuildName) {
+        throw new BuildNameRequiredError(index, firstString(candidate.characterName) ?? "Imported Uma");
+      }
+      return parseUmaJson(JSON.stringify({ ...candidate, buildName: selectedBuildName ?? candidate.buildName }))[0];
     }
 
     return adaptHarvestedRunner(
@@ -134,6 +149,7 @@ export function parseHarvestedUmaJson(
       index,
       options.cardSelections?.[index] ?? null,
       options.skillSelections ?? {},
+      options.buildNameSelections?.[index],
     );
   });
 }
@@ -143,6 +159,7 @@ function adaptHarvestedRunner(
   index: number,
   selectedCardId: number | null,
   skillSelections: Record<string, string>,
+  selectedBuildName: string | undefined,
 ): StoredUma {
   if (!isRecord(candidate)) {
     throw new Error(`Uma ${index + 1} must be an object.`);
@@ -160,7 +177,10 @@ function adaptHarvestedRunner(
   }
 
   const character = resolveCharacterCard(selectedCardId, characterQuery, variantQuery, index);
-  const buildName = firstString(candidate.buildName, candidate.name) ?? character.name;
+  const buildName = firstString(candidate.buildName, candidate.name, selectedBuildName);
+  if (!buildName) {
+    throw new BuildNameRequiredError(index, character.name);
+  }
   const strategy = resolveStrategy(candidate.strategy, character.defaultStrategy);
   const skillInputs = extractSkillInputs(candidate.skills ?? candidate.skillNames);
   const resolvedSkillIds = skillInputs.map((skill, skillIndex) =>

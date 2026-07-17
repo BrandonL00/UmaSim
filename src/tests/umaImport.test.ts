@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 import {
+  BuildNameRequiredError,
   CharacterCardAmbiguityError,
   createSkillSelectionKey,
   parseHarvestedUmaJson,
@@ -22,6 +23,17 @@ const harvestedUma = {
 };
 
 describe("harvested Uma import", () => {
+  it("asks for a build name when the import does not provide one", () => {
+    const { buildName: _buildName, ...unnamed } = harvestedUma;
+
+    expect(() => parseHarvestedUmaJson(JSON.stringify({ ...unnamed, skills: [] }))).toThrow(BuildNameRequiredError);
+
+    const [runner] = parseHarvestedUmaJson(JSON.stringify({ ...unnamed, skills: [] }), {
+      buildNameSelections: { 0: "Spring target build" },
+    });
+    expect(runner.buildName).toBe("Spring target build");
+  });
+
   it("resolves character and skill names into stored IDs", () => {
     const [runner] = parseHarvestedUmaJson(JSON.stringify(harvestedUma));
 

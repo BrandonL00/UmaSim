@@ -149,6 +149,14 @@ h2 {
   gap: 10px;
 }
 
+.roster-toolbar-button span {
+  border-left: 1px solid rgb(255 255 255 / 14%);
+  color: #a8c6bd;
+  font-size: 10px;
+  margin-left: 2px;
+  padding-left: 8px;
+}
+
 .primary-button,
 .ghost-button {
   align-items: center;
@@ -1305,26 +1313,36 @@ select:disabled {
 
 .field-drawer.is-collapsed {
   align-items: center;
-  border-left: 1px solid rgb(255 255 255 / 10%);
-  box-shadow: -10px 0 26px rgb(0 0 0 / 24%);
+  background: linear-gradient(180deg, #1b201f, #101515);
+  border: 1px solid rgb(255 255 255 / 12%);
+  border-radius: 0 0 10px 10px;
+  border-top: 0;
+  box-shadow: 0 10px 26px rgb(0 0 0 / 28%);
   display: flex;
+  height: auto;
   max-width: none;
   padding: 0;
-  width: 58px;
+  left: 50%;
+  position: fixed;
+  right: auto;
+  top: 0;
+  transform: translateX(-50%);
+  width: auto;
+  z-index: 110;
 }
 
 .field-rail-toggle {
   align-items: center;
-  background: linear-gradient(180deg, rgb(45 140 120 / 16%), transparent 30%);
+  background: linear-gradient(180deg, rgb(45 140 120 / 22%), transparent);
   border: 0;
   color: #a8c6bd;
   display: flex;
-  flex-direction: column;
-  gap: 12px;
-  height: 100%;
-  justify-content: flex-start;
-  padding: 24px 0;
-  width: 100%;
+  flex-direction: row;
+  gap: 8px;
+  height: 40px;
+  justify-content: center;
+  padding: 0 14px;
+  width: auto;
 }
 
 .field-rail-toggle strong {
@@ -1336,9 +1354,8 @@ select:disabled {
   color: #d8ebe3;
   font-size: 10px;
   font-weight: 900;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
-  writing-mode: vertical-rl;
 }
 
 .field-rail-toggle:hover { background-color: rgb(45 140 120 / 12%); color: #f0fbf5; }
@@ -1555,6 +1572,23 @@ select:disabled {
   margin-bottom: 12px;
   padding: 12px;
 }
+
+.field-roster-controls {
+  align-items: end;
+  background: rgb(255 255 255 / 3%);
+  border: 1px solid rgb(255 255 255 / 9%);
+  border-radius: 9px;
+  display: flex;
+  gap: 10px;
+  justify-content: space-between;
+  margin-bottom: 12px;
+  padding: 8px 10px;
+}
+
+.field-roster-controls label { display: grid; gap: 2px; }
+.field-roster-controls label > span { color: #b9c8c0; font-size: 10px; font-weight: 850; text-transform: uppercase; }
+.field-roster-controls input { min-height: 32px; width: 76px; }
+.field-roster-controls small { color: #7e8b83; font-size: 10px; }
 
 .team-mode-card strong,
 .team-lanes-toolbar strong,
