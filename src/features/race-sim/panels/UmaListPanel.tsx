@@ -76,9 +76,10 @@ export function UmaListPanel({
   teamMode,
   teams,
 }: UmaListPanelProps) {
-  if (!isOpen) return null;
-
   const [draggedRunnerId, setDraggedRunnerId] = useState<string | null>(null);
+  const [mobileTeamChoices, setMobileTeamChoices] = useState<Record<string, string>>({});
+
+  if (!isOpen) return null;
   const placementByRunnerId = new Map(placements.map((placement) => [placement.runnerId, placement]));
   const selectedSet = new Set(selectedRunnerIds);
   const knownTeamIds = new Set(teams.map((team) => team.id));
@@ -209,6 +210,29 @@ export function UmaListPanel({
             ) : null}
           </div>
         ) : null}
+
+        <div className="mobile-roster-actions">
+          {!selected && teamMode === "teams" ? (
+            <select
+              aria-label={`${runner.name} team before adding`}
+              onChange={(event) => setMobileTeamChoices((current) => ({ ...current, [runner.id]: event.target.value }))}
+              value={mobileTeamChoices[runner.id] ?? ""}
+            >
+              <option value="">Independent</option>
+              {teams.map((team) => <option key={team.id} value={team.id}>{team.name}</option>)}
+            </select>
+          ) : null}
+          <button
+            className={selected ? "mobile-roster-action is-remove" : "mobile-roster-action"}
+            onClick={() => selected
+              ? onRemoveRunnerFromField(runner.id)
+              : onMoveRunnerToField(runner.id, mobileTeamChoices[runner.id] || undefined)}
+            type="button"
+          >
+            {selected ? <Trash2 size={15} /> : <Plus size={15} />}
+            {selected ? "Remove" : "Add to race"}
+          </button>
+        </div>
 
       </article>
     );

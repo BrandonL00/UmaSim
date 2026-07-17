@@ -1813,6 +1813,8 @@ select:disabled {
 }
 .field-runner-controls select { font-size: 10px; min-height: 30px; padding: 4px 7px; width: 100%; }
 
+.mobile-roster-actions { display: none; }
+
 .runner-lane-empty { color: #718078; font-size: 11px; margin: 20px 4px; text-align: center; }
 
 @media (max-width: 900px) {
@@ -1821,14 +1823,43 @@ select:disabled {
 }
 
 @media (max-width: 640px) {
+  .field-drawer {
+    max-width: 100vw;
+    padding: 14px;
+    width: 100vw;
+  }
+  .field-drawer-actions { position: sticky; top: 0; z-index: 2; }
+  .field-roster-controls { align-items: center; }
+  .available-runner-lane { max-height: none; }
+  .runner-drag-handle { display: none; }
   .team-mode-card { align-items: stretch; flex-direction: column; }
   .team-mode-toggle { display: grid; grid-template-columns: 1fr 1fr; }
   .team-mode-toggle button { justify-content: center; }
   .field-runner-card,
-  .field-runner-card.is-selected { grid-template-columns: 18px minmax(0, 1fr) auto; }
-  .field-runner-card > .compact-stat-row { grid-column: 2 / -1; }
-  .field-runner-controls { grid-column: 2 / -1; grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .field-place-chip { grid-column: 3; grid-row: 1; }
+  .field-runner-card.is-selected { grid-template-columns: minmax(0, 1fr) auto; }
+  .field-runner-identity { grid-column: 1; }
+  .field-runner-card > .compact-stat-row { grid-column: 1 / -1; }
+  .field-runner-controls { grid-column: 1 / -1; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .field-place-chip { grid-column: 2; grid-row: 1; }
+  .mobile-roster-actions { display: grid; gap: 8px; grid-column: 1 / -1; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+  .mobile-roster-actions:has(.mobile-roster-action:only-child) { grid-template-columns: 1fr; }
+  .mobile-roster-actions select,
+  .mobile-roster-action { min-height: 42px; }
+  .mobile-roster-action {
+    align-items: center;
+    background: rgb(45 140 120 / 16%);
+    border: 1px solid rgb(45 140 120 / 42%);
+    border-radius: 7px;
+    color: #d8f4ea;
+    display: inline-flex;
+    font: inherit;
+    font-size: 12px;
+    font-weight: 850;
+    gap: 7px;
+    justify-content: center;
+    padding: 0 12px;
+  }
+  .mobile-roster-action.is-remove { background: rgb(177 79 79 / 13%); border-color: rgb(220 112 112 / 35%); color: #f1c2c2; }
 }
 
 .runner-row.is-selected {
