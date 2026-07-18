@@ -1,8 +1,10 @@
-import { globalSkillOptions, globalSkills } from "../../data/skills";
+import { globalSkillOptions, globalSkills, unmodeledSourceSkillOptions } from "../../data/skills";
 import { resolveActiveSkillIds, type SelectableSkill } from "../skills/selection";
 import type { StatBlock } from "../uma/types";
 import { adjustStats, staminaBudget } from "./formulas";
 import { calculateRushProbability, createRushState, type RushState } from "./rush";
+import { rollSeededSkillActivation, type SkillActivationRoll } from "./skillActivation";
+import { createSeededRandom } from "./random";
 import { createDuelState, type DuelState } from "./dueling";
 import {
   canModelGlobalSkill,
@@ -70,6 +72,7 @@ export type RunnerSpatialState = {
 export type RunnerTriggerState = {
   triggeredSkillIds: Set<string>;
   randomProfiles: Record<string, SkillRandomState>;
+  skillActivationRolls?: Record<string, SkillActivationRoll>;
   activationHistory: Array<{
     skillId: string;
     second: number;
@@ -98,6 +101,8 @@ export type RunnerTrafficState = {
 
 export type RuntimeRunner = {
   build: RaceRunner;
+  /** Deterministic per-race grid order, independent of the roster array order. */
+  startOrder?: number;
   adjustedStats: StatBlock;
   resolvedSkillIds: string[];
   distanceMeters: number;
@@ -147,16 +152,30 @@ export type RaceRuntimeState = {
   runners: RuntimeRunner[];
 };
 
+type StartingGridSlot = {
+  order: number;
+  lane: number;
+  gateBlock: number;
+};
+
 export function createRaceRuntimeState(
   setup: RaceSetup,
   track: Track,
   catalogSkills: SelectableSkill[],
-  random: () => number,
   globalSkillById: Map<string, (typeof globalSkills)[number]>,
 ): RaceRuntimeState {
-  const selectionSkills = [...catalogSkills, ...globalSkillOptions];
+  const selectionSkills = [...catalogSkills, ...globalSkillOptions, ...unmodeledSourceSkillOptions];
+  const startingGrid = buildStartingGrid(setup);
   const runners = setup.runners.map((runner) =>
-    createRuntimeRunner(setup, track, runner, selectionSkills, random, globalSkillById),
+    createRuntimeRunner(
+      setup,
+      track,
+      runner,
+      startingGrid.get(runner.id)!,
+      selectionSkills,
+      createSeededRandom(`${setup.seed}:runner:${runner.id}`),
+      globalSkillById,
+    ),
   );
 
   return {
@@ -167,16 +186,52 @@ export function createRaceRuntimeState(
   };
 }
 
+/**
+ * Draws a repeatable starting grid from the race seed. This keeps brackets
+ * random between batch seeds while making replays exact and roster order inert.
+ */
+function buildStartingGrid(setup: RaceSetup): Map<string, StartingGridSlot> {
+  const ranked = [...setup.runners]
+    .map((runner) => ({ runner, rank: seededGridRank(setup.seed, runner.id) }))
+    .sort((left, right) => left.rank - right.rank || left.runner.id.localeCompare(right.runner.id));
+  const runnerCount = Math.max(ranked.length, 1);
+
+  return new Map(ranked.map(({ runner }, order) => [runner.id, {
+    order,
+    lane: order % 3,
+    gateBlock: Math.min(8, Math.floor((order * 8) / runnerCount) + 1),
+  }]));
+}
+
+function seededGridRank(seed: string, runnerId: string) {
+  let hash = 2166136261;
+  for (const character of `${seed}:grid:${runnerId}`) {
+    hash ^= character.charCodeAt(0);
+    hash = Math.imul(hash, 16777619);
+  }
+  return hash >>> 0;
+}
+
 function createRuntimeRunner(
   setup: RaceSetup,
   track: Track,
   runner: RaceRunner,
+  gridSlot: StartingGridSlot,
   selectionSkills: SelectableSkill[],
   random: () => number,
   globalSkillById: Map<string, (typeof globalSkills)[number]>,
 ): RuntimeRunner {
-  const adjustedStats = adjustStats(runner.stats, runner.mood, setup.groundCondition, track.surface);
-  const resolvedSkillIds = resolveActiveSkillIds([runner.uniqueSkillId, ...runner.skillIds], selectionSkills);
+  const build = { ...runner, gateBlock: runner.gateBlock ?? gridSlot.gateBlock };
+  const adjustedStats = adjustStats(build.stats, build.mood, setup.groundCondition, track.surface);
+  const resolvedSkillIds = resolveActiveSkillIds([build.uniqueSkillId, ...build.skillIds], selectionSkills);
+  const skillActivationRolls = buildSkillActivationRolls(
+    resolvedSkillIds,
+    build.stats.wit,
+    selectionSkills,
+    globalSkillById,
+    setup.seed,
+    build.id,
+  );
   const initialSkillContext: GlobalSkillContext = {
     second: 0,
     elapsedMs: 0,
@@ -190,12 +245,12 @@ function createRuntimeRunner(
     distanceRate: 0,
     remainDistance: track.distanceMeters,
     hpPercent: 100,
-    strategy: runner.strategy,
+    strategy: build.strategy,
     weather: setup.weather,
     season: setup.season ?? "spring",
-    popularityRank: runner.popularityRank,
-    gateBlock: runner.gateBlock,
-    runningStyleEqualPopularityOne: setup.runners.find((entry) => entry.popularityRank === 1)?.strategy === runner.strategy,
+    popularityRank: build.popularityRank,
+    gateBlock: build.gateBlock,
+    runningStyleEqualPopularityOne: setup.runners.find((entry) => entry.popularityRank === 1)?.strategy === build.strategy,
     groundCondition: setup.groundCondition,
     surface: track.surface,
     distanceCategory: track.distanceCategory,
@@ -203,7 +258,7 @@ function createRuntimeRunner(
     isFinalCornerLaterHalf: false,
     rotation: track.direction ?? "straight",
     trackId: track.venueId,
-    laneType: 0,
+    laneType: gridSlot.lane,
     isMoveLane: 0,
     changeOrder: 0,
     isOvertake: false,
@@ -225,11 +280,11 @@ function createRuntimeRunner(
   );
   const passiveWitBonus = passiveStats.wit - adjustedStats.wit;
   const rushProbability = calculateRushProbability(
-      runner.stats.wit,
-      runner.mood,
-      runner.aptitudes.strategy[runner.strategy],
+      build.stats.wit,
+      build.mood,
+      build.aptitudes.strategy[build.strategy],
       passiveWitBonus,
-    ) + resolveRushProbabilityModifier(resolvedSkillIds, globalSkillById, initialSkillContext);
+    ) + resolveRushProbabilityModifier(resolvedSkillIds, globalSkillById, initialSkillContext, skillActivationRolls);
   const rush = createRushState(
     Math.min(Math.max(rushProbability, 0), 1),
     track.distanceMeters,
@@ -240,6 +295,7 @@ function createRuntimeRunner(
     resolvedSkillIds,
     globalSkillById,
     initialSkillContext,
+    skillActivationRolls,
   );
   const startDelaySeconds = (startDelayEffects.fixedSeconds ?? rawStartDelaySeconds) * startDelayEffects.multiplier;
   const randomProfiles = buildSkillRandomProfiles(resolvedSkillIds, globalSkillById, track, random);
@@ -247,7 +303,8 @@ function createRuntimeRunner(
   const maxStamina = staminaBudget(passiveStats.stamina, passiveStats.guts);
 
   return {
-    build: runner,
+    build,
+    startOrder: gridSlot.order,
     adjustedStats: passiveStats,
     resolvedSkillIds,
     distanceMeters: 0,
@@ -267,8 +324,8 @@ function createRuntimeRunner(
     duel: createDuelState(),
     spatial: {
       lastEvaluatedDistanceMeters: 0,
-      lane: 0,
-      targetLane: 0,
+      lane: gridSlot.lane,
+      targetLane: gridSlot.lane,
       laneChangeProgress: 0,
       moveLane: 0,
       blockedFront: false,
@@ -301,6 +358,7 @@ function createRuntimeRunner(
     triggers: {
       triggeredSkillIds: new Set<string>(),
       randomProfiles,
+      skillActivationRolls,
       activationHistory: [],
     },
     rival: {
@@ -319,6 +377,26 @@ function createRuntimeRunner(
       boxedIn: false,
     },
   };
+}
+
+function buildSkillActivationRolls(
+  skillIds: string[],
+  baseWit: number,
+  catalogSkills: SelectableSkill[],
+  globalSkillById: Map<string, (typeof globalSkills)[number]>,
+  seed: string,
+  runnerId: string,
+) {
+  const fixtureSkillById = new Map(catalogSkills.map((skill) => [skill.id, skill]));
+
+  return Object.fromEntries(skillIds.flatMap((skillId) => {
+    const fixtureSkill = fixtureSkillById.get(skillId) as (SelectableSkill & { tags?: string[] }) | undefined;
+    const globalSkill = globalSkillById.get(skillId);
+    const isPassive = fixtureSkill?.tags?.includes("green")
+      || (globalSkill !== undefined && globalSkill.conditionGroups.every((group) => group.baseTimeMs === -1));
+
+    return isPassive ? [] : [[skillId, rollSeededSkillActivation(baseWit, seed, runnerId, skillId)] as const];
+  }));
 }
 
 function buildSkillRandomProfiles(
@@ -517,7 +595,11 @@ function sampleIndexedSegmentTarget(
 
 export function getRaceStandings(runners: RuntimeRunner[]): StandingSnapshot[] {
   return [...runners]
-    .sort((left, right) => right.distanceMeters - left.distanceMeters || left.build.id.localeCompare(right.build.id))
+    .sort((left, right) =>
+      right.distanceMeters - left.distanceMeters
+      || (left.startOrder ?? 0) - (right.startOrder ?? 0)
+      || left.build.id.localeCompare(right.build.id),
+    )
     .map((runner, index) => ({
       runner,
       order: index + 1,
@@ -657,10 +739,11 @@ function resolveStartDelayEffects(
   skillIds: string[],
   globalSkillById: Map<string, (typeof globalSkills)[number]>,
   context: GlobalSkillContext,
+  skillActivationRolls: Record<string, SkillActivationRoll>,
 ) {
   return skillIds.reduce((result, skillId) => {
     const skill = globalSkillById.get(skillId);
-    if (!skill || !canModelGlobalSkill(skill)) return result;
+    if (!skill || !canModelGlobalSkill(skill) || skillActivationRolls[skillId]?.passed === false) return result;
 
     const activation = resolveGlobalSkillActivation(skill, context);
     if (!activation) return result;
@@ -675,10 +758,11 @@ function resolveRushProbabilityModifier(
   skillIds: string[],
   globalSkillById: Map<string, (typeof globalSkills)[number]>,
   context: GlobalSkillContext,
+  skillActivationRolls: Record<string, SkillActivationRoll>,
 ) {
   return skillIds.reduce((modifier, skillId) => {
     const skill = globalSkillById.get(skillId);
-    if (!skill || !canModelGlobalSkill(skill)) return modifier;
+    if (!skill || !canModelGlobalSkill(skill) || skillActivationRolls[skillId]?.passed === false) return modifier;
     return modifier + (resolveGlobalSkillActivation(skill, context)?.effects.rushProbabilityModifier ?? 0);
   }, 0);
 }

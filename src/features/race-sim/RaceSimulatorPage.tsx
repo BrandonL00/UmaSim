@@ -23,12 +23,13 @@ import {
   globalSkillOptions,
   globalSkills,
   inheritedUniqueSkillOptions,
+  unmodeledSourceSkillOptions,
 } from "../../data/skills";
 import {
   CharacterCardAmbiguityError,
-  BuildNameRequiredError,
   createSkillSelectionKey,
-  parseHarvestedUmaJson,
+  getMissingBuildNameRequests,
+  parseHarvestedUmaJsonWithReport,
   SkillAmbiguityError,
   type CharacterCardChoice,
   type SkillChoice,
@@ -136,7 +137,7 @@ type PendingSkillChoice = {
 
 type PendingBuildName = {
   candidateIndex: number;
-  characterName: string;
+  suggestedName: string;
   value: string;
 };
 
@@ -171,12 +172,13 @@ export function RaceSimulatorPage() {
   const [rawUmaJson, setRawUmaJson] = useState("");
   const [importMessage, setImportMessage] = useState("");
   const [importError, setImportError] = useState("");
+  const [importWarnings, setImportWarnings] = useState<string[]>([]);
   const [pendingCharacterChoice, setPendingCharacterChoice] = useState<PendingCharacterChoice | null>(null);
   const [pendingSkillChoice, setPendingSkillChoice] = useState<PendingSkillChoice | null>(null);
   const [importCardSelections, setImportCardSelections] = useState<Record<number, number>>({});
   const [importSkillSelections, setImportSkillSelections] = useState<Record<string, string>>({});
   const [importBuildNameSelections, setImportBuildNameSelections] = useState<Record<number, string>>({});
-  const [pendingBuildName, setPendingBuildName] = useState<PendingBuildName | null>(null);
+  const [pendingBuildNames, setPendingBuildNames] = useState<PendingBuildName[] | null>(null);
   const [inspectedUmaId, setInspectedUmaId] = useState<string | null>(null);
   const [inspectedRaceRunnerId, setInspectedRaceRunnerId] = useState<string | null>(null);
   const [isTrackDetailsOpen, setIsTrackDetailsOpen] = useState(false);
@@ -237,7 +239,7 @@ export function RaceSimulatorPage() {
     [],
   );
   const allSkillById = useMemo(
-    () => new Map([...globalSkillOptions, ...inheritedUniqueSkillOptions].map((skill) => [skill.id, skill])),
+    () => new Map([...globalSkillOptions, ...inheritedUniqueSkillOptions, ...unmodeledSourceSkillOptions].map((skill) => [skill.id, skill])),
     [],
   );
   const prerequisiteLockOwners = useMemo(
@@ -687,16 +689,26 @@ export function RaceSimulatorPage() {
   ) {
     setImportError("");
     setImportMessage("");
+    setImportWarnings([]);
 
     try {
-      const imported = parseHarvestedUmaJson(rawUmaJson, { cardSelections, skillSelections, buildNameSelections });
-      setSavedUmas((current) => mergeUmaLibrary(current, imported));
-      setSelectedRunnerIds((current) => addRunnerIdsWithinCapacity(current, imported.map((runner) => runner.id), targetRunnerCount));
-      setImportMessage(`Imported ${imported.length} Uma${imported.length === 1 ? "" : "s"}.`);
+      const missingNames = getMissingBuildNameRequests(rawUmaJson, buildNameSelections);
+      if (missingNames.length) {
+        setPendingBuildNames(missingNames.map((request) => ({ ...request, value: request.suggestedName })));
+        setIsLibraryOpen(false);
+        return;
+      }
+      const importResult = parseHarvestedUmaJsonWithReport(rawUmaJson, { cardSelections, skillSelections, buildNameSelections });
+      setSavedUmas((current) => mergeUmaLibrary(current, importResult.runners));
+      setSelectedRunnerIds((current) => addRunnerIdsWithinCapacity(current, importResult.runners.map((runner) => runner.id), targetRunnerCount));
+      setImportMessage(`Imported ${importResult.runners.length} Uma${importResult.runners.length === 1 ? "" : "s"}.`);
+      setImportWarnings(importResult.warnings.map((warning) =>
+        `${warning.retained ? "Imported but not simulated" : "Not added"}: ${warning.skillName}. ${warning.reason}`,
+      ));
       setRawUmaJson("");
       setPendingCharacterChoice(null);
       setPendingSkillChoice(null);
-      setPendingBuildName(null);
+      setPendingBuildNames(null);
       setImportCardSelections({});
       setImportSkillSelections({});
       setImportBuildNameSelections({});
@@ -707,6 +719,7 @@ export function RaceSimulatorPage() {
           query: error.query,
           choices: error.choices,
         });
+        setIsLibraryOpen(false);
         return;
       }
       if (error instanceof SkillAmbiguityError) {
@@ -716,16 +729,10 @@ export function RaceSimulatorPage() {
           query: error.query,
           choices: error.choices,
         });
+        setIsLibraryOpen(false);
         return;
       }
-      if (error instanceof BuildNameRequiredError) {
-        setPendingBuildName({
-          candidateIndex: error.candidateIndex,
-          characterName: error.characterName,
-          value: `${error.characterName} Build`,
-        });
-        return;
-      }
+      console.error("Uma import failed", error);
       setImportError(error instanceof Error ? error.message : "Could not import Uma JSON.");
     }
   }
@@ -758,17 +765,19 @@ export function RaceSimulatorPage() {
     importRawUmas(importCardSelections, nextSelections, importBuildNameSelections);
   }
 
-  function chooseImportedBuildName() {
-    if (!pendingBuildName) return;
+  function chooseImportedBuildNames() {
+    if (!pendingBuildNames) return;
 
-    const value = pendingBuildName.value.trim();
-    if (!value) {
+    if (pendingBuildNames.some((build) => !build.value.trim())) {
       setImportError("Build name is required.");
       return;
     }
-    const nextSelections = { ...importBuildNameSelections, [pendingBuildName.candidateIndex]: value };
+    const nextSelections = {
+      ...importBuildNameSelections,
+      ...Object.fromEntries(pendingBuildNames.map((build) => [build.candidateIndex, build.value.trim()])),
+    };
     setImportBuildNameSelections(nextSelections);
-    setPendingBuildName(null);
+    setPendingBuildNames(null);
     importRawUmas(importCardSelections, importSkillSelections, nextSelections);
   }
 
@@ -786,6 +795,21 @@ export function RaceSimulatorPage() {
   return (
     <main className="app-shell">
       <div className="backdrop-grid" aria-hidden="true" />
+      {importError ? (
+        <div className="import-diagnostic" role="alert">
+          <strong>Import failed</strong>
+          <span>{importError}</span>
+        </div>
+      ) : null}
+      {importWarnings.length ? (
+        <div className="import-diagnostic warning" role="status">
+          <strong>Import notes</strong>
+          <span>{importWarnings.join(" ")}</span>
+          <button aria-label="Dismiss import notes" className="import-diagnostic-dismiss" onClick={() => setImportWarnings([])} type="button">
+            <X size={15} />
+          </button>
+        </div>
+      ) : null}
       <section className="toolbar">
         <div>
           <p className="eyebrow">UmaSim race lab</p>
@@ -1303,9 +1327,10 @@ export function RaceSimulatorPage() {
                     setRawUmaJson(event.target.value);
                     setImportError("");
                     setImportMessage("");
+                    setImportWarnings([]);
                     setPendingCharacterChoice(null);
                     setPendingSkillChoice(null);
-                    setPendingBuildName(null);
+                    setPendingBuildNames(null);
                     setImportCardSelections({});
                     setImportSkillSelections({});
                     setImportBuildNameSelections({});
@@ -1313,6 +1338,12 @@ export function RaceSimulatorPage() {
                 />
                 {importError ? <p className="form-message error">{importError}</p> : null}
                 {importMessage ? <p className="form-message success">{importMessage}</p> : null}
+                {importWarnings.length ? (
+                  <div className="form-message warning" role="status">
+                    <strong>Import notes</strong>
+                    <ul>{importWarnings.map((warning) => <li key={warning}>{warning}</li>)}</ul>
+                  </div>
+                ) : null}
                 <button
                   className="primary-button import-button"
                   disabled={!rawUmaJson.trim()}
@@ -1436,19 +1467,29 @@ export function RaceSimulatorPage() {
         </section>
       ) : null}
 
-      {pendingBuildName ? (
+      {pendingBuildNames ? (
         <section aria-labelledby="build-name-title" aria-modal="true" className="modal-backdrop character-choice-backdrop" role="dialog">
           <div className="panel modal-panel character-choice-panel build-name-panel">
             <div className="modal-heading">
-              <div className="panel-heading"><Sparkles size={18} /><h2 id="build-name-title">Name this build</h2></div>
-              <button className="icon-button modal-close" onClick={() => setPendingBuildName(null)} title="Close" type="button"><X size={16} /></button>
+              <div className="panel-heading"><Sparkles size={18} /><h2 id="build-name-title">Name imported builds</h2></div>
+              <button className="icon-button modal-close" onClick={() => setPendingBuildNames(null)} title="Close" type="button"><X size={16} /></button>
             </div>
-            <p className="choice-query">Give <strong>{pendingBuildName.characterName}</strong> a build name before adding it to your library.</p>
-            <label className="field">
-              <span>Build name</span>
-              <input autoFocus onChange={(event) => setPendingBuildName((current) => current ? { ...current, value: event.target.value } : null)} value={pendingBuildName.value} />
-            </label>
-            <button className="primary-button" onClick={chooseImportedBuildName} type="button">Save build name</button>
+            <p className="choice-query">Name all {pendingBuildNames.length} build{pendingBuildNames.length === 1 ? "" : "s"} before the rest of the import review continues.</p>
+            <div className="batch-build-name-list">
+              {pendingBuildNames.map((build, index) => (
+                <label className="field" key={build.candidateIndex}>
+                  <span>Uma {build.candidateIndex + 1}</span>
+                  <input
+                    autoFocus={index === 0}
+                    onChange={(event) => setPendingBuildNames((current) => current?.map((candidate) =>
+                      candidate.candidateIndex === build.candidateIndex ? { ...candidate, value: event.target.value } : candidate,
+                    ) ?? null)}
+                    value={build.value}
+                  />
+                </label>
+              ))}
+            </div>
+            <button className="primary-button" onClick={chooseImportedBuildNames} type="button">Continue import</button>
           </div>
         </section>
       ) : null}
