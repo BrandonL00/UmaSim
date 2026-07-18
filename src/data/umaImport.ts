@@ -1,6 +1,6 @@
 import { characterTemplates, type CharacterTemplate } from "./characters";
 import { skills as modeledSkills } from "./fixtures";
-import { globalSkillOptions, globalSkills } from "./skills";
+import { globalSkillOptions, globalSkills, unmodeledSourceSkillOptions } from "./skills";
 import { selectSkillWithPrerequisites } from "../domain/skills/selection";
 import { parseUmaJson } from "../domain/uma/repository";
 import type { StoredUma, Strategy } from "../domain/uma/types";
@@ -62,6 +62,24 @@ export class BuildNameRequiredError extends Error {
   }
 }
 
+export type MissingBuildNameRequest = {
+  candidateIndex: number;
+  suggestedName: string;
+};
+
+/** A source skill that was deliberately left out of the imported build. */
+export type UmaImportWarning = {
+  candidateIndex: number;
+  skillName: string;
+  reason: string;
+  retained: boolean;
+};
+
+export type UmaImportResult = {
+  runners: StoredUma[];
+  warnings: UmaImportWarning[];
+};
+
 type ParseHarvestedUmaOptions = {
   buildNameSelections?: Record<number, string>;
   cardSelections?: Record<number, number>;
@@ -103,6 +121,15 @@ const skillEntries: NamedEntry[] = [
       supersedesIds: skill.supersedesIds,
     };
   }),
+  ...unmodeledSourceSkillOptions.map((skill) => ({
+    id: skill.id,
+    name: skill.name,
+    aliases: [skill.name, ...skill.aliases],
+    description: skill.description,
+    rarity: skill.rarity,
+    prerequisiteIds: skill.prerequisiteIds,
+    supersedesIds: skill.supersedesIds,
+  })),
 ];
 
 const strategyAliases: Record<string, Strategy> = {
@@ -125,6 +152,17 @@ export function parseHarvestedUmaJson(
   rawJson: string,
   options: ParseHarvestedUmaOptions = {},
 ): StoredUma[] {
+  return parseHarvestedUmaJsonWithReport(rawJson, options).runners;
+}
+
+/**
+ * Imports every runner that can be represented by the current engine, retaining
+ * an explicit warning for each unknown or intentionally unsupported skill.
+ */
+export function parseHarvestedUmaJsonWithReport(
+  rawJson: string,
+  options: ParseHarvestedUmaOptions = {},
+): UmaImportResult {
   let parsed: unknown;
 
   try {
@@ -135,13 +173,13 @@ export function parseHarvestedUmaJson(
 
   const candidates = extractCandidates(parsed);
 
-  return candidates.map((candidate, index) => {
+  const results = candidates.map((candidate, index) => {
     if (isStoredRunner(candidate) && isRecord(candidate)) {
       const selectedBuildName = options.buildNameSelections?.[index];
       if (!firstString(candidate.buildName) && !selectedBuildName) {
         throw new BuildNameRequiredError(index, firstString(candidate.characterName) ?? "Imported Uma");
       }
-      return parseUmaJson(JSON.stringify({ ...candidate, buildName: selectedBuildName ?? candidate.buildName }))[0];
+      return { runner: parseUmaJson(JSON.stringify({ ...candidate, buildName: selectedBuildName ?? candidate.buildName }))[0], warnings: [] };
     }
 
     return adaptHarvestedRunner(
@@ -152,6 +190,36 @@ export function parseHarvestedUmaJson(
       options.buildNameSelections?.[index],
     );
   });
+
+  return {
+    runners: results.map((result) => result.runner),
+    warnings: results.flatMap((result) => result.warnings),
+  };
+}
+
+/** Identifies every missing build name before the importer begins interactive resolution. */
+export function getMissingBuildNameRequests(
+  rawJson: string,
+  buildNameSelections: Record<number, string> = {},
+): MissingBuildNameRequest[] {
+  let parsed: unknown;
+
+  try {
+    parsed = JSON.parse(rawJson);
+  } catch {
+    throw new Error("Invalid JSON.");
+  }
+
+  return extractCandidates(parsed).flatMap((candidate, candidateIndex) => {
+    if (!isRecord(candidate)) return [];
+    if (firstString(candidate.buildName, candidate.name, buildNameSelections[candidateIndex])) return [];
+
+    const characterName = firstString(candidate.character, candidate.characterName, candidate.uma, candidate.umaName) ?? "Imported Uma";
+    return [{
+      candidateIndex,
+      suggestedName: `${characterName} Build`,
+    }];
+  });
 }
 
 function adaptHarvestedRunner(
@@ -160,7 +228,7 @@ function adaptHarvestedRunner(
   selectedCardId: number | null,
   skillSelections: Record<string, string>,
   selectedBuildName: string | undefined,
-): StoredUma {
+): { runner: StoredUma; warnings: UmaImportWarning[] } {
   if (!isRecord(candidate)) {
     throw new Error(`Uma ${index + 1} must be an object.`);
   }
@@ -183,14 +251,38 @@ function adaptHarvestedRunner(
   }
   const strategy = resolveStrategy(candidate.strategy, character.defaultStrategy);
   const skillInputs = extractSkillInputs(candidate.skills ?? candidate.skillNames);
-  const resolvedSkillIds = skillInputs.map((skill, skillIndex) =>
-    resolveSkillId(
-      skill,
-      index,
-      skillIndex,
-      skillSelections[createSkillSelectionKey(index, skillIndex)] ?? null,
-    ),
-  );
+  const warnings: UmaImportWarning[] = [];
+  const resolvedSkillIds = skillInputs.flatMap((skill, skillIndex) => {
+    try {
+      const skillId = resolveSkillId(
+        skill,
+        index,
+        skillIndex,
+        skillSelections[createSkillSelectionKey(index, skillIndex)] ?? null,
+      );
+      const knownUnmodeledSkill = unmodeledSourceSkillOptions.find((candidate) => candidate.id === skillId);
+      if (knownUnmodeledSkill) {
+        warnings.push({
+          candidateIndex: index,
+          skillName: knownUnmodeledSkill.name,
+          reason: knownUnmodeledSkill.unmodeledReason,
+          retained: true,
+        });
+      }
+      return [skillId];
+    } catch (error) {
+      if (isUnknownSkillError(error)) {
+        warnings.push({
+          candidateIndex: index,
+          skillName: skill.name,
+          reason: getUnsupportedSkillReason(skill.name),
+          retained: false,
+        });
+        return [];
+      }
+      throw error;
+    }
+  });
   const selectedSkillIds = resolvedSkillIds.reduce<string[]>(
     (selected, skillId) => selectSkillWithPrerequisites(selected, skillId, skillEntries),
     [],
@@ -213,7 +305,15 @@ function adaptHarvestedRunner(
     skillIds: selectedSkillIds,
   };
 
-  return parseUmaJson(JSON.stringify(storedCandidate))[0];
+  return { runner: parseUmaJson(JSON.stringify(storedCandidate))[0], warnings };
+}
+
+function isUnknownSkillError(error: unknown) {
+  return error instanceof Error && error.message.startsWith("No known skill matched");
+}
+
+function getUnsupportedSkillReason(skillName: string) {
+  return "It is not in the simulator's skill dictionary, so it was not added to avoid inventing its behavior.";
 }
 
 function resolveCharacterCard(

@@ -77,7 +77,7 @@ export function simulateRace(setup: RaceSetup, catalog: SimCatalog, options: Sim
   const globalSkillById = createGlobalSkillEngineMap();
   const skillEvents: SkillEvent[] = [];
   const timeline = [];
-  const runtime = createRaceRuntimeState(setup, track, catalog.skills, random, globalSkillById);
+  const runtime = createRaceRuntimeState(setup, track, catalog.skills, globalSkillById);
   const runners = runtime.runners;
 
   for (const runner of runners) {
@@ -98,10 +98,11 @@ export function simulateRace(setup: RaceSetup, catalog: SimCatalog, options: Sim
     const snapshots: RunnerTick[] = [];
     let finishedCount = 0;
     const standings = getRaceStandings(runners);
-    const duelParticipants = runners.map(toDuelParticipant);
+    const evaluationOrder = standings.map((standing) => standing.runner);
+    const duelParticipants = evaluationOrder.map(toDuelParticipant);
     resetRivalState(runners);
 
-    for (const runner of runners) {
+    for (const runner of evaluationOrder) {
       if (runner.finishTime !== undefined) {
         finishedCount += 1;
         snapshots.push(snapshotRunnerState(runner, track, getRacePhase(runner.distanceMeters, track.distanceMeters)));
@@ -246,7 +247,10 @@ export function simulateRace(setup: RaceSetup, catalog: SimCatalog, options: Sim
   }
 
   const placements = [...runners]
-    .sort((left, right) => (left.finishTime ?? Infinity) - (right.finishTime ?? Infinity))
+    .sort((left, right) =>
+      (left.finishTime ?? Infinity) - (right.finishTime ?? Infinity)
+      || (left.startOrder ?? 0) - (right.startOrder ?? 0),
+    )
     .map((runner, index) => ({
       place: index + 1,
       runnerId: runner.build.id,
@@ -297,6 +301,10 @@ function buildSkillDebugEntries(
     runner.resolvedSkillIds.map((skillId): SkillDebugEntry | null => {
       const event = eventsByRunnerSkill.get(`${runner.build.id}:${skillId}`);
       const fixtureSkill = skillById.get(skillId);
+      const activationRoll = runner.triggers.skillActivationRolls?.[skillId];
+      const witMissReason = activationRoll && !activationRoll.passed
+        ? `Pre-race Wit check failed (${Math.round(activationRoll.chance * 1000) / 10}% chance).`
+        : null;
 
       if (fixtureSkill) {
         return {
@@ -308,7 +316,7 @@ function buildSkillDebugEntries(
           conditionSummary: fixtureSkill.alternatives.map((alternative) => describeFixtureCondition(alternative)).join(" | "),
           sampledTargets: [],
           activation: event ? getSkillActivationDebug(event, track, timeline) : undefined,
-          reason: event ? "Activated during this run." : "Fixture condition or chance roll did not resolve before finish.",
+          reason: event ? "Activated during this run." : witMissReason ?? "Fixture condition did not resolve before finish.",
         };
       }
 
@@ -338,11 +346,11 @@ function buildSkillDebugEntries(
         activation: event ? getSkillActivationDebug(event, track, timeline) : undefined,
         reason: event
           ? "Activated during this run."
-          : modeled
+          : witMissReason ?? (modeled
             ? sampledTargets.length
               ? "Sampled trigger window or condition gates did not line up in this run."
               : "Condition gates did not resolve before finish."
-            : describeUnsupportedGlobalSkill(modelingReport),
+            : describeUnsupportedGlobalSkill(modelingReport)),
       };
     }).filter((entry): entry is SkillDebugEntry => Boolean(entry)),
   );
@@ -501,6 +509,9 @@ function evaluateSkills(args: {
     const skill = skillById.get(skillId);
 
     if (skill) {
+      if (runner.triggers.skillActivationRolls?.[skillId]?.passed === false) {
+        continue;
+      }
       const alternative = skill.alternatives.find((candidate) =>
         doesAlternativeTrigger(candidate, runner, segment, phase, setup.weather, random),
       );
@@ -534,6 +545,10 @@ function evaluateSkills(args: {
     const globalSkillBase = globalSkillById.get(skillId);
 
     if (!globalSkillBase) {
+      continue;
+    }
+
+    if (runner.triggers.skillActivationRolls?.[skillId]?.passed === false) {
       continue;
     }
 

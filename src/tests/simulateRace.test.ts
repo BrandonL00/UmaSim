@@ -168,7 +168,7 @@ describe("simulateRace", () => {
       ...catalog.runners[1]!,
       id: "global-skill-runner",
       uniqueSkillId: "missing-unique-skill",
-      stats: { ...catalog.runners[1]!.stats, speed: 700 },
+      stats: { ...catalog.runners[1]!.stats, speed: 700, wit: 900000 },
       skillIds: ["gt-10071"],
     };
     const result = simulateRace(
@@ -207,7 +207,7 @@ describe("simulateRace", () => {
       uniqueSkillId: "missing-unique-skill",
       skillIds: [`gt-${chasingAfterYou!.id}`],
       strategy: "pace" as const,
-      stats: { ...catalog.runners[1]!.stats, speed: 930, stamina: 860, power: 820 },
+      stats: { ...catalog.runners[1]!.stats, speed: 930, stamina: 860, power: 820, wit: 900000 },
     };
     const fillerA = {
       ...catalog.runners[2]!,
@@ -276,7 +276,7 @@ describe("simulateRace", () => {
       uniqueSkillId: "missing-unique-skill",
       skillIds: [`gt-${chasingAfterYou!.id}`],
       strategy: "pace" as const,
-      stats: { ...catalog.runners[1]!.stats, speed: 920, stamina: 860, power: 810 },
+      stats: { ...catalog.runners[1]!.stats, speed: 920, stamina: 860, power: 810, wit: 900000 },
     };
     const fillerA = {
       ...catalog.runners[2]!,
@@ -324,5 +324,22 @@ describe("simulateRace", () => {
       controlPressureRunner?.gapToWinner ?? Infinity,
     );
     expect((pressuredLeader?.gapToWinner ?? 0)).toBeGreaterThanOrEqual(controlLeader?.gapToWinner ?? 0);
+  });
+
+  it("keeps a seeded race invariant when the same field is reordered", () => {
+    const runners = catalog.runners.slice(0, 4).map((runner) => ({
+      ...runner,
+      uniqueSkillId: "missing-unique-skill",
+      skillIds: [],
+    }));
+    const forward = simulateRace({ ...setup, runners }, catalog);
+    const reversed = simulateRace({ ...setup, runners: [...runners].reverse() }, catalog);
+    const summarize = (result: ReturnType<typeof simulateRace>) =>
+      Object.fromEntries(result.runners.map((runner) => [runner.runnerId, {
+        finishTime: runner.finishTime,
+        place: result.placements.find((placement) => placement.runnerId === runner.runnerId)?.place,
+      }]));
+
+    expect(summarize(reversed)).toEqual(summarize(forward));
   });
 });

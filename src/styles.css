@@ -489,6 +489,49 @@ h2 {
   z-index: 40;
 }
 
+.import-diagnostic {
+  background: #321b1b;
+  border: 1px solid rgb(220 112 112 / 55%);
+  border-radius: 8px;
+  box-shadow: 0 14px 36px rgb(0 0 0 / 38%);
+  color: #f3cece;
+  display: grid;
+  gap: 3px;
+  max-width: min(520px, calc(100vw - 32px));
+  padding: 11px 13px;
+  position: fixed;
+  right: 16px;
+  top: 16px;
+  z-index: 60;
+}
+
+.import-diagnostic strong { color: #ffd7d7; font-size: 12px; }
+.import-diagnostic span { font-size: 12px; line-height: 1.4; }
+
+.import-diagnostic.warning {
+  background: #2f2717;
+  border-color: rgb(214 169 68 / 60%);
+  top: 96px;
+}
+
+.import-diagnostic.warning strong,
+.form-message.warning strong { color: #f0ce7c; }
+
+.import-diagnostic-dismiss {
+  align-items: center;
+  background: transparent;
+  border: 0;
+  color: #e7d3a0;
+  cursor: pointer;
+  display: inline-flex;
+  padding: 2px;
+  position: absolute;
+  right: 7px;
+  top: 7px;
+}
+
+.import-diagnostic-dismiss:hover { color: #fff5d9; }
+
 .modal-panel {
   max-height: min(880px, calc(100vh - 48px));
   max-width: 1180px;
@@ -1185,6 +1228,14 @@ h2 {
   color: #859188;
   font-size: 10px;
   line-height: 1.25;
+}
+
+.batch-build-name-list {
+  display: grid;
+  gap: 10px;
+  max-height: min(52vh, 460px);
+  overflow: auto;
+  padding-right: 4px;
 }
 
 input,
@@ -2246,7 +2297,7 @@ select:disabled {
 }
 
 .character-choice-backdrop {
-  z-index: 30;
+  z-index: 50;
 }
 
 .character-choice-panel {
@@ -3102,6 +3153,20 @@ select:disabled {
 
 .form-message.success {
   color: #aee2d7;
+}
+
+.form-message.warning {
+  background: rgb(214 169 68 / 10%);
+  border: 1px solid rgb(214 169 68 / 32%);
+  border-radius: 8px;
+  color: #e7d3a0;
+  line-height: 1.45;
+  padding: 9px 10px;
+}
+
+.form-message.warning ul {
+  margin: 5px 0 0;
+  padding-left: 18px;
 }
 
 .import-button {

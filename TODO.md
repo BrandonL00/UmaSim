@@ -33,6 +33,13 @@ in `.agents/AGENTS.md`.
 
 ## Engine fidelity and skill coverage
 
+- [ ] Model the five **Ignited Spirit (Aoharu)** skills (SPD/STA/PWR/GUTS/WIT).
+  First research and record the Global formula for Aoharu team-rank scaling,
+  activation, and whether the learned skill's rank is tied to the training
+  scenario rather than the race field's teams. Define the no-team case
+  explicitly: the current engine treats unassigned runners as individual
+  singleton teams, but Aoharu effects must remain unsupported until evidence
+  establishes whether race-team membership is relevant at all.
 - [ ] Turn the Global skill coverage report into a visible backlog, grouped by
   unsupported condition token and effect type.
 - [ ] Add targeted condition tests for each supported token family and source

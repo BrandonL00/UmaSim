@@ -3,7 +3,9 @@ import {
   BuildNameRequiredError,
   CharacterCardAmbiguityError,
   createSkillSelectionKey,
+  getMissingBuildNameRequests,
   parseHarvestedUmaJson,
+  parseHarvestedUmaJsonWithReport,
   SkillAmbiguityError,
 } from "../data/umaImport";
 
@@ -32,6 +34,18 @@ describe("harvested Uma import", () => {
       buildNameSelections: { 0: "Spring target build" },
     });
     expect(runner.buildName).toBe("Spring target build");
+  });
+
+  it("collects every missing build name in a batch before import resolution", () => {
+    const { buildName: _firstBuildName, ...first } = harvestedUma;
+    const requests = getMissingBuildNameRequests(JSON.stringify({
+      umas: [first, { ...first, character: "Silence Suzuka" }],
+    }));
+
+    expect(requests).toEqual([
+      { candidateIndex: 0, suggestedName: "special week Build" },
+      { candidateIndex: 1, suggestedName: "Silence Suzuka Build" },
+    ]);
   });
 
   it("resolves character and skill names into stored IDs", () => {
@@ -152,13 +166,36 @@ describe("harvested Uma import", () => {
     expect(selected.skillIds).toContain("gt-201031");
   });
 
-  it("reports unknown character and skill names", () => {
+  it("reports unknown characters and keeps importing when a skill is unsupported", () => {
     expect(() =>
       parseHarvestedUmaJson(JSON.stringify({ ...harvestedUma, character: "Not A Real Uma" })),
     ).toThrow("No known character");
 
-    expect(() =>
-      parseHarvestedUmaJson(JSON.stringify({ ...harvestedUma, skills: ["Not A Real Skill"] })),
-    ).toThrow("No known skill");
+    const result = parseHarvestedUmaJsonWithReport(JSON.stringify({
+      ...harvestedUma,
+      skills: ["Swinging Maestro", "Not A Real Skill"],
+    }));
+
+    expect(result.runners[0]?.skillIds).toContain("gt-200351");
+    expect(result.warnings).toEqual([expect.objectContaining({
+      candidateIndex: 0,
+      skillName: "Not A Real Skill",
+      reason: expect.stringContaining("not in the simulator's skill dictionary"),
+      retained: false,
+    })]);
+  });
+
+  it("retains known scenario skills while disclosing that they are unmodeled", () => {
+    const result = parseHarvestedUmaJsonWithReport(JSON.stringify({
+      ...harvestedUma,
+      skills: ["Ignited Spirit SPD"],
+    }));
+
+    expect(result.runners[0]?.skillIds).toEqual(["gt-210012"]);
+    expect(result.warnings[0]).toEqual(expect.objectContaining({
+      skillName: "Ignited Spirit SPD",
+      reason: expect.stringContaining("Aoharu Team rank scaling"),
+      retained: true,
+    }));
   });
 });

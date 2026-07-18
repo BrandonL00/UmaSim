@@ -128,3 +128,77 @@ export const inheritedUniqueSkillOptions = globalSkills
     supersedesIds: [] as string[],
     modeled: false,
   }));
+
+/**
+ * Skills present in source data but intentionally outside the Global engine
+ * catalog. They can be retained on imported builds so the omission is visible,
+ * but they are never passed to the simulator until their scenario mechanics are
+ * modeled.
+ */
+export const unmodeledSourceSkillOptions = [
+  {
+    id: "gt-210012",
+    sourceId: "210012",
+    name: "Ignited Spirit SPD",
+    aliases: ["Aoharu Ignition・Speed", "アオハル点火・速"],
+    description: "Aoharu Team speed skill. Its effect scales with Aoharu team rank.",
+    rarity: "normal" as const,
+    tags: ["scenario", "aoharu", "unmodeled"],
+    prerequisiteIds: [] as string[],
+    supersedesIds: [] as string[],
+    modeled: false,
+    unmodeledReason: "Aoharu Team rank scaling is not modeled yet, so this skill will not affect simulations.",
+  },
+  {
+    id: "gt-210022",
+    sourceId: "210022",
+    name: "Ignited Spirit STA",
+    aliases: ["Aoharu Ignition・Stamina", "アオハル点火・体"],
+    description: "Aoharu Team stamina skill. Its effect scales with Aoharu team rank.",
+    rarity: "normal" as const,
+    tags: ["scenario", "aoharu", "unmodeled"],
+    prerequisiteIds: [] as string[],
+    supersedesIds: [] as string[],
+    modeled: false,
+    unmodeledReason: "Aoharu Team rank scaling is not modeled yet, so this skill will not affect simulations.",
+  },
+  {
+    id: "gt-210032",
+    sourceId: "210032",
+    name: "Ignited Spirit PWR",
+    aliases: ["Aoharu Ignition・Power", "アオハル点火・力"],
+    description: "Aoharu Team power skill. Its effect scales with Aoharu team rank.",
+    rarity: "normal" as const,
+    tags: ["scenario", "aoharu", "unmodeled"],
+    prerequisiteIds: [] as string[],
+    supersedesIds: [] as string[],
+    modeled: false,
+    unmodeledReason: "Aoharu Team rank scaling is not modeled yet, so this skill will not affect simulations.",
+  },
+  {
+    id: "gt-210042",
+    sourceId: "210042",
+    name: "Ignited Spirit GUTS",
+    aliases: ["Aoharu Ignition・Guts", "アオハル点火・根"],
+    description: "Aoharu Team guts skill. Its effect scales with Aoharu team rank.",
+    rarity: "normal" as const,
+    tags: ["scenario", "aoharu", "unmodeled"],
+    prerequisiteIds: [] as string[],
+    supersedesIds: [] as string[],
+    modeled: false,
+    unmodeledReason: "Aoharu Team rank scaling is not modeled yet, so this skill will not affect simulations.",
+  },
+  {
+    id: "gt-210052",
+    sourceId: "210052",
+    name: "Ignited Spirit WIT",
+    aliases: ["Aoharu Ignition・Wisdom", "アオハル点火・賢"],
+    description: "Aoharu Team wisdom skill. Its effect scales with Aoharu team rank.",
+    rarity: "normal" as const,
+    tags: ["scenario", "aoharu", "unmodeled"],
+    prerequisiteIds: [] as string[],
+    supersedesIds: [] as string[],
+    modeled: false,
+    unmodeledReason: "Aoharu Team rank scaling is not modeled yet, so this skill will not affect simulations.",
+  },
+] as const;
